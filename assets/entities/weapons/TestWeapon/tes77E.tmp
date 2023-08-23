@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://wtqya32cwdbk"]
+
+[ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_mqk0j"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bvos7"]
+radius = 0.02
+height = 0.725
+
+[node name="TestWeapon" instance=ExtResource("1_mqk0j")]
+useLeftHand = true
+useRightHand = true
+weaponIdleOffset = Vector3(-0.11, 0.09, 0.5)
+objectName = "Test Weapon"
+
+[node name="Mesh" parent="." index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="rightHand" parent="Mesh/holdPoints" index="0"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0.0287266, -0.0210044, 0.284893)
+
+[node name="leftHand" parent="Mesh/holdPoints" index="1"]
+transform = Transform3D(-0.951057, 8.52834e-08, -0.309017, 0.309017, -1.35076e-08, -0.951057, -8.52834e-08, -1, -1.35076e-08, -8.58949e-09, -0.014228, 0.0982524)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_bvos7")

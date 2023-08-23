@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bap501mpmqgb"]
+
+[ext_resource type="PackedScene" uid="uid://cdqtbg28cxotd" path="res://assets/entities/clothing/clothingBase.tscn" id="1_uhnu2"]
+[ext_resource type="ArrayMesh" uid="uid://qhwuwv1l2lr7" path="res://assets/models/pawn/clothing/gloves/maleRightGlove.res" id="2_d0mp6"]
+
+[node name="RightGloveFingerless" instance=ExtResource("1_uhnu2")]
+
+[node name="clothingMesh" parent="." index="0"]
+mesh = ExtResource("2_d0mp6")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdqtbg28cxotd"]
+
+[ext_resource type="Script" path="res://assets/scripts/clothing/clothingBase.gd" id="1_ouwi3"]
+[ext_resource type="Skin" uid="uid://dni81a81m0edc" path="res://assets/models/pawn/male/pawnSkin.tres" id="2_vog81"]
+
+[node name="clothingBase" type="Node3D"]
+script = ExtResource("1_ouwi3")
+
+[node name="clothingMesh" type="MeshInstance3D" parent="."]
+skin = ExtResource("2_vog81")

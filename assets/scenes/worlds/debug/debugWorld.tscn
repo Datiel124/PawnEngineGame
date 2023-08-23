@@ -1,0 +1,299 @@
+[gd_scene load_steps=20 format=3 uid="uid://dpeqrnidy6scn"]
+
+[ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_ffcsn"]
+[ext_resource type="Texture2D" uid="uid://bodygaior62dl" path="res://assets/textures/Developer_Textures/Light/texture_08.png" id="2_sfw5y"]
+[ext_resource type="Material" uid="uid://cwfkhcnuwb76u" path="res://assets/materials/devMaterials/metal/Dark_1.tres" id="3_hoqk6"]
+[ext_resource type="Material" uid="uid://cxtyb37kdvjmn" path="res://assets/materials/devMaterials/concrete/white_1.tres" id="4_gj8or"]
+[ext_resource type="Material" uid="uid://2ed6xdxpeigm" path="res://assets/materials/devMaterials/dirt/dirt_1.tres" id="5_lmime"]
+[ext_resource type="PackedScene" uid="uid://cmyxa8pfmhpcy" path="res://assets/components/inputComponent/inputComponent.tscn" id="7_evk2e"]
+[ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="7_p48cf"]
+[ext_resource type="PackedScene" uid="uid://cgghffeqks1ac" path="res://assets/entities/clothing/Gloves/left_glove_fingerless.tscn" id="19_t0e24"]
+[ext_resource type="PackedScene" uid="uid://bap501mpmqgb" path="res://assets/entities/clothing/Gloves/right_glove_fingerless.tscn" id="20_blqkk"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6uva"]
+sky_top_color = Color(0, 0.595729, 0.995398, 1)
+sky_horizon_color = Color(0.12549, 0.435294, 0.545098, 1)
+ground_bottom_color = Color(0.141176, 0.611765, 0.909804, 1)
+ground_horizon_color = Color(0.12549, 0.435294, 0.545098, 1)
+
+[sub_resource type="Sky" id="Sky_2epwn"]
+sky_material = SubResource("ProceduralSkyMaterial_o6uva")
+
+[sub_resource type="Environment" id="Environment_lrdb6"]
+background_mode = 2
+background_color = Color(0.592157, 0.780392, 0.913725, 1)
+sky = SubResource("Sky_2epwn")
+ambient_light_source = 3
+tonemap_exposure = 1.14
+ssao_enabled = true
+ssao_radius = 1.21
+ssao_intensity = 1.25
+ssao_power = 3.21532
+sdfgi_enabled = true
+sdfgi_energy = 0.618
+glow_enabled = true
+glow_intensity = 3.28
+glow_bloom = 0.1
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0125
+volumetric_fog_length = 100.66
+adjustment_enabled = true
+adjustment_contrast = 1.3
+adjustment_saturation = 1.25
+
+[sub_resource type="Gradient" id="Gradient_qubni"]
+offsets = PackedFloat32Array(0.0143541, 0.378238, 0.585492, 1)
+colors = PackedColorArray(0.976471, 0.941176, 0.721569, 1, 0.994007, 0.985018, 0.929084, 1, 1, 1, 1, 1, 0.996078, 0.972549, 0.745098, 1)
+
+[sub_resource type="Curve" id="Curve_qcxnm"]
+max_value = 5.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.245536, 1.10526), 0.0, 0.0, 0, 0, Vector2(0.5, 1.21053), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_potkt"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.0893376, 1.92764e-05, 0.366253, 1)
+
+[sub_resource type="Curve" id="Curve_aqdmn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.289063, 0.442105), 0.0, 0.0, 0, 0, Vector2(0.703125, 0.410526), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_y6i33"]
+offsets = PackedFloat32Array(0, 0.414508, 0.611399, 1)
+colors = PackedColorArray(0.0817913, 0.0544171, 0.180652, 1, 0.331283, 0.473115, 0.895028, 1, 0.50672, 0.591307, 0.919795, 1, 0.105315, 0.069042, 0.246004, 1)
+
+[sub_resource type="Gradient" id="Gradient_te3yj"]
+offsets = PackedFloat32Array(0, 0.227979, 0.440415, 0.597938, 0.797927, 1)
+colors = PackedColorArray(0.0389039, 0.154287, 0.313718, 1, 0.860356, 0.583018, 0.354333, 1, 0.0369147, 0.113202, 0.261585, 1, 0.0681301, 0.166985, 0.312768, 1, 0.860963, 0.579766, 0.389372, 1, 0.0197519, 0.143754, 0.301438, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxycu"]
+albedo_color = Color(0.341176, 0.733333, 0, 1)
+albedo_texture = ExtResource("2_sfw5y")
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_sfw5y")
+roughness = 0.0
+emission_energy_multiplier = 0.18
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="worldBase" instance=ExtResource("1_ffcsn")]
+
+[node name="DirectionalLight3D" parent="Environment" index="0"]
+transform = Transform3D(0.507283, 0, -0.86178, 0.750868, 0.490752, 0.441995, 0.42292, -0.871299, 0.24895, 0, 0, 0)
+
+[node name="WorldEnvironment" parent="Environment" index="1"]
+environment = SubResource("Environment_lrdb6")
+
+[node name="dayNightCycle" parent="Environment" index="2" node_paths=PackedStringArray("environment")]
+transform = Transform3D(0.611057, 0, -0.791586, 0, 1, 0, 0.791586, 0, 0.611057, 0, 0, 0)
+dayLength = 1024.0
+startTime = 0.35
+sunColor = SubResource("Gradient_qubni")
+sunIntensity = SubResource("Curve_qcxnm")
+moonColor = SubResource("Gradient_potkt")
+moonIntensity = SubResource("Curve_aqdmn")
+environment = NodePath("../WorldEnvironment")
+skyTopColor = SubResource("Gradient_y6i33")
+skyHorizonColor = SubResource("Gradient_te3yj")
+
+[node name="Floor" type="CSGBox3D" parent="Geometry" index="0"]
+use_collision = true
+size = Vector3(3311.39, 1, 4446.3)
+material = SubResource("StandardMaterial3D_wxycu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Geometry" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134587, 0.978026, 32.3928)
+material_override = ExtResource("3_hoqk6")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Geometry" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22616, 0.978026, 32.3928)
+material_override = ExtResource("3_hoqk6")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Geometry" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61331, -0.748979, 32.3928)
+material_override = ExtResource("3_hoqk6")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Geometry" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.39579, 0.978026, 38.3729)
+material_override = ExtResource("4_gj8or")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Geometry" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59542, -0.564469, 38.3729)
+material_override = ExtResource("4_gj8or")
+transparency = 0.61
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Geometry" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.64644, 2.27105, 38.3729)
+material_override = ExtResource("4_gj8or")
+transparency = 0.61
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Geometry" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695786, 0.978026, 38.3729)
+material_override = ExtResource("5_lmime")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Geometry" index="8"]
+transform = Transform3D(1, 0, 0, 0, 0.976281, -0.216508, 0, 0.216508, 0.976281, 2.81745, -0.755724, 37.6593)
+material_override = ExtResource("5_lmime")
+use_collision = true
+size = Vector3(1, 4.66425, 1)
+
+[node name="pawnEntity" parent="Pawns/Players" index="0" node_paths=PackedStringArray("inputComponent") instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69885, 34.1192)
+inputComponent = NodePath("Components/inputComponent")
+
+[node name="Skeleton3D" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton" index="0"]
+bones/0/position = Vector3(0.0303587, 0.877037, -0.0889605)
+bones/0/rotation = Quaternion(-0.125804, -0.0697743, -0.00508692, 0.989585)
+bones/1/rotation = Quaternion(0.179007, 0.014804, 0.00874938, 0.983697)
+bones/1/scale = Vector3(1, 0.999984, 0.999984)
+bones/2/rotation = Quaternion(-0.0361426, 0.00881757, -0.00620453, 0.999288)
+bones/3/rotation = Quaternion(0.56025, 0.335245, 0.564362, -0.505199)
+bones/4/rotation = Quaternion(-0.456669, 0.305361, -0.34193, 0.762424)
+bones/4/scale = Vector3(0.999981, 0.999987, 0.999988)
+bones/5/rotation = Quaternion(0.073797, 0.0130685, -0.0844868, 0.993602)
+bones/5/scale = Vector3(1.00001, 1, 1.00001)
+bones/6/rotation = Quaternion(-0.0184906, -0.247707, -0.00829017, 0.968623)
+bones/7/position = Vector3(0.0661816, 0.0680553, -0.00886162)
+bones/7/rotation = Quaternion(-0.093767, -0.70854, 0.142513, 0.68474)
+bones/8/rotation = Quaternion(0.0232058, 0.0592886, -0.00338449, 0.997965)
+bones/9/rotation = Quaternion(0.0611323, 0.369218, 0.00292571, 0.927325)
+bones/10/position = Vector3(0.0300397, 0.13663, 0.0188187)
+bones/10/rotation = Quaternion(-0.000974385, -0.71408, 0.0114471, 0.69997)
+bones/11/rotation = Quaternion(-0.155415, 0.818567, 0.117373, 0.540386)
+bones/11/scale = Vector3(0.999989, 1.00001, 1)
+bones/12/rotation = Quaternion(0.00744686, -0.465133, -0.0291226, 0.88473)
+bones/12/scale = Vector3(0.999987, 0.999996, 1.00001)
+bones/13/rotation = Quaternion(-0.0185592, -0.713174, 0.104195, 0.692951)
+bones/13/scale = Vector3(0.999992, 1.00002, 0.999991)
+bones/14/rotation = Quaternion(-0.0970128, 0.929772, -0.136774, -0.327726)
+bones/15/rotation = Quaternion(0.0743224, -0.253083, -0.0923231, 0.960157)
+bones/15/scale = Vector3(1.00001, 0.999995, 1.00001)
+bones/16/rotation = Quaternion(0.0372597, -0.710113, 0.075248, 0.699063)
+bones/17/rotation = Quaternion(-0.282279, 0.949502, -0.136514, -0.0113006)
+bones/17/scale = Vector3(1.00002, 1.00001, 0.99998)
+bones/18/rotation = Quaternion(0.0221111, 0.083636, -0.0305581, 0.995782)
+bones/18/scale = Vector3(0.999986, 0.999982, 1.00001)
+bones/19/rotation = Quaternion(0.0223116, -0.715494, 0.0758185, 0.694135)
+bones/19/scale = Vector3(0.999986, 1.00001, 1)
+bones/20/rotation = Quaternion(-0.16878, 0.907763, -0.0188426, 0.383568)
+bones/20/scale = Vector3(0.999997, 1, 1.00002)
+bones/21/rotation = Quaternion(0.0378317, 0.0487904, -0.0715136, 0.995527)
+bones/22/position = Vector3(-0.00273529, 0.263898, 1.48781e-05)
+bones/22/rotation = Quaternion(0.563081, -0.319305, -0.552067, -0.525552)
+bones/23/rotation = Quaternion(-0.513577, -0.31053, 0.252868, 0.75886)
+bones/23/scale = Vector3(0.999986, 1, 0.999993)
+bones/24/rotation = Quaternion(0.125399, -0.0129103, 0.14358, 0.981577)
+bones/24/scale = Vector3(1.00001, 0.99998, 1.00001)
+bones/25/rotation = Quaternion(0.0340182, 0.214789, -0.0457305, 0.974996)
+bones/25/scale = Vector3(1.00001, 0.999998, 1)
+bones/26/rotation = Quaternion(-0.0731213, 0.712785, -0.124435, 0.686372)
+bones/26/scale = Vector3(1, 1.00001, 0.999993)
+bones/27/rotation = Quaternion(0.0232301, -0.0592724, 0.00339992, 0.997966)
+bones/28/rotation = Quaternion(0.0611521, -0.369235, -0.00297079, 0.927317)
+bones/29/rotation = Quaternion(0.0200909, 0.714479, 0.00661995, 0.699337)
+bones/29/scale = Vector3(0.999986, 1.00002, 1)
+bones/30/rotation = Quaternion(-0.155436, -0.818572, -0.117413, 0.540365)
+bones/30/scale = Vector3(0.99999, 1.00001, 1)
+bones/31/rotation = Quaternion(0.00739593, 0.465134, 0.0290787, 0.884732)
+bones/31/scale = Vector3(0.999988, 0.999989, 1.00001)
+bones/32/rotation = Quaternion(0.00224698, 0.716173, -0.0860504, 0.692594)
+bones/32/scale = Vector3(0.999981, 1.00002, 0.999977)
+bones/33/rotation = Quaternion(0.0970668, 0.929774, -0.136781, 0.327703)
+bones/34/rotation = Quaternion(0.0743529, 0.25309, 0.0923669, 0.960149)
+bones/34/scale = Vector3(1.00001, 0.999999, 1.00001)
+bones/35/rotation = Quaternion(0.0582374, 0.712186, -0.0572802, 0.697222)
+bones/35/scale = Vector3(0.999977, 1.00001, 1)
+bones/36/rotation = Quaternion(0.282339, 0.949488, -0.136488, 0.0113275)
+bones/37/rotation = Quaternion(0.022111, -0.083629, 0.0305961, 0.995782)
+bones/38/rotation = Quaternion(0.0431723, 0.717618, -0.0577001, 0.692699)
+bones/38/scale = Vector3(0.999974, 1.00002, 0.999989)
+bones/39/rotation = Quaternion(0.168822, 0.907777, -0.0188111, -0.383517)
+bones/40/rotation = Quaternion(0.0377989, -0.0488134, 0.0715586, 0.995524)
+bones/41/rotation = Quaternion(0.0313235, -0.00126928, 0.00292347, 0.999504)
+bones/42/position = Vector3(7.39987e-09, 0.0723969, 0.00485133)
+bones/42/rotation = Quaternion(0.0102097, 0.710169, 0.0514263, 0.702076)
+bones/43/rotation = Quaternion(0.989739, 0.0809871, -0.0678574, -0.0961914)
+bones/43/scale = Vector3(1.00001, 0.999975, 1)
+bones/44/rotation = Quaternion(0.202085, 0.00205593, 0.0283791, 0.978955)
+bones/45/rotation = Quaternion(0.0365894, 0.866524, -0.493336, 0.0664545)
+bones/45/scale = Vector3(0.999998, 0.999974, 0.99999)
+bones/46/rotation = Quaternion(0.426683, -0.0145494, -0.0223015, 0.904009)
+bones/46/scale = Vector3(0.999997, 1.00002, 1.00001)
+bones/47/rotation = Quaternion(0.994729, -0.0895842, 0.0161228, 0.0472229)
+bones/47/scale = Vector3(1.00001, 0.999974, 1)
+bones/48/rotation = Quaternion(0.172291, -0.00206991, -0.0283056, 0.984637)
+bones/49/rotation = Quaternion(-0.017116, 0.898449, -0.431567, -0.0790286)
+bones/49/scale = Vector3(1.00001, 1.00001, 0.999992)
+bones/50/rotation = Quaternion(0.302463, 0.0110131, 0.000394551, 0.953098)
+bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
+
+[node name="LeftGloveFingerless" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="0" instance=ExtResource("19_t0e24")]
+
+[node name="RightGloveFingerless" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="1" instance=ExtResource("20_blqkk")]
+
+[node name="inputComponent" parent="Pawns/Players/pawnEntity/Components" index="2" instance=ExtResource("7_evk2e")]
+
+[node name="AnimationTree" parent="Pawns/Players/pawnEntity" index="2"]
+parameters/weaponBlend/blend_amount = 0
+
+[node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
+transform = Transform3D(-0.995825, 0.0147329, 0.0899779, 0.0116647, 0.999326, -0.0345346, -0.0904269, -0.0333412, -0.995335, -0.0271788, 1.9161, 34.2215)
+
+[node name="Stomach" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
+transform = Transform3D(-0.993794, 0.0341658, 0.105765, 0.0227927, 0.993985, -0.106933, -0.108785, -0.10386, -0.988605, -0.0342202, 1.71124, 34.2429)
+
+[node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="2"]
+transform = Transform3D(-0.995475, 0.0262359, 0.0912228, 0.0173311, 0.995116, -0.0970753, -0.093325, -0.095056, -0.991078, -0.0232908, 2.17982, 34.2127)
+
+[node name="leftHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="3"]
+transform = Transform3D(0.43195, -0.0236001, -0.901575, 0.188489, -0.975201, 0.11583, -0.88195, -0.219962, -0.416795, -0.203245, 1.64789, 34.1665)
+
+[node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
+transform = Transform3D(0.157517, 0.188313, 0.969395, -0.076936, -0.976299, 0.202158, 0.984503, -0.106399, -0.139296, 0.141745, 1.64956, 34.2699)
+
+[node name="pawnEntity" parent="Pawns" index="1" instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.824409, 1.83894, 37.276)
+
+[node name="pawnEntity2" parent="Pawns" index="2" node_paths=PackedStringArray("velocityComponent", "healthComponent", "rootCameraNode", "followNode") instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82441, 1.83894, 37.276)
+velocityComponent = NodePath("../pawnEntity/Components/VelocityComponent")
+healthComponent = NodePath("../pawnEntity/Components/HealthComponent")
+rootCameraNode = NodePath("../pawnEntity/Mesh")
+followNode = NodePath("../pawnEntity/BoneAttatchments/Stomach")
+
+[node name="pawnEntity3" parent="Pawns" index="3" node_paths=PackedStringArray("velocityComponent", "healthComponent", "rootCameraNode", "followNode") instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.32076, 1.83894, 37.276)
+velocityComponent = NodePath("../pawnEntity/Components/VelocityComponent")
+healthComponent = NodePath("../pawnEntity/Components/HealthComponent")
+rootCameraNode = NodePath("../pawnEntity/Mesh")
+followNode = NodePath("../pawnEntity/BoneAttatchments/Stomach")
+
+[node name="pawnEntity4" parent="Pawns" index="4" node_paths=PackedStringArray("velocityComponent", "healthComponent", "rootCameraNode", "followNode") instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71292, 2.77911, 38.133)
+velocityComponent = NodePath("../pawnEntity/Components/VelocityComponent")
+healthComponent = NodePath("../pawnEntity/Components/HealthComponent")
+rootCameraNode = NodePath("../pawnEntity/Mesh")
+followNode = NodePath("../pawnEntity/BoneAttatchments/Stomach")
+
+[node name="pawnEntity5" parent="Pawns" index="5" node_paths=PackedStringArray("velocityComponent", "healthComponent", "rootCameraNode", "followNode") instance=ExtResource("7_p48cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5441, 5.57222, 37.9616)
+velocityComponent = NodePath("../pawnEntity/Components/VelocityComponent")
+healthComponent = NodePath("../pawnEntity/Components/HealthComponent")
+rootCameraNode = NodePath("../pawnEntity/Mesh")
+followNode = NodePath("../pawnEntity/BoneAttatchments/Stomach")
+
+[editable path="Pawns/Players/pawnEntity"]

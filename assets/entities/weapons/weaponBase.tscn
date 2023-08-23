@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://cpd5r8bmx2885"]
+
+[ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/weaponBase.gd" id="1_37cvt"]
+
+[sub_resource type="Animation" id="Animation_ef23n"]
+
+[sub_resource type="Animation" id="Animation_c3lrp"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_nch48"]
+
+[sub_resource type="Animation" id="Animation_2k5br"]
+
+[sub_resource type="Animation" id="Animation_6o8vv"]
+
+[sub_resource type="Animation" id="Animation_aoqdk"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qxw0b"]
+_data = {
+"aim": SubResource("Animation_ef23n"),
+"equip": SubResource("Animation_c3lrp"),
+"fire": SubResource("Animation_nch48"),
+"idle": SubResource("Animation_2k5br"),
+"sprint": SubResource("Animation_6o8vv"),
+"unequip": SubResource("Animation_aoqdk")
+}
+
+[node name="weaponBase" type="RigidBody3D"]
+script = ExtResource("1_37cvt")
+collisionEnabled = false
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="collisionObject" type="CollisionShape3D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qxw0b")
+}

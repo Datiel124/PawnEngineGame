@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://4p4mrn6aoy5d"]
+
+[ext_resource type="Script" path="res://assets/scripts/soundQueue/soundQueue.gd" id="1_sfqf3"]
+
+[node name="soundQueue" type="Node3D"]
+script = ExtResource("1_sfqf3")
+soundCount = 5

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvip2hi8ny7x3"]
+
+[ext_resource type="Script" path="res://assets/scripts/entities/propRigidBody/propRigidBody.gd" id="1_qa8kp"]
+
+[node name="propRigidBody" type="RigidBody3D"]
+script = ExtResource("1_qa8kp")

@@ -1,0 +1,607 @@
+[gd_scene load_steps=24 format=3 uid="uid://cm5mhbhroqded"]
+
+[ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
+[ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
+[ext_resource type="ArrayMesh" uid="uid://brx711lyumg08" path="res://assets/models/weapons/uzi/uzimodel.res" id="2_y054k"]
+[ext_resource type="Environment" uid="uid://7s7lpp6u8ukp" path="res://assets/envs/default/debugWorld.tres" id="3_nx10h"]
+[ext_resource type="PackedScene" uid="uid://cgghffeqks1ac" path="res://assets/entities/clothing/Gloves/left_glove_fingerless.tscn" id="3_sguoq"]
+[ext_resource type="PackedScene" uid="uid://bap501mpmqgb" path="res://assets/entities/clothing/Gloves/right_glove_fingerless.tscn" id="4_jwagi"]
+[ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="4_vym1c"]
+[ext_resource type="PackedScene" uid="uid://cu4bdt2hv4dyo" path="res://assets/models/weapons/beretta/Beretta.fbx" id="6_7thhc"]
+[ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="8_klk30"]
+[ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
+[ext_resource type="AudioStream" uid="uid://4fr4v3mmy3oj" path="res://assets/music/menu/Frenzy.mp3" id="11_lmlsm"]
+[ext_resource type="AudioStream" uid="uid://kto2dqyucdyf" path="res://assets/music/menu/HHb2.mp3" id="11_pfhq4"]
+[ext_resource type="AudioStream" uid="uid://c1mk4s30dq3nc" path="res://assets/music/menu/Idlehoodtune.wav" id="12_e5aa3"]
+
+[sub_resource type="GDScript" id="GDScript_h14ep"]
+script/source = "extends Node3D
+@onready var menuSong = $menuMusic
+@onready var menuSound = $menuSound
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	menuSong.play()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_play_button_pressed():
+	menuSound.play()
+	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/debug/debugWorld.tscn\")
+
+func _on_quit_button_pressed():
+	menuSound.play()
+	globalGameManager.save_settings()
+	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().quit()
+
+
+func _on_menu_music_finished():
+	menuSong.play()
+
+"
+
+[sub_resource type="GDScript" id="GDScript_s66us"]
+script/source = "extends Camera3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	await get_tree().process_frame
+	Fade.fade_in(0.8, Color(0,0,0,1),\"GradientVertical\",false,true)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="FogMaterial" id="FogMaterial_r02gc"]
+density = 0.6308
+albedo = Color(0, 0, 0, 1)
+emission = Color(0.207843, 0.117647, 0.101961, 1)
+
+[sub_resource type="GDScript" id="GDScript_k7ds2"]
+script/source = "@tool
+extends SkeletonIK3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	start()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="GDScript" id="GDScript_aalkd"]
+script/source = "extends Control
+@onready var animPlayer = $AnimationPlayer
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	animPlayer.play(\"start\")
+	$camAnim.play(\"cam\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_vppp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(445, 901)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(58, -309)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 351)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Quit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(96, 642)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Camera3D:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.48231, 0.29601, 0.0113825)]
+}
+
+[sub_resource type="Animation" id="Animation_utw0r"]
+resource_name = "new_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.241484, 2),
+"update": 0,
+"values": [Vector2(445, 13), Vector2(445, 947)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.466517, 2.46229),
+"update": 0,
+"values": [Vector2(45, -309), Vector2(45, 11)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.277392, 1.86607),
+"update": 0,
+"values": [Vector2(-283, 351), Vector2(96, 351)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Quit:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1),
+"transitions": PackedFloat32Array(0.615572, 11.7127),
+"update": 0,
+"values": [Vector2(-270, 642), Vector2(96, 642)]
+}
+
+[sub_resource type="Animation" id="Animation_jj1mn"]
+resource_name = "cam"
+length = 90.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 45.8, 90),
+"transitions": PackedFloat32Array(0.225313, 4.75682, 2.73208),
+"update": 0,
+"values": [Vector3(0.48231, 0.29601, 0.0113825), Vector3(0.469227, 0.239145, -0.00751509), Vector3(0.48231, 0.29601, 0.0113825)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_obo1l"]
+_data = {
+"RESET": SubResource("Animation_vppp2"),
+"cam": SubResource("Animation_jj1mn"),
+"start": SubResource("Animation_utw0r")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
+streams_count = 3
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("11_pfhq4")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_lmlsm")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_e5aa3")
+stream_2/weight = 1.0
+
+[node name="menu" type="Node3D"]
+script = SubResource("GDScript_h14ep")
+
+[node name="geometry" type="Node3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="geometry"]
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57871, 0)
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3.50112, 3.3924, 0)
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.49888, 3.3924, 0)
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.597337, 3.3924, -4.47253)
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.682802, 3.3924, 3.65861)
+size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508823, 0.679677, -0.578689)
+size = Vector3(1.72807, 0.0399028, 0.881355)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82116, 0.201497, -2.00572)
+size = Vector3(0.9235, 1.12136, 0.881355)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.899413, -0.4371, 0, 0.432097, 0.889119, -0.150864, 0.0659427, 0.135689, 0.988555, -2.85268, 0.711728, -0.644257)
+size = Vector3(0.172434, 1.82244, 0.503757)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.899413, -0.4371, 0, 0.434273, 0.893596, 0.11355, -0.0496327, -0.102128, 0.993532, -2.87652, 0.711728, 0.10809)
+size = Vector3(0.172434, 1.82244, 0.503757)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.898925, 0.0236105, -0.437466, 0.437526, 0.00284481, 0.899201, 0.0224751, -0.999717, -0.00777306, -3.2275, 0.409847, -0.08408)
+size = Vector3(0.172434, 1.54897, 0.503757)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85914, 0.201497, -2.75053)
+size = Vector3(0.9235, 1.12136, 0.881355)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44822, 1.164, -2.69882)
+size = Vector3(0.9235, 0.783151, 0.881355)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="geometry/CSGBox3D17"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 3.90809, -0.944395, 0.592488)
+size = Vector3(0.9235, 1.12136, 0.881355)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="geometry/CSGBox3D17"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.87651, -0.944395, 1.32896)
+size = Vector3(0.9235, 1.12136, 0.881355)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="geometry/CSGBox3D17"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.67409, 0.0181062, 0.773341)
+size = Vector3(0.9235, 0.783151, 0.881355)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.0508823, 1.00007, -0.996765)
+size = Vector3(1.72807, 0.0399028, 0.881355)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.57578, 1.31419, -0.863864)
+size = Vector3(0.18359, 0.222883, 0.0445222)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, 0.42422, 1.31419, -0.863864)
+size = Vector3(0.18359, 0.222883, 0.0445222)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860541, 0.283394, -0.202421)
+size = Vector3(0.105206, 0.756433, 0.110838)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860541, 0.283394, -0.964806)
+size = Vector3(0.105206, 0.756433, 0.110838)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75531, 0.283394, -0.202421)
+size = Vector3(0.105206, 0.756433, 0.110838)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75531, 0.283394, -0.964806)
+size = Vector3(0.105206, 0.756433, 0.110838)
+
+[node name="HoneyBadger" parent="geometry" instance=ExtResource("1_mmc6m")]
+transform = Transform3D(-0.161704, 3.25419, 0.108155, 1.99586, 0.0135096, 2.57759, 2.57254, 0.19407, -1.99298, -0.401559, 1.01847, -0.724715)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.532135, 1.26997, -0.840492)
+light_energy = 0.245
+shadow_enabled = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.366833, 1.26997, -0.840492)
+light_energy = 0.245
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.957986, 0.124405, 0.25843, 0.0100838, 0.885868, -0.463827, -0.286637, 0.446946, 0.847395, -0.233828, 0.861693, 0.695114)
+fov = 76.3145
+script = SubResource("GDScript_s66us")
+
+[node name="Marker3D" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(0.209708, -0.275465, 0.938159, 0.459059, 0.874907, 0.154278, -0.8633, 0.398317, 0.309929, 0.174632, 0.521108, -0.60023)
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.965382, -0.192613, -1.03666)
+shape = 4
+material = SubResource("FogMaterial_r02gc")
+
+[node name="FogVolume2" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903685, 1.57641, -3.54362)
+size = Vector3(9.21462, 4.76234, 4.26787)
+material = SubResource("FogMaterial_r02gc")
+
+[node name="pawnEntity" parent="." instance=ExtResource("1_6tkvv")]
+transform = Transform3D(-0.990263, 0, 0.139208, 0, 1, 0, -0.139208, 0, -0.990263, -0.0571537, 0.955299, -0.127471)
+forceAnimation = true
+animationToForce = "PawnAnim/MenuIdle"
+pawnEnabled = false
+collisionEnabled = false
+
+[node name="Skeleton3D" parent="pawnEntity/Mesh/MaleSkeleton" index="0"]
+bones/0/position = Vector3(0.000769062, 0.814157, -0.141256)
+bones/0/rotation = Quaternion(-0.245472, 0.0391885, -0.00670095, 0.968588)
+bones/1/rotation = Quaternion(0.452679, -0.00243955, -0.00922124, 0.891622)
+bones/2/rotation = Quaternion(0.195501, -0.0055397, -6.4399e-05, 0.980688)
+bones/3/rotation = Quaternion(-0.534081, -0.388518, -0.563816, 0.495906)
+bones/4/rotation = Quaternion(-0.130544, 0.235803, -0.640264, 0.719316)
+bones/5/rotation = Quaternion(0.103378, 0.0129609, -0.118617, 0.987459)
+bones/6/rotation = Quaternion(-0.0576777, 0.303834, -0.093496, 0.94637)
+bones/7/position = Vector3(0.0661675, 0.0680545, -0.00886151)
+bones/7/rotation = Quaternion(-0.083292, -0.712156, 0.159913, 0.678471)
+bones/8/rotation = Quaternion(0.0474537, 0.0509316, 0.000967823, 0.997573)
+bones/9/rotation = Quaternion(0.0611276, 0.369202, 0.00295762, 0.927332)
+bones/10/position = Vector3(0.0300253, 0.13663, 0.0188193)
+bones/10/rotation = Quaternion(-0.000990664, -0.714096, 0.0114753, 0.699953)
+bones/11/rotation = Quaternion(-0.206047, 0.805129, 0.119981, 0.543062)
+bones/11/scale = Vector3(0.999994, 0.99999, 1)
+bones/12/rotation = Quaternion(-0.147382, -0.473127, -0.0944767, 0.863425)
+bones/13/rotation = Quaternion(-0.0331268, -0.715024, 0.108502, 0.689834)
+bones/14/rotation = Quaternion(0.13645, -0.921549, 0.181667, 0.314839)
+bones/15/rotation = Quaternion(0.0743443, -0.253099, -0.092374, 0.960146)
+bones/16/rotation = Quaternion(0.0148926, -0.720917, 0.0778871, 0.688469)
+bones/17/rotation = Quaternion(-0.294481, 0.943048, -0.154233, 0.0124184)
+bones/18/rotation = Quaternion(0.0220983, 0.0836048, -0.0305851, 0.995784)
+bones/19/rotation = Quaternion(0.00898789, -0.722184, 0.100911, 0.684241)
+bones/20/rotation = Quaternion(-0.16882, 0.907778, -0.0187896, 0.383517)
+bones/21/rotation = Quaternion(0.0378241, 0.0487983, -0.0715343, 0.995525)
+bones/22/position = Vector3(-0.00273869, 0.263897, 5.56045e-05)
+bones/22/rotation = Quaternion(0.596679, -0.353286, -0.585837, -0.419473)
+bones/23/rotation = Quaternion(-0.114046, -0.489638, 0.420609, 0.755205)
+bones/24/rotation = Quaternion(0.356007, -0.0109668, 0.40786, 0.840707)
+bones/24/scale = Vector3(0.999995, 1, 1)
+bones/25/rotation = Quaternion(0.175382, -0.307173, -0.208665, 0.911781)
+bones/25/scale = Vector3(1, 0.999994, 1)
+bones/26/rotation = Quaternion(-0.0730983, 0.7128, -0.124409, 0.686364)
+bones/27/rotation = Quaternion(0.0232806, -0.0593168, 0.0033988, 0.997962)
+bones/28/rotation = Quaternion(0.0611266, -0.369201, -0.00295949, 0.927332)
+bones/29/rotation = Quaternion(-0.110104, 0.731493, -0.0591149, 0.670299)
+bones/30/rotation = Quaternion(-0.214509, -0.80425, -0.12267, 0.540482)
+bones/30/scale = Vector3(0.999994, 0.99999, 1)
+bones/31/rotation = Quaternion(-0.599464, 0.380507, 0.289691, 0.641823)
+bones/31/scale = Vector3(0.999987, 1.00001, 0.999997)
+bones/32/rotation = Quaternion(-0.395467, 0.583166, -0.246129, 0.66554)
+bones/32/scale = Vector3(1.00001, 0.999998, 0.99999)
+bones/33/rotation = Quaternion(0.325999, 0.896259, -0.222817, 0.201983)
+bones/34/rotation = Quaternion(0.422032, 0.299417, 0.429578, 0.740068)
+bones/34/scale = Vector3(0.999997, 1.00001, 1.00001)
+bones/35/rotation = Quaternion(-0.405384, 0.653038, -0.221667, 0.600058)
+bones/35/scale = Vector3(1, 0.999994, 1.00001)
+bones/36/rotation = Quaternion(0.386495, 0.900582, -0.198485, 0.0133249)
+bones/37/rotation = Quaternion(0.266118, -0.0926803, 0.376302, 0.882603)
+bones/38/rotation = Quaternion(-0.44174, 0.682126, -0.21065, 0.54332)
+bones/38/scale = Vector3(1.00001, 0.999992, 0.999998)
+bones/39/rotation = Quaternion(-0.205808, -0.89969, 0.0209074, 0.3844)
+bones/40/rotation = Quaternion(-0.0413914, 0.0038635, 0.351315, 0.935334)
+bones/41/rotation = Quaternion(-0.105514, -0.0165745, 0.0438012, 0.993314)
+bones/42/position = Vector3(7.39395e-09, 0.0723969, 0.00485133)
+bones/42/rotation = Quaternion(-0.0820955, 0.689541, -0.0123402, 0.719473)
+bones/43/rotation = Quaternion(0.890526, 0.210286, -0.0577829, 0.399255)
+bones/43/scale = Vector3(1, 0.999992, 0.999986)
+bones/44/rotation = Quaternion(0.575647, 0.00167053, 0.0268122, 0.817257)
+bones/45/rotation = Quaternion(-0.0289115, 0.953779, -0.296268, 0.0411623)
+bones/45/scale = Vector3(1.00001, 0.999989, 0.999979)
+bones/46/rotation = Quaternion(0.427127, -0.0145003, -0.0222568, 0.903801)
+bones/46/scale = Vector3(0.999997, 1.00001, 1)
+bones/47/rotation = Quaternion(0.914117, -0.235013, 0.0509862, 0.326434)
+bones/47/scale = Vector3(1, 0.99999, 0.99999)
+bones/48/rotation = Quaternion(0.558354, -0.0016973, -0.0270084, 0.829161)
+bones/49/rotation = Quaternion(-0.0378017, -0.914885, 0.39687, 0.0636432)
+bones/50/rotation = Quaternion(0.302235, 0.0109896, 0.000367735, 0.95317)
+bones/50/scale = Vector3(0.999992, 0.999995, 0.999988)
+
+[node name="LeftGloveFingerless" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="0" instance=ExtResource("3_sguoq")]
+
+[node name="RightGloveFingerless" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="1" instance=ExtResource("4_jwagi")]
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D" index="20"]
+process_priority = 1
+root_bone = &"Neck"
+tip_bone = &"Head"
+target_node = NodePath("../../../../../Camera3D/Marker3D")
+script = SubResource("GDScript_k7ds2")
+
+[node name="SkeletonIK3D2" type="SkeletonIK3D" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D" index="21"]
+process_priority = 1
+root_bone = &"R_Forearm"
+tip_bone = &"R_Hand"
+target_node = NodePath("../../../../../Marker3D")
+script = SubResource("GDScript_k7ds2")
+
+[node name="AnimationTree" parent="pawnEntity" index="2"]
+active = false
+
+[node name="UpperChest" parent="pawnEntity/BoneAttatchments" index="0"]
+transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07824, -0.244269)
+
+[node name="Stomach" parent="pawnEntity/BoneAttatchments" index="1"]
+transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.429105, 0.072132, 0.431826, 0.899046, -0.0283307, 0.892386, -0.333265)
+
+[node name="Neck" parent="pawnEntity/BoneAttatchments" index="2"]
+transform = Transform3D(0.969017, -0.217247, -0.11743, 0.0624144, 0.675519, -0.734683, 0.238936, 0.704598, 0.668155, -0.0311509, 1.25465, -0.0480806)
+
+[node name="leftHand" parent="pawnEntity/BoneAttatchments" index="3"]
+transform = Transform3D(-0.749302, -0.341568, -0.567317, 0.215002, -0.935751, 0.279429, -0.626323, 0.0873888, 0.774621, 0.0633664, 0.745799, 0.0121424)
+
+[node name="rightHand" parent="pawnEntity/BoneAttatchments" index="4"]
+transform = Transform3D(-0.0491914, 0.839487, -0.541107, -0.866485, 0.233571, 0.44114, 0.496729, 0.490572, 0.715929, -0.0838069, 0.953136, -0.0194974)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="pawnEntity/BoneAttatchments/rightHand" index="2"]
+transform = Transform3D(-0.585706, -0.810225, 0.022015, -0.11896, 0.112799, 0.986473, -0.801747, 0.575163, -0.162451, -0.0529681, 0.118079, 0.00808746)
+mesh = ExtResource("2_y054k")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.671323, -0.427437, 0.605494, -0.286504, 0.903103, 0.319875, -0.68355, 0.041263, -0.728736, 1.32167, 1.91478, -1.54405)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(0.540244, 0.0441462, -0.84035, -0.394477, 0.895388, -0.206564, 0.74332, 0.443093, 0.501143, -3.48594, -0.151751, 1.86102)
+light_color = Color(1, 0.647059, 0.596078, 1)
+light_energy = 3.633
+light_indirect_energy = 2.125
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_nx10h")
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = SubResource("GDScript_aalkd")
+
+[node name="ColorRect" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.278125
+anchor_bottom = 1.05222
+offset_right = 3.05176e-05
+offset_bottom = -45.998
+color = Color(0, 0, 0, 0.403922)
+metadata/_edit_use_anchors_ = true
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -309.0
+offset_right = 442.0
+offset_bottom = 1.0
+texture = ExtResource("4_vym1c")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_obo1l")
+}
+
+[node name="camAnim" type="AnimationPlayer" parent="Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_obo1l")
+}
+
+[node name="PlayButton" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 351.0
+offset_right = 1696.0
+offset_bottom = 1251.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="Menu/PlayButton"]
+layout_mode = 0
+offset_right = 269.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("8_klk30")
+theme_override_font_sizes/font_size = 41
+text = "Start Demo"
+
+[node name="Quit" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 642.0
+offset_right = 1696.0
+offset_bottom = 1542.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuitButton" type="Button" parent="Menu/Quit"]
+layout_mode = 0
+offset_right = 269.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("8_klk30")
+theme_override_font_sizes/font_size = 41
+text = "Quit"
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-0.0491924, 0.839506, -0.541119, -0.866504, 0.233576, 0.441149, 0.49674, 0.490583, 0.715945, -0.0128218, 0.926147, 0.0520496)
+
+[node name="Beretta" parent="." instance=ExtResource("6_7thhc")]
+transform = Transform3D(-0.812263, 0.582686, -0.0265668, 0.0155694, -0.0238716, -0.999594, -0.583084, -0.812346, 0.0103179, -0.493651, 0.721107, -0.260636)
+
+[node name="menuSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_tlj7m")
+bus = &"UI"
+
+[node name="menuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_swnst")
+volume_db = -5.0
+bus = &"Music"
+
+[connection signal="pressed" from="Menu/PlayButton/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/Quit/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]
+
+[editable path="pawnEntity"]

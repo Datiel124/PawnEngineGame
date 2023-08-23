@@ -1,0 +1,4 @@
+[gd_resource type="AnimationNodeStateMachinePlayback" format=3 uid="uid://dmasdfgnhi0si"]
+
+[resource]
+resource_name = "honeyBadgerStateMachine"

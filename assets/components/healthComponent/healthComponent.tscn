@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://hrkahs61jbi"]
+
+[ext_resource type="Script" path="res://assets/components/healthComponent/healthComponent.gd" id="1_11w0b"]
+
+[node name="healthComponent" type="Node"]
+script = ExtResource("1_11w0b")
+
+[connection signal="healthDepleted" from="." to="." method="_on_health_depleted"]

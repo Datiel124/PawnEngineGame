@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://cmkj35g6w356q"]
+
+[ext_resource type="Texture2D" uid="uid://c1bh2rcoj7vd8" path="res://assets/textures/pawn_tex/texture_Base_Color.jpg" id="1_3yg44"]
+[ext_resource type="Texture2D" uid="uid://bnyghsg41pkwb" path="res://assets/textures/pawn_tex/texture_Mixed_AO.jpg" id="2_a0qrp"]
+[ext_resource type="Texture2D" uid="uid://bu7qfitv8acsl" path="res://assets/textures/pawn_tex/texture_Metallic.jpg" id="3_638rr"]
+[ext_resource type="Texture2D" uid="uid://ctyjq1f6284yy" path="res://assets/textures/pawn_tex/texture_Normal_OpenGL.jpg" id="4_ko465"]
+[ext_resource type="Texture2D" uid="uid://d68y7icd86b3" path="res://assets/textures/pawn_tex/texture_Roughness.jpg" id="5_a5w3a"]
+
+[resource]
+resource_name = "MALE"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_3yg44")
+metallic = 1.0
+metallic_texture = ExtResource("3_638rr")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("5_a5w3a")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("4_ko465")
+ao_enabled = true
+ao_texture = ExtResource("2_a0qrp")

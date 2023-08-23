@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccjm54ftqg7qc"]
+
+[ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/interactiveObject.gd" id="1_10pe7"]
+
+[node name="interactiveObject" type="RigidBody3D"]
+script = ExtResource("1_10pe7")

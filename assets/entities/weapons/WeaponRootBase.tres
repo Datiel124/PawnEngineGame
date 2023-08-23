@@ -1,0 +1,76 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=18 format=3 uid="uid://4a47n6lsro4m"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybwpt"]
+animation = &"weaponAnims/aim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j08dw"]
+animation = &"weaponAnims/fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u51jk"]
+animation = &"weaponAnims/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fvckn"]
+animation = &"WeaponAnims/sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_syl42"]
+animation = &"WeaponAnims/unequip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ul8h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gga4p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7mtao"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sftbu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2yi56"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mh4se"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7n2o2"]
+xfade_time = 0.03
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_va47p"]
+xfade_time = 0.02
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_udpny"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.992064, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umbs7"]
+xfade_time = 0.08
+xfade_curve = SubResource("Curve_udpny")
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q1np0"]
+states/End/position = Vector2(1041, 100)
+states/aim/node = SubResource("AnimationNodeAnimation_ybwpt")
+states/aim/position = Vector2(619, 191)
+states/fire/node = SubResource("AnimationNodeAnimation_j08dw")
+states/fire/position = Vector2(619, 302)
+states/idle/node = SubResource("AnimationNodeAnimation_u51jk")
+states/idle/position = Vector2(619, 100)
+states/sprint/node = SubResource("AnimationNodeAnimation_fvckn")
+states/sprint/position = Vector2(619, -13)
+states/unequip/node = SubResource("AnimationNodeAnimation_syl42")
+states/unequip/position = Vector2(843, 100)
+transitions = ["sprint", "idle", SubResource("AnimationNodeStateMachineTransition_5ul8h"), "idle", "sprint", SubResource("AnimationNodeStateMachineTransition_gga4p"), "idle", "unequip", SubResource("AnimationNodeStateMachineTransition_7mtao"), "unequip", "End", SubResource("AnimationNodeStateMachineTransition_sftbu"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_2yi56"), "idle", "aim", SubResource("AnimationNodeStateMachineTransition_mh4se"), "aim", "fire", SubResource("AnimationNodeStateMachineTransition_7n2o2"), "fire", "aim", SubResource("AnimationNodeStateMachineTransition_va47p"), "aim", "idle", SubResource("AnimationNodeStateMachineTransition_umbs7")]
+graph_offset = Vector2(78, 69)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uy32p"]
+
+[resource]
+resource_name = "testWeaponAnimations"
+graph_offset = Vector2(-469.504, 26.664)
+nodes/output/position = Vector2(380, 140)
+nodes/weaponState/node = SubResource("AnimationNodeStateMachine_q1np0")
+nodes/weaponState/position = Vector2(-180, 120)
+nodes/weaponStateSpeed/node = SubResource("AnimationNodeTimeScale_uy32p")
+nodes/weaponStateSpeed/position = Vector2(80, 100)
+node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]

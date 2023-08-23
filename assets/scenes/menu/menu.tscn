@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=26 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bap501mpmqgb" path="res://assets/entities/clothing/Gloves/right_glove_fingerless.tscn" id="4_jwagi"]
 [ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="4_vym1c"]
 [ext_resource type="PackedScene" uid="uid://cu4bdt2hv4dyo" path="res://assets/models/weapons/beretta/Beretta.fbx" id="6_7thhc"]
+[ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="8_imgke"]
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="8_klk30"]
 [ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
 [ext_resource type="AudioStream" uid="uid://4fr4v3mmy3oj" path="res://assets/music/menu/Frenzy.mp3" id="11_lmlsm"]
@@ -536,6 +537,21 @@ offset_top = -309.0
 offset_right = 442.0
 offset_bottom = 1.0
 texture = ExtResource("4_vym1c")
+expand_mode = 1
+
+[node name="Smackneck" type="TextureRect" parent="Menu"]
+modulate = Color(1, 1, 1, 0.345098)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -165.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_imgke")
 expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]

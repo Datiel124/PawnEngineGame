@@ -88,7 +88,7 @@ signal cameraAttached
 		collisionEnabled = value
 	get:
 		return collisionEnabled
-		
+
 @export_subgroup("Variables")
 signal pawnDied(pawnRagdoll)
 @export var turnAmount : float
@@ -121,7 +121,7 @@ var currentItem = null
 @export var clothingInventory : Array:
 	set(value):
 		emit_signal("clothingChanged")
-		
+
 @export_subgroup("Mesh")
 ##Ragdoll to spawn when the pawn dies
 @export var ragdollScene : PackedScene
@@ -143,11 +143,11 @@ func _ready():
 		collisionShape.disabled = false
 	else:
 		collisionShape.disabled = false
-	
+
 	if forceAnimation:
 		animationTree.active = false
 		animationPlayer.play(animationToForce)
-	
+
 func _process(delta):
 	pass
 
@@ -155,17 +155,17 @@ func _physics_process(delta):
 	if pawnEnabled:
 		if !isPawnDead:
 			##Debug
-			
+
 			##FreeAim
 			if freeAim:
 				meshLookAt = true
 				await get_tree().create_timer(freeAimTimer).timeout
 				freeAim = false
 				meshLookAt = false
-				
+
 			##Movement Code
 			#TODO - AI Stuff here I think
-			
+
 			##Item Equip
 			if !currentItem == null:
 				lastItem = currentItem
@@ -174,40 +174,40 @@ func _physics_process(delta):
 					currentItem.isEquipped = true
 					currentItem.visible = true
 					currentItem.weaponOwner = self
-					
+
 					##Camera set
 					if attachedCam:
 						attachedCam.itemEquipOffsetToggle = true
-					
+
 					#Weapon Aiming
 					if meshLookAt:
 						currentItem.isAiming = true
 					else:
 						currentItem.isAiming = false
-					
+
 					#Weapon Animations
 					await setupWeaponAnimations()
-					
+
 					#Set filters
 					if currentItem.useLeftHand:
 						setLeftHandFilter(true)
 					else:
 						setLeftHandFilter(false)
-						
+
 					if currentItem.useRightHand:
 						setRightHandFilter(true)
 					else:
 						setRightHandFilter(false)
-					
+
 					#Set Parent Hands
 					if currentItem.leftHandParent:
 						itemHolder.reparent(leftHandBone)
 						itemHolder.position = Vector3.ZERO
-						
+
 					if currentItem.rightHandParent:
 						itemHolder.reparent(rightHandBone)
 						itemHolder.position = Vector3.ZERO
-					
+
 					if !currentItem.useWeaponSprintAnim:
 						if isMoving and isRunning and is_on_floor() and !meshLookAt:
 							animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 0, 4*delta))
@@ -230,8 +230,8 @@ func _physics_process(delta):
 				canJump = false
 				bodyIKMarker.rotation.x = turnAmount
 				pawnMesh.rotation.y = lerp_angle(pawnMesh.rotation.y, meshRotation, 23 * delta)
-				
-			
+
+
 			# Add the gravity
 			if !is_on_floor():
 				canJump = false
@@ -243,29 +243,29 @@ func _physics_process(delta):
 					canJump = true
 				animationTree.set("parameters/fallBlend/blend_amount", lerpf(animationTree.get("parameters/fallBlend/blend_amount"), 0.0, delta * 12))
 				animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 0.0, delta * 12))
-			
+
 			if direction != Vector3.ZERO:
 					isMoving = true
 					direction = direction.normalized()
 			else:
 				isMoving = false
-			
+
 			if !velocityComponent == null:
 				velocity.x = velocityComponent.accelerateToVel(direction, delta, true, false, false).x
 				velocity.z = velocityComponent.accelerateToVel(direction, delta, false, false, true).z
-		
+
 			##Run Speed
 			if !isRunning:
 				velocityComponent.vMaxSpeed = defaultWalkSpeed
 			else:
 				velocityComponent.vMaxSpeed = defaultRunSpeed
-			
+
 			#Jump Animation
 				if isJumping:
 					animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 1.0, delta * 12))
 				else:
 					animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 0.0, delta * 12))
-			
+
 			if meshLookAt:
 				bodyIK.start()
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
@@ -274,7 +274,7 @@ func _physics_process(delta):
 			else:
 				animationTree.set("parameters/aimTransition/transition_request", "notAiming")
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 0, turnSpeed * delta)
-				if bodyIK.interpolation <= 0: 
+				if bodyIK.interpolation <= 0:
 					bodyIK.stop()
 				if isMoving:
 					if !isRunning:
@@ -287,8 +287,8 @@ func _physics_process(delta):
 					animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
 			move_and_slide()
-			
-			
+
+
 			#Player movement
 			if inputComponent:
 				direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
@@ -305,7 +305,7 @@ func checkComponents():
 			globalGameManager.world.worldMisc.add_child(_cam)
 			_cam.posessObject(self, followNode)
 			_cam.camCast.add_exception(self)
-		
+
 	if velocityComponent == null or healthComponent == null:
 		return null
 	else:
@@ -315,7 +315,7 @@ func die():
 	pawnEnabled = false
 	collisionEnabled = false
 	isPawnDead = true
-		
+
 
 func _on_health_component_health_depleted():
 	die()
@@ -332,7 +332,7 @@ func createRagdoll(impulse_bone : int = 0):
 		for bones in ragdoll.ragdollSkeleton.get_bone_count():
 			ragdoll.ragdollSkeleton.set_bone_pose_position(bones, pawnSkeleton.get_bone_pose_position(bones))
 			ragdoll.ragdollSkeleton.set_bone_pose_rotation(bones, pawnSkeleton.get_bone_pose_rotation(bones))
-		
+
 		for bones in ragdoll.ragdollSkeleton.get_child_count():
 			var child = ragdoll.ragdollSkeleton.get_child(bones)
 			if child is PhysicalBone3D:
@@ -344,7 +344,7 @@ func createRagdoll(impulse_bone : int = 0):
 
 		emit_signal("pawnDied",ragdoll)
 		moveClothesToRagdoll(ragdoll)
-		
+
 		if !attachedCam == null:
 			var cam = attachedCam
 			await cam.unposessObject()
@@ -352,11 +352,11 @@ func createRagdoll(impulse_bone : int = 0):
 			for bones in ragdoll.ragdollSkeleton.get_child_count():
 				if ragdoll.ragdollSkeleton.get_child(bones) is PhysicalBone3D:
 					cam.vertical.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
-			
+
 			attachedCam = null
-			
+
 		collisionShape.queue_free()
-			
+
 
 func checkItems():
 	for items in itemHolder.get_children():
@@ -374,9 +374,9 @@ func checkClothes():
 			clothingInventory.append(clothes)
 			clothes.itemSkeleton = pawnSkeleton.get_path()
 			clothes.remapSkeleton()
-		
+
 	checkClothingHider()
-	
+
 func moveClothesToRagdoll(moveto):
 	for clothes in clothingHolder.get_children():
 		clothes.itemSkeleton = moveto.ragdollSkeleton.get_path()
@@ -417,7 +417,7 @@ func setupWeaponAnimations():
 			(animationTree.tree_root as AnimationNodeBlendTree).connect_node("weaponBlend", 1, "weaponState")
 			currentItem.weaponRemoteState = animationTree.get("parameters/weaponState/weaponState/playback")
 			currentItem.weaponAnimSet = true
-			return 
+			return
 	else:
 		print_rich("[color=red]You don't have a weapon![/color]")
 		return
@@ -443,7 +443,7 @@ func setLeftHandFilter(value : bool = true):
 	filterBlend.set_filter_path("MaleSkeleton/Skeleton3D:L_Pinkie0", value)
 	filterBlend.set_filter_path("MaleSkeleton/Skeleton3D:L_Pinkie1", value)
 	filterBlend.set_filter_path("MaleSkeleton/Skeleton3D:L_Pinkie2", value)
-	
+
 func setRightHandFilter(value : bool = true):
 	var filterBlend = animationTree.tree_root.get_node("weaponBlend")
 	filterBlend.set_filter_path("MaleSkeleton/Skeleton3D:R_Shoulder", value)
@@ -468,7 +468,7 @@ func setRightHandFilter(value : bool = true):
 
 func equipWeapon(index):
 	pass
-	
+
 func unequipWeapon():
 	pass
 

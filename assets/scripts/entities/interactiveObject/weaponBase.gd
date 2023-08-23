@@ -41,6 +41,8 @@ var weaponOwner = null
 @export var weaponPositionOffset = Vector3.ZERO
 @export var weaponRotationOffset = Vector3.ZERO
 
+signal shot_fired
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 		animationTree.tree_root = animationTree.tree_root.duplicate(true)
@@ -63,7 +65,7 @@ func _physics_process(delta):
 						if weaponOwner.isRunning:
 							if !weaponRemoteState.get_current_node() == "sprint":
 								weaponRemoteState.travel("sprint")
-			
+
 			if !isFiring and !isAiming:
 				if !weaponRemoteState.get_current_node() == "idle":
 					weaponRemoteState.travel("idle")
@@ -73,10 +75,10 @@ func _physics_process(delta):
 				if !weaponRemoteState.get_current_node() == "aim":
 					weaponRemoteState.travel("aim")
 
-						
-				
+
+
 		collisionEnabled = false
-			
+
 	if collisionEnabled:
 		collisionObject.disabled = false
 	else:
@@ -86,6 +88,7 @@ func _physics_process(delta):
 func fire():
 	if !isFiring:
 		isFiring = true
+		shot_fired.emit()
 		weaponRemoteState.start("fire")
 		if weaponOwner.attachedCam:
 			weaponOwner.attachedCam.camRecoil = weaponRecoil
@@ -97,7 +100,7 @@ func fire():
 				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 			weaponOwner.attachedCam.fireRecoil()
 			createMuzzle()
-		
+
 		#Bullet Creation/Raycast Bullet Creation
 		if checkShooter():
 			if weaponOwner.attachedCam.camCast.is_colliding():
@@ -105,7 +108,7 @@ func fire():
 
 		await get_tree().create_timer(weaponFireRate).timeout
 		isFiring = false
-	
+
 
 func createMuzzle():
 	if !muzzlePoint == null:
@@ -132,4 +135,4 @@ func raycastHit():
 		hitNormal = raycast.get_collision_normal()
 		if colliding.has_method("hit"):
 			colliding.hit(weaponDamage,weaponOwner,weaponImpulse,hitPoint)
-		
+

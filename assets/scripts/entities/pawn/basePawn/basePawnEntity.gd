@@ -27,6 +27,11 @@ signal itemChanged
 @onready var rightUpperArm = $Mesh/MaleSkeleton/Skeleton3D/Male_RightArm
 @onready var leftForearm = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftForearm
 @onready var rightForearm = $Mesh/MaleSkeleton/Skeleton3D/Male_RightForearm
+@onready var lowerBody = $Mesh/MaleSkeleton/Skeleton3D/Male_LowerBody
+@onready var leftUpperLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftThigh
+@onready var rightUpperLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightThigh
+@onready var leftLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftKnee
+@onready var rightLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightKnee
 
 @onready var pawnSkeleton = $Mesh/MaleSkeleton/Skeleton3D
 @onready var animationTree = $AnimationTree
@@ -343,8 +348,9 @@ func createRagdoll(impulse_bone : int = 0):
 					child.apply_central_impulse(hitVector * hitImpulse)
 
 		emit_signal("pawnDied",ragdoll)
-		moveClothesToRagdoll(ragdoll)
-
+		await moveClothesToRagdoll(ragdoll)
+		ragdoll.checkClothingHider()
+		
 		if !attachedCam == null:
 			var cam = attachedCam
 			await cam.unposessObject()
@@ -382,6 +388,7 @@ func moveClothesToRagdoll(moveto):
 		clothes.itemSkeleton = moveto.ragdollSkeleton.get_path()
 		clothes.reparent(moveto)
 		clothes.remapSkeleton()
+	return 
 
 func checkClothingHider():
 	for clothes in clothingHolder.get_children():
@@ -394,6 +401,22 @@ func checkClothingHider():
 				leftUpperArm.hide()
 			if clothes.shoulders:
 				shoulders.hide()
+			if clothes.leftForearm:
+				leftForearm.hide()
+			if clothes.rightForearm:
+				rightForearm.hide()
+			if clothes.upperChest:
+				upperChest.hide()
+			if clothes.lowerBody:
+				lowerBody.hide()
+			if clothes.leftUpperLeg:
+				leftUpperLeg.hide()
+			if clothes.rightUpperLeg:
+				rightUpperLeg.hide()
+			if clothes.rightLowerLeg:
+				rightLowerLeg.hide()
+			if clothes.leftLowerLeg:
+				leftLowerLeg.hide()
 
 func jump():
 	if !isJumping:

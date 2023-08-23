@@ -12,6 +12,7 @@ var weaponAnimSet = false
 var weaponOwner = null
 @export_category("Weapon")
 @export_subgroup("Behavior")
+var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tscn")
 @export var muzzlePoint : Marker3D
 @export var collisionEnabled = true
 @export var isEquipped : bool = false
@@ -99,9 +100,9 @@ func fire():
 				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
 				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 			weaponOwner.attachedCam.fireRecoil()
-			createMuzzle()
-
+		
 		#Bullet Creation/Raycast Bullet Creation
+		createMuzzle()
 		if checkShooter():
 			if weaponOwner.attachedCam.camCast.is_colliding():
 				raycastHit()
@@ -111,8 +112,15 @@ func fire():
 
 
 func createMuzzle():
+	var bulletTrail = defaultBulletTrail.instantiate()
+	#var btInstance = bulletTrail.instantiate()
 	if !muzzlePoint == null:
-		pass
+		if checkShooter():
+			if weaponOwner.attachedCam.camCast.is_colliding():
+				bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint())
+			else:
+				bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
+			get_parent().add_child(bulletTrail)
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 
@@ -135,4 +143,9 @@ func raycastHit():
 		hitNormal = raycast.get_collision_normal()
 		if colliding.has_method("hit"):
 			colliding.hit(weaponDamage,weaponOwner,weaponImpulse,hitPoint)
-
+		
+func getRayColPoint():
+	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+	var hitPoint = raycast.get_collision_point()
+	if raycast.is_colliding():
+		return hitPoint

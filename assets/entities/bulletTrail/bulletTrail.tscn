@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://wb3grtjgigng"]
+
+[ext_resource type="Script" path="res://assets/scripts/bulletTrail/bulletTrail.gd" id="1_u8knr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atsew"]
+transparency = 1
+albedo_color = Color(1, 1, 0.615686, 1)
+emission_enabled = true
+emission = Color(1, 1, 0.419608, 1)
+emission_energy_multiplier = 3.91
+
+[node name="bulletTrail" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_atsew")
+script = ExtResource("1_u8knr")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

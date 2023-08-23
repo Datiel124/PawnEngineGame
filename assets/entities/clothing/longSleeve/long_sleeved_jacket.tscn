@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://nyee136gj7vd"]
+
+[ext_resource type="PackedScene" uid="uid://cdqtbg28cxotd" path="res://assets/entities/clothing/clothingBase.tscn" id="1_a52lg"]
+[ext_resource type="ArrayMesh" uid="uid://bmyjpv3lxkb36" path="res://assets/models/pawn/clothing/longSleeve/longSleeveJacket.res" id="2_elf14"]
+
+[node name="longSleevedJacket" instance=ExtResource("1_a52lg")]
+itemName = "Long Sleeve Jacket"
+shoulders = true
+leftUpperarm = true
+rightUpperarm = true
+
+[node name="clothingMesh" parent="." index="0"]
+mesh = ExtResource("2_elf14")

@@ -1,0 +1,241 @@
+[gd_scene load_steps=10 format=3 uid="uid://2x813wo0u6ii"]
+
+[ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="1_jxbia"]
+[ext_resource type="AudioStream" uid="uid://dbxyo1p3kd36u" path="res://assets/sounds/ui/uievaluate.wav" id="2_f5425"]
+[ext_resource type="AudioStream" uid="uid://c4rm2sw8drwg2" path="res://assets/sounds/ui/uiswift.wav" id="3_bikbu"]
+
+[sub_resource type="GDScript" id="GDScript_h3xca"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$AnimationPlayer.play(\"logostart\")
+	await $AnimationPlayer.animation_finished
+	await Fade.fade_out(0.2, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().change_scene_to_file(\"res://assets/scenes/menu/menu.tscn\")
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Input.is_anything_pressed():
+		$AnimationPlayer.stop()
+		$sound.stop()
+		$sound2.stop()
+		await Fade.fade_out(0.1, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+		get_tree().change_scene_to_file(\"res://assets/scenes/menu/menu.tscn\")
+"
+
+[sub_resource type="Gradient" id="Gradient_efj0f"]
+offsets = PackedFloat32Array(0, 0.994924)
+colors = PackedColorArray(0, 0, 0, 1, 0.0768358, 0.0768358, 0.0768358, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bett4"]
+gradient = SubResource("Gradient_efj0f")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_ujmnx"]
+resource_name = "logostart"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.116629, 5.85634),
+"update": 0,
+"values": [Vector2(564, 75.27), Vector2(564, 194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.5, 2.6, 2.9),
+"transitions": PackedFloat32Array(0.392292, 1, 0.392292, 0.392292, 1),
+"update": 0,
+"values": [Color(0.760784, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.760784, 0, 0, 1), Color(0.760784, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("logo:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.5, 2.6, 2.9),
+"transitions": PackedFloat32Array(0.870551, 2.73208, 0.870551, 0.870551, 2.73208),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0470588), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.0470588), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("logo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2cugh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("logo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 268.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("logo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("logo:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("logo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sound:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sound2:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjnlx"]
+_data = {
+"RESET": SubResource("Animation_2cugh"),
+"logostart": SubResource("Animation_ujmnx")
+}
+
+[node name="logo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_h3xca")
+
+[node name="bg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_bett4")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cjnlx")
+}
+
+[node name="logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 640.0
+offset_top = 268.5
+offset_right = 1086.0
+offset_bottom = 780.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jxbia")
+expand_mode = 4
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_f5425")
+volume_db = 2.0
+bus = &"UI"
+
+[node name="sound2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bikbu")
+volume_db = -5.0
+bus = &"UI"

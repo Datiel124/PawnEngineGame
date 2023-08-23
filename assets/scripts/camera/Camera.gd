@@ -27,6 +27,7 @@ var vertVeclocity = Vector3.ZERO
 @onready var camera = $camPivot/horizonal/vertical/Camera
 @onready var camPivot = $camPivot
 @onready var camCast = $camPivot/horizonal/vertical/Camera/RayCast3D
+@onready var camCastEnd = $camPivot/horizonal/vertical/Camera/RayCast3D/camRayEnd
 
 @export_subgroup("Behavior")
 var motionX = 0.0

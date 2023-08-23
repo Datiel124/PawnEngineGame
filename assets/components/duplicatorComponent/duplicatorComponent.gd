@@ -95,7 +95,7 @@ func recycle_pooled() -> Node:
 	if expand_pool_when_empty:
 		var new_dup = get_parent().duplicate()
 		dup_pool.append(new_dup)
-		print("Pool empty, appended new node %s" % new_dup)
+		#print("Pool empty, appended new node %s" % new_dup)
 		return new_dup
 	return null
 

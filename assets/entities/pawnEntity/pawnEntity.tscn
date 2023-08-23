@@ -1122,7 +1122,7 @@ shape = SubResource("CapsuleShape3D_vgcm5")
 [node name="BoneAttatchments" type="Node" parent="."]
 
 [node name="UpperChest" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.995757, 0.0127002, 0.0910302, 0.0133973, 0.999876, 0.00704792, -0.0909302, 0.00823755, -0.995813, -0.0273325, 0.216433, 0.0953652)
+transform = Transform3D(0.995757, -0.0127001, -0.0910303, 0.0133973, 0.999875, 0.00704907, 0.0909303, -0.0082387, 0.995813, 0.0273325, 1.21643, -0.0953654)
 bone_name = "Spine_2"
 bone_idx = 2
 use_external_skeleton = true
@@ -1140,14 +1140,14 @@ transform = Transform3D(1, 0.000917837, -0.000180729, -0.000919151, 0.999976, -0
 shape = SubResource("BoxShape3D_w6p0i")
 
 [node name="Stomach" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.994022, 0.03356, 0.103798, 0.0189319, 0.990116, -0.138827, -0.107434, -0.136033, -0.984842, -0.034249, 0.0123771, 0.123401)
+transform = Transform3D(0.994022, -0.0335598, -0.103798, 0.0189319, 0.990116, -0.138826, 0.107434, 0.136032, 0.984842, 0.034249, 1.01238, -0.123401)
 bone_name = "Spine_1"
 bone_idx = 1
 use_external_skeleton = true
 external_skeleton = NodePath("../../Mesh/MaleSkeleton/Skeleton3D")
 
 [node name="Neck" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.995167, 0.0309657, 0.093073, 0.022958, 0.996029, -0.0859096, -0.0953645, -0.0833586, -0.991936, -0.0239809, 0.4803, 0.0975391)
+transform = Transform3D(0.995167, -0.0309656, -0.0930732, 0.022958, 0.996029, -0.0859084, 0.0953646, 0.0833574, 0.991936, 0.023981, 1.4803, -0.0975396)
 bone_name = "Neck"
 bone_idx = 41
 use_external_skeleton = true
@@ -1165,14 +1165,14 @@ hitboxDamageMult = 90.0
 shape = SubResource("BoxShape3D_ecvch")
 
 [node name="leftHand" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.425416, -0.0241977, -0.904661, 0.221799, -0.966349, 0.130145, -0.877367, -0.256011, -0.405738, -0.202785, -0.0513986, 0.0460026)
+transform = Transform3D(-0.425416, 0.0241964, 0.90466, 0.221801, -0.966344, 0.130144, 0.877365, 0.256011, 0.405736, 0.202785, 0.948602, -0.0460026)
 bone_name = "L_Hand"
 bone_idx = 6
 use_external_skeleton = true
 external_skeleton = NodePath("../../Mesh/MaleSkeleton/Skeleton3D")
 
 [node name="rightHand" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.208548, 0.169206, 0.963264, -0.0472729, -0.981998, 0.182734, 0.976857, -0.0836188, -0.196796, 0.14188, -0.0493021, 0.148054)
+transform = Transform3D(-0.20855, -0.169204, -0.963262, -0.0472739, -0.981994, 0.18273, -0.976858, 0.0836202, 0.196792, -0.141879, 0.950699, -0.148053)
 bone_name = "R_Hand"
 bone_idx = 25
 use_external_skeleton = true

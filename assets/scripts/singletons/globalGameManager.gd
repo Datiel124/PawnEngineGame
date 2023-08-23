@@ -8,7 +8,10 @@ var debugEnabled = false
 
 #Settings
 var userDir = DirAccess.open("user://")
-var isFullscreen = false
+var isFullscreen = false:
+	set(value):
+		isFullscreen = value
+		fullscreenCheck()
 var gameConfigFile = ConfigFile.new()
 var gameSettingsVars = gameConfigFile.load("user://settings/settings.sav")
 			
@@ -32,11 +35,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if !isFullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		
-	if isFullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	pass
 	
 func _input(event):
 	if Input.is_action_just_pressed("aFullscreen"):
@@ -102,3 +101,9 @@ func screenshot() -> String:
 func restartScene():
 	await Fade.fade_out(0.3, Color(0,0,0,1),"GradientVertical",false,true).finished
 	get_tree().reload_current_scene()
+
+func fullscreenCheck():
+		if !isFullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if isFullscreen:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)

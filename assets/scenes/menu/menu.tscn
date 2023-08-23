@@ -474,19 +474,19 @@ script = SubResource("GDScript_k7ds2")
 active = false
 
 [node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
-transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07825, -0.244268)
+transform = Transform3D(0.99664, 0.0817215, -0.0032535, -0.0572318, 0.668451, -0.741537, -0.0584254, 0.739239, 0.670889, 0.0152351, 1.12295, -0.120088)
 
 [node name="Stomach" parent="playerCharacter/BoneAttatchments" index="1"]
-transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.429105, 0.072132, 0.431826, 0.899046, -0.0283307, 0.892386, -0.333265)
+transform = Transform3D(0.996447, 0.0744368, 0.0391352, -0.050516, 0.901819, -0.429105, -0.067236, 0.425608, 0.902384, -0.000105803, 0.937087, -0.207802)
 
 [node name="Neck" parent="playerCharacter/BoneAttatchments" index="2"]
-transform = Transform3D(0.968913, -0.217725, -0.117402, 0.0627512, 0.675438, -0.734729, 0.239269, 0.704528, 0.668109, -0.0311509, 1.25465, -0.0480805)
+transform = Transform3D(0.999588, -0.00296343, -0.0281967, -0.0140389, 0.812298, -0.583057, 0.0246321, 0.583218, 0.81193, 0.0368014, 1.29935, 0.0749976)
 
 [node name="leftHand" parent="playerCharacter/BoneAttatchments" index="3"]
-transform = Transform3D(-0.749301, -0.341569, -0.567317, 0.215002, -0.935754, 0.279429, -0.626325, 0.0873894, 0.774623, 0.0633661, 0.745798, 0.0121427)
+transform = Transform3D(-0.829195, -0.326077, -0.45396, 0.215002, -0.935751, 0.279429, -0.515916, 0.134087, 0.846054, 0.138782, 0.7905, 0.121477)
 
 [node name="rightHand" parent="playerCharacter/BoneAttatchments" index="4"]
-transform = Transform3D(-0.0491914, 0.839489, -0.541108, -0.866486, 0.233572, 0.44114, 0.49673, 0.490573, 0.715931, -0.083807, 0.953135, -0.0194975)
+transform = Transform3D(-0.856695, 0.147459, 0.494263, 0.300588, -0.635948, 0.710751, 0.419137, 0.757466, 0.50052, -0.0930962, 0.85335, 0.0493454)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="playerCharacter/BoneAttatchments/rightHand" index="2"]
 transform = Transform3D(-0.585706, -0.810225, 0.022015, -0.11896, 0.112799, 0.986473, -0.801747, 0.575163, -0.162451, -0.0529681, 0.118079, 0.00808746)
@@ -573,8 +573,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 351.0
-offset_right = 14496.0
-offset_bottom = 8451.0
+offset_right = 16096.0
+offset_bottom = 9351.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -593,8 +593,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 642.0
-offset_right = 14496.0
-offset_bottom = 8742.0
+offset_right = 16096.0
+offset_bottom = 9642.0
 grow_horizontal = 2
 grow_vertical = 2
 

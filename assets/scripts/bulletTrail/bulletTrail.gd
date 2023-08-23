@@ -6,17 +6,16 @@ var alpha = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var mat
-	print(get_material_override())
-	if material_override:
-		mat = material_override.duplicate()
-		material_override = mat
+	if !get_material_override() == null:
+		mat = get_material_override().duplicate()
+		self.set_material_override(mat)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if material_override:
-		alpha -= delta * 5
-		material_override.albedo_color.a = alpha
+	if !get_material_override() == null:
+		alpha -= delta * 25.5
+		get_material_override().albedo_color.a = alpha
 
 func initTrail(pos1, pos2):
 	var meshDraw = ImmediateMesh.new()

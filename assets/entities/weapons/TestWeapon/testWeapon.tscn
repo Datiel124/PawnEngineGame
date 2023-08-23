@@ -461,6 +461,8 @@ scale_mult = Vector3(1, 1, 1)
 dup_lifetime = 2.0
 advanced_behavior_script = SubResource("GDScript_yp8uy")
 use_pooling = true
+pool_initial_size = 5
+expand_pool_when_empty = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Beretta/Marker3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0239981, 0, 2.09798e-09)

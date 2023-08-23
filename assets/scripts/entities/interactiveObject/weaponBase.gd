@@ -120,7 +120,7 @@ func createMuzzle():
 				bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint())
 			else:
 				bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
-			get_parent().add_child(bulletTrail)
+			globalGameManager.world.worldMisc.add_child(bulletTrail)
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 

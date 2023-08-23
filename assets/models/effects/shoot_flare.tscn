@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq8bs21h3itgd"]
+
+[ext_resource type="Texture2D" uid="uid://bdtjibjnn8euc" path="res://assets/models/effects/shoot_flare_2.png" id="1_q7u66"]
+[ext_resource type="ArrayMesh" uid="uid://s2pl0fisncwk" path="res://assets/models/effects/effect_cone.res" id="2_uonme"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj4wp"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(2, 1.10196, 0.603922, 1)
+albedo_texture = ExtResource("1_q7u66")
+
+[sub_resource type="GDScript" id="GDScript_d82uj"]
+resource_name = "flare_rotation_randomizer"
+script/source = "extends MeshInstance3D
+
+
+func flare() -> void:
+	visible = true
+	rotation.x = randf_range(-PI, PI)
+	transparency = 0.0
+	await get_tree().process_frame
+	await get_tree().process_frame
+	transparency = 0.5
+	await get_tree().process_frame
+	await get_tree().process_frame
+	visible = false
+"
+
+[node name="ShootFlare" type="MeshInstance3D"]
+transform = Transform3D(-1.88165e-08, -0.260066, 0, 0.43047, -1.13678e-08, 0, 0, 0, 0.43047, 0.258325, 0.00224278, 2.25835e-08)
+material_override = SubResource("StandardMaterial3D_tj4wp")
+mesh = ExtResource("2_uonme")
+skeleton = NodePath("../../../../FX")
+script = SubResource("GDScript_d82uj")

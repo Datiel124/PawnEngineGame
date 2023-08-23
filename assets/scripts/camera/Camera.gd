@@ -55,7 +55,7 @@ var aimFOV
 @export var inputComponent : Node
 
 var direction = Vector3.ZERO
-var camRot 
+var camRot
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -70,19 +70,19 @@ func _ready():
 func _input(event):
 	if Input.is_action_pressed("gEscape"):
 		freeCursor = true
-		
+
 	if Input.is_action_pressed("gRightClick"):
 		isZoomed = true
 	else:
 		isZoomed = false
-	
-		
+
+
 func _physics_process(delta):
 	##Recoil
 	camTargetRot = lerp(camTargetRot, Vector3.ZERO, camReturnSpeed * delta)
 	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
 	camera.rotation_degrees = camCurrRot
-	
+
 	#Zooming
 	if isZoomed:
 		camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
@@ -90,22 +90,22 @@ func _physics_process(delta):
 	else:
 		camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
 		currentFOV = globalGameManager.defaultFOV
-	
+
 	##Set the camera rotation
 	camRot = vertical.global_transform.basis.get_euler().y
-	
+
 	##Pass the rotation of the camera to the pawn
 	if !followNode == null:
 		if followingEntity is BasePawn:
 			followingEntity.meshRotation = camRot
-	
+
 	##Lerp to FollowNode
-	
+
 	if !followNode == null:
 		self.global_position.x = lerp(self.global_position.x, followingEntity.rootCameraNode.global_position.x, cameraData.camLerpSpeed*delta)
 		self.global_position.y = lerp(self.global_position.y, followingEntity.rootCameraNode.global_position.y, cameraData.camLerpSpeed*delta)
 		self.global_position.z = lerp(self.global_position.z, followingEntity.rootCameraNode.global_position.z, cameraData.camLerpSpeed*delta)
-		
+
 		#camPivot.position.x = lerp(camPivot.position.x , cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		#vertical.position.z = lerp(vertical.position.z , cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
 		vertical.position.y = lerp(vertical.position.y, cameraData.cameraOffset.y, cameraData.camLerpSpeed*delta)
@@ -114,20 +114,20 @@ func _physics_process(delta):
 			horizontal.position.x = lerp(horizontal.position.x, cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		else:
 			horizontal.position.x = lerp(horizontal.position.x, cameraData.itemEquipOffset.x, cameraData.itemEquipLerpSpeed*delta)
-		
-		
+
+
 	#Freecam Movement
 	if isFreecam:
 		followNode = null
-		
+
 		vertVeclocity = Vector3.ZERO
-		
+
 		if !inputComponent == null:
 			direction = inputComponent.getInputDir().rotated(Vector3.UP, camRot)
 
 		if direction != Vector3.ZERO:
 			direction = direction.normalized()
-		
+
 		if Input.is_action_pressed("dCamUp"):
 			vertVeclocity.y = 1
 		if Input.is_action_pressed("dCamDown"):
@@ -153,9 +153,9 @@ func _on_input_component_mouse_button_held(button):
 
 
 func _on_input_component_on_mouse_motion(motion):
-	motionX = -motion.relative.x * globalGameManager.mouseSens 
-	motionY = -motion.relative.y * globalGameManager.mouseSens 
-	
+	motionX = -motion.relative.x * globalGameManager.mouseSens
+	motionY = -motion.relative.y * globalGameManager.mouseSens
+
 	camPivot.rotation.y += motionX
 	vertical.rotation.x += motionY
 	#Lock Cam
@@ -170,7 +170,7 @@ func posessObject(object, posessPart:Node3D = object):
 		cameraData = object.pawnCameraData
 		if object is BasePawn:
 			vertical.add_excluded_object(object.get_rid())
-		
+
 func unposessObject(freecam:bool = false):
 	if freecam:
 		isFreecam = true

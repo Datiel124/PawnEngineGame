@@ -24,7 +24,7 @@ signal worldLoaded
 
 @export_category("Debug Parameters")
 ## Spawn Type to use when loading the scene
-@export_enum("Player","Camera","None") var spawnType = 0 
+@export_enum("Player","Camera","None") var spawnType = 0
 ##Spawn AI pawns at their respective positions when loading the world.
 @export var spawnPawnsOnLoad : bool = true
 func _enter_tree():
@@ -38,20 +38,20 @@ func _ready():
 		#globalGameManager.add_player(getPlayerSpawnPoints(Vector3.ZERO,true).global_position)
 	else:
 		spawnPawnsOnLoad = false
-		
-		
+
+
 	##Spawn pawns at their respective points.
 	if spawnPawnsOnLoad == true:
 		pass
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func getSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spawn_idx:int = 0):
 	pass
-	
-	
+
+
 #
 #func getPlayerSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spawn_idx:int = 0):
 #	if pickRandom:
@@ -61,8 +61,8 @@ func getSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spa
 #				return spawnZone
 #	else:
 #		pass
-		
-		
+
+
 ##Comment out for now, not yet implemented
 
 #func spawnPawns():
@@ -96,4 +96,4 @@ func getSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spa
 #
 #				if spawns.randomizePawnColor:
 #					pawn.character_pawn.randomizePawnColor()
-#	return	
+#	return

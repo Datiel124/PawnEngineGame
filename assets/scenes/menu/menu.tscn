@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=25 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://4fr4v3mmy3oj" path="res://assets/music/menu/Frenzy.mp3" id="11_lmlsm"]
 [ext_resource type="AudioStream" uid="uid://kto2dqyucdyf" path="res://assets/music/menu/HHb2.mp3" id="11_pfhq4"]
 [ext_resource type="AudioStream" uid="uid://c1mk4s30dq3nc" path="res://assets/music/menu/Idlehoodtune.wav" id="12_e5aa3"]
+[ext_resource type="AudioStream" uid="uid://2umgn4pkyxqr" path="res://assets/music/ambient/ponder.mp3" id="14_5mpt7"]
 
 [sub_resource type="GDScript" id="GDScript_h14ep"]
 script/source = "extends Node3D
@@ -156,6 +157,23 @@ tracks/4/keys = {
 "values": [Vector3(0.48231, 0.29601, 0.0113825)]
 }
 
+[sub_resource type="Animation" id="Animation_jj1mn"]
+resource_name = "cam"
+length = 90.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 43.7, 90),
+"transitions": PackedFloat32Array(0.659757, 0.574349, 0.420448),
+"update": 0,
+"values": [Vector3(0.48231, 0.29601, 0.0113825), Vector3(0.434587, -0.216421, -0.347321), Vector3(0.48231, 0.29601, 0.0113825)]
+}
+
 [sub_resource type="Animation" id="Animation_utw0r"]
 resource_name = "new_animation"
 tracks/0/type = "value"
@@ -207,23 +225,6 @@ tracks/3/keys = {
 "values": [Vector2(-270, 642), Vector2(96, 642)]
 }
 
-[sub_resource type="Animation" id="Animation_jj1mn"]
-resource_name = "cam"
-length = 90.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera3D:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 45.8, 90),
-"transitions": PackedFloat32Array(0.225313, 4.75682, 2.73208),
-"update": 0,
-"values": [Vector3(0.48231, 0.29601, 0.0113825), Vector3(0.469227, 0.239145, -0.00751509), Vector3(0.48231, 0.29601, 0.0113825)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obo1l"]
 _data = {
 "RESET": SubResource("Animation_vppp2"),
@@ -232,7 +233,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
-streams_count = 3
+streams_count = 4
 random_pitch = 1.0
 random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("11_pfhq4")
@@ -241,6 +242,8 @@ stream_1/stream = ExtResource("11_lmlsm")
 stream_1/weight = 1.0
 stream_2/stream = ExtResource("12_e5aa3")
 stream_2/weight = 1.0
+stream_3/stream = ExtResource("14_5mpt7")
+stream_3/weight = 1.0
 
 [node name="menu" type="Node3D"]
 script = SubResource("GDScript_h14ep")
@@ -476,7 +479,7 @@ transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, 
 transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.429105, 0.072132, 0.431826, 0.899046, -0.0283307, 0.892386, -0.333265)
 
 [node name="Neck" parent="pawnEntity/BoneAttatchments" index="2"]
-transform = Transform3D(0.969017, -0.217247, -0.11743, 0.0624144, 0.675519, -0.734683, 0.238936, 0.704598, 0.668155, -0.0311509, 1.25465, -0.0480806)
+transform = Transform3D(0.998645, 0.0217036, 0.0470731, 0.0265019, -0.994232, -0.103832, 0.0445484, 0.10494, -0.99347, -0.0311509, 1.25465, -0.0480806)
 
 [node name="leftHand" parent="pawnEntity/BoneAttatchments" index="3"]
 transform = Transform3D(-0.749302, -0.341568, -0.567317, 0.215002, -0.935751, 0.279429, -0.626323, 0.0873888, 0.774621, 0.0633664, 0.745799, 0.0121424)
@@ -552,8 +555,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 351.0
-offset_right = 1696.0
-offset_bottom = 1251.0
+offset_right = 4896.0
+offset_bottom = 3051.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -572,8 +575,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 642.0
-offset_right = 1696.0
-offset_bottom = 1542.0
+offset_right = 4896.0
+offset_bottom = 3342.0
 grow_horizontal = 2
 grow_vertical = 2
 

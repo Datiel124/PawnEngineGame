@@ -12,6 +12,14 @@ class_name ClothingItem
 @export var shoulders = false
 @export var leftUpperarm = false
 @export var rightUpperarm = false
+@export var rightForearm = false
+@export var leftForearm = false
+@export var upperChest = false
+@export var lowerBody = false
+@export var leftUpperLeg = false
+@export var rightUpperLeg = false
+@export var leftLowerLeg = false
+@export var rightLowerLeg = false
 @export_category("Skeleton")
 @export var itemSkeleton : NodePath
 

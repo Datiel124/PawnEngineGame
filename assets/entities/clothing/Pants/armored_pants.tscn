@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb5qvdslt6004"]
+
+[ext_resource type="PackedScene" uid="uid://cdqtbg28cxotd" path="res://assets/entities/clothing/clothingBase.tscn" id="1_dmoi0"]
+[ext_resource type="ArrayMesh" uid="uid://b0vdpourdwtah" path="res://assets/models/pawn/clothing/armorPants/armorPants.res" id="2_3c0qm"]
+
+[node name="ArmoredPants" instance=ExtResource("1_dmoi0")]
+itemName = "Armored Pants"
+leftUpperLeg = true
+rightUpperLeg = true
+leftLowerLeg = true
+rightLowerLeg = true
+
+[node name="clothingMesh" parent="." index="0"]
+mesh = ExtResource("2_3c0qm")

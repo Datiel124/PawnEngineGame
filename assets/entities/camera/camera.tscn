@@ -39,6 +39,9 @@ target_position = Vector3(0, 0, -250)
 collision_mask = 22
 collide_with_areas = true
 
+[node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertical/Camera/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250.5)
+
 [node name="velocityComponent" parent="." instance=ExtResource("2_rb4ck")]
 vAcceleration = 3.0
 

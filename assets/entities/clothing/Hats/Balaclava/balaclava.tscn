@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cix8a7ilvw57"]
+
+[ext_resource type="PackedScene" uid="uid://cdqtbg28cxotd" path="res://assets/entities/clothing/clothingBase.tscn" id="1_1nha7"]
+[ext_resource type="ArrayMesh" uid="uid://c3t2wi48bllwm" path="res://assets/models/pawn/clothing/balaclava/balaclava.res" id="2_kvn6h"]
+
+[node name="Balaclava" instance=ExtResource("1_1nha7")]
+itemName = "Balaclava"
+
+[node name="clothingMesh" parent="." index="0"]
+mesh = ExtResource("2_kvn6h")

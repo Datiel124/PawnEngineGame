@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cgghffeqks1ac" path="res://assets/entities/clothing/Gloves/left_glove_fingerless.tscn" id="3_sguoq"]
 [ext_resource type="PackedScene" uid="uid://bap501mpmqgb" path="res://assets/entities/clothing/Gloves/right_glove_fingerless.tscn" id="4_jwagi"]
 [ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="4_vym1c"]
+[ext_resource type="PackedScene" uid="uid://bb5qvdslt6004" path="res://assets/entities/clothing/Pants/armored_pants.tscn" id="5_pnv0u"]
+[ext_resource type="PackedScene" uid="uid://d10o2e44ltrnl" path="res://assets/entities/clothing/ArmoredShirt/armor_shirt.tscn" id="6_7pcxf"]
 [ext_resource type="PackedScene" uid="uid://cu4bdt2hv4dyo" path="res://assets/models/weapons/beretta/Beretta.fbx" id="6_7thhc"]
+[ext_resource type="PackedScene" uid="uid://cix8a7ilvw57" path="res://assets/entities/clothing/Hats/Balaclava/balaclava.tscn" id="7_fu03r"]
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="8_imgke"]
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="8_klk30"]
 [ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
-[ext_resource type="AudioStream" uid="uid://4fr4v3mmy3oj" path="res://assets/music/menu/Frenzy.mp3" id="11_lmlsm"]
-[ext_resource type="AudioStream" uid="uid://kto2dqyucdyf" path="res://assets/music/menu/HHb2.mp3" id="11_pfhq4"]
-[ext_resource type="AudioStream" uid="uid://c1mk4s30dq3nc" path="res://assets/music/menu/Idlehoodtune.wav" id="12_e5aa3"]
 [ext_resource type="AudioStream" uid="uid://2umgn4pkyxqr" path="res://assets/music/ambient/ponder.mp3" id="14_5mpt7"]
 
 [sub_resource type="GDScript" id="GDScript_h14ep"]
@@ -234,17 +234,11 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
-streams_count = 4
+streams_count = 1
 random_pitch = 1.0
 random_volume_offset_db = 0.0
-stream_0/stream = ExtResource("11_pfhq4")
+stream_0/stream = ExtResource("14_5mpt7")
 stream_0/weight = 1.0
-stream_1/stream = ExtResource("11_lmlsm")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("12_e5aa3")
-stream_2/weight = 1.0
-stream_3/stream = ExtResource("14_5mpt7")
-stream_3/weight = 1.0
 
 [node name="menu" type="Node3D"]
 script = SubResource("GDScript_h14ep")
@@ -373,14 +367,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.903685, 1.57641, -3.54362)
 size = Vector3(9.21462, 4.76234, 4.26787)
 material = SubResource("FogMaterial_r02gc")
 
-[node name="pawnEntity" parent="." instance=ExtResource("1_6tkvv")]
+[node name="playerCharacter" parent="." instance=ExtResource("1_6tkvv")]
 transform = Transform3D(-0.990263, 0, 0.139208, 0, 1, 0, -0.139208, 0, -0.990263, -0.0571537, 0.955299, -0.127471)
 forceAnimation = true
 animationToForce = "PawnAnim/MenuIdle"
 pawnEnabled = false
 collisionEnabled = false
 
-[node name="Skeleton3D" parent="pawnEntity/Mesh/MaleSkeleton" index="0"]
+[node name="Skeleton3D" parent="playerCharacter/Mesh/MaleSkeleton" index="0"]
 bones/0/position = Vector3(0.000769062, 0.814157, -0.141256)
 bones/0/rotation = Quaternion(-0.245472, 0.0391885, -0.00670095, 0.968588)
 bones/1/rotation = Quaternion(0.452679, -0.00243955, -0.00922124, 0.891622)
@@ -452,43 +446,49 @@ bones/49/rotation = Quaternion(-0.0378017, -0.914885, 0.39687, 0.0636432)
 bones/50/rotation = Quaternion(0.302235, 0.0109896, 0.000367735, 0.95317)
 bones/50/scale = Vector3(0.999992, 0.999995, 0.999988)
 
-[node name="LeftGloveFingerless" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="0" instance=ExtResource("3_sguoq")]
+[node name="LeftGloveFingerless" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="0" instance=ExtResource("3_sguoq")]
 
-[node name="RightGloveFingerless" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="1" instance=ExtResource("4_jwagi")]
+[node name="RightGloveFingerless" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="1" instance=ExtResource("4_jwagi")]
 
-[node name="SkeletonIK3D" type="SkeletonIK3D" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D" index="20"]
+[node name="ArmoredPants" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="2" instance=ExtResource("5_pnv0u")]
+
+[node name="ArmorShirt" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="3" instance=ExtResource("6_7pcxf")]
+
+[node name="Balaclava" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="4" instance=ExtResource("7_fu03r")]
+
+[node name="SkeletonIK3D" type="SkeletonIK3D" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D" index="20"]
 process_priority = 1
 root_bone = &"Neck"
 tip_bone = &"Head"
 target_node = NodePath("../../../../../Camera3D/Marker3D")
 script = SubResource("GDScript_k7ds2")
 
-[node name="SkeletonIK3D2" type="SkeletonIK3D" parent="pawnEntity/Mesh/MaleSkeleton/Skeleton3D" index="21"]
+[node name="SkeletonIK3D2" type="SkeletonIK3D" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D" index="21"]
 process_priority = 1
 root_bone = &"R_Forearm"
 tip_bone = &"R_Hand"
 target_node = NodePath("../../../../../Marker3D")
 script = SubResource("GDScript_k7ds2")
 
-[node name="AnimationTree" parent="pawnEntity" index="2"]
+[node name="AnimationTree" parent="playerCharacter" index="2"]
 active = false
 
-[node name="UpperChest" parent="pawnEntity/BoneAttatchments" index="0"]
-transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07824, -0.244269)
+[node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
+transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07825, -0.244268)
 
-[node name="Stomach" parent="pawnEntity/BoneAttatchments" index="1"]
+[node name="Stomach" parent="playerCharacter/BoneAttatchments" index="1"]
 transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.429105, 0.072132, 0.431826, 0.899046, -0.0283307, 0.892386, -0.333265)
 
-[node name="Neck" parent="pawnEntity/BoneAttatchments" index="2"]
-transform = Transform3D(0.998645, 0.0217036, 0.0470731, 0.0265019, -0.994232, -0.103832, 0.0445484, 0.10494, -0.99347, -0.0311509, 1.25465, -0.0480806)
+[node name="Neck" parent="playerCharacter/BoneAttatchments" index="2"]
+transform = Transform3D(0.968913, -0.217725, -0.117402, 0.0627512, 0.675438, -0.734729, 0.239269, 0.704528, 0.668109, -0.0311509, 1.25465, -0.0480805)
 
-[node name="leftHand" parent="pawnEntity/BoneAttatchments" index="3"]
-transform = Transform3D(-0.749302, -0.341568, -0.567317, 0.215002, -0.935751, 0.279429, -0.626323, 0.0873888, 0.774621, 0.0633664, 0.745799, 0.0121424)
+[node name="leftHand" parent="playerCharacter/BoneAttatchments" index="3"]
+transform = Transform3D(-0.749301, -0.341569, -0.567317, 0.215002, -0.935754, 0.279429, -0.626325, 0.0873894, 0.774623, 0.0633661, 0.745798, 0.0121427)
 
-[node name="rightHand" parent="pawnEntity/BoneAttatchments" index="4"]
-transform = Transform3D(-0.0491914, 0.839487, -0.541107, -0.866485, 0.233571, 0.44114, 0.496729, 0.490572, 0.715929, -0.0838069, 0.953136, -0.0194974)
+[node name="rightHand" parent="playerCharacter/BoneAttatchments" index="4"]
+transform = Transform3D(-0.0491914, 0.839489, -0.541108, -0.866486, 0.233572, 0.44114, 0.49673, 0.490573, 0.715931, -0.083807, 0.953135, -0.0194975)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="pawnEntity/BoneAttatchments/rightHand" index="2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="playerCharacter/BoneAttatchments/rightHand" index="2"]
 transform = Transform3D(-0.585706, -0.810225, 0.022015, -0.11896, 0.112799, 0.986473, -0.801747, 0.575163, -0.162451, -0.0529681, 0.118079, 0.00808746)
 mesh = ExtResource("2_y054k")
 
@@ -510,6 +510,7 @@ spot_range = 6.70126
 environment = ExtResource("3_nx10h")
 
 [node name="Menu" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -518,6 +519,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 script = SubResource("GDScript_aalkd")
 
 [node name="ColorRect" type="ColorRect" parent="Menu"]
@@ -525,8 +527,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.278125
 anchor_bottom = 1.05222
-offset_right = 3.05176e-05
-offset_bottom = -45.998
+offset_right = 445.0
+offset_bottom = 901.0
 color = Color(0, 0, 0, 0.403922)
 metadata/_edit_use_anchors_ = true
 
@@ -571,8 +573,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 351.0
-offset_right = 4896.0
-offset_bottom = 3051.0
+offset_right = 14496.0
+offset_bottom = 8451.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -591,8 +593,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 642.0
-offset_right = 4896.0
-offset_bottom = 3342.0
+offset_right = 14496.0
+offset_bottom = 8742.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -623,4 +625,4 @@ bus = &"Music"
 [connection signal="pressed" from="Menu/Quit/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]
 
-[editable path="pawnEntity"]
+[editable path="playerCharacter"]

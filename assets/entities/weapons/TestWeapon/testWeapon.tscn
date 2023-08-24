@@ -422,16 +422,17 @@ _data = {
 "light_flash": SubResource("Animation_4v8w6")
 }
 
-[node name="TestWeapon" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_mqk0j")]
+[node name="Beretta" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_mqk0j")]
 muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 12.0
-weaponImpulse = 1.0
+weaponFireRate = 0.25
+weaponImpulse = 50.0
 weaponSpread = 0.35
 weaponSpreadAim = 0.015
 useLeftHand = true
 weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
 weaponRotationOffset = Vector3(-3.04, 1.735, 1.595)
-objectName = "Test Weapon"
+objectName = "Beretta"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
 stream = SubResource("AudioStreamRandomizer_3jed7")

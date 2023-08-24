@@ -60,6 +60,10 @@ func _physics_process(delta):
 		#Weapon Orientation
 		weaponMesh.position = lerp(weaponMesh.position, weaponPositionOffset, 24 * delta)
 		weaponMesh.rotation = lerp(weaponMesh.rotation, weaponRotationOffset, 24 * delta)
+		
+		if weaponOwner.attachedCam:
+			weaponOwner.attachedCam.camRecoil = weaponRecoil
+		
 		if weaponAnimSet:
 			if !weaponOwner == null:
 				if useWeaponSprintAnim:
@@ -71,11 +75,16 @@ func _physics_process(delta):
 				if !weaponRemoteState.get_current_node() == "idle":
 					weaponRemoteState.travel("idle")
 			if isAiming:
+				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
+				weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
+				
 				if !weaponOwner.meshLookAt:
 					weaponOwner.meshLookAt = true
 				if !weaponRemoteState.get_current_node() == "aim":
 					weaponRemoteState.travel("aim")
-
+			else:
+				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
+				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 
 
 		collisionEnabled = false
@@ -91,23 +100,17 @@ func fire():
 		isFiring = true
 		shot_fired.emit()
 		weaponRemoteState.start("fire")
-		if weaponOwner.attachedCam:
-			print(weaponOwner.attachedCam.camCast.get_collider())
-			weaponOwner.attachedCam.camRecoil = weaponRecoil
-			if isAiming:
-				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
-				weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
-			else:
-				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
-				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
-			weaponOwner.attachedCam.fireRecoil()
+		weaponOwner.attachedCam.fireRecoil()
 
 		#Bullet Creation/Raycast Bullet Creation
 		createMuzzle()
 		if checkShooter():
 			if weaponOwner.attachedCam.camCast.is_colliding():
 				raycastHit()
-
+				var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
+				if !pt == null:
+					pt.look_at(getRayColPoint() + getRayNormal())
+				
 		await get_tree().create_timer(weaponFireRate).timeout
 		isFiring = false
 
@@ -143,7 +146,19 @@ func raycastHit():
 		hitPoint = raycast.get_collision_point()
 		hitNormal = raycast.get_collision_normal()
 		if colliding.has_method("hit"):
-			colliding.hit(weaponDamage,weaponOwner,weaponImpulse,hitPoint)
+			colliding.hit(weaponDamage,weaponOwner,global_position.direction_to(hitPoint).normalized() * randf_range(0.5,weaponImpulse),to_global(to_local(hitPoint)-position))
+
+func getHitObject():
+	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+	var hitObject = raycast.get_collider()
+	if raycast.is_colliding():
+		return hitObject
+
+func getRayNormal():
+	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+	var hitNormal = raycast.get_collision_normal()
+	if raycast.is_colliding():
+		return hitNormal
 
 func getRayColPoint():
 	var raycast : RayCast3D = weaponOwner.attachedCam.camCast

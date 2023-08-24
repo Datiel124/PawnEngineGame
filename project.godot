@@ -23,6 +23,7 @@ config/icon="res://assets/textures/misc/bootlogo.png"
 
 globalGameManager="*res://assets/scripts/singletons/globalGameManager.gd"
 Console="*res://assets/scenes/menu/dev/Console.tscn"
+globalParticles="*res://assets/scripts/singletons/globalParticles.gd"
 
 [display]
 

@@ -27,9 +27,5 @@ class_name ClothingItem
 func _ready():
 	remapSkeleton()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func remapSkeleton():
 	clothingMesh.skeleton = itemSkeleton

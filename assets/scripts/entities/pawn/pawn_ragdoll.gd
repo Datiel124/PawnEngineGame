@@ -46,9 +46,6 @@ func _ready():
 	
 	checkClothingHider()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func startRagdoll():
 	ragdollSkeleton.physical_bones_start_simulation()

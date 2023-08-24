@@ -25,10 +25,6 @@ script/source = "extends Node3D
 func _ready():
 	menuSong.play()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_play_button_pressed():
 	menuSound.play()
@@ -56,10 +52,6 @@ func _ready():
 	await get_tree().process_frame
 	Fade.fade_in(0.8, Color(0,0,0,1),\"GradientVertical\",false,true)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 "
 
 [sub_resource type="FogMaterial" id="FogMaterial_r02gc"]
@@ -76,9 +68,6 @@ func _ready():
 	start()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 "
 
 [sub_resource type="GDScript" id="GDScript_aalkd"]
@@ -90,9 +79,6 @@ func _ready():
 	animPlayer.play(\"start\")
 	$camAnim.play(\"cam\")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 "
 
 [sub_resource type="Animation" id="Animation_vppp2"]

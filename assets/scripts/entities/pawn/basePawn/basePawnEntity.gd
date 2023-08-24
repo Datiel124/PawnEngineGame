@@ -153,8 +153,6 @@ func _ready():
 		animationTree.active = false
 		animationPlayer.play(animationToForce)
 
-func _process(delta):
-	pass
 
 func _physics_process(delta):
 	if pawnEnabled:

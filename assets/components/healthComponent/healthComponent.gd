@@ -19,7 +19,7 @@ func _ready():
 	componentOwner = get_owner()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if !isDead:
 		if health <= 0:
 			health = 0

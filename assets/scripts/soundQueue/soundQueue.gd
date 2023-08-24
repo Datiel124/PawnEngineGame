@@ -23,9 +23,7 @@ func _ready():
 			add_child(audioDup)
 			audioList.append(audioDup)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
 
 func _get_configuration_warnings():
 	if get_child_count() == 0:

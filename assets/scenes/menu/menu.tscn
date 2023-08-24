@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=53 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -76,6 +76,138 @@ func _ready():
 
 
 "
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ietc"]
+animation = &"PawnAnim/Run3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oi2e0"]
+animation = &"PawnAnim/Jump"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_u61cl"]
+xfade_time = 0.2
+input_0/name = "notAiming"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "aiming"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6kpxq"]
+animation = &"PawnAnim/Fall"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_3msri"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y0agk"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_y672p"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h4dqp"]
+animation = &"PawnAnim/runCartoonish"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7rjpd"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_y0agk")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_y672p")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_h4dqp")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_g6vej"]
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_vqig1"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_dnr8x"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v40iq"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5l4ns"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kt4ho"]
+animation = &"PawnAnim/NewerWalkUpleft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pgirr"]
+animation = &"PawnAnim/NewerWalkUpRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rjncq"]
+animation = &"PawnAnim/WalkBackwardsLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4s3ao"]
+animation = &"PawnAnim/WalkBackwardsR"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2tnao"]
+animation = &"PawnAnim/WalkBackwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3xky2"]
+animation = &"PawnAnim/WalkLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anjab"]
+animation = &"PawnAnim/WalkRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_70r62"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_v40iq")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_5l4ns")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kt4ho")
+blend_point_2/pos = Vector2(1, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_pgirr")
+blend_point_3/pos = Vector2(-1, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_rjncq")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_4s3ao")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_2tnao")
+blend_point_6/pos = Vector2(0, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_3xky2")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_anjab")
+blend_point_8/pos = Vector2(-1, 0)
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_e8nkd"]
+filter_enabled = true
+filters = ["MaleSkeleton/Skeleton3D:Head", "MaleSkeleton/Skeleton3D:Neck", "MaleSkeleton/Skeleton3D:R_Forearm", "MaleSkeleton/Skeleton3D:R_Hand", "MaleSkeleton/Skeleton3D:R_Index0", "MaleSkeleton/Skeleton3D:R_Index1", "MaleSkeleton/Skeleton3D:R_Index2", "MaleSkeleton/Skeleton3D:R_Middle0", "MaleSkeleton/Skeleton3D:R_Middle1", "MaleSkeleton/Skeleton3D:R_Middle2", "MaleSkeleton/Skeleton3D:R_Pinkie0", "MaleSkeleton/Skeleton3D:R_Pinkie1", "MaleSkeleton/Skeleton3D:R_Pinkie2", "MaleSkeleton/Skeleton3D:R_Ring0", "MaleSkeleton/Skeleton3D:R_Ring1", "MaleSkeleton/Skeleton3D:R_Ring2", "MaleSkeleton/Skeleton3D:R_Shoulder", "MaleSkeleton/Skeleton3D:R_Thumb0", "MaleSkeleton/Skeleton3D:R_Thumb1", "MaleSkeleton/Skeleton3D:R_Thumb2", "MaleSkeleton/Skeleton3D:R_UpperArm"]
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_uuh34"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_65jm4"]
+graph_offset = Vector2(-314, 54)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_uuh34")
+nodes/BlendSpace1D/position = Vector2(60, 160)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_i8yum"]
+resource_local_to_scene = true
+graph_offset = Vector2(-545.968, -77.3433)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_8ietc")
+nodes/Animation/position = Vector2(-1340, -200)
+nodes/Jump/node = SubResource("AnimationNodeAnimation_oi2e0")
+nodes/Jump/position = Vector2(-820, -20)
+nodes/aimTransition/node = SubResource("AnimationNodeTransition_u61cl")
+nodes/aimTransition/position = Vector2(-120, -240)
+nodes/fallAnim/node = SubResource("AnimationNodeAnimation_6kpxq")
+nodes/fallAnim/position = Vector2(-580, -120)
+nodes/fallBlend/node = SubResource("AnimationNodeBlend2_3msri")
+nodes/fallBlend/position = Vector2(-380, -400)
+nodes/idleSpace/node = SubResource("AnimationNodeBlendSpace1D_7rjpd")
+nodes/idleSpace/position = Vector2(-1340, -340)
+nodes/jumpBlend/node = SubResource("AnimationNodeBlend2_g6vej")
+nodes/jumpBlend/position = Vector2(-600, -340)
+nodes/output/position = Vector2(880, -280)
+nodes/runBlend/node = SubResource("AnimationNodeBlend2_vqig1")
+nodes/runBlend/position = Vector2(-780, -340)
+nodes/runSpeed/node = SubResource("AnimationNodeTimeScale_dnr8x")
+nodes/runSpeed/position = Vector2(-1040, -240)
+nodes/strafeSpace/node = SubResource("AnimationNodeBlendSpace2D_70r62")
+nodes/strafeSpace/position = Vector2(-560, 20)
+nodes/weaponBlend/node = SubResource("AnimationNodeBlend2_e8nkd")
+nodes/weaponBlend/position = Vector2(326.539, -213.617)
+nodes/weaponState/node = SubResource("AnimationNodeBlendTree_65jm4")
+nodes/weaponState/position = Vector2(-120, -40)
+node_connections = [&"output", 0, &"weaponBlend", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeSpace", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
 
 [sub_resource type="GDScript" id="GDScript_aalkd"]
 script/source = "extends Control
@@ -466,6 +598,7 @@ target_node = NodePath("../../../../../Marker3D")
 script = SubResource("GDScript_k7ds2")
 
 [node name="AnimationTree" parent="playerCharacter" index="2"]
+tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 active = false
 
 [node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
@@ -543,8 +676,8 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.278125
 anchor_bottom = 1.05222
-offset_right = 445.0
-offset_bottom = 901.0
+offset_right = 3.05176e-05
+offset_bottom = -45.998
 color = Color(0, 0, 0, 0.403922)
 metadata/_edit_use_anchors_ = true
 

@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn07wnk5k005c"]
+[gd_scene load_steps=11 format=3 uid="uid://bn07wnk5k005c"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_821xr"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="2_cf5fr"]
 [ext_resource type="AudioStream" uid="uid://bsf2lnjdianff" path="res://assets/sounds/weapons/honeybadger/CobaltCatsupGunSoundsForReddit_StdPistolOneShot_Var2.wav" id="2_r5eso"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://cqshqnsojujr4" path="res://assets/entities/weapons/HoneyBadger/honeyBadgerTree.tres" id="3_ceo6u"]
 [ext_resource type="Animation" uid="uid://cprovv54ucski" path="res://assets/models/weapons/honeybadger/anims/BadgerAim.res" id="4_0mbul"]
+[ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="4_uiw17"]
 [ext_resource type="Animation" uid="uid://cr3q5vktr0347" path="res://assets/models/weapons/honeybadger/anims/BadgerIdle.res" id="5_v2c2v"]
 [ext_resource type="Animation" uid="uid://cps3p6fugfu3m" path="res://assets/models/weapons/honeybadger/anims/BadgerShoot.res" id="6_xq5mc"]
 
@@ -38,6 +39,10 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 [node name="Marker3D" type="Marker3D" parent="Mesh/HoneyBadger" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00479509, 0.12546)
 
+[node name="ShootFlare" parent="Mesh/HoneyBadger/Marker3D" index="0" instance=ExtResource("4_uiw17")]
+transform = Transform3D(9.85484e-16, 1.71061e-08, -0.515775, 0.515775, -1.71061e-08, 2.11758e-22, -2.25452e-08, -0.391342, -2.25452e-08, 0, 0, 0.382107)
+visible = false
+
 [node name="AnimationTree" parent="." index="3"]
 tree_root = ExtResource("3_ceo6u")
 parameters/weaponStateSpeed/scale = 1.0
@@ -48,5 +53,6 @@ libraries = {
 }
 
 [connection signal="shot_fired" from="." to="AudioStreamPlayer3D" method="play"]
+[connection signal="shot_fired" from="." to="Mesh/HoneyBadger/Marker3D/ShootFlare" method="flare"]
 
 [editable path="Mesh/HoneyBadger"]

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://assets/components/inputComponent/inputComponent.gd" id="1_uwv36"]
 
 [node name="inputComponent" type="Node"]
+process_priority = 1
 script = ExtResource("1_uwv36")

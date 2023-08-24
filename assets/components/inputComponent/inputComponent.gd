@@ -42,21 +42,21 @@ func _process(delta):
 			if controllingPawn:
 				if !controllingPawn.currentItem == null:
 					controllingPawn.currentItem.fire()
-		
-		
+
+
 func getInputDir():
 	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
 	return inputDir
-	
+
 func _unhandled_input(event):
 	if mouseActionsEnabled:
 		if event is InputEventMouseMotion:
 			emit_signal("onMouseMotion", event)
-		
+
 		if event is InputEventMouseButton:
 			if event.pressed:
 				emit_signal("mouseButtonPressed",event.button_index)
-				
+
 			if event.is_action_pressed("gMwheelUp"):
 				emit_signal("mouseButtonPressed", event.button_index)
 				if controllingPawn:
@@ -73,10 +73,10 @@ func _unhandled_input(event):
 			if controllingPawn:
 				if controllingPawn.canJump:
 					controllingPawn.jump()
-		
+
 		if event.is_action_pressed("gUse"):
 			emit_signal("actionPressed", str(event.keycode))
-			
+
 		if event.is_action_pressed("dKill"):
 			emit_signal("actionPressed", str(event.keycode))
 			if controllingPawn:
@@ -93,16 +93,16 @@ func _unhandled_input(event):
 		else:
 			if controllingPawn:
 				controllingPawn.isRunning = false
-				
+
 		if Input.get_action_strength("gMoveRight") >= 1:
 			emit_signal("movementKeyPressed","Right")
-			
+
 		if Input.get_action_strength("gMoveLeft") >= 1:
 			emit_signal("movementKeyPressed","Left")
-			
+
 		if Input.get_action_strength("gMoveForward") >= 1:
 			emit_signal("movementKeyPressed","Forward")
-		
+
 		if Input.get_action_strength("gMoveBackward") >= 1:
 			emit_signal("movementKeyPressed","Backward")
 

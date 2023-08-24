@@ -1,5 +1,6 @@
 @tool
 extends Node
+class_name duplicatorComponent
 
 
 ##Duplicates its parent and sets parameters
@@ -33,8 +34,11 @@ extends Node
 ##You must have a static function called "execute" which takes the duplicated Node as an argument.
 @export var advanced_behavior_script : GDScript
 @export_subgroup("Pooling")
+##Use 'pooling' to optimize.
 @export var use_pooling : bool = false
+##Set the initial size of the pool, creating this many instances on load.
 @export var pool_initial_size : int = 5
+##Expands the pool by instancing a new node when a node is requested and all pooled objects are in use.
 @export var expand_pool_when_empty : bool = true
 
 var dup_pool : Array[Node]

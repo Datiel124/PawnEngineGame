@@ -350,7 +350,7 @@ func createRagdoll(impulse_bone : int = 0):
 		emit_signal("pawnDied",ragdoll)
 		await moveClothesToRagdoll(ragdoll)
 		ragdoll.checkClothingHider()
-		
+
 		if !attachedCam == null:
 			var cam = attachedCam
 			await cam.unposessObject()
@@ -388,7 +388,7 @@ func moveClothesToRagdoll(moveto):
 		clothes.itemSkeleton = moveto.ragdollSkeleton.get_path()
 		clothes.reparent(moveto)
 		clothes.remapSkeleton()
-	return 
+	return
 
 func checkClothingHider():
 	for clothes in clothingHolder.get_children():

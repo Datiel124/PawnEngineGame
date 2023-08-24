@@ -14,7 +14,7 @@ var isFullscreen = false:
 		fullscreenCheck()
 var gameConfigFile = ConfigFile.new()
 var gameSettingsVars = gameConfigFile.load("user://settings/settings.sav")
-			
+
 #Ingame
 var mouseSens = 0.0020
 var defaultFOV = 90
@@ -36,11 +36,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
 func _input(event):
 	if Input.is_action_just_pressed("aFullscreen"):
 		fullscreenToggle()
-		
+
 	if Input.is_action_just_pressed("dRestartScene"):
 		restartScene()
 
@@ -61,7 +61,7 @@ func save_settings():
 	gameConfigFile.set_value("Setting_1", "fullscreen", isFullscreen)
 	print("Saved configs!")
 	gameConfigFile.save("user://settings/settings.sav")
-	
+
 func fullscreenToggle():
 	if isFullscreen:
 		isFullscreen = false
@@ -69,7 +69,7 @@ func fullscreenToggle():
 	else:
 		isFullscreen = true
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-		
+
 func debugToggle():
 	if debugEnabled:
 		debugEnabled = false

@@ -100,7 +100,7 @@ func fire():
 				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
 				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 			weaponOwner.attachedCam.fireRecoil()
-		
+
 		#Bullet Creation/Raycast Bullet Creation
 		createMuzzle()
 		if checkShooter():
@@ -143,7 +143,7 @@ func raycastHit():
 		hitNormal = raycast.get_collision_normal()
 		if colliding.has_method("hit"):
 			colliding.hit(weaponDamage,weaponOwner,weaponImpulse,hitPoint)
-		
+
 func getRayColPoint():
 	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
 	var hitPoint = raycast.get_collision_point()

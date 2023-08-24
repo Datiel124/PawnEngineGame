@@ -92,6 +92,7 @@ func fire():
 		shot_fired.emit()
 		weaponRemoteState.start("fire")
 		if weaponOwner.attachedCam:
+			print(weaponOwner.attachedCam.camCast.get_collider())
 			weaponOwner.attachedCam.camRecoil = weaponRecoil
 			if isAiming:
 				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim

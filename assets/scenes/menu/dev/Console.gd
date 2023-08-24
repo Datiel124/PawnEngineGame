@@ -11,6 +11,8 @@ var expression = Expression.new()
 var cvars_script : GDScript = preload("res://assets/scenes/menu/dev/cvars.gd")
 @onready var cvars = cvars_script.new()
 
+func _ready():
+	console.hide()
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	usercommand_list.push_front(new_text)

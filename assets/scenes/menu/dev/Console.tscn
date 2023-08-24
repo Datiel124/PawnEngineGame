@@ -8,7 +8,7 @@ script = ExtResource("1_81317")
 [node name="window" type="Window" parent="."]
 disable_3d = true
 handle_input_locally = false
-title = "DEV CONSOLE"
+title = "Pawn Engine - Developer Console"
 position = Vector2i(113, 36)
 size = Vector2i(720, 480)
 transient = true
@@ -40,6 +40,8 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = -8.0
 offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="scrollContainer" type="ScrollContainer" parent="window/control/panel/panel"]
 layout_mode = 1

@@ -5,19 +5,23 @@ const HELP_DICT := {
 	"world":"The current World, which is the root of the level.",
 	"hit":"The collider the camera ray is colliding with, is null if none is found.",
 	"hitPos":"The point the camera ray is colliding, is null if none is found.",
-	"userDir":"Opens the user:// directory.",
+	"userDir":"Globalized user:// directory.",
+	"customParams":"A list of custom parameters. See _s() and _g()",
 	"echo(var)":"Displays the variable input on the console.",
 	"load(path)":"Loads the resource at the given filepath.",
 	"spawnPawn(position)":"Spawns a pawn at the given position. If none is given, defaults to hitPos.",
 	"spawnNode(node, parent)":"Adds the node as a child of parent. If no parent is given, it defaults to world.",
 	"setTimescale(value)":"Sets the timescale or speed of the engine. 0.5 is half speed, 2.0 is double speed. Capped to 10.",
-	"clear()":"Clears the console output."
+	"clear()":"Clears the console output.",
+	"openDir(dir)":"Opens the specified directory in the system file explorer.",
+	"_s(key, value)":"Stores a custom param in customParam dict as a key-value pair.",
+	"_g(key, default)":"Gets a custom param in customParam dict with the given key, defaults to default, which is null when none is specified.",
+	"loadFromFile(filename)":"Loads data from a file saved in 'userData/console_out'. WARNING: Loads objects, meaning code can be executed. Don't load files from untrusted sources.",
+	"saveToFile(filename, data)":"Saves file as specified filename in 'userData/console_out/', stores data as a var with objects encoded."
 }
 
 
-var userDir:
-	get:
-		OS.shell_open(ProjectSettings.globalize_path("user://"))
+var userDir = ProjectSettings.globalize_path("user://")
 var help:
 	get:
 		Console.add_console_message("-- Help Menu --", Color.DIM_GRAY)
@@ -45,10 +49,11 @@ var hitPos:
 		if globalGameManager.activeCamera.camCast.is_colliding:
 			return globalGameManager.activeCamera.camCast.get_collision_point()
 		return null
+var customParams : Dictionary = {}
 
 
 func echo(variable):
-	Console.add_console_message(str(variable))
+	Console.add_console_message(":: "+str(variable), Color.GRAY)
 	return variable
 
 
@@ -82,10 +87,62 @@ func spawnNode(node : Node, parent : Node = null) -> Node:
 
 func setTimescale(value : float = 1.0) -> void:
 	Engine.time_scale = clamp(value, 0.0, 10.0)
+	Console.add_console_message("Set timescale to %s (%s%%)" % [Engine.time_scale, 100 * Engine.time_scale], Color.DIM_GRAY)
 
 
 func clear() -> void:
 	Console.clear()
+
+
+func openDir(dir : String) -> void:
+	OS.shell_open(dir)
+
+
+func _s(key, value):
+	customParams[key] = value
+	Console.add_console_message("stored {%s:%s}" % [key, value], Color.DIM_GRAY)
+	return value
+
+
+func _g(key, default = null):
+	var got = customParams.get(key, default)
+	Console.add_console_message("got {%s:%s}" % [key, got], Color.DIM_GRAY)
+	return got
+
+
+func loadFromFile(filename : String):
+	var dir = (userDir + "/console_out/").simplify_path()
+	if !DirAccess.dir_exists_absolute(dir):
+		Console.add_console_message("Directory 'console_out' does not exist in user://", Color.RED)
+		return
+	dir += "/"+filename
+	var fa = FileAccess.open(dir, FileAccess.READ)
+	if fa == null:
+		Console.add_console_message("Failed to open file %s" % [dir], Color.RED)
+		return
+	Console.add_console_message("Load success!", Color.GREEN)
+	var data = fa.get_var(true)
+	Console.add_console_message("Data: %s" % [data], Color.GRAY)
+	return data
+
+
+func saveToFile(filename : String, data) -> void:
+	var dir = (userDir + "/console_out/").simplify_path()
+	if !DirAccess.dir_exists_absolute(dir):
+		if DirAccess.make_dir_absolute(dir) != OK:
+			Console.add_console_message("Failed to create directory 'console_out' in user://", Color.RED)
+			Console.add_console_message("Try openUserDir() and adding a 'console_out' folder to the folder opened.", Color.RED)
+			return
+	var fa = FileAccess.open("user://console_out/"+filename, FileAccess.WRITE)
+	if fa == null:
+		Console.add_console_message("Failed to open file %s" % [filename], Color.RED)
+		return
+	fa.store_var(data, true)
+	fa.close()
+	Console.add_console_message("Save success!", Color.GREEN)
+	Console.add_console_message("Path: %s" % [dir], Color.GRAY)
+	Console.add_console_message("Data: %s" % [data], Color.GRAY)
+	return
 
 
 func _help(method : String = "") -> void:

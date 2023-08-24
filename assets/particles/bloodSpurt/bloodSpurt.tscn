@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpp4s1vikjdv8"]
+[gd_scene load_steps=16 format=3 uid="uid://bpp4s1vikjdv8"]
 
 [ext_resource type="Texture2D" uid="uid://cj0kfcr0vsi8l" path="res://assets/textures/blood/blood_spurt/bspurt1.png" id="1_dubao"]
+[ext_resource type="Texture2D" uid="uid://7r7fibraa87x" path="res://assets/textures/blood/blood_gush/frameblood0003.png" id="2_ik2ae"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55b2n"]
 transparency = 2
@@ -40,30 +41,73 @@ scale_max = 0.2
 scale_curve = SubResource("CurveTexture_gkwyl")
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
-sub_emitter_keep_velocity = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_5noax"]
 size = Vector2(0.245, 1)
 
 [sub_resource type="GDScript" id="GDScript_fb3dx"]
 script/source = "extends GPUParticles3D
-
+var remove = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	amount = randi_range(25,50)
+	$bloodLand.amount = amount
+	
 
-
-
+func _process(delta):
+	if remove:
+		transparency = lerpf(transparency,1.0,4*delta)
+		$bloodLand.transparency = lerpf($bloodLand.transparency,1.0,4*delta)
+		
+		if transparency >= 1.0:
+			queue_free()
 
 func _on_timer_timeout():
-	queue_free()
+	remove = true
 "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyjka"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.505882, 0, 0, 1)
+albedo_texture = ExtResource("2_ik2ae")
+disable_receive_shadows = true
+
+[sub_resource type="Curve" id="Curve_ro5oo"]
+_data = [Vector2(0, 0.757895), 0.0, 6.18947, 0, 0, Vector2(1e-05, 1), -1.12516, -1.12516, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_mousa"]
+curve = SubResource("Curve_ro5oo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pdrmt"]
+particle_flag_align_y = true
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, -1)
+flatness = 1.0
+gravity = Vector3(0, -15, 0)
+initial_velocity_min = 1.65
+initial_velocity_max = 1.65
+angle_min = -360.0
+angle_max = 360.0
+scale_min = 0.3
+scale_curve = SubResource("CurveTexture_mousa")
+collision_mode = 1
+collision_friction = 0.5
+collision_bounce = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aix64"]
+size = Vector2(0.58, 0.835)
 
 [node name="bloodSpurt" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_55b2n")
 emitting = false
 amount = 25
+sub_emitter = NodePath("bloodLand")
+lifetime = 15.0
 one_shot = true
 explosiveness = 1.0
 randomness = 0.57
@@ -74,5 +118,18 @@ script = SubResource("GDScript_fb3dx")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 3.0
+autostart = true
+
+[node name="bloodLand" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gyjka")
+cast_shadow = 0
+emitting = false
+amount = 22
+lifetime = 15.0
+one_shot = true
+randomness = 0.1
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_pdrmt")
+draw_pass_1 = SubResource("PlaneMesh_aix64")
 
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]

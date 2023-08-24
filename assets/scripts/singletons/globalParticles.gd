@@ -1,5 +1,5 @@
 extends Node
-var particles = {"Blood" : load("res://assets/particles/bloodSpurt/bloodSpurt.tscn")}
+const particles = {"Blood" : preload("res://assets/particles/bloodSpurt/bloodSpurt.tscn")}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

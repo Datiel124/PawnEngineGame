@@ -15,10 +15,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func accelerateToVel(velocity:Vector3,delta, useX:bool=true,useY:bool=true,useZ:bool=true):
 	if useX:
 		vVelocity.x = lerp(vVelocity.x, velocity.x * vMaxSpeed, delta * vAcceleration )

@@ -44,9 +44,6 @@ func _ready():
 	if spawnPawnsOnLoad == true:
 		pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func getSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spawn_idx:int = 0):
 	pass

@@ -67,7 +67,7 @@ func _ready():
 	aimFOV = currentFOV - zoomAmount
 	Fade.fade_in(0.3, Color(0,0,0,1),"GradientVertical",false,true)
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_pressed("gEscape"):
 		freeCursor = true
 

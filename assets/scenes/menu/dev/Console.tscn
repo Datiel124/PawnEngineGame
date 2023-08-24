@@ -68,7 +68,7 @@ offset_left = 8.0
 offset_top = -40.0
 offset_right = -8.0
 offset_bottom = -9.0
-placeholder_text = "command"
+placeholder_text = "Enter Command Here"
 
 [connection signal="close_requested" from="window" to="window" method="hide"]
 [connection signal="focus_entered" from="window" to="." method="_on_window_focus_entered"]

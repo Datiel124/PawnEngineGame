@@ -33,11 +33,7 @@ func _ready():
 		pass
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("aFullscreen"):
 		fullscreenToggle()
 
@@ -76,22 +72,22 @@ func debugToggle():
 	else:
 		debugEnabled = true
 
-func screenshot() -> String:
+func takeScreenshot() -> String:
 	print("Initializing screenshot!")
 	var screenshot_count = 0
 	var screenshot = get_viewport().get_texture().get_image()
 
 	var savedfilepath
 	if userDir.dir_exists("user://screenshots"):
-		var screenshot_dir = DirAccess.open("user://screenshots/")
-		print(screenshot_dir.get_current_dir())
-		screenshot_count = screenshot_dir.get_files().size() + 1
+		var _screenshot_dir = DirAccess.open("user://screenshots/")
+		print(_screenshot_dir.get_current_dir())
+		screenshot_count = _screenshot_dir.get_files().size() + 1
 		screenshot.save_png("user://screenshots/screenshot_" + str(screenshot_count) + ".png")
 		savedfilepath = "user://screenshots/screenshot_" + str(screenshot_count) + ".png"
 		screenshot_count = screenshot_count + 1
 	else:
 		userDir.make_dir("screenshots")
-		var screenshot_dir = DirAccess.open("user://screenshots/")
+		var _screenshot_dir = DirAccess.open("user://screenshots/")
 		screenshot.save_png("user://screenshots/screenshot_" + str(screenshot_count) + ".png")
 		savedfilepath = "user://screenshots/screenshot_" + str(screenshot_count) + ".png"
 		screenshot_count = screenshot_count + 1

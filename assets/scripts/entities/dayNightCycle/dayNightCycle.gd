@@ -56,4 +56,4 @@ func _process(delta):
 	environment.environment.sky.sky_material.set("ground_horizon_color", skyHorizonColor.sample(worldTime))
 	environment.environment.sky.sky_material.set("ground_bottom_color", skyTopColor.sample(worldTime))
 	environment.environment.sky.sky_material.set("sky_horizon_color", skyHorizonColor.sample(worldTime))
-	environment.environment.sky.sky_material.set("sky_color", skyTopColor.sample(worldTime))
+	environment.environment.sky.sky_material.set("sky_top_color", skyTopColor.sample(worldTime))

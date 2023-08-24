@@ -14,7 +14,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
 func hit(dmg, dealer=null, hitImpulse:float = 0, hitPoint:Vector3 = Vector3.ZERO):
 	healthComponent.damage(dmg * hitboxDamageMult, dealer)
 	healthComponent.componentOwner.lastHitPart = boneId

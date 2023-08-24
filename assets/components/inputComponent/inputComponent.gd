@@ -40,10 +40,11 @@ func _process(delta):
 				controllingPawn.canRun = true
 		if Input.is_action_pressed("gLeftClick"):
 			if controllingPawn:
-				if !controllingPawn.currentItem == null:
-					controllingPawn.currentItem.fire()
-
-
+				if !controllingPawn.isRunning:
+					if !controllingPawn.currentItem == null:
+						controllingPawn.currentItem.fire()
+		
+		
 func getInputDir():
 	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
 	return inputDir

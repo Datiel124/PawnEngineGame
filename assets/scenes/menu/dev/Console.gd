@@ -7,15 +7,19 @@ var command_copy_idx = -1
 @onready var scroll : ScrollContainer = $window/control/panel/panel/scrollContainer
 @onready var msgbox : VBoxContainer = $window/control/panel/panel/scrollContainer/ConsoleMessageContainer
 @onready var console : Window = $window
+@onready var cvars : Node = $cvars
 var expression = Expression.new()
-var cvars_script : GDScript = preload("res://assets/scenes/menu/dev/cvars.gd")
-@onready var cvars = cvars_script.new()
+
 
 func _ready():
 	console.hide()
 
+
 func _on_line_edit_text_submitted(new_text: String) -> void:
-	usercommand_list.push_front(new_text)
+	if new_text != "":
+		usercommand_list.push_front(new_text)
+	if usercommand_list.size() > 100:
+		usercommand_list.pop_back()
 	input_field.text = ""
 	command_copy_idx = -1
 	expression.parse(new_text)
@@ -26,8 +30,22 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 
 func add_console_message(message : String, color : Color = Color.WHITE) -> void:
 	var new_label = Label.new()
+	new_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	new_label.text = message
 	new_label.modulate = color
+	msgbox.add_child(new_label)
+	if msgbox.get_child_count() > 300:
+		msgbox.get_child(0).queue_free()
+	await get_tree().process_frame
+	scroll.scroll_vertical = 50000
+
+
+func add_rich_console_message(message : String) -> void:
+	var new_label = RichTextLabel.new()
+	new_label.fit_content = true
+	new_label.bbcode_enabled = true
+	new_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+	new_label.text = message
 	msgbox.add_child(new_label)
 	if msgbox.get_child_count() > 300:
 		msgbox.get_child(0).queue_free()
@@ -62,6 +80,12 @@ func _on_window_window_input(event: InputEvent) -> void:
 			await get_tree().process_frame
 			input_field.caret_column = input_field.text.length()
 			return
+
+
+func clear() -> void:
+	for i in msgbox.get_children():
+		i.queue_free()
+	add_console_message("Console cleared.", Color.DIM_GRAY)
 
 
 func _on_window_focus_entered() -> void:

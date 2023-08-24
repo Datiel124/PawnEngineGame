@@ -43,8 +43,8 @@ func _process(delta):
 				if !controllingPawn.isRunning:
 					if !controllingPawn.currentItem == null:
 						controllingPawn.currentItem.fire()
-		
-		
+
+
 func getInputDir():
 	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
 	return inputDir

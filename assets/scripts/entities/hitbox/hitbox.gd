@@ -15,7 +15,7 @@ func _ready():
 func _process(delta):
 	if healthComponent.isDead:
 		queue_free()
-	
+
 func hit(dmg, dealer=null, hitImpulse:float = 0, hitPoint:Vector3 = Vector3.ZERO):
 	healthComponent.damage(dmg * hitboxDamageMult, dealer)
 	healthComponent.componentOwner.lastHitPart = boneId

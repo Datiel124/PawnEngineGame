@@ -1,6 +1,16 @@
 extends Node
 
 
+var world:
+	get:
+		return globalGameManager.world
+var hit:
+	get:
+		if globalGameManager.activeCamera.camCast.is_colliding:
+			return globalGameManager.activeCamera.camCast.get_collider()
+		return null
+
+
 static func echo(message) -> void:
 	Console.add_console_message(str(message))
 

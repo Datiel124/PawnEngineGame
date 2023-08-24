@@ -272,8 +272,11 @@ func _physics_process(delta):
 			if meshLookAt:
 				bodyIK.start()
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
-				animationTree.set("parameters/strafeSpace/blend_position",Vector2(-velocity.x, -velocity.z).rotated(meshRotation))
-				animationTree.set("parameters/aimTransition/transition_request", "aiming")
+				if is_on_floor():
+					animationTree.set("parameters/strafeSpace/blend_position",Vector2(-velocity.x, -velocity.z).rotated(meshRotation))
+					animationTree.set("parameters/aimTransition/transition_request", "aiming")
+				else:
+					animationTree.set("parameters/aimTransition/transition_request", "notAiming")
 			else:
 				animationTree.set("parameters/aimTransition/transition_request", "notAiming")
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 0, turnSpeed * delta)

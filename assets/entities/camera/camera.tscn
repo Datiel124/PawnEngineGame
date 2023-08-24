@@ -36,7 +36,7 @@ fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertical/Camera"]
 target_position = Vector3(0, 0, -250)
-collision_mask = 22
+collision_mask = 23
 collide_with_areas = true
 
 [node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertical/Camera/RayCast3D"]

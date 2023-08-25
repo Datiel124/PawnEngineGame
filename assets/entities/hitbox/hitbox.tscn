@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://assets/scripts/entities/hitbox/hitbox.gd" id="1_qj7f6"]
 
-[node name="Hitbox" type="Area3D"]
+[node name="Hitbox" type="Area3D" groups=["Flesh"]]
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_qj7f6")

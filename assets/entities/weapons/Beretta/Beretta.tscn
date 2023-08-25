@@ -1,16 +1,16 @@
 [gd_scene load_steps=33 format=3 uid="uid://wtqya32cwdbk"]
 
-[ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_mqk0j"]
-[ext_resource type="AnimationLibrary" uid="uid://dckmw2jcqd2e8" path="res://assets/entities/weapons/TestWeapon/testWeaponsAnims.res" id="2_070l6"]
-[ext_resource type="AudioStream" uid="uid://dxp6c4vi24yww" path="res://assets/sounds/weapons/baretta/baretta_shot0.wav" id="2_bnf87"]
-[ext_resource type="AnimationNodeBlendTree" uid="uid://4a47n6lsro4m" path="res://assets/entities/weapons/WeaponRootBase.tres" id="2_s01ak"]
-[ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="3_3foxy"]
-[ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="3_m2ah2"]
-[ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_nqg8k"]
+[ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_xjnb0"]
+[ext_resource type="AudioStream" uid="uid://dxp6c4vi24yww" path="res://assets/sounds/weapons/baretta/baretta_shot0.wav" id="2_x13g1"]
+[ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_n7a4b"]
+[ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="4_hr71m"]
+[ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="5_b560w"]
+[ext_resource type="AnimationNodeBlendTree" uid="uid://4a47n6lsro4m" path="res://assets/entities/weapons/WeaponRootBase.tres" id="6_3sxkr"]
+[ext_resource type="AnimationLibrary" uid="uid://dckmw2jcqd2e8" path="res://assets/entities/weapons/Beretta/testWeaponsAnims.res" id="7_pxm25"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3jed7"]
 streams_count = 1
-stream_0/stream = ExtResource("2_bnf87")
+stream_0/stream = ExtResource("2_x13g1")
 stream_0/weight = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cop61"]
@@ -368,7 +368,7 @@ transparency = 1
 diffuse_mode = 2
 specular_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_m2ah2")
+albedo_texture = ExtResource("4_hr71m")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -422,16 +422,17 @@ _data = {
 "light_flash": SubResource("Animation_4v8w6")
 }
 
-[node name="TestWeapon" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_mqk0j")]
+[node name="Beretta" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_xjnb0")]
 muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 12.0
-weaponImpulse = 1.0
+weaponFireRate = 0.25
+weaponImpulse = 50.0
 weaponSpread = 0.35
 weaponSpreadAim = 0.015
 useLeftHand = true
 weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
 weaponRotationOffset = Vector3(-3.04, 1.735, 1.595)
-objectName = "Test Weapon"
+objectName = "Beretta"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
 stream = SubResource("AudioStreamRandomizer_3jed7")
@@ -452,11 +453,11 @@ skeleton = NodePath("")
 [node name="Marker3D" type="Marker3D" parent="Mesh/Beretta" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182451, 0.029511, 1.59504e-08)
 
-[node name="ShootFlare" parent="Mesh/Beretta/Marker3D" index="0" instance=ExtResource("3_nqg8k")]
+[node name="ShootFlare" parent="Mesh/Beretta/Marker3D" index="0" instance=ExtResource("3_n7a4b")]
 transform = Transform3D(-2.25452e-08, -0.391342, -3.55271e-15, 0.515775, -1.71061e-08, 0, -2.11758e-22, 0, 0.515775, 0.369775, -0.00206521, 3.23268e-08)
 visible = false
 
-[node name="ShootFlare2" parent="Mesh/Beretta/Marker3D" index="1" instance=ExtResource("3_nqg8k")]
+[node name="ShootFlare2" parent="Mesh/Beretta/Marker3D" index="1" instance=ExtResource("3_n7a4b")]
 transform = Transform3D(-6.49417e-09, -0.787911, -8.88178e-16, 0.148569, -3.44405e-08, 0, 0, -7.10543e-15, 0.148569, 0.714841, -0.00206521, 6.24935e-08)
 visible = false
 
@@ -470,7 +471,7 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_148bh")
 draw_pass_1 = SubResource("QuadMesh_lygr7")
 
-[node name="duplicatorComponent" parent="Mesh/Beretta/Marker3D/ShootSmoke" index="0" node_paths=PackedStringArray("parent") instance=ExtResource("3_3foxy")]
+[node name="duplicatorComponent" parent="Mesh/Beretta/Marker3D/ShootSmoke" index="0" node_paths=PackedStringArray("parent") instance=ExtResource("5_b560w")]
 parent = NodePath("../../../../../FX")
 dup_lifetime = 2.0
 advanced_behavior_script = SubResource("GDScript_yp8uy")
@@ -491,12 +492,12 @@ libraries = {
 [node name="FX" type="Node" parent="." index="2"]
 
 [node name="AnimationTree" parent="." index="4"]
-tree_root = ExtResource("2_s01ak")
+tree_root = ExtResource("6_3sxkr")
 parameters/weaponStateSpeed/scale = 1.0
 
 [node name="AnimationPlayer" parent="." index="5"]
 libraries = {
-"weaponAnims": ExtResource("2_070l6")
+"weaponAnims": ExtResource("7_pxm25")
 }
 
 [connection signal="shot_fired" from="." to="AudioStreamPlayer3D" method="play"]

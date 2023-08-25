@@ -20,7 +20,7 @@ var mouseSens = 0.0020
 var defaultFOV = 90
 
 #World
-var world
+var world : WorldScene
 
 #Multiplayer
 var isMultiplayerGame = false

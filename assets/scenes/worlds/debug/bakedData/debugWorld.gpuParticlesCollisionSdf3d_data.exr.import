@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://b1mu0rlu1esav"
+path="res://.godot/imported/debugWorld.gpuParticlesCollisionSdf3d_data.exr-4e39eb77ce155f5e389f0bfcb9541b88.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/scenes/worlds/debug/bakedData/debugWorld.gpuParticlesCollisionSdf3d_data.exr"
+dest_files=["res://.godot/imported/debugWorld.gpuParticlesCollisionSdf3d_data.exr-4e39eb77ce155f5e389f0bfcb9541b88.ctex3d"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=512

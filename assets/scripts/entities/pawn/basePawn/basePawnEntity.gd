@@ -133,7 +133,7 @@ var currentItem = null
 ##Makes the mesh look at a certain thing, mainly used for aiming
 @export var meshLookAt = false
 @export var lastHitPart : int
-@export var hitImpulse : float = 0.0
+@export var hitImpulse : Vector3 = Vector3.ZERO
 @export var hitVector : Vector3 = Vector3.ZERO
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -346,7 +346,7 @@ func createRagdoll(impulse_bone : int = 0):
 				child.apply_central_impulse(velocity)
 				if child.get_bone_id() == impulse_bone:
 					ragdoll.startRagdoll()
-					child.apply_central_impulse(hitVector * hitImpulse)
+					child.apply_impulse(hitImpulse, hitVector)
 
 		emit_signal("pawnDied",ragdoll)
 		await moveClothesToRagdoll(ragdoll)

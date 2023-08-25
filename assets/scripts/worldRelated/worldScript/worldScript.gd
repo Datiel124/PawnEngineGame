@@ -23,7 +23,7 @@ signal worldLoaded
 @export_enum("Area", "Shop", "Safehouse", "Arena") var worldType = 0
 
 @export_category("Debug Parameters")
-## Spawn Type to use when loading the scene
+##Spawn Type to use when loading the scene
 @export_enum("Player","Camera","None") var spawnType = 0
 ##Spawn AI pawns at their respective positions when loading the world.
 @export var spawnPawnsOnLoad : bool = true

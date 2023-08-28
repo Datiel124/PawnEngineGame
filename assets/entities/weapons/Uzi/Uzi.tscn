@@ -1,0 +1,274 @@
+[gd_scene load_steps=41 format=3 uid="uid://dsxt078giobel"]
+
+[ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_k0gi6"]
+[ext_resource type="AudioStream" uid="uid://c4nv2utpail5c" path="res://assets/sounds/weapons/uzi/uziFire.wav" id="2_2gcbv"]
+[ext_resource type="ArrayMesh" uid="uid://brx711lyumg08" path="res://assets/models/weapons/uzi/uzimodel.res" id="2_56o6k"]
+[ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_8m6vm"]
+[ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="4_bbw6c"]
+[ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="5_kvnjb"]
+[ext_resource type="Animation" uid="uid://cyi6wwvfld3gp" path="res://assets/animations/pawn/UziFire.res" id="7_iax7p"]
+[ext_resource type="Animation" uid="uid://cn104bd4royk3" path="res://assets/animations/pawn/UziIdle.res" id="8_a17bg"]
+[ext_resource type="Animation" uid="uid://bc2d5fksn26jf" path="res://assets/animations/pawn/UziAimCorrect.res" id="8_figtn"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhvhp"]
+streams_count = 1
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_2gcbv")
+stream_0/weight = 1.0
+
+[sub_resource type="Gradient" id="Gradient_c5o4n"]
+offsets = PackedFloat32Array(0, 0.0365854, 1)
+colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7u60u"]
+gradient = SubResource("Gradient_c5o4n")
+
+[sub_resource type="Curve" id="Curve_lkvg2"]
+_data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dv1fd"]
+curve = SubResource("Curve_lkvg2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8rew"]
+direction = Vector3(-1, 0, 0)
+spread = 19.28
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+damping_min = 8.824
+damping_max = 41.596
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_dv1fd")
+color = Color(1.2, 1.2, 1.2, 1)
+color_ramp = SubResource("GradientTexture1D_7u60u")
+hue_variation_min = -0.02
+hue_variation_max = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfu4s"]
+transparency = 1
+diffuse_mode = 2
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_bbw6c")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_5sgpu"]
+material = SubResource("StandardMaterial3D_rfu4s")
+
+[sub_resource type="GDScript" id="GDScript_3j7dd"]
+script/source = "static func execute(node : Node) -> void:
+	(node as GPUParticles3D).restart()
+	
+"
+
+[sub_resource type="Animation" id="Animation_k64ul"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4v8w6"]
+resource_name = "light_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.277392, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu2pg"]
+_data = {
+"RESET": SubResource("Animation_k64ul"),
+"light_flash": SubResource("Animation_4v8w6")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybwpt"]
+animation = &"weaponAnims/aim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j08dw"]
+animation = &"weaponAnims/fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u51jk"]
+animation = &"weaponAnims/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fvckn"]
+animation = &"WeaponAnims/sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_syl42"]
+animation = &"WeaponAnims/unequip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ul8h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gga4p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7mtao"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sftbu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2yi56"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mh4se"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7n2o2"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_va47p"]
+xfade_time = 0.02
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_udpny"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.992064, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umbs7"]
+xfade_time = 0.08
+xfade_curve = SubResource("Curve_udpny")
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q1np0"]
+states/End/position = Vector2(1041, 100)
+states/Start/position = Vector2(205, 100)
+states/aim/node = SubResource("AnimationNodeAnimation_ybwpt")
+states/aim/position = Vector2(619, 191)
+states/fire/node = SubResource("AnimationNodeAnimation_j08dw")
+states/fire/position = Vector2(619, 302)
+states/idle/node = SubResource("AnimationNodeAnimation_u51jk")
+states/idle/position = Vector2(619, 100)
+states/sprint/node = SubResource("AnimationNodeAnimation_fvckn")
+states/sprint/position = Vector2(619, -13)
+states/unequip/node = SubResource("AnimationNodeAnimation_syl42")
+states/unequip/position = Vector2(843, 100)
+transitions = ["sprint", "idle", SubResource("AnimationNodeStateMachineTransition_5ul8h"), "idle", "sprint", SubResource("AnimationNodeStateMachineTransition_gga4p"), "idle", "unequip", SubResource("AnimationNodeStateMachineTransition_7mtao"), "unequip", "End", SubResource("AnimationNodeStateMachineTransition_sftbu"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_2yi56"), "idle", "aim", SubResource("AnimationNodeStateMachineTransition_mh4se"), "aim", "fire", SubResource("AnimationNodeStateMachineTransition_7n2o2"), "fire", "aim", SubResource("AnimationNodeStateMachineTransition_va47p"), "aim", "idle", SubResource("AnimationNodeStateMachineTransition_umbs7")]
+graph_offset = Vector2(39, 134)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uy32p"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2qjkh"]
+resource_name = "testWeaponAnimations"
+graph_offset = Vector2(-191, 116)
+nodes/output/position = Vector2(380, 140)
+nodes/weaponState/node = SubResource("AnimationNodeStateMachine_q1np0")
+nodes/weaponState/position = Vector2(-180, 120)
+nodes/weaponStateSpeed/node = SubResource("AnimationNodeTimeScale_uy32p")
+nodes/weaponStateSpeed/position = Vector2(80, 100)
+node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oep0y"]
+_data = {
+"aim": ExtResource("8_figtn"),
+"fire": ExtResource("7_iax7p"),
+"idle": ExtResource("8_a17bg")
+}
+
+[node name="Uzi" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_k0gi6")]
+muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
+weaponDamage = 4.0
+weaponFireRate = 0.075
+weaponImpulse = 45.0
+weaponRecoil = Vector3(12, 3, 1)
+weaponRecoilStrength = 10.0
+weaponSpread = 0.5
+weaponRecoilStrengthAim = 2.0
+weaponSpreadAim = 0.15
+useLeftHandIdle = false
+useLeftHandAiming = false
+useLeftHandFreeAiming = false
+weaponPositionOffset = Vector3(-0.005, -0.1, 0.06)
+weaponRotationOffset = Vector3(1.64, 0, 0)
+
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="." index="0"]
+stream = SubResource("AudioStreamRandomizer_rhvhp")
+volume_db = -16.0
+max_polyphony = 8
+bus = &"Sounds"
+
+[node name="Uzi" type="Node3D" parent="Mesh" index="0"]
+
+[node name="UziModel" type="MeshInstance3D" parent="Mesh/Uzi" index="0"]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
+mesh = ExtResource("2_56o6k")
+skeleton = NodePath("../..")
+
+[node name="Marker3D" type="Marker3D" parent="Mesh/Uzi" index="1"]
+transform = Transform3D(-0.0155852, 0, -0.999879, 0, 1, 0, 0.999879, 0, -0.0155852, 0, 0.0361853, 0.262619)
+
+[node name="ShootFlare" parent="Mesh/Uzi/Marker3D" index="0" instance=ExtResource("3_8m6vm")]
+transform = Transform3D(-2.25452e-08, -0.391342, -3.55271e-15, 0.515775, -1.71061e-08, 0, -2.11758e-22, 0, 0.515775, 0.369775, -0.00206521, 3.23268e-08)
+visible = false
+
+[node name="ShootFlare2" parent="Mesh/Uzi/Marker3D" index="1" instance=ExtResource("3_8m6vm")]
+transform = Transform3D(-6.49417e-09, -0.787911, -8.88178e-16, 0.148569, -3.44405e-08, 0, 0, -7.10543e-15, 0.148569, 0.714841, -0.00206521, 6.24935e-08)
+visible = false
+
+[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/Uzi/Marker3D" index="2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00457357, -0.0126326, -3.99858e-10)
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_w8rew")
+draw_pass_1 = SubResource("QuadMesh_5sgpu")
+
+[node name="duplicatorComponent" parent="Mesh/Uzi/Marker3D/ShootSmoke" index="0" instance=ExtResource("5_kvnjb")]
+dup_lifetime = 2.0
+advanced_behavior_script = SubResource("GDScript_3j7dd")
+use_pooling = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Uzi/Marker3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0239981, 0, 2.09798e-09)
+light_color = Color(1, 0.768627, 0.215686, 1)
+light_energy = 0.0
+omni_range = 4.20246
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Uzi/Marker3D/OmniLight3D" index="0"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_xu2pg")
+}
+
+[node name="AnimationTree" parent="." index="3"]
+tree_root = SubResource("AnimationNodeBlendTree_2qjkh")
+parameters/weaponStateSpeed/scale = 1.0
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"weaponAnims": SubResource("AnimationLibrary_oep0y")
+}
+
+[connection signal="shot_fired" from="." to="audioStreamPlayer3d" method="play"]
+[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootFlare" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootFlare2" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node"]
+[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]

@@ -9,4 +9,5 @@ moon = NodePath("Moon")
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
 visible = false
+directional_shadow_max_distance = 500.0
 sky_mode = 1

@@ -33,6 +33,7 @@ signal itemChanged
 @onready var leftLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftKnee
 @onready var rightLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightKnee
 
+@onready var freeAimTimer = $freeAimTimer
 @onready var pawnSkeleton = $Mesh/MaleSkeleton/Skeleton3D
 @onready var animationTree = $AnimationTree
 @onready var collisionShape = $CollisionShape3D
@@ -86,7 +87,6 @@ signal cameraAttached
 @export var animationToForce : String = ""
 ##Allows the pawn to interact with the environment, move and have physics applied, etc..
 @export var freeAim : bool = false
-@export var freeAimTimer = 5.0
 @export var pawnEnabled = true
 @export var collisionEnabled = true:
 	set(value):
@@ -162,9 +162,9 @@ func _physics_process(delta):
 			##FreeAim
 			if freeAim:
 				meshLookAt = true
-				await get_tree().create_timer(freeAimTimer).timeout
-				freeAim = false
-				meshLookAt = false
+				bodyIK.start()
+				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
+				
 
 			##Movement Code
 			#TODO - AI Stuff here I think
@@ -183,7 +183,7 @@ func _physics_process(delta):
 						attachedCam.itemEquipOffsetToggle = true
 
 					#Weapon Aiming
-					if meshLookAt:
+					if meshLookAt and !freeAim:
 						currentItem.isAiming = true
 					else:
 						currentItem.isAiming = false
@@ -341,7 +341,7 @@ func createRagdoll(impulse_bone : int = 0):
 
 		for bones in ragdoll.ragdollSkeleton.get_child_count():
 			var child = ragdoll.ragdollSkeleton.get_child(bones)
-			if child is PhysicalBone3D:
+			if child is RagdollBone:
 				ragdoll.startRagdoll()
 				child.apply_central_impulse(velocity)
 				if child.get_bone_id() == impulse_bone:
@@ -357,11 +357,9 @@ func createRagdoll(impulse_bone : int = 0):
 			await cam.unposessObject()
 			await cam.posessObject(ragdoll)
 			for bones in ragdoll.ragdollSkeleton.get_child_count():
-				if ragdoll.ragdollSkeleton.get_child(bones) is PhysicalBone3D:
+				if ragdoll.ragdollSkeleton.get_child(bones) is RagdollBone:
 					cam.vertical.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
-
 			attachedCam = null
-
 		collisionShape.queue_free()
 
 
@@ -496,3 +494,7 @@ func equipWeapon(index):
 func unequipWeapon():
 	pass
 
+
+
+func _on_free_aim_timer_timeout():
+	freeAim = false

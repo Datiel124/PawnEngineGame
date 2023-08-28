@@ -29,6 +29,8 @@ func _process(_delta):
 			if controllingPawn:
 				if !controllingPawn.isPawnDead:
 						controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
+						controllingPawn.freeAim = false
+						controllingPawn.freeAimTimer.stop()
 						if !controllingPawn.meshLookAt:
 							controllingPawn.meshLookAt = true
 							controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
@@ -37,13 +39,28 @@ func _process(_delta):
 		else:
 			if controllingPawn:
 				controllingPawn.meshLookAt = false
-				controllingPawn.canRun = true
+				if !controllingPawn.freeAim:
+					controllingPawn.canRun = true
+					controllingPawn.freeAim = false
 		if Input.is_action_pressed("gLeftClick"):
 			if controllingPawn:
 				if !controllingPawn.isRunning:
 					if !controllingPawn.currentItem == null:
+						if !Input.is_action_pressed("gRightClick"):
+							if !controllingPawn.freeAim:
+								controllingPawn.canRun = false
+								controllingPawn.freeAim = true
+								controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
 						controllingPawn.currentItem.fire()
-
+						controllingPawn.freeAimTimer.start()
+		else:
+			if controllingPawn:
+				if !Input.is_action_pressed("gRightClick"):
+					controllingPawn.canRun = true
+						
+	if controllingPawn:
+		if controllingPawn.freeAim:
+			controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
 
 func getInputDir():
 	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
@@ -91,6 +108,8 @@ func _unhandled_input(event):
 			if controllingPawn:
 				if controllingPawn.canRun:
 					controllingPawn.isRunning = true
+					controllingPawn.freeAim = false
+					
 		else:
 			if controllingPawn:
 				controllingPawn.isRunning = false

@@ -40,3 +40,5 @@ anim_player = NodePath("../AnimationPlayer")
 libraries = {
 "": SubResource("AnimationLibrary_qxw0b")
 }
+
+[node name="FX" type="Node" parent="."]

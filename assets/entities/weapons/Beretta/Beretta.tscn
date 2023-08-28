@@ -334,14 +334,14 @@ shadow_mesh = SubResource("ArrayMesh_2tx41")
 offsets = PackedFloat32Array(0, 0.0365854, 1)
 colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7u60u"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2dja8"]
 gradient = SubResource("Gradient_nm2at")
 
 [sub_resource type="Curve" id="Curve_do0mi"]
 _data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_dv1fd"]
+[sub_resource type="CurveTexture" id="CurveTexture_j0p7u"]
 curve = SubResource("Curve_do0mi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_148bh"]
@@ -357,13 +357,13 @@ damping_max = 41.596
 angle_min = -720.0
 angle_max = 720.0
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_dv1fd")
+scale_curve = SubResource("CurveTexture_j0p7u")
 color = Color(1.2, 1.2, 1.2, 1)
-color_ramp = SubResource("GradientTexture1D_7u60u")
+color_ramp = SubResource("GradientTexture1D_2dja8")
 hue_variation_min = -0.02
 hue_variation_max = 0.08
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfu4s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y85su"]
 transparency = 1
 diffuse_mode = 2
 specular_mode = 2
@@ -376,11 +376,10 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_lygr7"]
-material = SubResource("StandardMaterial3D_rfu4s")
+material = SubResource("StandardMaterial3D_y85su")
 
 [sub_resource type="GDScript" id="GDScript_yp8uy"]
 script/source = "static func execute(node : Node) -> void:
-	print(\"node is \", node)
 	(node as GPUParticles3D).restart()
 "
 
@@ -426,10 +425,11 @@ _data = {
 muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 12.0
 weaponFireRate = 0.25
-weaponImpulse = 50.0
-weaponSpread = 0.35
+weaponImpulse = 55.0
+weaponRecoil = Vector3(7, 1, 0.55)
+weaponRecoilStrength = 15.0
+weaponSpread = 0.09
 weaponSpreadAim = 0.015
-useLeftHand = true
 weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
 weaponRotationOffset = Vector3(-3.04, 1.735, 1.595)
 objectName = "Beretta"
@@ -489,13 +489,11 @@ libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
 
-[node name="FX" type="Node" parent="." index="2"]
-
-[node name="AnimationTree" parent="." index="4"]
+[node name="AnimationTree" parent="." index="3"]
 tree_root = ExtResource("6_3sxkr")
 parameters/weaponStateSpeed/scale = 1.0
 
-[node name="AnimationPlayer" parent="." index="5"]
+[node name="AnimationPlayer" parent="." index="4"]
 libraries = {
 "weaponAnims": ExtResource("7_pxm25")
 }

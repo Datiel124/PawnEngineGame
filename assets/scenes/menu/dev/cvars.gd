@@ -156,3 +156,8 @@ func _help(method : String = "") -> void:
 			return
 	#Detailed help wasn't provided for this.
 	Console.add_console_message("Detailed help for this method not found, or the method doesn't exist.", Color.RED)
+
+
+func debugDraw(mode : Viewport.DebugDraw) -> void:
+	Console.add_console_message("Set debug_draw to %s" % mode, Color.DIM_GRAY)
+	get_tree().get_root().get_viewport().debug_draw = mode

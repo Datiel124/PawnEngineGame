@@ -21,6 +21,8 @@ extends Node3D
 @export_category("Ragdoll")
 @export_subgroup("Behavior")
 ##Start simulation on create
+@export var canTwitch = true
+@export var healthComponent : HealthComponent
 @export var startOnInstance = true
 @export_subgroup("Camera Behavior")
 ##Root Follow Node
@@ -46,10 +48,16 @@ func _ready():
 	
 	checkClothingHider()
 
+func _physics_process(delta):
+	if canTwitch:
+		pass
 
 func startRagdoll():
 	ragdollSkeleton.physical_bones_start_simulation()
 	checkClothingHider()
+
+func ragTwitch(convulsionAmount : float = 10.0, bodyPartIDX : int = 0):
+	pass
 
 func checkClothingHider():
 	for clothes in self.get_children():

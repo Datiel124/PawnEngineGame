@@ -30,15 +30,22 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export_subgroup("Aiming Recoil")
 @export var weaponRecoilStrengthAim : float = 4.0
 @export var weaponSpreadAim = 0.25
-@export_subgroup("Weapon Animations")
-@export var useLeftHand = false
-@export var useRightHand = true
+@export_category("Weapon Animations")
+var useLeftHand = false
+var useRightHand = true
 @export var leftHandParent = false
 @export var rightHandParent = true
 @export var useWeaponSprintAnim = false
+@export_subgroup("Idle Weapon Handling")
+@export var useLeftHandIdle = true
+@export var useRightHandIdle = true
+@export_subgroup("Aim Weapon Handling")
+@export var useLeftHandAiming = true
+@export var useRightHandAiming = true
+@export_subgroup("FreeAim Weapon Handling")
+@export var useLeftHandFreeAiming = true
+@export var useRightHandFreeAiming = true
 @export_subgroup("Weapon Orientation")
-@export var itemRot = Vector3.ZERO
-@export var itemPos = Vector3.ZERO
 @export var weaponPositionOffset = Vector3.ZERO
 @export var weaponRotationOffset = Vector3.ZERO
 
@@ -71,21 +78,50 @@ func _physics_process(delta):
 							if !weaponRemoteState.get_current_node() == "sprint":
 								weaponRemoteState.travel("sprint")
 
-			if !isFiring and !isAiming:
+			if !isFiring and !isAiming and !weaponOwner.freeAim:
 				if !weaponRemoteState.get_current_node() == "idle":
 					weaponRemoteState.travel("idle")
+					if useLeftHandIdle:
+						useLeftHand = true
+					else:
+						useLeftHand = false
+					if useRightHandIdle:
+						useRightHand = true
+					else:
+						useRightHand = false
 			if isAiming:
-				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
-				weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
+				if useLeftHandAiming:
+					useLeftHand = true
+				else:
+					useLeftHand = false
+				if useRightHandAiming:
+					useRightHand = true
+				else:
+					useRightHand = false
+				
+				if weaponOwner.attachedCam:
+					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
+					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
 				
 				if !weaponOwner.meshLookAt:
 					weaponOwner.meshLookAt = true
 				if !weaponRemoteState.get_current_node() == "aim":
 					weaponRemoteState.travel("aim")
 			else:
-				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
-				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
-
+				if weaponOwner.attachedCam:
+					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
+					weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
+			if weaponOwner.freeAim:
+				if !weaponRemoteState.get_current_node() == "aim":
+					if useLeftHandFreeAiming:
+						useLeftHand = true
+					else:
+						useLeftHand = false
+					if useRightHandFreeAiming:
+						useRightHand = true
+					else:
+						useRightHand = false
+					weaponRemoteState.travel("aim")
 
 		collisionEnabled = false
 

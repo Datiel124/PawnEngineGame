@@ -13,6 +13,7 @@ const HELP_DICT := {
 	"spawnNode(node, parent)":"Adds the node as a child of parent. If no parent is given, it defaults to world.",
 	"setTimescale(value)":"Sets the timescale or speed of the engine. 0.5 is half speed, 2.0 is double speed. Capped to 10.",
 	"clear()":"Clears the console output.",
+	"quit()":"Quits the game.",
 	"openDir(dir)":"Opens the specified directory in the system file explorer.",
 	"_s(key, value)":"Stores a custom param in customParam dict as a key-value pair.",
 	"_g(key, default)":"Gets a custom param in customParam dict with the given key, defaults to default, which is null when none is specified.",
@@ -57,6 +58,10 @@ func echo(variable):
 	return variable
 
 
+func setGravity(value:float)->void:
+	ProjectSettings.set_setting("physics/3d/default_gravity", value)
+
+
 func load(path : String):
 	var res = load(path)
 	if res == null:
@@ -64,6 +69,8 @@ func load(path : String):
 		return res
 	Console.add_console_message("Loaded %s" % path, Color.GREEN)
 	return res
+
+
 
 
 func spawnPawn(position : Vector3 = Vector3.INF) -> void:
@@ -92,6 +99,10 @@ func setTimescale(value : float = 1.0) -> void:
 
 func clear() -> void:
 	Console.clear()
+
+
+func quit() -> void:
+	get_tree().quit()
 
 
 func openDir(dir : String) -> void:

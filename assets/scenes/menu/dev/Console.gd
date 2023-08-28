@@ -53,6 +53,11 @@ func add_rich_console_message(message : String) -> void:
 	scroll.scroll_vertical = 50000
 
 
+func _process(delta: float) -> void:
+	get_viewport().gui_disable_input = console.has_focus()
+	print(console.has_focus())
+
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("devConsole"):
 		console.hide()

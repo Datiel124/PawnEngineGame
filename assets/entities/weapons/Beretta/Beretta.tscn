@@ -1,17 +1,23 @@
-[gd_scene load_steps=33 format=3 uid="uid://wtqya32cwdbk"]
+[gd_scene load_steps=35 format=3 uid="uid://wtqya32cwdbk"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_xjnb0"]
-[ext_resource type="AudioStream" uid="uid://dxp6c4vi24yww" path="res://assets/sounds/weapons/baretta/baretta_shot0.wav" id="2_x13g1"]
+[ext_resource type="AudioStream" uid="uid://cix7ik2at3jmq" path="res://assets/sounds/weapons/baretta/berettafire1.wav" id="2_silaf"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_n7a4b"]
+[ext_resource type="AudioStream" uid="uid://dadd3eqi4bvcm" path="res://assets/sounds/weapons/baretta/berettafire2.wav" id="3_pino1"]
 [ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="4_hr71m"]
+[ext_resource type="AudioStream" uid="uid://cy02rf62mbc8d" path="res://assets/sounds/weapons/baretta/berettafire3.wav" id="4_nkjso"]
 [ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="5_b560w"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://4a47n6lsro4m" path="res://assets/entities/weapons/WeaponRootBase.tres" id="6_3sxkr"]
 [ext_resource type="AnimationLibrary" uid="uid://dckmw2jcqd2e8" path="res://assets/entities/weapons/Beretta/testWeaponsAnims.res" id="7_pxm25"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3jed7"]
-streams_count = 1
-stream_0/stream = ExtResource("2_x13g1")
+streams_count = 3
+stream_0/stream = ExtResource("2_silaf")
 stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_pino1")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_nkjso")
+stream_2/weight = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cop61"]
 resource_name = "Material.005"
@@ -429,6 +435,7 @@ weaponImpulse = 55.0
 weaponRecoil = Vector3(7, 1, 0.55)
 weaponRecoilStrength = 15.0
 weaponSpread = 0.09
+weaponRecoilStrengthAim = 6.0
 weaponSpreadAim = 0.015
 weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
 weaponRotationOffset = Vector3(-3.04, 1.735, 1.595)

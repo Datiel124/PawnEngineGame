@@ -201,3 +201,10 @@ func getRayColPoint():
 	var hitPoint = raycast.get_collision_point()
 	if raycast.is_colliding():
 		return hitPoint
+
+func resetToDefault():
+	weaponAnimSet = false
+	weaponOwner = null
+	isFiring = false
+	isAiming = false
+	isEquipped = false

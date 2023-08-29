@@ -20,14 +20,14 @@ stream_0/weight = 1.0
 offsets = PackedFloat32Array(0, 0.0365854, 1)
 colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7u60u"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gd86u"]
 gradient = SubResource("Gradient_c5o4n")
 
 [sub_resource type="Curve" id="Curve_lkvg2"]
 _data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_dv1fd"]
+[sub_resource type="CurveTexture" id="CurveTexture_xsdto"]
 curve = SubResource("Curve_lkvg2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8rew"]
@@ -43,13 +43,13 @@ damping_max = 41.596
 angle_min = -720.0
 angle_max = 720.0
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_dv1fd")
+scale_curve = SubResource("CurveTexture_xsdto")
 color = Color(1.2, 1.2, 1.2, 1)
-color_ramp = SubResource("GradientTexture1D_7u60u")
+color_ramp = SubResource("GradientTexture1D_gd86u")
 hue_variation_min = -0.02
 hue_variation_max = 0.08
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfu4s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d7ybm"]
 transparency = 1
 diffuse_mode = 2
 specular_mode = 2
@@ -62,7 +62,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_5sgpu"]
-material = SubResource("StandardMaterial3D_rfu4s")
+material = SubResource("StandardMaterial3D_d7ybm")
 
 [sub_resource type="GDScript" id="GDScript_3j7dd"]
 script/source = "static func execute(node : Node) -> void:

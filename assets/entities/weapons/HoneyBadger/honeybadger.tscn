@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn07wnk5k005c"]
+[gd_scene load_steps=24 format=3 uid="uid://bn07wnk5k005c"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_821xr"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="2_cf5fr"]
@@ -6,13 +6,107 @@
 [ext_resource type="AnimationNodeBlendTree" uid="uid://cqshqnsojujr4" path="res://assets/entities/weapons/HoneyBadger/honeyBadgerTree.tres" id="3_ceo6u"]
 [ext_resource type="Animation" uid="uid://cprovv54ucski" path="res://assets/models/weapons/honeybadger/anims/BadgerAim.res" id="4_0mbul"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="4_uiw17"]
+[ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="5_4h412"]
 [ext_resource type="Animation" uid="uid://cr3q5vktr0347" path="res://assets/models/weapons/honeybadger/anims/BadgerIdle.res" id="5_v2c2v"]
+[ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="6_32xuo"]
 [ext_resource type="Animation" uid="uid://cps3p6fugfu3m" path="res://assets/models/weapons/honeybadger/anims/BadgerShoot.res" id="6_xq5mc"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_24m82"]
 streams_count = 1
 stream_0/stream = ExtResource("2_r5eso")
 stream_0/weight = 1.0
+
+[sub_resource type="Gradient" id="Gradient_8krwq"]
+offsets = PackedFloat32Array(0, 0.0365854, 1)
+colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7u60u"]
+gradient = SubResource("Gradient_8krwq")
+
+[sub_resource type="Curve" id="Curve_e5uqm"]
+_data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_dv1fd"]
+curve = SubResource("Curve_e5uqm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyg8u"]
+direction = Vector3(-1, 0, 0)
+spread = 19.28
+gravity = Vector3(0, 5, 0)
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+damping_min = 8.824
+damping_max = 41.596
+angle_min = -720.0
+angle_max = 720.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_dv1fd")
+color = Color(1.2, 1.2, 1.2, 1)
+color_ramp = SubResource("GradientTexture1D_7u60u")
+hue_variation_min = -0.02
+hue_variation_max = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rfu4s"]
+transparency = 1
+diffuse_mode = 2
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_4h412")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_p2041"]
+material = SubResource("StandardMaterial3D_rfu4s")
+
+[sub_resource type="GDScript" id="GDScript_fqemc"]
+script/source = "static func execute(node : Node) -> void:
+	(node as GPUParticles3D).restart()
+	
+"
+
+[sub_resource type="Animation" id="Animation_k64ul"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4v8w6"]
+resource_name = "light_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.277392, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu2pg"]
+_data = {
+"RESET": SubResource("Animation_k64ul"),
+"light_flash": SubResource("Animation_4v8w6")
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kytnd"]
 _data = {
@@ -23,25 +117,63 @@ _data = {
 
 [node name="Honeybadger" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_821xr")]
 muzzlePoint = NodePath("Mesh/HoneyBadger/Marker3D")
+weaponDamage = 9.0
 weaponFireRate = 0.08
-weaponRecoil = Vector3(8, 5, 1)
+weaponImpulse = 65.0
+weaponRecoil = Vector3(9, 5, 1)
 weaponRecoilStrength = 16.0
-useLeftHand = true
-weaponPositionOffset = Vector3(0, -0.31, 0.115)
-weaponRotationOffset = Vector3(1.545, 0, 0)
+weaponRecoilStrengthAim = 5.0
+weaponSpreadAim = 0.15
+weaponPositionOffset = Vector3(-0.01, -0.335, 0.115)
+weaponRotationOffset = Vector3(1.54, -0.925, -0.985)
+objectName = "Honeybadger"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
 stream = SubResource("AudioStreamRandomizer_24m82")
+
+[node name="Mesh" parent="." index="1"]
+transform = Transform3D(1.065, 0, 0, 0, 1.065, 0, 0, 0, 1.065, 0, 0, 0)
 
 [node name="HoneyBadger" parent="Mesh" index="0" instance=ExtResource("2_cf5fr")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="Marker3D" type="Marker3D" parent="Mesh/HoneyBadger" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00479509, 0.12546)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.00765274, 0.14691)
 
 [node name="ShootFlare" parent="Mesh/HoneyBadger/Marker3D" index="0" instance=ExtResource("4_uiw17")]
-transform = Transform3D(9.85484e-16, 1.71061e-08, -0.515775, 0.515775, -1.71061e-08, 2.11758e-22, -2.25452e-08, -0.391342, -2.25452e-08, 0, 0, 0.382107)
+transform = Transform3D(-4.41485e-09, -0.077, 0, 0.101, -3.36578e-09, 4.14669e-23, -3.97047e-23, 0, 0.101, 0.0399542, -0.00206521, 4.67437e-08)
 visible = false
+
+[node name="ShootFlare2" parent="Mesh/HoneyBadger/Marker3D" index="1" instance=ExtResource("4_uiw17")]
+transform = Transform3D(-2.14186e-09, -0.259, -4.44089e-16, 0.049, -1.13212e-08, -1.93154e-23, 0, -2.66454e-15, 0.049, 0.229616, -0.00206521, 8.37034e-08)
+visible = false
+
+[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/HoneyBadger/Marker3D" index="2"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0241086, -0.00153953, 4.54046e-10)
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nyg8u")
+draw_pass_1 = SubResource("QuadMesh_p2041")
+
+[node name="duplicatorComponent" parent="Mesh/HoneyBadger/Marker3D/ShootSmoke" index="0" instance=ExtResource("6_32xuo")]
+dup_lifetime = 2.0
+advanced_behavior_script = SubResource("GDScript_fqemc")
+use_pooling = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/HoneyBadger/Marker3D" index="3"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0231596, -0.00434083, 4.15931e-09)
+light_color = Color(1, 0.768627, 0.215686, 1)
+light_energy = 0.0
+omni_range = 4.20246
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/HoneyBadger/Marker3D/OmniLight3D" index="0"]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_xu2pg")
+}
 
 [node name="AnimationTree" parent="." index="3"]
 tree_root = ExtResource("3_ceo6u")
@@ -54,5 +186,8 @@ libraries = {
 
 [connection signal="shot_fired" from="." to="AudioStreamPlayer3D" method="play"]
 [connection signal="shot_fired" from="." to="Mesh/HoneyBadger/Marker3D/ShootFlare" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/HoneyBadger/Marker3D/ShootFlare2" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/HoneyBadger/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node"]
+[connection signal="shot_fired" from="." to="Mesh/HoneyBadger/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]
 
 [editable path="Mesh/HoneyBadger"]

@@ -121,7 +121,7 @@ var currentItem = null
 		currentItemIndex = clamp(value, 0, itemInventory.size()-1)
 		currentItem = itemInventory[currentItemIndex]
 		if !currentItem == null:
-			itemInventory[currentItemIndex].isEquipped = true
+			equipWeapon(currentItemIndex)
 		emit_signal("itemChanged")
 @export var clothingInventory : Array:
 	set(value):
@@ -171,13 +171,8 @@ func _physics_process(delta):
 
 			##Item Equip
 			if !currentItem == null:
-				lastItem = currentItem
 				#Add equipanimation here, once it it finishes, enable the hand IKs and lerp
 				if currentItem:
-					currentItem.isEquipped = true
-					currentItem.visible = true
-					currentItem.weaponOwner = self
-
 					##Camera set
 					if attachedCam:
 						attachedCam.itemEquipOffsetToggle = true
@@ -189,7 +184,7 @@ func _physics_process(delta):
 						currentItem.isAiming = false
 
 					#Weapon Animations
-					await setupWeaponAnimations()
+					#await setupWeaponAnimations()
 
 					#Set filters
 					if currentItem.useLeftHand:
@@ -217,13 +212,11 @@ func _physics_process(delta):
 						else:
 							animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 1, 12*delta))
 			else:
+				for weapon in itemHolder.get_children():
+					weapon.hide()
 				if attachedCam:
 						attachedCam.itemEquipOffsetToggle = false
 				animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 0, 12*delta))
-			if !currentItem == lastItem:
-				lastItem.weaponAnimSet = false
-				lastItem.isEquipped = false
-				lastItem.visible = false
 			##Mesh Rotation
 			if !meshLookAt:
 				if isMoving:
@@ -489,10 +482,25 @@ func setRightHandFilter(value : bool = true):
 	filterBlend.set_filter_path("MaleSkeleton/Skeleton3D:R_Pinkie2", value)
 
 func equipWeapon(index):
-	pass
+	await unequipWeapon()
+	currentItem = itemInventory[index]
+	currentItem.weaponOwner = self
+	currentItem.isEquipped = true
+	currentItem.visible = true
+	await setupWeaponAnimations()
+	return true
 
 func unequipWeapon():
-	pass
+	for weapon in itemHolder.get_children():
+		weapon.hide()
+		weapon.resetToDefault()
+	
+	currentItem.resetToDefault()
+	currentItem.weaponAnimSet = false
+	currentItem.isEquipped = false
+	currentItem.hide()
+	currentItem = null
+	return true
 
 
 

@@ -55,7 +55,7 @@ func add_rich_console_message(message : String) -> void:
 
 func _process(delta: float) -> void:
 	get_viewport().gui_disable_input = console.has_focus()
-	print(console.has_focus())
+	#print(console.has_focus())
 
 
 func _input(event: InputEvent) -> void:

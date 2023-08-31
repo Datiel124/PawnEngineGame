@@ -251,10 +251,11 @@ func _physics_process(delta):
 				velocity.z = velocityComponent.accelerateToVel(direction, delta, false, false, true).z
 
 			##Run Speed
-			if !isRunning:
-				velocityComponent.vMaxSpeed = defaultWalkSpeed
-			else:
-				velocityComponent.vMaxSpeed = defaultRunSpeed
+			if !velocityComponent == null:
+				if !isRunning:
+					velocityComponent.vMaxSpeed = defaultWalkSpeed
+				else:
+					velocityComponent.vMaxSpeed = defaultRunSpeed
 
 			#Jump Animation
 				if isJumping:
@@ -277,13 +278,16 @@ func _physics_process(delta):
 					bodyIK.stop()
 				if isMoving:
 					if !isRunning:
-						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
-						animationTree.set("parameters/idleSpace/blend_position", lerpf(animationTree.get("parameters/idleSpace/blend_position"), 1, delta * velocityComponent.getAcceleration()))
+						if !velocityComponent == null:
+							animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
+							animationTree.set("parameters/idleSpace/blend_position", lerpf(animationTree.get("parameters/idleSpace/blend_position"), 1, delta * velocityComponent.getAcceleration()))
 					if isRunning:
-						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 1.0, delta * velocityComponent.getAcceleration()))
+						if !velocityComponent == null:
+							animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 1.0, delta * velocityComponent.getAcceleration()))
 				else:
-					animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
-					animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
+					if !velocityComponent == null:
+						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
+						animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
 			move_and_slide()
 
@@ -311,9 +315,14 @@ func checkComponents():
 		return OK
 
 func die():
+	removeComponents()
+	unequipWeapon()
+	currentItemIndex = 0
+	currentItem = null
 	pawnEnabled = false
 	collisionEnabled = false
 	isPawnDead = true
+	$remover.start()
 
 
 func _on_health_component_health_depleted():
@@ -494,15 +503,23 @@ func unequipWeapon():
 	for weapon in itemHolder.get_children():
 		weapon.hide()
 		weapon.resetToDefault()
-	
-	currentItem.resetToDefault()
-	currentItem.weaponAnimSet = false
-	currentItem.isEquipped = false
-	currentItem.hide()
-	currentItem = null
-	return true
+	if currentItem:
+		currentItem.resetToDefault()
+		currentItem.weaponAnimSet = false
+		currentItem.isEquipped = false
+		currentItem.hide()
+		currentItem = null
+		return true
 
 
 
 func _on_free_aim_timer_timeout():
 	freeAim = false
+
+
+func _on_remover_timeout():
+	queue_free()
+
+func removeComponents():
+	velocityComponent = null
+	inputComponent = null

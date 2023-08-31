@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=55 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://cix8a7ilvw57" path="res://assets/entities/clothing/Hats/Balaclava/balaclava.tscn" id="7_fu03r"]
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="8_imgke"]
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="8_klk30"]
+[ext_resource type="Theme" uid="uid://cppiwhssjdjlp" path="res://assets/misc/editorTheme/vertex_4.1-dev3-r0.res" id="10_8uso2"]
 [ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
-[ext_resource type="AudioStream" uid="uid://2umgn4pkyxqr" path="res://assets/music/ambient/ponder.mp3" id="14_5mpt7"]
+[ext_resource type="Texture2D" uid="uid://y3t3guvaiihk" path="res://assets/textures/menu/bg.png" id="11_jchm2"]
+[ext_resource type="AudioStream" uid="uid://bo6wh6ciub45e" path="res://assets/music/menu/loltune.mp3" id="15_f36bv"]
 
 [sub_resource type="GDScript" id="GDScript_h14ep"]
 script/source = "extends Node3D
@@ -218,6 +220,10 @@ func _ready():
 	animPlayer.play(\"start\")
 	$camAnim.play(\"cam\")
 
+
+
+func _on_play_button_pressed():
+	pass # Replace with function body.
 "
 
 [sub_resource type="Animation" id="Animation_vppp2"]
@@ -225,62 +231,86 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:size")
+tracks/0/path = NodePath("Logo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(445, 901)]
+"values": [Vector2(58, -309)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Logo:position")
+tracks/1/path = NodePath("PlayButton:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(58, -309)]
+"values": [Vector2(96, 351)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PlayButton:position")
+tracks/2/path = NodePath("Quit:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(96, 351)]
+"values": [Vector2(96, 642)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Quit:position")
+tracks/3/path = NodePath("../Camera3D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(96, 642)]
+"values": [Vector3(0.48231, 0.29601, 0.0113825)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Camera3D:rotation")
+tracks/4/path = NodePath("OptionsButton/OptionsBut:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.48231, 0.29601, 0.0113825)]
+"values": [Vector2(123, 448)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CreditsButton/CreditsBut:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(150, 556)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("BG/ninePatchRect:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3.91111)]
 }
 
 [sub_resource type="Animation" id="Animation_jj1mn"]
@@ -305,50 +335,74 @@ resource_name = "new_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:size")
+tracks/0/path = NodePath("Logo:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.241484, 2),
-"update": 0,
-"values": [Vector2(445, 13), Vector2(445, 947)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Logo:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.466517, 2.46229),
 "update": 0,
 "values": [Vector2(45, -309), Vector2(45, 11)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayButton:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayButton:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(0.277392, 1.86607),
 "update": 0,
 "values": [Vector2(-283, 351), Vector2(96, 351)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Quit:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Quit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.7, 1),
 "transitions": PackedFloat32Array(0.615572, 11.7127),
 "update": 0,
 "values": [Vector2(-270, 642), Vector2(96, 642)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OptionsButton/OptionsBut:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(0.68302, 1.27456),
+"update": 0,
+"values": [Vector2(-219, 448), Vector2(123, 448)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CreditsButton/CreditsBut:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 1),
+"transitions": PackedFloat32Array(0.574349, 1.18921),
+"update": 0,
+"values": [Vector2(-215, 556), Vector2(150, 556)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BG/ninePatchRect:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(0.241484, 1.36604),
+"update": 0,
+"values": [Vector2(-452, -3.91111), Vector2(0, -3.91111)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obo1l"]
@@ -362,7 +416,7 @@ _data = {
 streams_count = 1
 random_pitch = 1.0
 random_volume_offset_db = 0.0
-stream_0/stream = ExtResource("14_5mpt7")
+stream_0/stream = ExtResource("15_f36bv")
 stream_0/weight = 1.0
 
 [node name="menu" type="Node3D"]
@@ -668,21 +722,39 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-mouse_filter = 1
+mouse_filter = 2
 script = SubResource("GDScript_aalkd")
 
-[node name="ColorRect" type="ColorRect" parent="Menu"]
+[node name="BG" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ninePatchRect" type="NinePatchRect" parent="Menu/BG"]
+modulate = Color(1, 1, 1, 0.737255)
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 0.278125
-anchor_bottom = 1.05222
-offset_right = 445.0
-offset_bottom = 901.0
-color = Color(0, 0, 0, 0.403922)
+anchor_top = -0.00888889
+anchor_right = 0.27125
+anchor_bottom = 1.01222
+offset_top = 4.08889
+offset_bottom = 4.08893
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("10_8uso2")
+texture = ExtResource("11_jchm2")
+patch_margin_left = 14
+patch_margin_top = 12
+patch_margin_right = 13
+patch_margin_bottom = 12
 metadata/_edit_use_anchors_ = true
 
 [node name="Logo" type="TextureRect" parent="Menu"]
-visible = false
 layout_mode = 0
 offset_left = 58.0
 offset_top = -309.0
@@ -723,18 +795,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 351.0
-offset_right = 49696.0
-offset_bottom = 28251.0
+offset_right = 3296.0
+offset_bottom = 2151.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="PlayButton" type="Button" parent="Menu/PlayButton"]
 layout_mode = 0
 offset_right = 269.0
 offset_bottom = 56.0
+mouse_filter = 2
+theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 41
-text = "Start Demo"
+text = "Start"
 
 [node name="Quit" type="Control" parent="Menu"]
 layout_mode = 1
@@ -743,18 +818,64 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 96.0
 offset_top = 642.0
-offset_right = 49696.0
-offset_bottom = 28542.0
+offset_right = 56096.0
+offset_bottom = 32142.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
 [node name="QuitButton" type="Button" parent="Menu/Quit"]
 layout_mode = 0
-offset_right = 269.0
+offset_left = 55.0
+offset_right = 208.0
 offset_bottom = 56.0
+theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 41
 text = "Quit"
+
+[node name="CreditsButton" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditsBut" type="Button" parent="Menu/CreditsButton"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 556.0
+offset_right = 306.0
+offset_bottom = 612.0
+theme = ExtResource("10_8uso2")
+theme_override_fonts/font = ExtResource("8_klk30")
+theme_override_font_sizes/font_size = 41
+text = "Credits
+"
+
+[node name="OptionsButton" type="Control" parent="Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsBut" type="Button" parent="Menu/OptionsButton"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 448.0
+offset_right = 337.0
+offset_bottom = 504.0
+theme = ExtResource("10_8uso2")
+theme_override_fonts/font = ExtResource("8_klk30")
+theme_override_font_sizes/font_size = 41
+text = "Options"
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(-0.0491924, 0.839506, -0.541119, -0.866504, 0.233576, 0.441149, 0.49674, 0.490583, 0.715945, -0.0128218, 0.926147, 0.0520496)

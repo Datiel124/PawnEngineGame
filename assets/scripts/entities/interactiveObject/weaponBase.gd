@@ -164,9 +164,6 @@ func createMuzzle():
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 
-func unequip():
-	pass
-
 func checkShooter():
 	if weaponOwner.attachedCam:
 		return true

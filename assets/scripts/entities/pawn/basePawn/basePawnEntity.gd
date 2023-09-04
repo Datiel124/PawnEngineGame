@@ -7,6 +7,9 @@ signal aiAssigned
 signal clothingChanged
 signal itemChanged
 
+#Sounds
+@onready var soundHolder = $Sounds
+@onready var equipSound = $Sounds/equipSound
 ##Onready
 
 ##IK
@@ -492,6 +495,8 @@ func setRightHandFilter(value : bool = true):
 
 func equipWeapon(index):
 	await unequipWeapon()
+	if !equipSound.playing:
+		equipSound.play()
 	currentItem = itemInventory[index]
 	currentItem.weaponOwner = self
 	currentItem.isEquipped = true
@@ -500,6 +505,7 @@ func equipWeapon(index):
 	return true
 
 func unequipWeapon():
+	animationTree.set("parameters/weaponBlend/blend_amount", 0)
 	for weapon in itemHolder.get_children():
 		weapon.hide()
 		weapon.resetToDefault()

@@ -81,6 +81,7 @@ roughness = 0.0
 normal_enabled = true
 normal_scale = 1.3
 normal_texture = ExtResource("3_sm58p")
+rim_enabled = true
 disable_receive_shadows = true
 
 [sub_resource type="Curve" id="Curve_ro5oo"]
@@ -124,7 +125,7 @@ draw_pass_1 = SubResource("QuadMesh_5noax")
 script = SubResource("GDScript_fb3dx")
 
 [node name="timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 36.0
 autostart = true
 
 [node name="bloodLand" type="GPUParticles3D" parent="."]
@@ -132,7 +133,7 @@ material_override = SubResource("StandardMaterial3D_gyjka")
 cast_shadow = 0
 emitting = false
 amount = 22
-lifetime = 15.0
+lifetime = 363.55
 one_shot = true
 randomness = 0.1
 fixed_fps = 144

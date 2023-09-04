@@ -60,6 +60,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="WIP" type="Label" parent="HUD"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.611765)
 layout_mode = 1
 anchors_preset = 5
@@ -74,6 +75,7 @@ theme_override_font_sizes/font_size = 33
 text = "WORK IN PROGRESS - DOES NOT REPRESENT THE FINAL LOOK OF THE GAME"
 
 [node name="Logo" type="TextureRect" parent="HUD"]
+visible = false
 self_modulate = Color(1, 1, 1, 0.372549)
 layout_mode = 1
 anchors_preset = 3

@@ -167,7 +167,7 @@ func _physics_process(delta):
 				meshLookAt = true
 				bodyIK.start()
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
-				
+
 
 			##Movement Code
 			#TODO - AI Stuff here I think

@@ -67,10 +67,10 @@ func _physics_process(delta):
 		#Weapon Orientation
 		weaponMesh.position = lerp(weaponMesh.position, weaponPositionOffset, 24 * delta)
 		weaponMesh.rotation = lerp(weaponMesh.rotation, weaponRotationOffset, 24 * delta)
-		
+
 		if weaponOwner.attachedCam:
 			weaponOwner.attachedCam.camRecoil = weaponRecoil
-		
+
 		if weaponAnimSet:
 			if !weaponOwner == null:
 				if useWeaponSprintAnim:
@@ -98,11 +98,11 @@ func _physics_process(delta):
 					useRightHand = true
 				else:
 					useRightHand = false
-				
+
 				if weaponOwner.attachedCam:
 					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
 					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
-				
+
 				if !weaponOwner.meshLookAt:
 					weaponOwner.meshLookAt = true
 				if !weaponRemoteState.get_current_node() == "aim":
@@ -146,7 +146,7 @@ func fire():
 				var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
 				if !pt == null:
 					pt.look_at(getRayColPoint() + getRayNormal())
-				
+
 		await get_tree().create_timer(weaponFireRate).timeout
 		isFiring = false
 

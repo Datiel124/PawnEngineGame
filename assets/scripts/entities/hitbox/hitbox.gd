@@ -7,7 +7,7 @@ var setup = false
 var boneId
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+
 	if !get_parent() == null:
 		if get_parent() is BoneAttachment3D:
 			boneId = get_parent().get_bone_idx()
@@ -19,7 +19,7 @@ func _process(_delta):
 		if !setup:
 			addException()
 			setup = true
-	
+
 	if healthComponent.isDead:
 		queue_free()
 

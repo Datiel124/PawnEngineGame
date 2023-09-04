@@ -57,7 +57,7 @@ func _process(_delta):
 			if controllingPawn:
 				if !Input.is_action_pressed("gRightClick"):
 					controllingPawn.canRun = true
-						
+
 	if controllingPawn:
 		if controllingPawn.freeAim:
 			controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
@@ -109,7 +109,7 @@ func _unhandled_input(event):
 				if controllingPawn.canRun:
 					controllingPawn.isRunning = true
 					controllingPawn.freeAim = false
-					
+
 		else:
 			if controllingPawn:
 				controllingPawn.isRunning = false

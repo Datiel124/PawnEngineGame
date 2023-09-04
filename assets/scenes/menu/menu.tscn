@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=53 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -32,6 +32,7 @@ func _on_play_button_pressed():
 	menuSound.play()
 	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
 	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/debug/debugWorld.tscn\")
+
 
 func _on_quit_button_pressed():
 	menuSound.play()
@@ -213,11 +214,11 @@ node_connections = [&"output", 0, &"weaponBlend", &"aimTransition", 0, &"fallBle
 
 [sub_resource type="GDScript" id="GDScript_aalkd"]
 script/source = "extends Control
-@onready var animPlayer = $AnimationPlayer
+#@onready var animPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	animPlayer.play(\"start\")
+#	animPlayer.play(\"start\")
 	$camAnim.play(\"cam\")
 
 
@@ -225,93 +226,6 @@ func _ready():
 func _on_play_button_pressed():
 	pass # Replace with function body.
 "
-
-[sub_resource type="Animation" id="Animation_vppp2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(58, -309)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayButton:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(96, 351)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Quit:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(96, 642)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera3D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.48231, 0.29601, 0.0113825)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("OptionsButton/OptionsBut:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(123, 448)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CreditsButton/CreditsBut:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(150, 556)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BG/ninePatchRect:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -3.91111)]
-}
 
 [sub_resource type="Animation" id="Animation_jj1mn"]
 resource_name = "cam"
@@ -330,86 +244,9 @@ tracks/0/keys = {
 "values": [Vector3(0.48231, 0.29601, 0.0113825), Vector3(0.434587, -0.216421, -0.347321), Vector3(0.48231, 0.29601, 0.0113825)]
 }
 
-[sub_resource type="Animation" id="Animation_utw0r"]
-resource_name = "new_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Logo:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.466517, 2.46229),
-"update": 0,
-"values": [Vector2(45, -309), Vector2(45, 11)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("PlayButton:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(0.277392, 1.86607),
-"update": 0,
-"values": [Vector2(-283, 351), Vector2(96, 351)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Quit:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 1),
-"transitions": PackedFloat32Array(0.615572, 11.7127),
-"update": 0,
-"values": [Vector2(-270, 642), Vector2(96, 642)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("OptionsButton/OptionsBut:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.6, 1),
-"transitions": PackedFloat32Array(0.68302, 1.27456),
-"update": 0,
-"values": [Vector2(-219, 448), Vector2(123, 448)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CreditsButton/CreditsBut:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.6, 1),
-"transitions": PackedFloat32Array(0.574349, 1.18921),
-"update": 0,
-"values": [Vector2(-215, 556), Vector2(150, 556)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("BG/ninePatchRect:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.3, 1),
-"transitions": PackedFloat32Array(0.241484, 1.36604),
-"update": 0,
-"values": [Vector2(-452, -3.91111), Vector2(0, -3.91111)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obo1l"]
 _data = {
-"RESET": SubResource("Animation_vppp2"),
-"cam": SubResource("Animation_jj1mn"),
-"start": SubResource("Animation_utw0r")
+"cam": SubResource("Animation_jj1mn")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
@@ -656,40 +493,40 @@ tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 active = false
 
 [node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
-transform = Transform3D(0.99664, 0.0817215, -0.0032535, -0.0572318, 0.668451, -0.741537, -0.0584254, 0.739239, 0.670889, 0.0152351, 1.12295, -0.120088)
+transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07825, -0.244268)
 
 [node name="LeftThigh" parent="playerCharacter/BoneAttatchments" index="1"]
-transform = Transform3D(0.878506, 0.477439, 0.0159727, 0.130986, -0.20859, -0.969174, -0.459404, 0.853531, -0.245787, 0.0496045, 0.81257, -0.144815)
+transform = Transform3D(0.933905, 0.353972, 0.0500326, 0.130986, -0.20859, -0.969174, -0.332636, 0.911684, -0.24117, 0.0121273, 0.767869, -0.263971)
 
 [node name="LeftFoot" parent="playerCharacter/BoneAttatchments" index="2"]
-transform = Transform3D(-0.880563, 0.32144, 0.348204, -0.0072104, -0.743766, 0.668351, 0.473847, 0.586033, 0.657252, 0.298561, 0.330486, 0.230541)
+transform = Transform3D(-0.937952, 0.23673, 0.253319, -0.0072104, -0.743766, 0.668351, 0.346652, 0.625074, 0.699325, 0.206407, 0.285785, 0.142388)
 
 [node name="LeftKnee" parent="playerCharacter/BoneAttatchments" index="3"]
-transform = Transform3D(0.899517, 0.138555, -0.414276, 0.0939821, -0.987523, -0.126213, -0.426603, 0.0746022, -0.901339, 0.242762, 0.728181, 0.200498)
+transform = Transform3D(0.950145, 0.12682, -0.284768, 0.0939821, -0.987523, -0.126213, -0.297229, 0.0931637, -0.950233, 0.155334, 0.68348, 0.104869)
 
 [node name="RightThigh" parent="playerCharacter/BoneAttatchments" index="4"]
-transform = Transform3D(0.90355, -0.41187, -0.118053, -0.259904, -0.307827, -0.915241, 0.340631, 0.857657, -0.385187, -0.0507906, 0.815815, -0.137501)
+transform = Transform3D(0.847334, -0.527252, -0.0632828, -0.259904, -0.307827, -0.915241, 0.463096, 0.791971, -0.397871, -0.0883085, 0.771114, -0.270704)
 
 [node name="RightFoot" parent="playerCharacter/BoneAttatchments" index="5"]
-transform = Transform3D(-0.914931, -0.360729, -0.18096, 0.0967138, -0.631313, 0.769455, -0.391819, 0.686516, 0.612491, -0.308042, 0.298979, 0.201249)
+transform = Transform3D(-0.85148, -0.452783, -0.264461, 0.096714, -0.631311, 0.769455, -0.515371, 0.629612, 0.581336, -0.390212, 0.254278, 0.0289368)
 
 [node name="RightKnee" parent="playerCharacter/BoneAttatchments" index="6"]
-transform = Transform3D(0.92467, -0.225024, 0.307085, -0.220121, -0.974124, -0.050997, 0.310622, -0.020441, -0.950295, -0.217421, 0.691278, 0.209481)
+transform = Transform3D(0.872425, -0.219988, 0.436383, -0.220121, -0.974124, -0.050997, 0.436319, -0.0515671, -0.898293, -0.301619, 0.646577, 0.0497039)
 
 [node name="Stomach" parent="playerCharacter/BoneAttatchments" index="7"]
-transform = Transform3D(0.996447, 0.0744368, 0.0391352, -0.050516, 0.901819, -0.429105, -0.067236, 0.425608, 0.902384, -0.000105803, 0.937087, -0.207802)
+transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.429105, 0.072132, 0.431826, 0.899046, -0.0283307, 0.892386, -0.333265)
 
 [node name="Hips" parent="playerCharacter/BoneAttatchments" index="8"]
-transform = Transform3D(0.996829, -0.00625842, 0.0792045, -0.03222, 0.879394, 0.474995, -0.0726245, -0.476046, 0.876412, 0.000769062, 0.814157, -0.141256)
+transform = Transform3D(0.997232, 0.0600719, -0.0435702, -0.03222, 0.879394, 0.474995, 0.0668491, -0.472282, 0.878904, -0.0367282, 0.769456, -0.267245)
 
 [node name="Neck" parent="playerCharacter/BoneAttatchments" index="9"]
-transform = Transform3D(0.999588, -0.00296343, -0.0281967, -0.0140389, 0.812298, -0.583057, 0.0246321, 0.583218, 0.81193, 0.0368014, 1.29935, 0.0749976)
+transform = Transform3D(0.968913, -0.217725, -0.117402, 0.0627512, 0.675438, -0.734729, 0.239269, 0.704528, 0.668109, -0.0311509, 1.25465, -0.0480805)
 
 [node name="leftHand" parent="playerCharacter/BoneAttatchments" index="10"]
-transform = Transform3D(-0.829195, -0.326077, -0.45396, 0.215002, -0.935751, 0.279429, -0.515916, 0.134087, 0.846054, 0.138782, 0.7905, 0.121477)
+transform = Transform3D(-0.749302, -0.341571, -0.567317, 0.215003, -0.935759, 0.279429, -0.626325, 0.0873898, 0.774624, 0.0633661, 0.745798, 0.0121427)
 
 [node name="rightHand" parent="playerCharacter/BoneAttatchments" index="11"]
-transform = Transform3D(-0.856695, 0.147459, 0.494263, 0.300588, -0.635948, 0.710751, 0.419137, 0.757466, 0.50052, -0.0930962, 0.85335, 0.0493454)
+transform = Transform3D(-0.0491915, 0.839489, -0.541108, -0.866486, 0.233572, 0.44114, 0.49673, 0.490573, 0.715931, -0.083807, 0.953135, -0.0194975)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="playerCharacter/BoneAttatchments/rightHand" index="2"]
 transform = Transform3D(-0.585706, -0.810225, 0.022015, -0.11896, 0.112799, 0.986473, -0.801747, 0.575163, -0.162451, -0.0529681, 0.118079, 0.00808746)
@@ -733,18 +570,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="ninePatchRect" type="NinePatchRect" parent="Menu/BG"]
 modulate = Color(1, 1, 1, 0.737255)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.0622222
-anchor_right = 0.286875
-anchor_bottom = 1.11778
+anchor_top = -9.87668e-05
+anchor_right = 0.4
+anchor_bottom = 0.999901
 offset_top = -3.91111
-offset_right = 459.0
-offset_bottom = 1058.09
+offset_bottom = 4.08887
+grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("10_8uso2")
 texture = ExtResource("11_jchm2")
@@ -755,13 +591,16 @@ patch_margin_bottom = 12
 metadata/_edit_use_anchors_ = true
 
 [node name="Logo" type="TextureRect" parent="Menu"]
-layout_mode = 0
-offset_left = 58.0
-offset_top = -309.0
-offset_right = 442.0
-offset_bottom = 1.0
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.357
+offset_left = 45.0
+offset_top = 11.0
+offset_right = 429.0
+offset_bottom = -0.300018
 texture = ExtResource("4_vym1c")
-expand_mode = 1
+expand_mode = 3
+stretch_mode = 4
 
 [node name="Smackneck" type="TextureRect" parent="Menu"]
 modulate = Color(1, 1, 1, 0.345098)
@@ -778,103 +617,68 @@ grow_vertical = 0
 texture = ExtResource("8_imgke")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
-libraries = {
-"": SubResource("AnimationLibrary_obo1l")
-}
-
-[node name="camAnim" type="AnimationPlayer" parent="Menu"]
-libraries = {
-"": SubResource("AnimationLibrary_obo1l")
-}
-
-[node name="PlayButton" type="Control" parent="Menu"]
+[node name="playButton" type="Button" parent="Menu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = 351.0
-offset_right = 1696.0
-offset_bottom = 1251.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="playButton" type="Button" parent="Menu/PlayButton"]
-layout_mode = 0
-offset_right = 273.0
-offset_bottom = 63.0
+anchors_preset = -1
+anchor_top = 0.427
+anchor_bottom = 0.427
+offset_left = 64.0
+offset_top = -0.300018
+offset_right = 320.0
+offset_bottom = 63.7
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 51
 text = "Start"
 
-[node name="Quit" type="Control" parent="Menu"]
+[node name="OptionsBut" type="Button" parent="Menu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 96.0
-offset_top = 642.0
-offset_right = 62496.0
-offset_bottom = 35742.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="quitButton" type="Button" parent="Menu/Quit"]
-layout_mode = 0
-offset_left = 59.0
-offset_right = 201.0
-offset_bottom = 39.0
+anchors_preset = -1
+anchor_top = 0.569
+anchor_bottom = 0.569
+offset_left = 64.0
+offset_top = -0.0999756
+offset_right = 320.0
+offset_bottom = 63.9
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
-theme_override_font_sizes/font_size = 36
-text = "Quit"
-
-[node name="CreditsButton" type="Control" parent="Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
+theme_override_font_sizes/font_size = 41
+text = "Options"
 metadata/_edit_use_anchors_ = true
 
-[node name="CreditsBut" type="Button" parent="Menu/CreditsButton"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 556.0
-offset_right = 306.0
-offset_bottom = 612.0
+[node name="CreditsBut" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.711
+anchor_bottom = 0.711
+offset_left = 64.0
+offset_top = 0.0999756
+offset_right = 256.0
+offset_bottom = 56.1
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 41
 text = "Credits
 "
 
-[node name="OptionsButton" type="Control" parent="Menu"]
+[node name="quitButton" type="Button" parent="Menu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="OptionsBut" type="Button" parent="Menu/OptionsButton"]
-layout_mode = 0
-offset_left = 123.0
-offset_top = 448.0
-offset_right = 337.0
-offset_bottom = 504.0
+anchors_preset = -1
+anchor_top = 0.853111
+anchor_bottom = 0.853111
+offset_left = 64.0
+offset_top = 0.199951
+offset_right = 192.0
+offset_bottom = 48.2
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
-theme_override_font_sizes/font_size = 41
-text = "Options"
+theme_override_font_sizes/font_size = 36
+text = "Quit"
+
+[node name="camAnim" type="AnimationPlayer" parent="Menu"]
+libraries = {
+"": SubResource("AnimationLibrary_obo1l")
+}
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(-0.0491924, 0.839506, -0.541119, -0.866504, 0.233576, 0.441149, 0.49674, 0.490583, 0.715945, -0.0128218, 0.926147, 0.0520496)
@@ -882,17 +686,17 @@ transform = Transform3D(-0.0491924, 0.839506, -0.541119, -0.866504, 0.233576, 0.
 [node name="Beretta" parent="." instance=ExtResource("6_7thhc")]
 transform = Transform3D(-0.812263, 0.582686, -0.0265668, 0.0155694, -0.0238716, -0.999594, -0.583084, -0.812346, 0.0103179, -0.493651, 0.721107, -0.260636)
 
-[node name="menuSound" type="AudioStreamPlayer2D" parent="."]
+[node name="menuSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_tlj7m")
 bus = &"UI"
 
-[node name="menuMusic" type="AudioStreamPlayer2D" parent="."]
+[node name="menuMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_swnst")
 volume_db = -5.0
 bus = &"Music"
 
-[connection signal="pressed" from="Menu/PlayButton/playButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Menu/Quit/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/quitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]
 
 [editable path="playerCharacter"]

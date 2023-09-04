@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=10 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -6,6 +6,8 @@
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="4_8av4t"]
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="5_1qj5n"]
 [ext_resource type="Texture2D" uid="uid://bshsrbn82o1rq" path="res://assets/textures/crosshair/Crosshair.png" id="6_44jcq"]
+[ext_resource type="Texture2D" uid="uid://bxxkaxb70qsu8" path="res://assets/textures/ui/hud.png" id="7_njr07"]
+[ext_resource type="Texture2D" uid="uid://btlv87lcgekb7" path="res://assets/textures/ui/healthbar.png" id="8_6fqy3"]
 
 [sub_resource type="Theme" id="Theme_wcn1k"]
 default_font = ExtResource("4_8av4t")
@@ -60,22 +62,20 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="WIP" type="Label" parent="HUD"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.611765)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -170.5
-offset_right = 170.5
-offset_bottom = 33.0
+offset_left = -350.5
+offset_right = 350.5
+offset_bottom = 37.0
 grow_horizontal = 2
 theme = SubResource("Theme_wcn1k")
 theme_override_font_sizes/font_size = 33
 text = "WORK IN PROGRESS - DOES NOT REPRESENT THE FINAL LOOK OF THE GAME"
 
 [node name="Logo" type="TextureRect" parent="HUD"]
-visible = false
 self_modulate = Color(1, 1, 1, 0.372549)
 layout_mode = 1
 anchors_preset = 3
@@ -83,9 +83,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -184.0
+offset_left = -167.0
 offset_top = -183.0
-offset_right = -17.0
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("5_1qj5n")
@@ -98,14 +97,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
+offset_left = -3.5
 offset_top = -4.0
-offset_right = 3.0
+offset_right = 3.5
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_44jcq")
 expand_mode = 1
+
+[node name="HealthWeaponHUD" type="TextureRect" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_njr07")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="textureProgressBar" type="TextureProgressBar" parent="HUD/HealthWeaponHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -96.0
+offset_right = 827.0
+offset_bottom = -11.0
+grow_vertical = 0
+step = 0.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 190
+stretch_margin_right = 275
+texture_progress = ExtResource("8_6fqy3")
 
 [connection signal="mouseButtonHeld" from="inputComponent" to="." method="_on_input_component_mouse_button_held"]
 [connection signal="mouseButtonPressed" from="inputComponent" to="." method="_on_input_component_mouse_button_pressed"]

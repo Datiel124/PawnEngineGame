@@ -22,6 +22,8 @@ var vertVeclocity = Vector3.ZERO
 	get:
 		return followNode
 #onReady Set
+@onready var hud = $HUD
+@onready var weaponHud = $HUD/weaponBar
 @onready var horizontal = $camPivot/horizonal
 @onready var vertical = $camPivot/horizonal/vertical
 @onready var camera = $camPivot/horizonal/vertical/Camera
@@ -78,6 +80,14 @@ func _input(_event):
 
 
 func _physics_process(delta):
+	#Weapon Hud
+	if !followNode == null:
+		if followingEntity is BasePawn:
+			if followingEntity.currentItem:
+				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.8),12*delta)
+			else:
+				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
+	
 	##Recoil
 	camTargetRot = lerp(camTargetRot, Vector3.ZERO, camReturnSpeed * delta)
 	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
@@ -98,7 +108,8 @@ func _physics_process(delta):
 	if !followNode == null:
 		if followingEntity is BasePawn:
 			followingEntity.meshRotation = camRot
-
+			hud.healthBar.value = lerpf(hud.healthBar.value,followingEntity.healthComponent.health, 20 * delta)
+			
 	##Lerp to FollowNode
 
 	if !followNode == null:

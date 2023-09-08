@@ -20,9 +20,14 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export var isAiming = false
 @export var isBusy = false
 @export_subgroup("Stats")
+## How much damage does the weapon do?
 @export var weaponDamage = 5.0
+## How fast does the weapon fire?
 @export var weaponFireRate = 0.4
+## Determines how much impulse is applied towards physics objects.
 @export var weaponImpulse = 5.0
+## How many bullets are shot out? Useful for shotguns. Default is 1.
+@export var weaponShots = 1
 @export_subgroup("Recoil")
 @export var weaponRecoil : Vector3 = Vector3(5 ,1 , 0.25)
 @export var weaponRecoilStrength : float = 8.0
@@ -139,13 +144,17 @@ func fire():
 		weaponOwner.attachedCam.fireRecoil()
 
 		#Bullet Creation/Raycast Bullet Creation
-		createMuzzle()
-		if checkShooter():
-			if weaponOwner.attachedCam.camCast.is_colliding():
-				raycastHit()
-				var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
-				if !pt == null:
-					pt.look_at(getRayColPoint() + getRayNormal())
+		for bullet in weaponShots:
+			bullet = createMuzzle()
+			if weaponShots > 1:
+				bullet.position.x += randf_range(-0.09,0.09)
+				bullet.position.y += randf_range(-0.05,0.05)
+			if checkShooter():
+				if weaponOwner.attachedCam.camCast.is_colliding():
+					raycastHit()
+					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
+					if !pt == null:
+						pt.look_at(getRayColPoint() + getRayNormal())
 
 		await get_tree().create_timer(weaponFireRate).timeout
 		isFiring = false
@@ -161,6 +170,7 @@ func createMuzzle():
 			else:
 				bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
 			globalGameManager.world.worldMisc.add_child(bulletTrail)
+			return bulletTrail
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 

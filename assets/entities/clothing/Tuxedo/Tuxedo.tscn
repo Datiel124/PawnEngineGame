@@ -10,6 +10,7 @@ leftUpperarm = true
 rightUpperarm = true
 rightForearm = true
 leftForearm = true
+lowerBody = true
 
 [node name="clothingMesh" parent="." index="0"]
 mesh = ExtResource("2_gbdvn")

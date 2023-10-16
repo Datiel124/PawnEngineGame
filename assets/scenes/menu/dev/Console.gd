@@ -8,7 +8,19 @@ var command_copy_idx = -1
 @onready var msgbox : VBoxContainer = $window/control/panel/panel/scrollContainer/ConsoleMessageContainer
 @onready var console : Window = $window
 @onready var cvars : Node = $cvars
+@onready var autocomplete_label : RichTextLabel = $window/control/AutoComplete
 var expression = Expression.new()
+var safe_mode := false:
+	set(value):
+		if value:
+			add_console_message("-- Console is now in safe mode --", Color.DIM_GRAY)
+		else:
+			add_console_message("-- Console left safe mode --", Color.DIM_GRAY)
+		safe_mode = value
+
+
+var autocomplete_search_index : int = 0
+var autocompletes : Array[String]
 
 
 func _ready():

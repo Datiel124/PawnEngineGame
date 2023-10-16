@@ -1,0 +1,12 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bka1av68xmqfa"]
+
+[ext_resource type="AudioStream" uid="uid://bs3xofj7vdju3" path="res://assets/sounds/ragdollSounds/hit2.wav" id="1_nqf7s"]
+[ext_resource type="AudioStream" uid="uid://cpf5aa7d015yq" path="res://assets/sounds/ragdollSounds/hit4.wav" id="2_cmseg"]
+
+[resource]
+streams_count = 2
+random_pitch = 1.0
+stream_0/stream = ExtResource("1_nqf7s")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_cmseg")
+stream_1/weight = 1.0

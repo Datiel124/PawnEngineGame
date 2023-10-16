@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://jwq6tye7ok4r"]
+
+[ext_resource type="PackedScene" uid="uid://cdqtbg28cxotd" path="res://assets/entities/clothing/clothingBase.tscn" id="1_6mmub"]
+[ext_resource type="ArrayMesh" uid="uid://caitlsrl8lvxo" path="res://assets/models/pawn/clothing/glasses/siftinShades.res" id="2_u4g3f"]
+
+[node name="SiftinShades" instance=ExtResource("1_6mmub")]
+itemName = "Siftin' Shades"
+
+[node name="clothingMesh" parent="." index="0"]
+mesh = ExtResource("2_u4g3f")

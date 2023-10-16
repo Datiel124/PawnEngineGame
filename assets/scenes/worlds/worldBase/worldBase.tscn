@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b4dpjminsf4mx"]
 
 [ext_resource type="Script" path="res://assets/scripts/worldRelated/worldScript/worldScript.gd" id="1_vjirs"]
-[ext_resource type="PackedScene" uid="uid://bq7hp2kh0epi3" path="res://assets/entities/world/dayNight/dayNightCycle.tscn" id="2_w06lg"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://GodotSky/GodotSky.tscn" id="2_v0sdl"]
 
 [node name="worldBase" type="Node"]
 script = ExtResource("1_vjirs")
@@ -14,14 +14,7 @@ script = ExtResource("1_vjirs")
 
 [node name="Environment" type="Node" parent="."]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.195125, -0.357449, 0.913322, 0, 0.931221, 0.364454, -0.980778, -0.0711142, 0.181705, 13.0998, 6.69348, 0.228307)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-
-[node name="dayNightCycle" parent="Environment" node_paths=PackedStringArray("sun") instance=ExtResource("2_w06lg")]
-sun = NodePath("../DirectionalLight3D")
+[node name="GodotSky" parent="Environment" instance=ExtResource("2_v0sdl")]
 
 [node name="Geometry" type="Node3D" parent="."]
 

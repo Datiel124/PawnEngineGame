@@ -1,5 +1,8 @@
 extends Node
 const particles = {"Blood" : preload("res://assets/particles/bloodSpurt/bloodSpurt.tscn")}
+const bulletHoles = {"Flesh": preload("res://assets/entities/bulletHoles/flesh/flesh.tscn"),
+"default":preload("res://assets/entities/bulletHoles/default/BulletHole.tscn") }
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +18,7 @@ func detectMaterial(object:Object):
 		return "Blood"
 	else:
 		return "None"
-	
+
 func createParticle(particle:String, pos:Vector3 = Vector3.ZERO, rot:Vector3 = Vector3.ZERO):
 	if globalGameManager.world:
 		if !particle == "None":
@@ -25,3 +28,11 @@ func createParticle(particle:String, pos:Vector3 = Vector3.ZERO, rot:Vector3 = V
 			particleToCreate.global_rotation = rot
 			particleToCreate.emitting = true
 			return particleToCreate
+
+func spawnBulletHole(hole:String,parent,pos:Vector3 = Vector3.ZERO, rot:Vector3 = Vector3.ZERO, ):
+	if globalGameManager.world:
+		var bHole = bulletHoles[str(hole)].instantiate()
+		parent.add_child(bHole)
+		bHole.global_position = pos
+		bHole.global_rotation = rot
+		return bHole

@@ -22,8 +22,8 @@ func accelerateToVel(velocity:Vector3,delta, useX:bool=true,useY:bool=true,useZ:
 		vVelocity.y = lerp(vVelocity.y, velocity.y * vMaxSpeed, delta * vAcceleration )
 	if useZ:
 		vVelocity.z = lerp(vVelocity.z, velocity.z * vMaxSpeed, delta * vAcceleration)
-	
+
 	return vVelocity
-	
+
 func getAcceleration():
 	return vAcceleration

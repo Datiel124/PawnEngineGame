@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://iooyvec74nw5"]
+[gd_scene load_steps=6 format=3 uid="uid://iooyvec74nw5"]
 
 [ext_resource type="Script" path="res://assets/scripts/entities/ragdollBone/ragdollBone.gd" id="1_6av8o"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e3meg"]
-streams_count = 1
-stream_0/weight = 1.0
+[ext_resource type="AudioStream" uid="uid://ht64k76bbtg2" path="res://assets/entities/ragdollBone/LightImpact.tres" id="2_fw7ax"]
+[ext_resource type="AudioStream" uid="uid://bx2btskodl2yg" path="res://assets/sounds/ragdollSounds/wosh1.wav" id="2_r4vec"]
+[ext_resource type="AudioStream" uid="uid://bka1av68xmqfa" path="res://assets/entities/ragdollBone/MediumImpact.tres" id="3_efgsc"]
+[ext_resource type="AudioStream" uid="uid://c3r7kg1lrylrx" path="res://assets/entities/ragdollBone/HeavyImpact.tres" id="4_liv5d"]
 
 [node name="ragdollBone" type="PhysicalBone3D"]
 script = ExtResource("1_6av8o")
-collisionSound = SubResource("AudioStreamRandomizer_e3meg")
+inAirSound = ExtResource("2_r4vec")
+lightImpactSounds = ExtResource("2_fw7ax")
+mediumImpactSounds = ExtResource("3_efgsc")
+heavyImpactSounds = ExtResource("4_liv5d")

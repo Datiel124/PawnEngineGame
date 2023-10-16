@@ -1,0 +1,20 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://ht64k76bbtg2"]
+
+[ext_resource type="AudioStream" uid="uid://ff7bu7igicx3" path="res://assets/sounds/ragdollSounds/hit1.wav" id="1_a5c74"]
+[ext_resource type="AudioStream" uid="uid://bs3xofj7vdju3" path="res://assets/sounds/ragdollSounds/hit2.wav" id="2_ueir5"]
+[ext_resource type="AudioStream" uid="uid://slmolt6qnk4d" path="res://assets/sounds/ragdollSounds/hit3.wav" id="3_jvdgb"]
+[ext_resource type="AudioStream" uid="uid://cpf5aa7d015yq" path="res://assets/sounds/ragdollSounds/hit4.wav" id="4_dq14f"]
+[ext_resource type="AudioStream" uid="uid://dibcd53odd7ea" path="res://assets/sounds/ragdollSounds/hit5.wav" id="5_gyn0t"]
+
+[resource]
+streams_count = 5
+stream_0/stream = ExtResource("1_a5c74")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ueir5")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_jvdgb")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("4_dq14f")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("5_gyn0t")
+stream_4/weight = 1.0

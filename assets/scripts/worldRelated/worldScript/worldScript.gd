@@ -22,6 +22,10 @@ signal worldLoaded
 ## What type of world is this scene? If its a general area the player can explore to find things like items or quests, it'd be an area. If its a zone where the player can save the game or restock on items it'd be a safehouse. If its a sector full of enemies, arena.
 @export_enum("Area", "Shop", "Safehouse", "Arena") var worldType = 0
 
+@export_category("Soundscape")
+@export var playOnStart = false
+@export var soundScape : AudioStream
+
 @export_category("Debug Parameters")
 ##Spawn Type to use when loading the scene
 @export_enum("Player","Camera","None") var spawnType = 0
@@ -32,6 +36,13 @@ func _enter_tree():
 
 func _ready():
 	emit_signal("worldLoaded")
+	##Soundscape
+	if playOnStart:
+		if !soundScape == null:
+			MusicManager.change_song_to(soundScape)
+		else:
+			print_rich("[color=red]C'mon faggot, atleast set the soundscape. Its null retard.[/color]")
+
 	##Spawn a player at a point.
 	if !globalGameManager.isMultiplayerGame:
 		pass

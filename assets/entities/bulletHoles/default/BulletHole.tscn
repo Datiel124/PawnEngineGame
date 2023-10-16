@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dend7ate7mq6e"]
+
+[ext_resource type="Texture2D" uid="uid://djj56gtf5cx7r" path="res://assets/textures/bullet/holes/default/bullet_hole.png" id="1_gqobj"]
+
+[node name="bulletHole" type="Node3D"]
+
+[node name="decal" type="Decal" parent="."]
+size = Vector3(0.132018, 0.15534, 0.117771)
+texture_albedo = ExtResource("1_gqobj")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 15.0

@@ -1,6 +1,7 @@
 extends CharacterBody3D
 class_name PlayerCamera
 ##Variable Set
+var lowHP = false
 var freeCursor = false:
 	set(value):
 		if value == false:
@@ -22,6 +23,8 @@ var vertVeclocity = Vector3.ZERO
 	get:
 		return followNode
 #onReady Set
+@onready var vignette = $HUD/vignette
+@onready var hpAudio = $HUD/vignette/lowHP
 @onready var hud = $HUD
 @onready var weaponHud = $HUD/weaponBar
 @onready var horizontal = $camPivot/horizonal
@@ -87,7 +90,7 @@ func _physics_process(delta):
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.8),12*delta)
 			else:
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
-	
+
 	##Recoil
 	camTargetRot = lerp(camTargetRot, Vector3.ZERO, camReturnSpeed * delta)
 	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
@@ -109,7 +112,7 @@ func _physics_process(delta):
 		if followingEntity is BasePawn:
 			followingEntity.meshRotation = camRot
 			hud.healthBar.value = lerpf(hud.healthBar.value,followingEntity.healthComponent.health, 20 * delta)
-			
+
 	##Lerp to FollowNode
 
 	if !followNode == null:
@@ -125,8 +128,24 @@ func _physics_process(delta):
 			horizontal.position.x = lerp(horizontal.position.x, cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		else:
 			horizontal.position.x = lerp(horizontal.position.x, cameraData.itemEquipOffset.x, cameraData.itemEquipLerpSpeed*delta)
+	#Low HP
+	if lowHP:
+		vignette.show()
+		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 0.8,2*delta))
+		if !hpAudio.playing:
+			hpAudio.play()
+	else:
+		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 10.0,4*delta))
+		hpAudio.stop()
 
-
+	if !followNode == null:
+		if followingEntity is BasePawn:
+			if followingEntity.healthComponent:
+				if !followingEntity.healthComponent.isDead:
+					if followingEntity.healthComponent.health <= 30:
+						lowHP = true
+					else:
+						lowHP = false
 	#Freecam Movement
 	if isFreecam:
 		followNode = null

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=15 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -9,10 +9,18 @@
 [ext_resource type="Texture2D" uid="uid://bshsrbn82o1rq" path="res://assets/textures/crosshair/Crosshair.png" id="6_44jcq"]
 [ext_resource type="Texture2D" uid="uid://bkhy36pmg4nfi" path="res://assets/textures/ui/hpBar.png" id="7_0egit"]
 [ext_resource type="Texture2D" uid="uid://btlv87lcgekb7" path="res://assets/textures/ui/healthbar.png" id="8_6fqy3"]
+[ext_resource type="AudioStream" uid="uid://d3eqn61hfgwuf" path="res://assets/sounds/playerhurt/playerhurtambience.wav" id="9_jgajw"]
 [ext_resource type="Texture2D" uid="uid://btse3nqgw3085" path="res://assets/textures/ui/ammoBar.png" id="10_w541l"]
+[ext_resource type="Shader" path="res://assets/scripts/shaders/vignette/vignette.gdshader" id="11_4xkin"]
 
 [sub_resource type="Theme" id="Theme_wcn1k"]
 default_font = ExtResource("4_8av4t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vands"]
+shader = ExtResource("11_4xkin")
+shader_parameter/color = Color(0.294118, 0, 0, 1)
+shader_parameter/multiplier = 0.3
+shader_parameter/softness = 10.0
 
 [node name="Camera" type="CharacterBody3D" node_paths=PackedStringArray("velocityComponent", "inputComponent")]
 collision_layer = 0
@@ -110,6 +118,23 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_44jcq")
 expand_mode = 1
+
+[node name="vignette" type="ColorRect" parent="HUD"]
+visible = false
+material = SubResource("ShaderMaterial_vands")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="lowHP" type="AudioStreamPlayer" parent="HUD/vignette"]
+stream = ExtResource("9_jgajw")
+volume_db = -15.0
+bus = &"Sounds"
 
 [node name="textureRect" type="TextureRect" parent="HUD"]
 modulate = Color(1, 1, 1, 0.639216)

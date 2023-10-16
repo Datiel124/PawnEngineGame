@@ -2,15 +2,16 @@ extends CharacterBody3D
 class_name BasePawn
 
 ##Signals
-signal playerAssigned
-signal aiAssigned
+signal controllerAssigned
 signal clothingChanged
 signal itemChanged
 
 #Sounds
 @onready var soundHolder = $Sounds
 @onready var equipSound = $Sounds/equipSound
+@onready var footstepSounds = $Sounds/footsteps
 ##Onready
+@onready var footstepMaterialChecker = $Misc/footstepMaterialChecker
 
 ##IK
 @onready var bodyIK = $Mesh/MaleSkeleton/Skeleton3D/bodyIK
@@ -59,15 +60,9 @@ var meshRotation : float = 0.0
 	set(value):
 		inputComponent = value
 		if value == InputComponent:
-			emit_signal("playerAssigned")
+			emit_signal("controllerAssigned")
 	get:
 		return inputComponent
-@export var aiClassComponent : Component:
-	set(value):
-		aiClassComponent = value
-		emit_signal("aiAssigned")
-	get:
-		return aiClassComponent
 
 ##Variables
 @export_subgroup("Camera Behavior")
@@ -158,6 +153,13 @@ func _ready():
 
 
 func _physics_process(delta):
+	if forceAnimation:
+		animationTree.active = false
+		if !animationPlayer.is_playing():
+			animationPlayer.play(animationToForce)
+	else:
+		animationTree.active = true
+
 	if pawnEnabled:
 		if !isPawnDead:
 			##Debug
@@ -171,6 +173,8 @@ func _physics_process(delta):
 
 			##Movement Code
 			#TODO - AI Stuff here I think
+			if !isMoving and footstepSounds.playing:
+				footstepSounds.stop()
 
 			##Item Equip
 			if !currentItem == null:
@@ -326,6 +330,9 @@ func die():
 	collisionEnabled = false
 	isPawnDead = true
 	$remover.start()
+	footstepSounds.queue_free()
+	if !attachedCam == null:
+		attachedCam.lowHP = false
 
 
 func _on_health_component_health_depleted():
@@ -339,6 +346,7 @@ func createRagdoll(impulse_bone : int = 0):
 		var ragdoll = ragdollScene.instantiate()
 		ragdoll.global_transform = pawnMesh.global_transform
 		ragdoll.rotation = pawnMesh.rotation
+		ragdoll.targetSkeleton = pawnSkeleton
 		globalGameManager.world.worldMisc.add_child(ragdoll)
 		for bones in ragdoll.ragdollSkeleton.get_bone_count():
 			ragdoll.ragdollSkeleton.set_bone_pose_position(bones, pawnSkeleton.get_bone_pose_position(bones))
@@ -423,6 +431,7 @@ func checkClothingHider():
 				leftLowerLeg.hide()
 
 func jump():
+	playFootstepAudio()
 	if !isJumping:
 		isJumping = true
 		canJump = false
@@ -529,3 +538,19 @@ func _on_remover_timeout():
 func removeComponents():
 	velocityComponent = null
 	inputComponent = null
+
+func checkFootstepMateral():
+	if footstepMaterialChecker.is_colliding():
+		return
+func playFootstepAudio(soundprofile : AudioStream = null):
+	if !footstepSounds == null:
+		if is_on_floor() and isMoving:
+			if !soundprofile == null:
+				footstepSounds.stream = soundprofile
+
+			if !footstepSounds.playing:
+				footstepSounds.play()
+
+
+func _on_footsteps_finished():
+	footstepSounds.stop()

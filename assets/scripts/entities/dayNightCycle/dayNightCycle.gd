@@ -8,7 +8,7 @@ class_name DayNightCycle
 @export var worldTime : float
 @export var dayLength : float = 10.0
 @export var startTime : float = 4.0
-@export var rateTime : float 
+@export var rateTime : float
 @export var sun : DirectionalLight3D
 @export var moon : DirectionalLight3D
 @export_subgroup("Sun")
@@ -32,11 +32,11 @@ func _ready():
 func _process(delta):
 	if !freezeTime:
 		worldTime += rateTime*delta
-	
+
 	if worldTime >= 1.0:
 		worldTime = 0.0
-	
-	
+
+
 	#Sun Rotation
 	sun.rotation_degrees.x = worldTime * 360 + 90
 	sun.light_color = sunColor.sample(worldTime)
@@ -46,12 +46,12 @@ func _process(delta):
 	moon.rotation_degrees.x = worldTime * 360 + 270
 	moon.light_color = moonColor.sample(worldTime)
 	moon.light_energy = moonIntensity.sample(worldTime)
-	
-	
+
+
 	#Sun/Moon Enable
 	sun.visible = sun.light_energy > 0
 	moon.visible = moon.light_energy > 0
-	
+
 	#Environment Color Set
 	environment.environment.sky.sky_material.set("ground_horizon_color", skyHorizonColor.sample(worldTime))
 	environment.environment.sky.sky_material.set("ground_bottom_color", skyTopColor.sample(worldTime))

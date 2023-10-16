@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=58 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="8_imgke"]
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="8_klk30"]
 [ext_resource type="Theme" uid="uid://cppiwhssjdjlp" path="res://assets/misc/editorTheme/vertex_4.1-dev3-r0.res" id="10_8uso2"]
+[ext_resource type="Script" path="res://assets/scripts/AnimationControl/AnimatedControl.gd" id="10_b7a2x"]
 [ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
 [ext_resource type="Texture2D" uid="uid://y3t3guvaiihk" path="res://assets/textures/menu/bg.png" id="11_jchm2"]
 [ext_resource type="AudioStream" uid="uid://bo6wh6ciub45e" path="res://assets/music/menu/loltune.mp3" id="15_f36bv"]
@@ -220,12 +221,31 @@ script/source = "extends Control
 func _ready():
 #	animPlayer.play(\"start\")
 	$camAnim.play(\"cam\")
-
-
-
+	$bottom/animationPlayer.play(\"flyup\")
+	$logoAnim/logoAnim.play(\"logoanim\")
 func _on_play_button_pressed():
 	pass # Replace with function body.
 "
+
+[sub_resource type="Animation" id="Animation_wpqb2"]
+resource_name = "flyup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:metadata/blend_1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.7),
+"transitions": PackedFloat32Array(0.15932, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_163x7"]
+_data = {
+"flyup": SubResource("Animation_wpqb2")
+}
 
 [sub_resource type="Animation" id="Animation_jj1mn"]
 resource_name = "cam"
@@ -247,6 +267,27 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_obo1l"]
 _data = {
 "cam": SubResource("Animation_jj1mn")
+}
+
+[sub_resource type="Animation" id="Animation_gcjaj"]
+resource_name = "logoanim"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:metadata/blend_1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1.7),
+"transitions": PackedFloat32Array(0.210224, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ebuhq"]
+_data = {
+"logoanim": SubResource("Animation_gcjaj")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
@@ -562,122 +603,231 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = SubResource("GDScript_aalkd")
 
-[node name="BG" type="Control" parent="Menu"]
+[node name="bottom" type="Control" parent="Menu" node_paths=PackedStringArray("target_controls")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = 851.0
+offset_right = 4.0
+offset_bottom = 5.99988
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
+script = ExtResource("10_b7a2x")
+target_controls = [NodePath("start"), NodePath("end")]
+interpolate_size = true
+metadata/blend_0 = 0.0
+metadata/blend_1 = 1.0
 
-[node name="ninePatchRect" type="NinePatchRect" parent="Menu/BG"]
-modulate = Color(1, 1, 1, 0.737255)
+[node name="ninePatchRect" type="NinePatchRect" parent="Menu/bottom"]
+modulate = Color(1, 1, 1, 0.831373)
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -9.87668e-05
-anchor_right = 0.4
-anchor_bottom = 0.999901
-offset_top = -3.91111
-offset_bottom = 4.08887
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = -0.004
+anchor_right = 0.999
+anchor_bottom = 1.073
+offset_left = 0.460001
+offset_top = 1.0
+offset_right = 0.614868
+offset_bottom = -0.0150032
+grow_vertical = 0
 theme = ExtResource("10_8uso2")
 texture = ExtResource("11_jchm2")
 patch_margin_left = 14
 patch_margin_top = 12
 patch_margin_right = 13
 patch_margin_bottom = 12
-metadata/_edit_use_anchors_ = true
 
-[node name="Logo" type="TextureRect" parent="Menu"]
+[node name="start" type="ReferenceRect" parent="Menu/bottom"]
+visible = false
+top_level = true
 layout_mode = 1
 anchors_preset = -1
-anchor_bottom = 0.357
-offset_left = 45.0
-offset_top = 11.0
-offset_right = 429.0
-offset_bottom = -0.300018
-texture = ExtResource("4_vym1c")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="Smackneck" type="TextureRect" parent="Menu"]
-modulate = Color(1, 1, 1, 0.345098)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchor_left = -0.007
+anchor_top = 0.944
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -152.0
-offset_top = -165.0
-grow_horizontal = 0
+anchor_bottom = 1.029
+offset_left = 0.200001
+offset_top = 50.4
+offset_right = 4.0
+offset_bottom = 26.9
 grow_vertical = 0
-texture = ExtResource("8_imgke")
-expand_mode = 1
+border_width = 2.0
 
-[node name="playButton" type="Button" parent="Menu"]
+[node name="end" type="ReferenceRect" parent="Menu/bottom"]
+visible = false
+top_level = true
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.427
-anchor_bottom = 0.427
-offset_left = 64.0
-offset_top = -0.300018
-offset_right = 320.0
-offset_bottom = 63.7
-theme = ExtResource("10_8uso2")
-theme_override_fonts/font = ExtResource("8_klk30")
-theme_override_font_sizes/font_size = 51
-text = "Start"
+anchor_left = -0.007
+anchor_top = 0.946
+anchor_right = 1.003
+anchor_bottom = 1.007
+offset_left = 0.200001
+offset_top = -0.400024
+offset_right = -0.800049
+offset_bottom = -0.30011
+grow_vertical = 0
 
-[node name="OptionsBut" type="Button" parent="Menu"]
+[node name="animationPlayer" type="AnimationPlayer" parent="Menu/bottom"]
+libraries = {
+"": SubResource("AnimationLibrary_163x7")
+}
+
+[node name="OptionsBut" type="Button" parent="Menu/bottom"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.569
-anchor_bottom = 0.569
-offset_left = 64.0
-offset_top = -0.0999756
-offset_right = 320.0
-offset_bottom = 63.9
+anchor_left = 0.819619
+anchor_top = 0.055
+anchor_right = 0.874
+anchor_bottom = 0.836182
+offset_left = 0.314941
+offset_top = -0.0249968
+offset_right = 36.49
+offset_bottom = 18.01
+scale = Vector2(0.7, 0.7)
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 41
 text = "Options"
 metadata/_edit_use_anchors_ = true
 
-[node name="CreditsBut" type="Button" parent="Menu"]
+[node name="playButton" type="Button" parent="Menu/bottom"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.711
-anchor_bottom = 0.711
-offset_left = 64.0
-offset_top = 0.0999756
-offset_right = 256.0
-offset_bottom = 56.1
+anchor_left = 0.763
+anchor_top = 0.055
+anchor_right = 0.815
+anchor_bottom = 0.818
+offset_left = -0.244995
+offset_top = -0.0249968
+offset_right = 35.7749
+offset_bottom = 18.01
+scale = Vector2(0.7, 0.7)
+theme = ExtResource("10_8uso2")
+theme_override_fonts/font = ExtResource("8_klk30")
+theme_override_font_sizes/font_size = 51
+text = "Start"
+
+[node name="CreditsBut" type="Button" parent="Menu/bottom"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.877
+anchor_top = 0.073
+anchor_right = 0.935
+anchor_bottom = 0.805
+offset_left = 0.64502
+offset_top = -0.0149961
+offset_right = 40.975
+offset_bottom = 19.725
+scale = Vector2(0.7, 0.7)
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 41
 text = "Credits
 "
 
-[node name="quitButton" type="Button" parent="Menu"]
+[node name="quitButton" type="Button" parent="Menu/bottom"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.853111
-anchor_bottom = 0.853111
-offset_left = 64.0
-offset_top = 0.199951
-offset_right = 192.0
-offset_bottom = 48.2
+anchor_left = 0.939
+anchor_top = 0.073
+anchor_right = 0.988
+anchor_bottom = 0.875
+offset_left = -0.485107
+offset_top = -0.0149961
+offset_right = 33.3799
+offset_bottom = 18.875
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
 theme = ExtResource("10_8uso2")
 theme_override_fonts/font = ExtResource("8_klk30")
 theme_override_font_sizes/font_size = 36
 text = "Quit"
 
+[node name="Smackneck" type="TextureRect" parent="Menu"]
+modulate = Color(1, 1, 1, 0.345098)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_bottom = 165.0
+grow_horizontal = 0
+texture = ExtResource("8_imgke")
+expand_mode = 1
+
 [node name="camAnim" type="AnimationPlayer" parent="Menu"]
 libraries = {
 "": SubResource("AnimationLibrary_obo1l")
+}
+
+[node name="logoAnim" type="Control" parent="Menu" node_paths=PackedStringArray("target_controls")]
+layout_mode = 1
+anchor_top = -0.002
+anchor_right = 0.325
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = 625.8
+offset_right = -689.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.172809
+mouse_filter = 1
+script = ExtResource("10_b7a2x")
+target_controls = [NodePath("Start"), NodePath("End")]
+metadata/blend_0 = 0.0
+metadata/blend_1 = 0.0
+
+[node name="Logo" type="TextureRect" parent="Menu/logoAnim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.017
+anchor_top = 0.162
+anchor_right = 0.674
+anchor_bottom = 0.994
+offset_left = -3.335
+offset_top = 16.098
+offset_right = 78.13
+offset_bottom = 11.626
+rotation = 0.0618739
+texture = ExtResource("4_vym1c")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Start" type="ReferenceRect" parent="Menu/logoAnim"]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -276.0
+offset_right = -158.0
+offset_bottom = -10.0
+grow_vertical = 0
+
+[node name="End" type="ReferenceRect" parent="Menu/logoAnim"]
+top_level = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.574
+anchor_right = 0.019
+anchor_bottom = 0.984
+offset_left = -68.4
+offset_top = 101.4
+offset_right = 197.6
+offset_bottom = -1.60004
+rotation = 0.032523
+
+[node name="logoAnim" type="AnimationPlayer" parent="Menu/logoAnim"]
+libraries = {
+"": SubResource("AnimationLibrary_ebuhq")
 }
 
 [node name="Marker3D" type="Marker3D" parent="."]
@@ -695,8 +845,8 @@ stream = SubResource("AudioStreamRandomizer_swnst")
 volume_db = -5.0
 bus = &"Music"
 
-[connection signal="pressed" from="Menu/playButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="Menu/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Menu/bottom/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Menu/bottom/quitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]
 
 [editable path="playerCharacter"]

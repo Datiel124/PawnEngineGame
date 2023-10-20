@@ -91,10 +91,18 @@ func _physics_process(delta):
 			else:
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
 
-	##Recoil
-	camTargetRot = lerp(camTargetRot, Vector3.ZERO, camReturnSpeed * delta)
+	##Recoil - Currently broken.. Needs fixing..
+	if followingEntity:
+		if followingEntity.currentItem:
+			if followingEntity.currentItem.isFiring:
+				vertical.rotation_degrees.x = rad_to_deg(camCurrRot.x)
+
+	camTargetRot.x = lerp(camTargetRot.x, 0.0, camReturnSpeed * delta)
+	camTargetRot.y = lerp(camTargetRot.y, 0.0, camReturnSpeed * delta)
 	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
-	camera.rotation_degrees = camCurrRot
+
+	horizontal.rotation_degrees.y = rad_to_deg(camCurrRot.y)
+	camera.rotation_degrees.y = camCurrRot.z
 
 	#Zooming
 	if isZoomed:
@@ -183,11 +191,11 @@ func _on_input_component_mouse_button_held(button):
 
 
 func _on_input_component_on_mouse_motion(motion):
-	motionX = -motion.relative.x * globalGameManager.mouseSens
-	motionY = -motion.relative.y * globalGameManager.mouseSens
+	motionX = rad_to_deg(-motion.relative.x * globalGameManager.mouseSens)
+	motionY = rad_to_deg(-motion.relative.y * globalGameManager.mouseSens)
 
-	camPivot.rotation.y += motionX
-	vertical.rotation.x += motionY
+	camPivot.rotation_degrees.y += motionX
+	vertical.rotation_degrees.x += motionY
 	#Lock Cam
 	vertical.rotation.x = clamp(vertical.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 

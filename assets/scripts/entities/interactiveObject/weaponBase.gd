@@ -30,6 +30,7 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export var weaponShots = 1
 @export_subgroup("Recoil")
 @export var weaponRecoil : Vector3 = Vector3(5 ,1 , 0.25)
+@export var weaponRecoilVariation : Vector3 = Vector3.ZERO
 @export var weaponRecoilStrength : float = 8.0
 @export var weaponSpread = 0.25
 @export_subgroup("Aiming Recoil")
@@ -104,18 +105,11 @@ func _physics_process(delta):
 				else:
 					useRightHand = false
 
-				if weaponOwner.attachedCam:
-					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
-					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
 
 				if !weaponOwner.meshLookAt:
 					weaponOwner.meshLookAt = true
 				if !weaponRemoteState.get_current_node() == "aim":
 					weaponRemoteState.travel("aim")
-			else:
-				if weaponOwner.attachedCam:
-					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
-					weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 			if weaponOwner.freeAim:
 				if !weaponRemoteState.get_current_node() == "aim":
 					if useLeftHandFreeAiming:
@@ -141,7 +135,14 @@ func fire():
 		isFiring = true
 		shot_fired.emit()
 		weaponRemoteState.start("fire")
-		weaponOwner.attachedCam.fireRecoil()
+		weaponOwner.attachedCam.applyRecoil((
+		weaponRecoil + Vector3(
+			randf_range(-weaponRecoilVariation.x, weaponRecoilVariation.x),
+			randf_range(-weaponRecoilVariation.y, weaponRecoilVariation.y),
+			randf_range(-weaponRecoilVariation.z, weaponRecoilVariation.z))) *
+		(weaponRecoilStrengthAim if isAiming else weaponRecoilStrength)
+		)
+		weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim if isAiming else weaponSpread)
 
 		#Bullet Creation/Raycast Bullet Creation
 		for bullet in weaponShots:

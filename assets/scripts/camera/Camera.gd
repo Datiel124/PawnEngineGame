@@ -65,12 +65,15 @@ var camRot
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var recoilers : Array[CameraRecoiler] = []
+
 func _ready():
 	globalGameManager.activeCamera = self
 	currentFOV = globalGameManager.defaultFOV
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	aimFOV = currentFOV - zoomAmount
 	Fade.fade_in(0.3, Color(0,0,0,1),"GradientVertical",false,true)
+
 
 func _input(_event):
 	if Input.is_action_pressed("gEscape"):
@@ -91,18 +94,9 @@ func _physics_process(delta):
 			else:
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
 
-	##Recoil - Currently broken.. Needs fixing..
-	if followingEntity:
-		if followingEntity.currentItem:
-			if followingEntity.currentItem.isFiring:
-				vertical.rotation_degrees.x = rad_to_deg(camCurrRot.x)
-
-	camTargetRot.x = lerp(camTargetRot.x, 0.0, camReturnSpeed * delta)
-	camTargetRot.y = lerp(camTargetRot.y, 0.0, camReturnSpeed * delta)
-	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
-
-	horizontal.rotation_degrees.y = rad_to_deg(camCurrRot.y)
-	camera.rotation_degrees.y = camCurrRot.z
+	##Recoil
+	var rotation_offset = accumulateRecoil(delta)
+	rotation = rotation_offset
 
 	#Zooming
 	if isZoomed:
@@ -175,8 +169,25 @@ func _physics_process(delta):
 		velocity.y = velocityComponent.accelerateToVel(vertVeclocity, delta, false, true, false).y
 		velocity.z = velocityComponent.accelerateToVel(direction, delta, false, false, true).z
 
-
 		move_and_slide()
+
+
+func accumulateRecoil(delta : float) -> Vector3:
+	var accumulatedRecoil : Vector3 = Vector3.ZERO
+	#Iterate over the recoilers
+	for r in recoilers:
+		#If the length is 0, we erase it.
+		if r.rotation_offset.length() == 0.0:
+			recoilers.erase(r)
+			continue
+		#Otherwise, add the recoil.
+		accumulatedRecoil += r.rotation_offset
+		r.decay(delta * camReturnSpeed)
+	return accumulatedRecoil
+
+
+func applyRecoil(recoil_vector : Vector3) -> void:
+	recoilers.append(CameraRecoiler.new(recoil_vector))
 
 
 func _on_input_component_mouse_button_pressed(button):
@@ -199,6 +210,7 @@ func _on_input_component_on_mouse_motion(motion):
 	#Lock Cam
 	vertical.rotation.x = clamp(vertical.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
+
 func posessObject(object, posessPart:Node3D = object):
 	if object.is_in_group("Posessable"):
 		followingEntity = object
@@ -209,6 +221,7 @@ func posessObject(object, posessPart:Node3D = object):
 		if object is BasePawn:
 			vertical.add_excluded_object(object.get_rid())
 
+
 func unposessObject(freecam:bool = false):
 	if freecam:
 		isFreecam = true
@@ -216,14 +229,29 @@ func unposessObject(freecam:bool = false):
 	cameraData = null
 	followNode = null
 
+
 func getAttachedOwner():
 	if !followNode == null:
 		return followNode.get_parent().get_owner()
 	else:
 		return false
 
-func fireRecoil():
-	camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
 
 func applyWeaponSpread(spread):
 	camCast.position = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+
+
+#Camera Recoiler object- used to accumulate rotational offset with recoil.
+#	Things to consider
+#	💡 using a different decay formula
+#	💡 using curves
+#	💡 adding decay_rate
+class CameraRecoiler extends RefCounted:
+	var rotation_offset : Vector3
+
+	func _init(recoil_vector : Vector3) -> void:
+		rotation_offset = recoil_vector
+
+	func decay(rate : float) -> Vector3:
+		rotation_offset = rotation_offset.move_toward(Vector3.ZERO, rate)
+		return rotation_offset

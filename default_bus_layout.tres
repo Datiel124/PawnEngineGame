@@ -1,4 +1,15 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cbc1xun1qumvb"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://cbc1xun1qumvb"]
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_idpdn"]
+resource_name = "Delay"
+tap1_active = false
+tap2_active = false
+feedback_active = true
+feedback_delay_ms = 250.0
+feedback_level_db = -16.0
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_pyhvs"]
+resource_name = "Reverb"
 
 [resource]
 bus/0/volume_db = -0.0949459
@@ -14,6 +25,10 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectDelay_idpdn")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_pyhvs")
+bus/2/effect/1/enabled = true
 bus/3/name = &"Music"
 bus/3/solo = false
 bus/3/mute = false

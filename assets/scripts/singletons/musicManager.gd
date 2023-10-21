@@ -7,6 +7,12 @@ var current_player : AudioStreamPlayer
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+
+func _process(delta: float) -> void:
+	#Scale audio pitch with timescale.
+	AudioServer.playback_speed_scale = Engine.time_scale
+
+
 func isPlayerPlaying():
 	if current_player.playing:
 		return true

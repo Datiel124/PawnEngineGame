@@ -39,20 +39,22 @@ inputComponent = NodePath("inputComponent")
 
 [node name="horizonal" type="Node3D" parent="camPivot"]
 
-[node name="vertical" type="SpringArm3D" parent="camPivot/horizonal"]
+[node name="vertholder" type="Node3D" parent="camPivot/horizonal"]
+
+[node name="vertical" type="SpringArm3D" parent="camPivot/horizonal/vertholder"]
 collision_mask = 3
 spring_length = 0.0
 
-[node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertical"]
+[node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertholder/vertical"]
 fov = 90.0
 
-[node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertical/Camera"]
+[node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.863349)
 target_position = Vector3(0, 0, -250)
 collision_mask = 23
 collide_with_areas = true
 
-[node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertical/Camera/RayCast3D"]
+[node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertholder/vertical/Camera/RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250.5)
 
 [node name="velocityComponent" parent="." instance=ExtResource("2_rb4ck")]

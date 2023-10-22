@@ -138,6 +138,7 @@ var currentItem = null
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	#_separator = collisionShape
 	itemInventory.append(null)
 	checkComponents()
 	checkClothes()
@@ -296,6 +297,7 @@ func _physics_process(delta):
 						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
 						animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
+			#handle_stairs()
 			move_and_slide()
 
 
@@ -367,8 +369,9 @@ func createRagdoll(impulse_bone : int = 0):
 
 		if !attachedCam == null:
 			var cam = attachedCam
+			await get_tree().process_frame
 			await cam.unposessObject()
-			await cam.posessObject(ragdoll)
+			await cam.posessObject(ragdoll, ragdoll.rootCameraNode)
 			for bones in ragdoll.ragdollSkeleton.get_child_count():
 				if ragdoll.ragdollSkeleton.get_child(bones) is RagdollBone:
 					cam.vertical.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
@@ -443,6 +446,7 @@ func setupWeaponAnimations():
 	if !currentItem == null:
 		if !currentItem.weaponAnimSet:
 			#Swap out animationLibraries
+			await get_tree().process_frame
 			animationPlayer.remove_animation_library("weaponAnims")
 			animationPlayer.add_animation_library("weaponAnims", currentItem.animationPlayer.get_animation_library("weaponAnims"))
 

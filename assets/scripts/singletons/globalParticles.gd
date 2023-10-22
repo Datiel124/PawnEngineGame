@@ -29,10 +29,13 @@ func createParticle(particle:String, pos:Vector3 = Vector3.ZERO, rot:Vector3 = V
 			particleToCreate.emitting = true
 			return particleToCreate
 
-func spawnBulletHole(hole:String,parent,pos:Vector3 = Vector3.ZERO, rot:Vector3 = Vector3.ZERO, ):
+func spawnBulletHole(hole:String,parent,pos:Vector3 = Vector3.ZERO, rot:float = 0.0, normal:Vector3=Vector3.ZERO ):
 	if globalGameManager.world:
 		var bHole = bulletHoles[str(hole)].instantiate()
 		parent.add_child(bHole)
 		bHole.global_position = pos
-		bHole.global_rotation = rot
+		bHole.rotate(normal,rot/PI)
+		if normal != Vector3.UP:
+			bHole.look_at(pos + normal, Vector3.UP)
+			bHole.global_transform = bHole.global_transform.rotated_local(Vector3.RIGHT, PI/2.0)
 		return bHole

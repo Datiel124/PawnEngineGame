@@ -26,14 +26,15 @@ func _ready():
 func _process(_delta):
 	if mouseActionsEnabled:
 		if Input.is_action_pressed("gRightClick"):
-			if controllingPawn:
+			if !controllingPawn == null:
 				if !controllingPawn.isPawnDead:
 						controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
 						controllingPawn.freeAim = false
 						controllingPawn.freeAimTimer.stop()
 						if !controllingPawn.meshLookAt:
 							controllingPawn.meshLookAt = true
-							controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
+							if !controllingPawn.attachedCam == null:
+								controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
 							controllingPawn.isRunning = false
 							controllingPawn.canRun = false
 		else:
@@ -58,9 +59,10 @@ func _process(_delta):
 				if !Input.is_action_pressed("gRightClick"):
 					controllingPawn.canRun = true
 
-	if controllingPawn:
-		if controllingPawn.freeAim:
-			controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
+	if !controllingPawn == null:
+		if !controllingPawn.attachedCam == null:
+			if controllingPawn.freeAim:
+				controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
 
 func getInputDir():
 	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
@@ -78,12 +80,16 @@ func _unhandled_input(event):
 			if event.is_action_pressed("gMwheelUp"):
 				emit_signal("mouseButtonPressed", event.button_index)
 				if controllingPawn:
-					controllingPawn.currentItemIndex = controllingPawn.currentItemIndex+1
+					if !controllingPawn.healthComponent == null:
+						if !controllingPawn.healthComponent.isDead:
+							controllingPawn.currentItemIndex = controllingPawn.currentItemIndex+1
 
 			if event.is_action_pressed("gMwheelDown"):
 				emit_signal("actionPressed", str(event.button_index))
 				if controllingPawn:
-					controllingPawn.currentItemIndex = controllingPawn.currentItemIndex-1
+					if !controllingPawn.healthComponent == null:
+						if !controllingPawn.healthComponent.isDead:
+							controllingPawn.currentItemIndex = controllingPawn.currentItemIndex-1
 
 	if event is InputEventKey:
 		if event.is_action_pressed("gJump"):

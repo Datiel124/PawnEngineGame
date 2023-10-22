@@ -28,11 +28,12 @@ var vertVeclocity = Vector3.ZERO
 @onready var hud = $HUD
 @onready var weaponHud = $HUD/weaponBar
 @onready var horizontal = $camPivot/horizonal
-@onready var vertical = $camPivot/horizonal/vertical
-@onready var camera = $camPivot/horizonal/vertical/Camera
+@onready var verticalHolder = $camPivot/horizonal/vertholder
+@onready var vertical = $camPivot/horizonal/vertholder/vertical
+@onready var camera = $camPivot/horizonal/vertholder/vertical/Camera
 @onready var camPivot = $camPivot
-@onready var camCast = $camPivot/horizonal/vertical/Camera/RayCast3D
-@onready var camCastEnd = $camPivot/horizonal/vertical/Camera/RayCast3D/camRayEnd
+@onready var camCast = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D
+@onready var camCastEnd = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D/camRayEnd
 
 @export_subgroup("Behavior")
 var motionX = 0.0
@@ -87,22 +88,20 @@ func _physics_process(delta):
 	if !followNode == null:
 		if followingEntity is BasePawn:
 			if followingEntity.currentItem:
+				$HUD/Crosshair.modulate = lerp(weaponHud.modulate,Color(1,1,1,1),12*delta)
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.8),12*delta)
 			else:
+				$HUD/Crosshair.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.2),48*delta)
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
 
 	##Recoil - Currently broken.. Needs fixing..
-	if followingEntity:
-		if followingEntity.currentItem:
-			if followingEntity.currentItem.isFiring:
-				vertical.rotation_degrees.x = rad_to_deg(camCurrRot.x)
-
 	camTargetRot.x = lerp(camTargetRot.x, 0.0, camReturnSpeed * delta)
 	camTargetRot.y = lerp(camTargetRot.y, 0.0, camReturnSpeed * delta)
-	camCurrRot = lerp(camCurrRot, camTargetRot, camRecoilStrength * delta)
-
-	horizontal.rotation_degrees.y = rad_to_deg(camCurrRot.y)
-	camera.rotation_degrees.y = camCurrRot.z
+	camTargetRot.z = lerp(camTargetRot.z, 0.0, camReturnSpeed * delta)
+	camCurrRot = lerp(camCurrRot,camTargetRot,camRecoilStrength * delta)
+	verticalHolder.rotation_degrees.x = camCurrRot.x
+	horizontal.rotation_degrees.y = camCurrRot.y
+	camera.rotation_degrees.z = camCurrRot.z
 
 	#Zooming
 	if isZoomed:
@@ -124,9 +123,9 @@ func _physics_process(delta):
 	##Lerp to FollowNode
 
 	if !followNode == null:
-		self.global_position.x = lerp(self.global_position.x, followingEntity.rootCameraNode.global_position.x, cameraData.camLerpSpeed*delta)
-		self.global_position.y = lerp(self.global_position.y, followingEntity.rootCameraNode.global_position.y, cameraData.camLerpSpeed*delta)
-		self.global_position.z = lerp(self.global_position.z, followingEntity.rootCameraNode.global_position.z, cameraData.camLerpSpeed*delta)
+		camPivot.global_position.x = lerp(camPivot.global_position.x, followNode.global_position.x, cameraData.camLerpSpeed*delta)
+		camPivot.global_position.y = lerp(camPivot.global_position.y, followNode.global_position.y, cameraData.camLerpSpeed*delta)
+		camPivot.global_position.z = lerp(camPivot.global_position.z, followNode.global_position.z, cameraData.camLerpSpeed*delta)
 
 		#camPivot.position.x = lerp(camPivot.position.x , cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		#vertical.position.z = lerp(vertical.position.z , cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_2kdei")
-cameraOffset = Vector3(0.2, 1.452, 1.45)
+cameraOffset = Vector3(0.3, 0.48, 1.45)
 camLerpSpeed = 20.0
 itemEquipOffset = Vector3(0.555, 0, 0)
 itemEquipLerpSpeed = 5.0

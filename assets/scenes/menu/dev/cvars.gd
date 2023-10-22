@@ -120,6 +120,9 @@ func _g(key, default = null):
 	Console.add_console_message("got {%s:%s}" % [key, got], Color.DIM_GRAY)
 	return got
 
+func setFirstperson(value:bool):
+	if value:
+		globalGameManager.activeCamera.followingEntity
 
 func loadFromFile(filename : String):
 	var dir = (userDir + "/console_out/").simplify_path()

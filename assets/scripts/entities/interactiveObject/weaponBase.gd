@@ -189,13 +189,12 @@ func raycastHit():
 		hitPoint = raycast.get_collision_point()
 		hitNormal = raycast.get_collision_normal()
 		if colliding.is_in_group("Flesh"):
-			globalParticles.spawnBulletHole("Flesh",colliding,hitPoint)
+			globalParticles.spawnBulletHole("Flesh",colliding,hitPoint,randf_range(0, 2),hitNormal)
 		else:
-			globalParticles.spawnBulletHole("default",colliding,hitPoint)
+			globalParticles.spawnBulletHole("default",colliding,hitPoint,randf_range(0, 2),hitNormal)
 
 		if colliding.has_method("hit"):
 			colliding.hit(weaponDamage,weaponOwner,global_position.direction_to(hitPoint).normalized() * randf_range(1,weaponImpulse),to_global(to_local(hitPoint)-position))
-
 
 func getHitObject():
 	var raycast : RayCast3D = weaponOwner.attachedCam.camCast

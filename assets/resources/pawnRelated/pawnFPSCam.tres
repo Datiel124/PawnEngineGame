@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CameraData" load_steps=2 format=3 uid="uid://hmfvk3i3jpgk"]
+
+[ext_resource type="Script" path="res://assets/resources/customResources/cameraData/cameraData.gd" id="1_jfyyt"]
+
+[resource]
+script = ExtResource("1_jfyyt")
+cameraOffset = Vector3(0, 0.205, -0.235)
+camLerpSpeed = 125.0
+itemEquipOffset = Vector3(0, 0, 0)
+itemEquipLerpSpeed = 5.0

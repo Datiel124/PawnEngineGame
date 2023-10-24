@@ -119,7 +119,12 @@ func updateSky():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if UserConfig.graphics_Sdfgi:
+		get_environment().sdfgi_enabled = true
+	if UserConfig.graphics_Ssr:
+		get_environment().ssr_enabled = true
+	if UserConfig.graphics_Ssil:
+		get_environment().ssil_enabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

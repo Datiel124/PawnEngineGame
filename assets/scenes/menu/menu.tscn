@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=59 format=3 uid="uid://cm5mhbhroqded"]
 
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
@@ -37,7 +37,7 @@ func _on_play_button_pressed():
 
 func _on_quit_button_pressed():
 	menuSound.play()
-	globalGameManager.save_settings()
+	UserConfig.saveConfigs()
 	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
 	get_tree().quit()
 
@@ -212,6 +212,25 @@ nodes/weaponBlend/position = Vector2(326.539, -213.617)
 nodes/weaponState/node = SubResource("AnimationNodeBlendTree_65jm4")
 nodes/weaponState/position = Vector2(-120, -40)
 node_connections = [&"output", 0, &"weaponBlend", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeSpace", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
+
+[sub_resource type="GDScript" id="GDScript_xoaof"]
+script/source = "extends WorldEnvironment
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	if UserConfig.graphics_Sdfgi:
+		get_environment().sdfgi_enabled = true
+	if UserConfig.graphics_Ssr:
+		get_environment().ssr_enabled = true
+	if UserConfig.graphics_Ssil:
+		get_environment().ssil_enabled = true
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
 
 [sub_resource type="GDScript" id="GDScript_aalkd"]
 script/source = "extends Control
@@ -529,7 +548,7 @@ tip_bone = &"R_Hand"
 target_node = NodePath("../../../../../Marker3D")
 script = SubResource("GDScript_k7ds2")
 
-[node name="AnimationTree" parent="playerCharacter" index="2"]
+[node name="AnimationTree" parent="playerCharacter" index="3"]
 tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 active = false
 
@@ -589,6 +608,7 @@ spot_range = 6.70126
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("3_nx10h")
+script = SubResource("GDScript_xoaof")
 
 [node name="Menu" type="Control" parent="."]
 process_mode = 3

@@ -225,4 +225,7 @@ func fireRecoil():
 	camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
 
 func applyWeaponSpread(spread):
-	camCast.position = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+	if followingEntity.isFirstperson:
+		camCast.position = Vector3.ZERO
+	else:
+		camCast.position = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)

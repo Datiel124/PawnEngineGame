@@ -74,7 +74,7 @@ var meshRotation : float = 0.0
 @export var followNode : Node3D
 ##The current attached camera (if there is one)
 signal cameraAttached
-@export var attachedCam : CharacterBody3D:
+@export var attachedCam : PlayerCamera:
 	set(value):
 		attachedCam = value
 		emit_signal("cameraAttached")
@@ -133,12 +133,17 @@ var currentItem = null
 @export var lastHitPart : int
 @export var hitImpulse : Vector3 = Vector3.ZERO
 @export var hitVector : Vector3 = Vector3.ZERO
+@export_subgroup("Misc")
+## First-person, just for shits and giggles
+var isFirstperson = false
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	#_separator = collisionShape
+	pawnMesh.rotation = self.rotation
+	self.rotation = Vector3.ZERO
 	itemInventory.append(null)
 	checkComponents()
 	checkClothes()
@@ -164,14 +169,24 @@ func _physics_process(delta):
 	if pawnEnabled:
 		if !isPawnDead:
 			##Debug
+			##Firstperson
+			if isFirstperson:
+				meshLookAt = true
+				freeAim = true
 
 			##FreeAim
 			if freeAim:
-				meshLookAt = true
-				bodyIK.start()
-				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
-
-
+				if !isFirstperson:
+					meshLookAt = true
+					bodyIK.start()
+					bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
+				else:
+					meshLookAt = true
+					if currentItem:
+						bodyIK.start()
+						bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
+					else:
+						bodyIK.interpolation = lerpf(bodyIK.interpolation, 0, turnSpeed * delta)
 			##Movement Code
 			#TODO - AI Stuff here I think
 			if !isMoving and footstepSounds.playing:
@@ -244,6 +259,8 @@ func _physics_process(delta):
 					animationTree.set("parameters/fallBlend/blend_amount", lerpf(animationTree.get("parameters/fallBlend/blend_amount"), 1.0, delta * 12))
 			if is_on_floor():
 				if !meshLookAt:
+					canJump = true
+				elif meshLookAt and isFirstperson:
 					canJump = true
 				animationTree.set("parameters/fallBlend/blend_amount", lerpf(animationTree.get("parameters/fallBlend/blend_amount"), 0.0, delta * 12))
 				animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 0.0, delta * 12))
@@ -558,3 +575,24 @@ func playFootstepAudio(soundprofile : AudioStream = null):
 
 func _on_footsteps_finished():
 	footstepSounds.stop()
+
+func dropWeapon():
+	unequipWeapon()
+
+func setFirstperson():
+	isFirstperson = true
+	rootCameraNode = $BoneAttatchments/Neck
+	pawnCameraData = load("res://assets/resources/pawnRelated/pawnFPSCam.tres")
+	attachedCam.posessObject(self,rootCameraNode)
+	head.hide()
+
+func setThirdperson():
+	if freeAim and isFirstperson:
+		freeAim = false
+		isFirstperson = false
+	isFirstperson = false
+	rootCameraNode = $BoneAttatchments/Stomach
+	pawnCameraData = load("res://assets/resources/pawnRelated/pawnDefaultCamData.tres")
+	attachedCam.posessObject(self,rootCameraNode)
+	head.show()
+

@@ -25,6 +25,7 @@ globalGameManager="*res://assets/scripts/singletons/globalGameManager.gd"
 Console="*res://assets/scenes/menu/dev/Console.tscn"
 globalParticles="*res://assets/scripts/singletons/globalParticles.gd"
 MusicManager="*res://assets/scripts/singletons/musicManager.gd"
+UserConfig="*res://assets/scripts/singletons/userConfig.gd"
 
 [display]
 
@@ -41,7 +42,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/goshapes/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/goshapes/plugin.cfg", "res://addons/wigglebone/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 

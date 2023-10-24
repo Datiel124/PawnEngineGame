@@ -78,6 +78,7 @@ func spawnPawn(position : Vector3 = Vector3.INF) -> void:
 	globalGameManager.world.worldPawns.add_child(pawn)
 	var cast : RayCast3D = globalGameManager.activeCamera.camCast
 	if cast.is_colliding() and !position.is_finite():
+		pawn.rotation.y = randf_range(0,360)
 		pawn.global_position = cast.get_collision_point()
 		pawn.global_position.y = pawn.global_position.y * 3
 	if position.is_finite():
@@ -120,9 +121,11 @@ func _g(key, default = null):
 	Console.add_console_message("got {%s:%s}" % [key, got], Color.DIM_GRAY)
 	return got
 
-func setFirstperson(value:bool):
-	if value:
-		globalGameManager.activeCamera.followingEntity
+func setFirstperson():
+	globalGameManager.activeCamera.followingEntity.setFirstperson()
+
+func setThirdperson():
+	globalGameManager.activeCamera.followingEntity.setThirdperson()
 
 func loadFromFile(filename : String):
 	var dir = (userDir + "/console_out/").simplify_path()

@@ -2,7 +2,7 @@
 
 [sub_resource type="Gradient" id="Gradient_jpydu"]
 offsets = PackedFloat32Array(0.161812, 0.521036, 0.612069)
-colors = PackedColorArray(0.195465, 0.222085, 0.341751, 1, 0.471032, 0.514768, 0.697211, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.154198, 0.176598, 0.277602, 1, 0.471032, 0.514768, 0.697211, 1, 0, 0, 0, 1)
 
 [resource]
 gradient = SubResource("Gradient_jpydu")

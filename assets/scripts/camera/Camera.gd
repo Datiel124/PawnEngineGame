@@ -229,3 +229,6 @@ func applyWeaponSpread(spread):
 		camCast.position = Vector3.ZERO
 	else:
 		camCast.position = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+
+func resetCamCast():
+	camCast.position = Vector3.ZERO

@@ -74,7 +74,8 @@ func load(path : String):
 
 
 func spawnPawn(position : Vector3 = Vector3.INF) -> void:
-	var pawn : BasePawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
+	var pawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
+	var controller = load("res://assets/components/aiComponent/aiComponent.tscn").instantiate()
 	globalGameManager.world.worldPawns.add_child(pawn)
 	var cast : RayCast3D = globalGameManager.activeCamera.camCast
 	if cast.is_colliding() and !position.is_finite():
@@ -83,6 +84,10 @@ func spawnPawn(position : Vector3 = Vector3.INF) -> void:
 		pawn.global_position.y = pawn.global_position.y * 3
 	if position.is_finite():
 		pawn.global_position = position
+	pawn.componentHolder.add_child(controller)
+	pawn.inputComponent = controller
+	pawn.checkComponents()
+	pawn.fixRot()
 	Console.add_console_message("spawned %s at %s" % [pawn, pawn.global_position])
 
 
@@ -178,3 +183,11 @@ func _help(method : String = "") -> void:
 func debugDraw(mode : Viewport.DebugDraw) -> void:
 	Console.add_console_message("Set debug_draw to %s" % mode, Color.DIM_GRAY)
 	get_tree().get_root().get_viewport().debug_draw = mode
+
+func spawnPlayer(pos:Vector3 = Vector3.ZERO):
+	var playerPawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
+	var controller = load("res://assets/components/inputComponent/inputComponent.tscn").instantiate()
+	globalGameManager.world.playerPawns.add_child(playerPawn)
+	playerPawn.componentHolder.add_child(controller)
+	playerPawn.inputComponent = controller
+	playerPawn.checkComponents()

@@ -104,18 +104,12 @@ func _physics_process(delta):
 				else:
 					useRightHand = false
 
-				if weaponOwner.attachedCam:
-					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
-					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
+
 
 				if !weaponOwner.meshLookAt:
 					weaponOwner.meshLookAt = true
 				if !weaponRemoteState.get_current_node() == "aim":
 					weaponRemoteState.travel("aim")
-			else:
-				if weaponOwner.attachedCam:
-					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
-					weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 			if weaponOwner.freeAim:
 				if !weaponRemoteState.get_current_node() == "aim":
 					if useLeftHandFreeAiming:
@@ -138,11 +132,19 @@ func _physics_process(delta):
 
 func fire():
 	if !isFiring:
-		isFiring = true
+		if isAiming:
+			if weaponOwner.attachedCam:
+					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
+					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
+		else:
+			if weaponOwner.attachedCam:
+				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
+				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
+
 		shot_fired.emit()
 		weaponRemoteState.start("fire")
 		weaponOwner.attachedCam.fireRecoil()
-
+		isFiring = true
 		#Bullet Creation/Raycast Bullet Creation
 		for bullet in weaponShots:
 			bullet = createMuzzle()

@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b53hvcf0hvvkw"]
+
+[ext_resource type="Script" path="res://assets/components/aiComponent/aiComponent.gd" id="1_tulq4"]
+[ext_resource type="Script" path="res://assets/scripts/stateMachine/stateMachine.gd" id="2_yt8xe"]
+[ext_resource type="Script" path="res://assets/scripts/stateMachine/states/wonderState.gd" id="3_4lom4"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]
+radius = 2.58404
+
+[node name="aiComponent" type="Node3D" node_paths=PackedStringArray("stateMachine", "moveTo", "navAgent", "navPointGrabber")]
+script = ExtResource("1_tulq4")
+stateMachine = NodePath("stateMachine")
+moveTo = NodePath("moveTo")
+navAgent = NodePath("navAgent")
+navPointGrabber = NodePath("navPointGrabber")
+
+[node name="stateMachine" type="Node" parent="." node_paths=PackedStringArray("componentOwner", "initialState")]
+script = ExtResource("2_yt8xe")
+componentOwner = NodePath("..")
+initialState = NodePath("wonderState")
+
+[node name="wonderState" type="Node" parent="stateMachine" node_paths=PackedStringArray("wonderTimer")]
+script = ExtResource("3_4lom4")
+aiMoveTime = false
+wonderTimer = NodePath("aiTimer")
+
+[node name="aiTimer" type="Timer" parent="stateMachine/wonderState"]
+
+[node name="moveTo" type="Marker3D" parent="."]
+
+[node name="navAgent" type="NavigationAgent3D" parent="."]
+target_desired_distance = 5.0
+navigation_layers = 9
+avoidance_enabled = true
+radius = 0.3
+avoidance_layers = 9
+avoidance_mask = 9
+debug_use_custom = true
+debug_path_custom_color = Color(0.239216, 0.745098, 0, 1)
+
+[node name="navPointGrabber" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="navPointGrabber"]
+shape = SubResource("SphereShape3D_102wm")
+
+[connection signal="timeout" from="stateMachine/wonderState/aiTimer" to="stateMachine/wonderState" method="_on_ai_timer_timeout"]
+[connection signal="target_reached" from="navAgent" to="stateMachine/wonderState" method="_on_nav_agent_target_reached"]
+[connection signal="velocity_computed" from="navAgent" to="stateMachine/wonderState" method="_on_nav_agent_velocity_computed"]

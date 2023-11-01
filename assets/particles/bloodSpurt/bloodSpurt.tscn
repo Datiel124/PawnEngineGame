@@ -56,13 +56,13 @@ var remove = false
 func _ready():
 	amount = randi_range(25,50)
 	$bloodLand.amount = amount
-	
+
 
 func _process(delta):
 	if remove:
 		transparency = lerpf(transparency,1.0,4*delta)
 		$bloodLand.transparency = lerpf($bloodLand.transparency,1.0,4*delta)
-		
+
 		if transparency >= 1.0:
 			queue_free()
 

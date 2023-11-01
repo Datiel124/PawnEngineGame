@@ -12,6 +12,7 @@ signal itemChanged
 @onready var footstepSounds = $Sounds/footsteps
 ##Onready
 @onready var footstepMaterialChecker = $Misc/footstepMaterialChecker
+@onready var componentHolder = $Components
 
 ##IK
 @onready var bodyIK = $Mesh/MaleSkeleton/Skeleton3D/bodyIK
@@ -37,13 +38,13 @@ signal itemChanged
 @onready var leftLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftKnee
 @onready var rightLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightKnee
 
+@onready var floorcheck = $floorCast
 @onready var freeAimTimer = $freeAimTimer
 @onready var pawnSkeleton = $Mesh/MaleSkeleton/Skeleton3D
 @onready var animationTree = $AnimationTree
 @onready var collisionShape = $CollisionShape3D
 @onready var clothingHolder = $Mesh/MaleSkeleton/Skeleton3D/Clothing
 @onready var pawnMesh = $Mesh
-@onready var componentHolder = $Components
 @onready var itemHolder = $BoneAttatchments/rightHand/Weapons
 @onready var animationPlayer = $AnimationPlayer
 ##Internal Variables
@@ -56,7 +57,7 @@ var meshRotation : float = 0.0
 @export var velocityComponent : VelocityComponent
 @export var healthComponent : HealthComponent
 @export_subgroup("Sub-Components")
-@export var inputComponent : InputComponent:
+@export var inputComponent : Node:
 	set(value):
 		inputComponent = value
 		if value == InputComponent:
@@ -121,6 +122,8 @@ var currentItem = null
 		if !currentItem == null:
 			equipWeapon(currentItemIndex)
 		emit_signal("itemChanged")
+		if attachedCam:
+			attachedCam.resetCamCast()
 @export var clothingInventory : Array:
 	set(value):
 		emit_signal("clothingChanged")
@@ -137,13 +140,17 @@ var currentItem = null
 ## First-person, just for shits and giggles
 var isFirstperson = false
 
+@export_subgroup("Staircase Handling")
+@export var step_check_distance : float = 1.0
+@export var step_max_distance : float = 0.5
+@export var step_height_max : float = 1.0
+@export var step_depth_min : float = 1
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	pawnMesh.rotation = self.rotation
-	self.rotation = Vector3.ZERO
 	itemInventory.append(null)
 	checkComponents()
 	checkClothes()
@@ -157,6 +164,7 @@ func _ready():
 		animationTree.active = false
 		animationPlayer.play(animationToForce)
 
+	fixRot()
 
 func _physics_process(delta):
 	if forceAnimation:
@@ -169,7 +177,9 @@ func _physics_process(delta):
 	if pawnEnabled:
 		if !isPawnDead:
 			##Debug
+
 			##Firstperson
+
 			if isFirstperson:
 				meshLookAt = true
 				freeAim = true
@@ -239,12 +249,16 @@ func _physics_process(delta):
 					weapon.hide()
 				if attachedCam:
 						attachedCam.itemEquipOffsetToggle = false
+						attachedCam.resetCamCast()
 				animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 0, 12*delta))
 			##Mesh Rotation
 			if !meshLookAt:
 				if isMoving:
 					if !is_on_wall():
 						pawnMesh.rotation.y = lerp_angle(pawnMesh.rotation.y, atan2(-velocity.x,-velocity.z), 8 * delta)
+					else:
+						direction = Vector3.ZERO
+						isMoving = false
 			if meshLookAt:
 				canJump = false
 				bodyIKMarker.rotation.x = turnAmount
@@ -314,26 +328,33 @@ func _physics_process(delta):
 						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
 						animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
-			#handle_stairs()
+			floor_snap_length = 0.0 if (velocity.y > 1.0 or velocity.length() > 16) else 0.1
+			do_stairs()
 			move_and_slide()
 
 
 			#Player movement
 			if inputComponent:
-				direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
+				if inputComponent is Component:
+					direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
 
 ##Checks to see if any required components (Base components) Are null
 func checkComponents():
 	if inputComponent:
-		inputComponent.controllingPawn = self
-		if globalGameManager.activeCamera == null:
-			var cam = load("res://assets/entities/camera/camera.tscn")
-			var _cam = cam.instantiate()
-			_cam.global_position = self.global_position
-			await get_tree().process_frame
-			globalGameManager.world.worldMisc.add_child(_cam)
-			_cam.posessObject(self, followNode)
-			_cam.camCast.add_exception(self)
+		if inputComponent is AIComponent:
+			inputComponent.pawnOwner = self
+			#inputComponent.position = self.position
+
+		if inputComponent is Component:
+			inputComponent.controllingPawn = self
+			if globalGameManager.activeCamera == null:
+				var cam = load("res://assets/entities/camera/camera.tscn")
+				var _cam = cam.instantiate()
+				_cam.global_position = self.global_position
+				await get_tree().process_frame
+				globalGameManager.world.worldMisc.add_child(_cam)
+				_cam.posessObject(self, followNode)
+				_cam.camCast.add_exception(self)
 
 	if velocityComponent == null or healthComponent == null:
 		return null
@@ -352,7 +373,7 @@ func die():
 	footstepSounds.queue_free()
 	if !attachedCam == null:
 		attachedCam.lowHP = false
-
+		attachedCam.resetCamCast()
 
 func _on_health_component_health_depleted():
 	die()
@@ -374,8 +395,9 @@ func createRagdoll(impulse_bone : int = 0):
 		for bones in ragdoll.ragdollSkeleton.get_child_count():
 			var child = ragdoll.ragdollSkeleton.get_child(bones)
 			if child is RagdollBone:
+				child.linear_velocity = velocity
 				ragdoll.startRagdoll()
-				child.apply_central_impulse(velocity)
+				#child.apply_central_impulse(velocity)
 				if child.get_bone_id() == impulse_bone:
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)
@@ -585,6 +607,7 @@ func setFirstperson():
 	pawnCameraData = load("res://assets/resources/pawnRelated/pawnFPSCam.tres")
 	attachedCam.posessObject(self,rootCameraNode)
 	head.hide()
+	upperChest.hide()
 
 func setThirdperson():
 	if freeAim and isFirstperson:
@@ -595,4 +618,72 @@ func setThirdperson():
 	pawnCameraData = load("res://assets/resources/pawnRelated/pawnDefaultCamData.tres")
 	attachedCam.posessObject(self,rootCameraNode)
 	head.show()
+	upperChest.show()
 
+func fixRot():
+	pawnMesh.rotation = self.rotation
+	self.rotation = Vector3.ZERO
+
+func do_stairs() -> void:
+	#Does staircase stuff
+	#TODO : Integrate this guys Staircase Stuff
+	if !floorcheck.is_colliding() or Vector3(velocity.x, 0, velocity.z).length() <= 1.0 or direction.length() <= 0.1:
+		return
+	#Check multiple directions
+	var flat_vel = Vector3(velocity.x, 0.0, velocity.z).normalized()
+	var check_directions : Array[Vector3] = [
+		flat_vel,
+		flat_vel.rotated(Vector3.UP, PI/3),
+		flat_vel.rotated(Vector3.UP, -PI/3),
+		]
+	for direction in check_directions:
+		var step_ray_dir := direction * step_check_distance
+		if step_ray_dir.dot(Vector3(velocity.x, 0, velocity.z).normalized()) < 0.5:
+			continue
+		var direct_state = get_world_3d().direct_space_state
+		var obs_ray_info : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+		obs_ray_info.exclude = [RID(self)]
+		obs_ray_info.from = global_position + Vector3.UP * 0.1
+		obs_ray_info.to = obs_ray_info.from + step_ray_dir
+		#First check : Is a flat wall found?
+		var first_collision = direct_state.intersect_ray(obs_ray_info)
+		if !first_collision.is_empty():
+			if not first_collision["collider"] is StaticBody3D:
+				continue
+			#TODO : Instead of using a while loop, figure out a better way
+			#to get the wall above a slope.
+			if first_collision["normal"].angle_to(Vector3.UP) < 1.39626:
+				var remain_length = step_check_distance - first_collision["position"].distance_to(obs_ray_info.from)
+				obs_ray_info.from = first_collision["position"]
+				obs_ray_info.to = obs_ray_info.from + (remain_length * step_ray_dir.slide(first_collision["normal"]))
+				obs_ray_info.to.y += 0.05
+				first_collision = direct_state.intersect_ray(obs_ray_info)
+				if first_collision.is_empty():
+					return
+				if first_collision["normal"].angle_to(Vector3.UP) < 1.39626:
+					return
+#			print("Ready to climb up step.")
+			#From that first collision point, we now check if 'min_stair_depth' is met
+			#at the the 'max_step_height'
+			var depth_check : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+			depth_check.exclude = obs_ray_info.exclude
+			depth_check.from = global_position + Vector3(0, step_height_max, 0)
+			depth_check.to = depth_check.from + (step_ray_dir * (step_depth_min + global_position.distance_to(first_collision.position)))
+			if !direct_state.intersect_ray(depth_check).is_empty():
+				continue
+			#The step is deep enough.
+			#Last we need to find the top of the step so we can stand on it.
+			#Inch the initial collision up by step_max and forward a tiny bit.
+			#The to-position is just the initial position minus the step_max.
+			var top_check : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
+			top_check.exclude = obs_ray_info.exclude
+			top_check.from = first_collision.position + Vector3(step_ray_dir.x, step_height_max, step_ray_dir.z)
+			top_check.to = top_check.from - Vector3(0, step_height_max, 0)
+			var stair_top_collision = direct_state.intersect_ray(top_check)
+			if !stair_top_collision.is_empty():
+					#move player up above step
+					position.y += stair_top_collision.position.y - global_position.y
+					#move player forward onto step
+					position += (step_ray_dir * 0.1)
+					return
+#			print("Couldn't climb up the step.")

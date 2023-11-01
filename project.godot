@@ -35,7 +35,7 @@ window/subwindows/embed_subwindows=false
 
 [editor]
 
-movie_writer/movie_file="C:/Users/Datiel/Desktop/vi.avi"
+movie_writer/movie_file="C:/Users/Datiel/Desktop/PawnEngine1.avi"
 movie_writer/fps=144
 naming/node_name_casing=1
 naming/scene_name_casing=1

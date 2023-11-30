@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://2x813wo0u6ii"]
+[gd_scene load_steps=11 format=3 uid="uid://2x813wo0u6ii"]
 
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="1_jxbia"]
-[ext_resource type="AudioStream" uid="uid://dbxyo1p3kd36u" path="res://assets/sounds/ui/uievaluate.wav" id="2_f5425"]
+[ext_resource type="AudioStream" uid="uid://by5epqyt6w7ls" path="res://assets/sounds/ui/smcknecksound.wav" id="2_uy7xn"]
+[ext_resource type="Script" path="res://assets/scripts/AnimationControl/AnimatedControl.gd" id="3_3s61u"]
 [ext_resource type="AudioStream" uid="uid://c4rm2sw8drwg2" path="res://assets/sounds/ui/uiswift.wav" id="3_bikbu"]
 
 [sub_resource type="GDScript" id="GDScript_h3xca"]
@@ -27,7 +28,7 @@ func _process(_delta):
 
 [sub_resource type="Gradient" id="Gradient_efj0f"]
 offsets = PackedFloat32Array(0, 0.994924)
-colors = PackedColorArray(0, 0, 0, 1, 0.0768358, 0.0768358, 0.0768358, 1)
+colors = PackedColorArray(0.728822, 0.728822, 0.728822, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bett4"]
 gradient = SubResource("Gradient_efj0f")
@@ -38,7 +39,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("logo:modulate")
+tracks/0/path = NodePath("animatedControl/logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("logo:self_modulate")
+tracks/1/path = NodePath("animatedControl/logo:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -62,7 +63,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("logo:visible")
+tracks/2/path = NodePath("animatedControl/logo:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -102,23 +103,23 @@ length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("logo:modulate")
+tracks/0/path = NodePath("animatedControl/logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.5, 2.6, 2.9),
+"times": PackedFloat32Array(0.2, 0.5, 2.7, 2.8, 3.1),
 "transitions": PackedFloat32Array(0.392292, 1, 0.392292, 0.392292, 1),
 "update": 0,
-"values": [Color(0.760784, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.760784, 0, 0, 1), Color(0.760784, 0, 0, 0)]
+"values": [Color(0.760784, 0, 0, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.760784, 0, 0, 1), Color(0.760784, 0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("logo:self_modulate")
+tracks/1/path = NodePath("animatedControl/logo:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 2.5, 2.6, 2.9),
+"times": PackedFloat32Array(0.2, 0.5, 2.7, 2.8, 3.1),
 "transitions": PackedFloat32Array(0.870551, 2.73208, 0.870551, 0.870551, 2.73208),
 "update": 0,
 "values": [Color(1, 1, 1, 0.0470588), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.0470588), Color(1, 1, 1, 0)]
@@ -126,14 +127,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("logo:visible")
+tracks/2/path = NodePath("animatedControl/logo:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [false, true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -154,10 +155,22 @@ tracks/4/path = NodePath("sound2:playing")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("animatedControl:metadata/blend_1")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 1.7, 2.7, 3),
+"transitions": PackedFloat32Array(0.0409601, 10.9283, 0.258816, 2.21914),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cjnlx"]
@@ -185,7 +198,63 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_bett4")
 
-[node name="logo" type="TextureRect" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cjnlx")
+}
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uy7xn")
+volume_db = -8.0
+bus = &"UI"
+
+[node name="sound2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bikbu")
+volume_db = -5.0
+bus = &"UI"
+
+[node name="animatedControl" type="Control" parent="." node_paths=PackedStringArray("target_controls")]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 780.0
+offset_top = 605.0
+offset_right = 780.0
+offset_bottom = 605.0
+script = ExtResource("3_3s61u")
+target_controls = [NodePath("start"), NodePath("end")]
+metadata/blend_0 = 0.0
+metadata/blend_1 = 0.0
+
+[node name="start" type="ReferenceRect" parent="animatedControl"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 155.0
+offset_right = 20.0
+offset_bottom = 195.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.244439
+
+[node name="end" type="ReferenceRect" parent="animatedControl"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_right = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="logo" type="TextureRect" parent="animatedControl"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -200,18 +269,3 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_jxbia")
 expand_mode = 4
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_cjnlx")
-}
-
-[node name="sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_f5425")
-volume_db = 2.0
-bus = &"UI"
-
-[node name="sound2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bikbu")
-volume_db = -5.0
-bus = &"UI"

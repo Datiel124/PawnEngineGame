@@ -10,6 +10,7 @@ emission = Color(1, 1, 0, 1)
 emission_energy_multiplier = 8.56
 
 [node name="bulletTrail" type="MeshInstance3D"]
+top_level = true
 material_override = SubResource("StandardMaterial3D_atsew")
 script = ExtResource("1_u8knr")
 

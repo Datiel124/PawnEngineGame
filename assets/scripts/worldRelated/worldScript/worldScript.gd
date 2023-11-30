@@ -12,6 +12,7 @@ signal worldLoaded
 @onready var worldMisc = $Misc
 @onready var worldParticles = $Misc/Particles
 @onready var worldWaypoints = $Misc/WaypointNodes
+@onready var worldSky = $Environment/GodotSky
 @onready var playerPawns = $Pawns/Players
 ##Set the name for this specific scene
 @export_category("World Identity")

@@ -2,8 +2,12 @@ extends PhysicalBone3D
 class_name RagdollBone
 @export_category("Ragdoll Bone")
 @export_subgroup("Impact Hits")
-@export var hardImpactEffectEnabled : bool = false
+@export var hardImpactEffectEnabled : bool = true
 @export var impactEffectHard : PackedScene
+@export var mediumImpactEffectEnabled : bool = true
+@export var impactEffectMedium : PackedScene
+@export var lightImpactEffectEnabled : bool = true
+@export var impactEffectLight : PackedScene
 @export_subgroup("Sounds")
 @export var inAirSound : AudioStream
 @export var lightImpactSounds : AudioStreamRandomizer
@@ -73,14 +77,16 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioStreamPlayer.play()
 			audioCooldown = 0.05
 			if hardImpactEffectEnabled:
-				if !impactEffectHard == null:
-					globalParticles.createParticle("Blood",self.position, Vector3(randf_range(-180,180),randf_range(-180,180),randf_range(-180,180)))
+				if impactEffectHard == null:
+					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
 			return
 		if contactForce > mediumImpactThreshold:
 			audioStreamPlayer.stream = mediumImpactSounds
 			audioStreamPlayer.play()
 			audioCooldown = 0.25
-			globalParticles.createParticle("Blood",self.position, Vector3(randf_range(-180,180),randf_range(-180,180),randf_range(-180,180)))
+			if mediumImpactEffectEnabled:
+				if impactEffectMedium == null:
+					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
 			return
 		if contactForce > lightImpactThreshold:
 			audioStreamPlayer.stream = lightImpactSounds
@@ -88,6 +94,9 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioStreamPlayer.volume_db = lerp(-5, 0, fac)
 			audioStreamPlayer.play()
 			audioCooldown = 0.25
+			if lightImpactEffectEnabled:
+				if impactEffectLight == null:
+					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
 			return
 
 func _process(delta):

@@ -3,6 +3,7 @@
 [resource]
 resource_name = "ShortSleeveJacket"
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.113326, 0.00270607, 0, 1)
 roughness = 0.5

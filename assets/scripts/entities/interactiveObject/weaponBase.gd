@@ -67,67 +67,68 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	if isEquipped:
-		set("gravity_scale", 0)
-		#Weapon Orientation
-		weaponMesh.position = lerp(weaponMesh.position, weaponPositionOffset, 24 * delta)
-		weaponMesh.rotation = lerp(weaponMesh.rotation, weaponRotationOffset, 24 * delta)
+	if !weaponOwner == null:
+		if isEquipped:
+			set("gravity_scale", 0)
+			#Weapon Orientation
+			weaponMesh.position = lerp(weaponMesh.position, weaponPositionOffset, 24 * delta)
+			weaponMesh.rotation = lerp(weaponMesh.rotation, weaponRotationOffset, 24 * delta)
 
-		if weaponOwner.attachedCam:
-			weaponOwner.attachedCam.camRecoil = weaponRecoil
+			if weaponOwner.attachedCam:
+				weaponOwner.attachedCam.camRecoil = weaponRecoil
 
-		if weaponAnimSet:
-			if !weaponOwner == null:
-				if useWeaponSprintAnim:
-						if weaponOwner.isRunning:
-							if !weaponRemoteState.get_current_node() == "sprint":
-								weaponRemoteState.travel("sprint")
+			if weaponAnimSet:
+				if !weaponOwner == null:
+					if useWeaponSprintAnim:
+							if weaponOwner.isRunning:
+								if !weaponRemoteState.get_current_node() == "sprint":
+									weaponRemoteState.travel("sprint")
 
-			if !isFiring and !isAiming and !weaponOwner.freeAim:
-				if !weaponRemoteState.get_current_node() == "idle":
-					weaponRemoteState.travel("idle")
-					if useLeftHandIdle:
+				if !isFiring and !isAiming and !weaponOwner.freeAim:
+					if !weaponRemoteState.get_current_node() == "idle":
+						weaponRemoteState.travel("idle")
+						if useLeftHandIdle:
+							useLeftHand = true
+						else:
+							useLeftHand = false
+						if useRightHandIdle:
+							useRightHand = true
+						else:
+							useRightHand = false
+				if isAiming:
+					if useLeftHandAiming:
 						useLeftHand = true
 					else:
 						useLeftHand = false
-					if useRightHandIdle:
+					if useRightHandAiming:
 						useRightHand = true
 					else:
 						useRightHand = false
-			if isAiming:
-				if useLeftHandAiming:
-					useLeftHand = true
-				else:
-					useLeftHand = false
-				if useRightHandAiming:
-					useRightHand = true
-				else:
-					useRightHand = false
 
 
 
-				if !weaponOwner.meshLookAt:
-					weaponOwner.meshLookAt = true
-				if !weaponRemoteState.get_current_node() == "aim":
-					weaponRemoteState.travel("aim")
-			if weaponOwner.freeAim:
-				if !weaponRemoteState.get_current_node() == "aim":
-					if useLeftHandFreeAiming:
-						useLeftHand = true
-					else:
-						useLeftHand = false
-					if useRightHandFreeAiming:
-						useRightHand = true
-					else:
-						useRightHand = false
-					weaponRemoteState.travel("aim")
+					if !weaponOwner.meshLookAt:
+						weaponOwner.meshLookAt = true
+					if !weaponRemoteState.get_current_node() == "aim":
+						weaponRemoteState.travel("aim")
+				if weaponOwner.freeAim:
+					if !weaponRemoteState.get_current_node() == "aim":
+						if useLeftHandFreeAiming:
+							useLeftHand = true
+						else:
+							useLeftHand = false
+						if useRightHandFreeAiming:
+							useRightHand = true
+						else:
+							useRightHand = false
+						weaponRemoteState.travel("aim")
 
-		collisionEnabled = false
+			collisionEnabled = false
 
-	if collisionEnabled:
-		collisionObject.disabled = false
-	else:
-		collisionObject.disabled = true
+		if collisionEnabled:
+			collisionObject.disabled = false
+		else:
+			collisionObject.disabled = true
 
 
 func fire():
@@ -157,6 +158,7 @@ func fire():
 					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
 					if !pt == null:
 						pt.look_at(getRayColPoint() + getRayNormal())
+
 
 		await get_tree().create_timer(weaponFireRate).timeout
 		isFiring = false
@@ -191,7 +193,11 @@ func raycastHit():
 		hitPoint = raycast.get_collision_point()
 		hitNormal = raycast.get_collision_normal()
 		if colliding.is_in_group("Flesh"):
+			var spurtChance = randi_range(0,1)
 			globalParticles.spawnBulletHole("Flesh",colliding,hitPoint,randf_range(0, 2),hitNormal)
+			if spurtChance == 1:
+				var bloodStream = globalParticles.createParticle("BloodStream",hitPoint,Vector3.ZERO,colliding)
+				bloodStream.look_at(hitPoint+hitNormal/2)
 		else:
 			globalParticles.spawnBulletHole("default",colliding,hitPoint,randf_range(0, 2),hitNormal)
 

@@ -1,4 +1,5 @@
 extends Node3D
+class_name PawnRagdoll
 
 ##Pawn Parts
 @onready var head = $Mesh/Male/MaleSkeleton/Skeleton3D/MaleHead
@@ -81,7 +82,7 @@ func _physics_process(delta):
 					else:
 						var force: Vector3 = hookes_law(position_difference, b.linear_velocity, linearSpringStiffness, linearSpringDamping)
 						force = force.limit_length(maxLinearForce)
-						#b.linear_velocity += (force * delta)
+						b.linear_velocity += (force * delta)
 
 					var torque = hookes_law(rotation_difference.get_euler(), b.angular_velocity, angularSpringStiffness, angularSpringDamping)
 					torque = torque.limit_length(maxAngularForce)

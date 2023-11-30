@@ -191,3 +191,11 @@ func spawnPlayer(pos:Vector3 = Vector3.ZERO):
 	playerPawn.componentHolder.add_child(controller)
 	playerPawn.inputComponent = controller
 	playerPawn.checkComponents()
+
+func setTimeOfDay(time:float):
+	if globalGameManager.world:
+		globalGameManager.world.worldSky.timeOfDay = time
+
+func progressTime(value:bool):
+	if globalGameManager.world:
+		globalGameManager.world.worldSky.simulateTime = value

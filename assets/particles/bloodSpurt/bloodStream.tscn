@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bpp4s1vikjdv8"]
+[gd_scene load_steps=17 format=3 uid="uid://c82qjgm4xjcpt"]
 
-[ext_resource type="Texture2D" uid="uid://cj0kfcr0vsi8l" path="res://assets/textures/blood/blood_spurt/bspurt1.png" id="1_dubao"]
-[ext_resource type="Texture2D" uid="uid://7r7fibraa87x" path="res://assets/textures/blood/blood_gush/frameblood0003.png" id="2_ik2ae"]
-[ext_resource type="Texture2D" uid="uid://bm32frk77ofg3" path="res://assets/textures/blood/blood_gush/bloodNormal.png" id="3_sm58p"]
+[ext_resource type="Texture2D" uid="uid://cj0kfcr0vsi8l" path="res://assets/textures/blood/blood_spurt/bspurt1.png" id="1_abbvo"]
+[ext_resource type="Texture2D" uid="uid://7r7fibraa87x" path="res://assets/textures/blood/blood_gush/frameblood0003.png" id="2_ffxk6"]
+[ext_resource type="Texture2D" uid="uid://bm32frk77ofg3" path="res://assets/textures/blood/blood_gush/bloodNormal.png" id="3_utmfl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55b2n"]
 transparency = 2
@@ -10,7 +10,7 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 cull_mode = 2
 diffuse_mode = 3
-albedo_texture = ExtResource("1_dubao")
+albedo_texture = ExtResource("1_abbvo")
 
 [sub_resource type="Curve" id="Curve_wu3t1"]
 min_value = -360.0
@@ -41,7 +41,7 @@ scale_min = 0.2
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_gkwyl")
 sub_emitter_mode = 3
-sub_emitter_amount_at_collision = 1
+sub_emitter_amount_at_collision = 2
 collision_mode = 2
 collision_use_scale = true
 
@@ -51,27 +51,42 @@ size = Vector2(0.245, 1)
 [sub_resource type="GDScript" id="GDScript_fb3dx"]
 script/source = "extends GPUParticles3D
 var remove = false
+var stopbleeding = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	$stopSpurtTimer.wait_time = randf_range(5,25)
+	$timer.wait_time = randf_range(3,10)
 	amount = randi_range(15,35)
 	$bloodLand.amount = amount
 	self.process_material.spread = randf_range(5,20)
 	self.process_material.flatness = randf_range(0,5)
-	self.process_material.initial_velocity_min = randf_range(3,8)
-	self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,10)
-	self.lifetime = randf_range(5,45)
+	self.process_material.initial_velocity_min = randf_range(1,4)
+	self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,5)
+	self.lifetime = randf_range(0.5,2)
 func _process(delta):
+	if stopbleeding:
+		self.lifetime += 0.1
+
+		if lifetime >= 25:
+			emitting = false
+
 	if remove:
+		self.lifetime = self.lifetime + 0.8
 		transparency = lerpf(transparency,1.0,4*delta)
 		$bloodLand.transparency = lerpf($bloodLand.transparency,1.0,4*delta)
 
 		if transparency >= 1.0:
+			emitting = false
 			queue_free()
 
 func _on_timer_timeout():
 	remove = true
+
+
+func _on_stop_spurt_timer_timeout():
+	stopbleeding = true
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyjka"]
@@ -80,11 +95,11 @@ alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 disable_ambient_light = true
 albedo_color = Color(0.505882, 0, 0, 1)
-albedo_texture = ExtResource("2_ik2ae")
+albedo_texture = ExtResource("2_ffxk6")
 roughness = 0.0
 normal_enabled = true
 normal_scale = 1.3
-normal_texture = ExtResource("3_sm58p")
+normal_texture = ExtResource("3_utmfl")
 rim_enabled = true
 disable_receive_shadows = true
 
@@ -115,14 +130,11 @@ collision_use_scale = true
 [sub_resource type="PlaneMesh" id="PlaneMesh_aix64"]
 size = Vector2(0.58, 0.835)
 
-[node name="bloodSpurt" type="GPUParticles3D"]
+[node name="bloodStream" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_55b2n")
-emitting = false
 amount = 25
 sub_emitter = NodePath("bloodLand")
-lifetime = 15.0
-one_shot = true
-explosiveness = 1.0
+lifetime = 6.69
 randomness = 0.57
 fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_ow2gb")
@@ -130,7 +142,7 @@ draw_pass_1 = SubResource("QuadMesh_5noax")
 script = SubResource("GDScript_fb3dx")
 
 [node name="timer" type="Timer" parent="."]
-wait_time = 36.0
+wait_time = 35.0
 autostart = true
 
 [node name="bloodLand" type="GPUParticles3D" parent="."]
@@ -145,4 +157,9 @@ fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_pdrmt")
 draw_pass_1 = SubResource("PlaneMesh_aix64")
 
+[node name="stopSpurtTimer" type="Timer" parent="."]
+wait_time = 5.738
+autostart = true
+
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="stopSpurtTimer" to="." method="_on_stop_spurt_timer_timeout"]

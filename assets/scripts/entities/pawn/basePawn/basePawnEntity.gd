@@ -5,6 +5,7 @@ class_name BasePawn
 signal controllerAssigned
 signal clothingChanged
 signal itemChanged
+signal forcingAnimation
 
 #Sounds
 @onready var soundHolder = $Sounds
@@ -13,6 +14,7 @@ signal itemChanged
 ##Onready
 @onready var footstepMaterialChecker = $Misc/footstepMaterialChecker
 @onready var componentHolder = $Components
+@onready var boneAttatchementHolder = $BoneAttatchments
 
 ##IK
 @onready var bodyIK = $Mesh/MaleSkeleton/Skeleton3D/bodyIK
@@ -23,6 +25,7 @@ signal itemChanged
 @onready var rightHandIKMarker = $Mesh/MaleSkeleton/Skeleton3D/LeftHandIK/leftHandMarker
 @onready var rightHandBone = $BoneAttatchments/rightHand
 @onready var leftHandBone = $BoneAttatchments/leftHand
+@onready var neckBone = $BoneAttatchments/Neck
 
 ##Pawn Parts
 @onready var head = $Mesh/MaleSkeleton/Skeleton3D/MaleHead
@@ -82,7 +85,16 @@ signal cameraAttached
 	get:
 		return attachedCam
 @export_subgroup("Behavior")
-@export var forceAnimation = false
+@export var forceAnimation = false:
+	set(value):
+		emit_signal("forcingAnimation")
+		forceAnimation = value
+		if value == false:
+			if animationTree:
+				animationTree.active = false
+		else:
+			if animationTree:
+				animationTree.active = true
 @export var animationToForce : String = ""
 ##Allows the pawn to interact with the environment, move and have physics applied, etc..
 @export var freeAim : bool = false
@@ -364,6 +376,8 @@ func checkComponents():
 func die():
 	removeComponents()
 	unequipWeapon()
+	if currentItem:
+		currentItem.weaponOwner = null
 	currentItemIndex = 0
 	currentItem = null
 	pawnEnabled = false
@@ -371,6 +385,7 @@ func die():
 	isPawnDead = true
 	$remover.start()
 	footstepSounds.queue_free()
+
 	if !attachedCam == null:
 		attachedCam.lowHP = false
 		attachedCam.resetCamCast()
@@ -402,9 +417,21 @@ func createRagdoll(impulse_bone : int = 0):
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)
 
+
+
 		emit_signal("pawnDied",ragdoll)
 		await moveClothesToRagdoll(ragdoll)
 		ragdoll.checkClothingHider()
+
+		for decalBones in ragdoll.ragdollSkeleton.get_bone_count():
+			for hboxes in boneAttatchementHolder.get_children():
+				if hboxes is BoneAttachment3D:
+					var boneID = hboxes.bone_idx
+					for decals in hboxes.get_children():
+						for boneParent in ragdoll.ragdollSkeleton.get_children():
+							if boneParent is PhysicalBone3D:
+								if boneParent.get_bone_id() == boneID:
+									decals.reparent(boneParent, true)
 
 		if !attachedCam == null:
 			var cam = attachedCam
@@ -443,6 +470,7 @@ func moveClothesToRagdoll(moveto):
 		clothes.reparent(moveto)
 		clothes.remapSkeleton()
 	return
+
 
 func checkClothingHider():
 	for clothes in clothingHolder.get_children():
@@ -624,6 +652,11 @@ func fixRot():
 	pawnMesh.rotation = self.rotation
 	self.rotation = Vector3.ZERO
 
+func playAnimation(animation:String):
+	if !forceAnimation:
+		forceAnimation = true
+
+	animationPlayer.play(animation)
 func do_stairs() -> void:
 	#Does staircase stuff
 	#TODO : Integrate this guys Staircase Stuff

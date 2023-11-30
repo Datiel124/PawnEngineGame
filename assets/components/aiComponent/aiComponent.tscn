@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b53hvcf0hvvkw"]
+[gd_scene load_steps=6 format=3 uid="uid://b53hvcf0hvvkw"]
 
 [ext_resource type="Script" path="res://assets/components/aiComponent/aiComponent.gd" id="1_tulq4"]
 [ext_resource type="Script" path="res://assets/scripts/stateMachine/stateMachine.gd" id="2_yt8xe"]
 [ext_resource type="Script" path="res://assets/scripts/stateMachine/states/wonderState.gd" id="3_4lom4"]
+[ext_resource type="Script" path="res://assets/scripts/stateMachine/states/attackState.gd" id="4_3m4kx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]
 radius = 2.58404
@@ -25,6 +26,15 @@ aiMoveTime = false
 wonderTimer = NodePath("aiTimer")
 
 [node name="aiTimer" type="Timer" parent="stateMachine/wonderState"]
+
+[node name="attackState" type="Node" parent="stateMachine" node_paths=PackedStringArray("sightCast")]
+script = ExtResource("4_3m4kx")
+sightCast = NodePath("rayCast3d")
+
+[node name="rayCast3d" type="RayCast3D" parent="stateMachine/attackState"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 9
+debug_shape_custom_color = Color(0.360784, 0.611765, 0.25098, 1)
 
 [node name="moveTo" type="Marker3D" parent="."]
 

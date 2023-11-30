@@ -68,3 +68,7 @@ func restartScene():
 	get_tree().reload_current_scene()
 
 
+func strip_bbcode(bbcode_text : String) -> String:
+	var regex := RegEx.new()
+	regex.compile("\\[(.+?)\\]")
+	return regex.sub(bbcode_text, "", true)

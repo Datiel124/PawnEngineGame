@@ -3,6 +3,7 @@
 [resource]
 resource_name = "Glove"
 cull_mode = 2
+shading_mode = 2
 vertex_color_use_as_albedo = true
 albedo_color = Color(0, 0, 0, 1)
 roughness = 0.5

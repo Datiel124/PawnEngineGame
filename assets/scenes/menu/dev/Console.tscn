@@ -1,15 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwo16kxuqgqpi"]
+[gd_scene load_steps=6 format=3 uid="uid://bwo16kxuqgqpi"]
 
 [ext_resource type="Script" path="res://assets/scenes/menu/dev/Console.gd" id="1_81317"]
 [ext_resource type="Script" path="res://assets/scenes/menu/dev/cvars.gd" id="2_bhpyj"]
 
+[sub_resource type="FontFile" id="FontFile_d7m8c"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/12/0 = Vector2(0, 0)
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/12/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/12/0/kerning_overrides/12/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="FontFile_42c85"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psdsv"]
+bg_color = Color(0, 0, 0, 0.584314)
+
 [node name="Console" type="Node"]
+process_mode = 3
 script = ExtResource("1_81317")
 
 [node name="window" type="Window" parent="."]
 disable_3d = true
 handle_input_locally = false
-title = "Pawn Engine - Developer Console"
+title = "Pawn Engine Console"
 position = Vector2i(113, 36)
 size = Vector2i(720, 480)
 transient = true
@@ -70,7 +98,48 @@ offset_left = 8.0
 offset_top = -40.0
 offset_right = -8.0
 offset_bottom = -9.0
-placeholder_text = "Enter Command Here"
+
+[node name="AutoCompletePreview" type="RichTextLabel" parent="window/control/panel/lineEdit"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 3.79
+offset_top = -11.54
+offset_right = 108.79
+offset_bottom = 14.46
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AutoComplete" type="RichTextLabel" parent="window/control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -48.0
+offset_right = -8.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 10
+theme_override_fonts/normal_font = SubResource("FontFile_d7m8c")
+theme_override_fonts/bold_font = SubResource("FontFile_42c85")
+theme_override_font_sizes/normal_font_size = 12
+theme_override_font_sizes/bold_font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_psdsv")
+bbcode_enabled = true
+text = "[right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="cvars" type="Node" parent="."]
 script = ExtResource("2_bhpyj")
@@ -78,4 +147,5 @@ script = ExtResource("2_bhpyj")
 [connection signal="close_requested" from="window" to="window" method="hide"]
 [connection signal="focus_entered" from="window" to="." method="_on_window_focus_entered"]
 [connection signal="window_input" from="window" to="." method="_on_window_window_input"]
+[connection signal="text_changed" from="window/control/panel/lineEdit" to="." method="detect_autocomplete"]
 [connection signal="text_submitted" from="window/control/panel/lineEdit" to="." method="_on_line_edit_text_submitted"]

@@ -199,3 +199,7 @@ func setTimeOfDay(time:float):
 func progressTime(value:bool):
 	if globalGameManager.world:
 		globalGameManager.world.worldSky.simulateTime = value
+
+func visionDebug(value:bool):
+	if globalGameManager.world:
+		globalGameManager.visionConesEnabled = value

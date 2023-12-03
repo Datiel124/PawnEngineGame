@@ -27,6 +27,15 @@ func updateState(delta):
 							aiMoveTime = false
 							updateTargetLocation(getNavPoints(true).global_position)
 
+			if get_parent().componentOwner.aiMindState == 1:
+				if get_parent().componentOwner.pawnHasTarget:
+							if get_parent().componentOwner.overlappingObject.currentItem:
+								transitionState.emit(self,"attackstate")
+
+			if get_parent().componentOwner.aiMindState == 2:
+				if get_parent().componentOwner.pawnHasTarget:
+					transitionState.emit(self,"attackstate")
+
 func getNavPoints(getRandomPoint:bool=false):
 	if getRandomPoint == false:
 		for navPoints in get_parent().componentOwner.navPointGrabber.get_overlapping_bodies():
@@ -43,7 +52,7 @@ func getNavPoints(getRandomPoint:bool=false):
 				return randomPoint
 
 func _on_nav_agent_target_reached():
-	Console.add_console_message("stopping ai on " + get_parent().componentOwner.pawnOwner.name)
+	#Console.add_console_message("stopping ai on " + get_parent().componentOwner.pawnOwner.name)
 	get_parent().componentOwner.pawnOwner.direction = Vector3.ZERO
 	aiMoveTime = false
 	wonderTimer.start()
@@ -56,7 +65,7 @@ func _on_nav_agent_velocity_computed(safe_velocity):
 
 
 func updateTargetLocation(targetPosition:Vector3):
-	Console.add_console_message("updating ai location on " + get_parent().componentOwner.pawnOwner.name)
+	#Console.add_console_message("updating ai location on " + get_parent().componentOwner.pawnOwner.name)
 	get_parent().componentOwner.moveTo.global_position = targetPosition
 	get_parent().componentOwner.navAgent.set_target_position(get_parent().componentOwner.moveTo.global_position)
 	get_parent().componentOwner.navAgent.target_desired_distance = randf_range(0.5,3)

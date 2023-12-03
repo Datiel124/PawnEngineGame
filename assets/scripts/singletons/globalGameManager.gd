@@ -5,6 +5,7 @@ extends Node
 var richPresenceEnabled = false
 var activeCamera = null
 var debugEnabled = false
+var visionConesEnabled : bool = false
 
 #Settings
 var userDir = DirAccess.open("user://")

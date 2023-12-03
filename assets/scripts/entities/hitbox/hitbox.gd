@@ -28,6 +28,9 @@ func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 =
 	healthComponent.componentOwner.lastHitPart = boneId
 	healthComponent.componentOwner.hitImpulse = hitImpulse
 	healthComponent.componentOwner.hitVector = hitPoint
+	if healthComponent.componentOwner:
+		if healthComponent.componentOwner.attachedCam:
+			healthComponent.componentOwner.attachedCam.fireRecoil(randf_range(9,12),randf_range(9,12),randf_range(9,13))
 
 
 func getCollisionObject():

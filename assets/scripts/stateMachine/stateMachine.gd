@@ -30,7 +30,7 @@ func onStateTransition(state, newStateName):
 	if currentState:
 		currentState.exitState()
 
-	newState.enter()
+	newState.enterState()
 
 	currentState = newState
 
@@ -39,6 +39,7 @@ func initializeStateMachine():
 		if state is State:
 			stateDict[state.name.to_lower()] = state
 			state.transitionState.connect(onStateTransition)
+			state.componentOwner = self
 
 	if initialState:
 		initialState.enterState()

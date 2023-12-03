@@ -133,7 +133,7 @@ var currentItem = null
 		currentItem = itemInventory[currentItemIndex]
 		if !currentItem == null:
 			equipWeapon(currentItemIndex)
-		emit_signal("itemChanged")
+			emit_signal("itemChanged")
 		if attachedCam:
 			attachedCam.resetCamCast()
 @export var clothingInventory : Array:
@@ -367,6 +367,7 @@ func checkComponents():
 				globalGameManager.world.worldMisc.add_child(_cam)
 				_cam.posessObject(self, followNode)
 				_cam.camCast.add_exception(self)
+
 
 	if velocityComponent == null or healthComponent == null:
 		return null

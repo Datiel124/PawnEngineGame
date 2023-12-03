@@ -5,7 +5,8 @@ class_name Weapon
 @onready var collisionObject = $collisionObject
 @onready var animationTree = $AnimationTree
 @onready var animationPlayer = $AnimationPlayer
-
+var weaponCast : RayCast3D
+var weaponCastEnd
 var weaponState
 var weaponRemoteState
 var weaponAnimSet = false
@@ -143,8 +144,10 @@ func fire():
 				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
 
 		shot_fired.emit()
-		weaponRemoteState.start("fire")
-		weaponOwner.attachedCam.fireRecoil()
+		if weaponRemoteState:
+			weaponRemoteState.start("fire")
+		if weaponOwner.attachedCam:
+			weaponOwner.attachedCam.fireRecoil()
 		isFiring = true
 		#Bullet Creation/Raycast Bullet Creation
 		for bullet in weaponShots:
@@ -158,6 +161,12 @@ func fire():
 					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
 					if !pt == null:
 						pt.look_at(getRayColPoint() + getRayNormal())
+			else:
+				if weaponCast.is_colliding():
+					raycastHit(weaponCast)
+					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
+					if !pt == null:
+						pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
 
 
 		await get_tree().create_timer(weaponFireRate).timeout
@@ -175,6 +184,13 @@ func createMuzzle():
 				bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
 			globalGameManager.world.worldMisc.add_child(bulletTrail)
 			return bulletTrail
+		else:
+			if weaponCast.is_colliding():
+				bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint(weaponCast))
+			else:
+				bulletTrail.initTrail(muzzlePoint.global_position, weaponCastEnd.global_position)
+			globalGameManager.world.worldMisc.add_child(bulletTrail)
+			return bulletTrail
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 
@@ -184,11 +200,15 @@ func checkShooter():
 	else:
 		return false
 
-func raycastHit():
+func raycastHit(raycaster : RayCast3D = null):
 		var colliding
 		var hitPoint
 		var hitNormal
-		var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+		var raycast : RayCast3D
+		if raycaster != null:
+			raycast = raycaster
+		else:
+			raycast = weaponOwner.attachedCam.camCast
 		colliding = raycast.get_collider()
 		hitPoint = raycast.get_collision_point()
 		hitNormal = raycast.get_collision_normal()
@@ -204,20 +224,32 @@ func raycastHit():
 		if colliding.has_method("hit"):
 			colliding.hit(weaponDamage,weaponOwner,global_position.direction_to(hitPoint).normalized() * randf_range(1,weaponImpulse),to_global(to_local(hitPoint)-position))
 
-func getHitObject():
-	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+func getHitObject(raycaster : RayCast3D = null):
+	var raycast : RayCast3D
+	if raycaster:
+		raycast = raycaster
+	else:
+		raycast = weaponOwner.attachedCam.camCast
 	var hitObject = raycast.get_collider()
 	if raycast.is_colliding():
 		return hitObject
 
-func getRayNormal():
-	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+func getRayNormal(raycaster : RayCast3D = null):
+	var raycast : RayCast3D
+	if raycaster:
+		raycast = raycaster
+	else:
+		raycast = weaponOwner.attachedCam.camCast
 	var hitNormal = raycast.get_collision_normal()
 	if raycast.is_colliding():
 		return hitNormal
 
-func getRayColPoint():
-	var raycast : RayCast3D = weaponOwner.attachedCam.camCast
+func getRayColPoint(raycaster : RayCast3D = null):
+	var raycast : RayCast3D
+	if raycaster:
+		raycast = raycaster
+	else:
+		raycast = weaponOwner.attachedCam.camCast
 	var hitPoint = raycast.get_collision_point()
 	if raycast.is_colliding():
 		return hitPoint

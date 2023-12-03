@@ -8,7 +8,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]
 radius = 2.58404
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gn8lp"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l7fjh"]
 points = PackedVector3Array(0, 1, 0, 0.194988, -1, -0.980814, 0, -1, -1, -0.195184, -1, -0.980814, -0.382733, -1, -0.924041, -0.555599, -1, -0.831637, -0.707126, -1, -0.707126, -0.831637, -1, -0.555599, -0.924041, -1, -0.382733, -0.980814, -1, -0.195184, -1, -1, -0.000195742, -0.980814, -1, 0.194988, -0.924041, -1, 0.382537, -0.831637, -1, 0.555403, -0.707126, -1, 0.70693, -0.555599, -1, 0.831441, -0.382733, -1, 0.923845, -0.195184, -1, 0.980619, -0.000195742, -1, 1, 0.194988, -1, 0.980619, 0.382537, -1, 0.923845, 0.555403, -1, 0.831441, 0.70693, -1, 0.70693, 0.831441, -1, 0.555403, 0.923845, -1, 0.382537, 0.980619, -1, 0.194988, 1, -1, -0.000195742, 0.980619, -1, -0.195184, 0.923845, -1, -0.382733, 0.831441, -1, -0.555599, 0.70693, -1, -0.707126, 0.555403, -1, -0.831637, 0.382537, -1, -0.924041)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g0iqj"]
@@ -73,11 +73,8 @@ sightCast = NodePath("rayCast3d")
 sightcastEnd = NodePath("rayCast3d/marker3d")
 
 [node name="rayCast3d" type="RayCast3D" parent="stateMachine/attackState"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.18996)
 target_position = Vector3(0, 0, -9)
 collision_mask = 22
-collide_with_areas = true
-collide_with_bodies = false
 debug_shape_custom_color = Color(0.360784, 0.611765, 0.25098, 1)
 
 [node name="marker3d" type="Marker3D" parent="stateMachine/attackState/rayCast3d"]
@@ -106,8 +103,8 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="visionCol" type="CollisionShape3D" parent="lineOfSight"]
-transform = Transform3D(2.86603e-15, -6.55671e-08, -1.5, -1.5, -6.55671e-08, -4.32339e-22, -6.55671e-08, 1.5, -6.55671e-08, 0, 0.12143, -1.69231)
-shape = SubResource("ConvexPolygonShape3D_gn8lp")
+transform = Transform3D(2.86603e-15, -6.55671e-08, -1.5, -1.5, -6.55671e-08, -2.20581e-22, -6.55671e-08, 1.5, -6.55671e-08, 0, 0.12143, -1.69231)
+shape = SubResource("ConvexPolygonShape3D_l7fjh")
 
 [node name="viewCone" type="MeshInstance3D" parent="lineOfSight/visionCol"]
 transform = Transform3D(1, 0, -2.11758e-22, 0, 1, 0, 0, 0, 1, -8.94467e-11, 0.00204635, -8.94467e-11)
@@ -117,7 +114,7 @@ mesh = SubResource("ArrayMesh_goj01")
 skeleton = NodePath("../../..")
 
 [node name="visionTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.25
 autostart = true
 
 [connection signal="timeout" from="stateMachine/wonderState/aiTimer" to="stateMachine/wonderState" method="_on_ai_timer_timeout"]

@@ -177,6 +177,9 @@ func _ready():
 		animationPlayer.play(animationToForce)
 
 	fixRot()
+	if animationTree:
+		var dup = animationTree.tree_root.duplicate()
+		animationTree.tree_root = dup
 
 func _physics_process(delta):
 	if forceAnimation:

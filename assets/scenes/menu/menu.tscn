@@ -211,7 +211,7 @@ nodes/weaponBlend/node = SubResource("AnimationNodeBlend2_e8nkd")
 nodes/weaponBlend/position = Vector2(326.539, -213.617)
 nodes/weaponState/node = SubResource("AnimationNodeBlendTree_65jm4")
 nodes/weaponState/position = Vector2(-120, -40)
-node_connections = [&"output", 0, &"weaponBlend", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeSpace", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
+node_connections = [&"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeSpace", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"output", 0, &"weaponBlend", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
 
 [sub_resource type="GDScript" id="GDScript_xoaof"]
 script/source = "extends WorldEnvironment
@@ -311,8 +311,6 @@ _data = {
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_swnst"]
 streams_count = 1
-random_pitch = 1.0
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("15_f36bv")
 stream_0/weight = 1.0
 
@@ -549,8 +547,8 @@ target_node = NodePath("../../../../../Marker3D")
 script = SubResource("GDScript_k7ds2")
 
 [node name="AnimationTree" parent="playerCharacter" index="3"]
-tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 active = false
+tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 
 [node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
 transform = Transform3D(0.99664, 0.0817215, -0.0032535, -0.0572318, 0.668451, -0.741537, -0.0584254, 0.739239, 0.670889, 0.0152351, 1.12295, -0.120088)

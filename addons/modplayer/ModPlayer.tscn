@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://ft0tb0snjcg2"]
 
-[ext_resource path="res://addons/modplayer/ModPlayer.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://addons/modplayer/ModPlayer.gd" id="1"]
 
 [node name="ModPlayer" type="Node"]
-script = ExtResource( 1 )
+script = ExtResource("1")

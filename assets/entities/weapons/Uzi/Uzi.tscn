@@ -12,7 +12,6 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhvhp"]
 streams_count = 1
-random_volume_offset_db = 0.0
 stream_0/stream = ExtResource("2_2gcbv")
 stream_0/weight = 1.0
 
@@ -31,17 +30,17 @@ point_count = 3
 curve = SubResource("Curve_lkvg2")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w8rew"]
+angle_min = -720.0
+angle_max = 720.0
 direction = Vector3(-1, 0, 0)
 spread = 19.28
-gravity = Vector3(0, 5, 0)
 initial_velocity_min = 2.0
 initial_velocity_max = 5.0
 angular_velocity_min = -50.0
 angular_velocity_max = 50.0
+gravity = Vector3(0, 5, 0)
 damping_min = 8.824
 damping_max = 41.596
-angle_min = -720.0
-angle_max = 720.0
 scale_min = 0.5
 scale_curve = SubResource("CurveTexture_xsdto")
 color = Color(1.2, 1.2, 1.2, 1)
@@ -106,6 +105,13 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_k64ul"),
 "light_flash": SubResource("Animation_4v8w6")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oep0y"]
+_data = {
+"aim": ExtResource("8_figtn"),
+"fire": ExtResource("7_iax7p"),
+"idle": ExtResource("8_a17bg")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybwpt"]
@@ -184,13 +190,6 @@ nodes/weaponStateSpeed/node = SubResource("AnimationNodeTimeScale_uy32p")
 nodes/weaponStateSpeed/position = Vector2(80, 100)
 node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oep0y"]
-_data = {
-"aim": ExtResource("8_figtn"),
-"fire": ExtResource("7_iax7p"),
-"idle": ExtResource("8_a17bg")
-}
-
 [node name="Uzi" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_k0gi6")]
 muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
 weaponDamage = 4.0
@@ -253,12 +252,15 @@ light_energy = 0.0
 omni_range = 4.20246
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Uzi/Marker3D/OmniLight3D" index="0"]
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
+autoplay = "RESET"
 
 [node name="AnimationTree" parent="." index="3"]
+libraries = {
+"weaponAnims": SubResource("AnimationLibrary_oep0y")
+}
 tree_root = SubResource("AnimationNodeBlendTree_2qjkh")
 parameters/weaponStateSpeed/scale = 1.0
 

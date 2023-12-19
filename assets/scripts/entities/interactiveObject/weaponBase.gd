@@ -142,7 +142,8 @@ func fire():
 			if weaponOwner.attachedCam:
 				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
 				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
-
+		if weaponCast:
+			weaponCast.position = Vector3(randf_range(-weaponSpread, weaponSpread),randf_range(-weaponSpread, weaponSpread),0)
 		shot_fired.emit()
 		if weaponRemoteState:
 			weaponRemoteState.start("fire")
@@ -158,15 +159,19 @@ func fire():
 			if checkShooter():
 				if weaponOwner.attachedCam.camCast.is_colliding():
 					raycastHit()
-					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
-					if !pt == null:
-						pt.look_at(getRayColPoint() + getRayNormal())
+					var hit = globalParticles.detectMaterial(getHitObject())
+					if hit != null:
+						var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
+						if !pt == null:
+							pt.look_at(getRayColPoint() + getRayNormal())
 			else:
 				if weaponCast.is_colliding():
 					raycastHit(weaponCast)
-					var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
-					if !pt == null:
-						pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
+					var hit = globalParticles.detectMaterial(getHitObject(weaponCast))
+					if hit != null:
+						var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
+						if !pt == null:
+							pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
 
 
 		await get_tree().create_timer(weaponFireRate).timeout
@@ -212,17 +217,18 @@ func raycastHit(raycaster : RayCast3D = null):
 		colliding = raycast.get_collider()
 		hitPoint = raycast.get_collision_point()
 		hitNormal = raycast.get_collision_normal()
-		if colliding.is_in_group("Flesh"):
-			var spurtChance = randi_range(0,1)
-			globalParticles.spawnBulletHole("Flesh",colliding,hitPoint,randf_range(0, 2),hitNormal)
-			if spurtChance == 1:
-				var bloodStream = globalParticles.createParticle("BloodStream",hitPoint,Vector3.ZERO,colliding)
-				bloodStream.look_at(hitPoint+hitNormal/2)
-		else:
-			globalParticles.spawnBulletHole("default",colliding,hitPoint,randf_range(0, 2),hitNormal)
+		if colliding:
+			if colliding.is_in_group("Flesh"):
+				var spurtChance = randi_range(0,1)
+				globalParticles.spawnBulletHole("Flesh",colliding,hitPoint,randf_range(0, 2),hitNormal)
+				if spurtChance == 1:
+					var bloodStream = globalParticles.createParticle("BloodStream",hitPoint,Vector3.ZERO,colliding)
+					bloodStream.look_at(hitPoint+hitNormal/2)
+			else:
+				globalParticles.spawnBulletHole("default",colliding,hitPoint,randf_range(0, 2),hitNormal)
 
-		if colliding.has_method("hit"):
-			colliding.hit(weaponDamage,weaponOwner,global_position.direction_to(hitPoint).normalized() * randf_range(1,weaponImpulse),to_global(to_local(hitPoint)-position))
+			if colliding.has_method("hit"):
+				colliding.hit(weaponDamage,weaponOwner,global_position.direction_to(hitPoint).normalized() * randf_range(1,weaponImpulse),to_global(to_local(hitPoint)-position))
 
 func getHitObject(raycaster : RayCast3D = null):
 	var raycast : RayCast3D

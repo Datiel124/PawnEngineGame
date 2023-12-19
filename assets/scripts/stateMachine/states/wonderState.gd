@@ -13,6 +13,11 @@ func enterState():
 	await get_tree().process_frame
 	startAI()
 
+func exitState():
+	aiMoveTime = false
+	wonderTimer.stop()
+	get_parent().componentOwner.navAgent.set_velocity(Vector3.ZERO)
+	get_parent().componentOwner.pawnOwner.direction = Vector3.ZERO
 
 func updateState(delta):
 		if !get_parent().componentOwner.pawnOwner == null:
@@ -61,7 +66,8 @@ func _on_nav_agent_target_reached():
 func _on_nav_agent_velocity_computed(safe_velocity):
 	safeVel = safe_velocity
 	if aiMoveTime:
-		get_parent().componentOwner.pawnOwner.direction = get_parent().componentOwner.pawnOwner.direction.move_toward(safe_velocity, 0.25)
+		if get_parent().componentOwner.pawnOwner:
+			get_parent().componentOwner.pawnOwner.direction = get_parent().componentOwner.pawnOwner.direction.move_toward(safe_velocity, 0.25)
 
 
 func updateTargetLocation(targetPosition:Vector3):
@@ -75,7 +81,7 @@ func _on_ai_timer_timeout():
 	updateTargetLocation(getNavPoints(true).global_position)
 	wonderTimer.wait_time = randf_range(0.4,5)
 	wonderTimer.stop()
-	Console.add_console_message("timer stopped/starting ai on " + get_parent().componentOwner.pawnOwner.name)
+	#Console.add_console_message("timer stopped/starting ai on " + get_parent().componentOwner.pawnOwner.name)
 
 func startAI():
 	updateTargetLocation(getNavPoints(true).global_position)

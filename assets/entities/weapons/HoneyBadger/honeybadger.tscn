@@ -117,7 +117,7 @@ _data = {
 
 [node name="Honeybadger" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_821xr")]
 muzzlePoint = NodePath("Mesh/HoneyBadger/Marker3D")
-weaponDamage = 11.0
+weaponDamage = 10.0
 weaponFireRate = 0.08
 weaponImpulse = 65.0
 weaponRecoil = Vector3(15, 4, 1.9)

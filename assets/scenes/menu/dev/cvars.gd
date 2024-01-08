@@ -70,8 +70,19 @@ func load(path : String):
 	Console.add_console_message("Loaded %s" % path, Color.GREEN)
 	return res
 
-
-
+func posess():
+	var cast : RayCast3D = globalGameManager.activeCamera.debugCast
+	if cast:
+		if cast.is_colliding():
+			if cast.get_collider().is_in_group("Posessable"):
+				freecam()
+				globalGameManager.activeCamera.posessObject(cast.get_collider(),cast.get_collider().followNode)
+			else:
+				Console.add_console_message("Cannot posess %s, Its not possessable" %cast.get_collider())
+	else:
+		Console.add_console_message("You can't posess nothing dipshit. Look at a pawn.")
+func freecam():
+	globalGameManager.activeCamera.unposessObject(true)
 
 func spawnPawn(position : Vector3 = Vector3.INF) -> void:
 	var pawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
@@ -81,7 +92,7 @@ func spawnPawn(position : Vector3 = Vector3.INF) -> void:
 	if cast.is_colliding() and !position.is_finite():
 		pawn.rotation.y = randf_range(0,360)
 		pawn.global_position = cast.get_collision_point()
-		pawn.global_position.y = pawn.global_position.y * 3
+		pawn.global_position.y = pawn.global_position.y + 1
 	if position.is_finite():
 		pawn.global_position = position
 	pawn.componentHolder.add_child(controller)
@@ -203,3 +214,11 @@ func progressTime(value:bool):
 func visionDebug(value:bool):
 	if globalGameManager.world:
 		globalGameManager.visionConesEnabled = value
+
+func debugToggle():
+	if globalGameManager.debugEnabled:
+		globalGameManager.debugEnabled = false
+		Console.add_console_message("Debug controls are now disabled.")
+	else:
+		globalGameManager.debugEnabled = true
+		Console.add_console_message("Debug controls are now enabled.")

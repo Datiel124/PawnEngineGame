@@ -53,6 +53,7 @@ signal cameraAttached
 		return attachedCam
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$remove_timer.start()
 	for bones in ragdollSkeleton.get_children().filter(func(x): return x is PhysicalBone3D):
 		physicsBones.append(bones)
 	for pb in physicsBones:
@@ -129,3 +130,7 @@ func checkClothingHider():
 
 func hookes_law(displacement: Vector3, current_velocity: Vector3, stiffness: float, damping: float) -> Vector3:
 	return (stiffness * displacement) - (damping * current_velocity)
+
+
+func _on_remove_timer_timeout():
+	queue_free()

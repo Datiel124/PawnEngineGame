@@ -257,6 +257,10 @@ libraries = {
 }
 autoplay = "RESET"
 
+[node name="weaponBlock" parent="Mesh" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037148, 0.2928)
+target_position = Vector3(0, 0, 0.185)
+
 [node name="AnimationTree" parent="." index="3"]
 libraries = {
 "weaponAnims": SubResource("AnimationLibrary_oep0y")

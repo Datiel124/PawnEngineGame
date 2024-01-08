@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b53hvcf0hvvkw"]
+[gd_scene load_steps=9 format=3 uid="uid://b53hvcf0hvvkw"]
 
 [ext_resource type="Script" path="res://assets/components/aiComponent/aiComponent.gd" id="1_tulq4"]
 [ext_resource type="Script" path="res://assets/scripts/stateMachine/stateMachine.gd" id="2_yt8xe"]
@@ -10,6 +10,11 @@ radius = 2.58404
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_q6m5e"]
 radius = 5.43627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxudk"]
+albedo_color = Color(0, 1, 0.368627, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_t2je8"]
 
 [node name="aiComponent" type="Node3D" node_paths=PackedStringArray("stateMachine", "moveTo", "navAgent", "navPointGrabber", "visionTimer", "pawnGrabber")]
 script = ExtResource("1_tulq4")
@@ -80,10 +85,15 @@ shape = SubResource("SphereShape3D_q6m5e")
 [node name="rayCast3d" type="RayCast3D" parent="pawnGrabber"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543199, 0)
 target_position = Vector3(0, 0, -15)
+collide_with_areas = true
 debug_shape_custom_color = Color(0.67451, 0, 0, 1)
 
+[node name="meshInstance3d" type="MeshInstance3D" parent="pawnGrabber"]
+material_override = SubResource("StandardMaterial3D_gxudk")
+mesh = SubResource("ImmediateMesh_t2je8")
+
 [node name="visionTimer" type="Timer" parent="."]
-wait_time = 0.552
+wait_time = 0.025
 autostart = true
 
 [connection signal="timeout" from="stateMachine/wonderState/aiTimer" to="stateMachine/wonderState" method="_on_ai_timer_timeout"]

@@ -65,8 +65,9 @@ func _process(_delta):
 				controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
 
 func getInputDir():
-	inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
-	return inputDir
+	if movementEnabled:
+		inputDir = Vector3(Input.get_action_strength("gMoveRight") - Input.get_action_strength("gMoveLeft"), 0, Input.get_action_strength("gMoveBackward") - Input.get_action_strength("gMoveForward"))
+		return inputDir
 
 func _unhandled_input(event):
 	if mouseActionsEnabled:

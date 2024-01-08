@@ -1,13 +1,19 @@
-[gd_scene load_steps=59 format=3 uid="uid://cm5mhbhroqded"]
+[gd_scene load_steps=75 format=3 uid="uid://cm5mhbhroqded"]
 
+[ext_resource type="Texture2D" uid="uid://dc5f1olwhqsha" path="res://assets/textures/world/concrete/gouged1.png" id="1_6e65t"]
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="1_6tkvv"]
+[ext_resource type="Texture2D" uid="uid://dralk8xtrsqrp" path="res://assets/textures/world/slate/slate.png" id="1_bvse0"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="1_mmc6m"]
+[ext_resource type="Texture2D" uid="uid://wbee5ebs8hau" path="res://assets/textures/world/brick/brick1.png" id="1_ubg56"]
 [ext_resource type="ArrayMesh" uid="uid://brx711lyumg08" path="res://assets/models/weapons/uzi/uzimodel.res" id="2_y054k"]
 [ext_resource type="Environment" uid="uid://7s7lpp6u8ukp" path="res://assets/envs/default/debugWorld.tres" id="3_nx10h"]
 [ext_resource type="PackedScene" uid="uid://cgghffeqks1ac" path="res://assets/entities/clothing/Gloves/left_glove_fingerless.tscn" id="3_sguoq"]
+[ext_resource type="Texture2D" uid="uid://boc7cpthcn4yv" path="res://assets/textures/world/wood/wood1.png" id="4_3syth"]
 [ext_resource type="PackedScene" uid="uid://bap501mpmqgb" path="res://assets/entities/clothing/Gloves/right_glove_fingerless.tscn" id="4_jwagi"]
 [ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="4_vym1c"]
+[ext_resource type="Texture2D" uid="uid://dab7ycbdan6j2" path="res://assets/textures/world/wood/wood2.png" id="5_0t3kd"]
 [ext_resource type="PackedScene" uid="uid://bb5qvdslt6004" path="res://assets/entities/clothing/Pants/armored_pants.tscn" id="5_pnv0u"]
+[ext_resource type="Texture2D" uid="uid://cex4snlueu6je" path="res://assets/textures/world/metal/plate.png" id="6_3emxc"]
 [ext_resource type="PackedScene" uid="uid://d10o2e44ltrnl" path="res://assets/entities/clothing/ArmoredShirt/armor_shirt.tscn" id="6_7pcxf"]
 [ext_resource type="PackedScene" uid="uid://cu4bdt2hv4dyo" path="res://assets/models/weapons/beretta/Beretta.fbx" id="6_7thhc"]
 [ext_resource type="PackedScene" uid="uid://cix8a7ilvw57" path="res://assets/entities/clothing/Hats/Balaclava/balaclava.tscn" id="7_fu03r"]
@@ -18,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://dmifxlb0c387l" path="res://assets/sounds/ui/uiclick.wav" id="10_tlj7m"]
 [ext_resource type="Texture2D" uid="uid://y3t3guvaiihk" path="res://assets/textures/menu/bg.png" id="11_jchm2"]
 [ext_resource type="AudioStream" uid="uid://bo6wh6ciub45e" path="res://assets/music/menu/loltune.mp3" id="15_f36bv"]
+[ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="16_r0giw"]
 
 [sub_resource type="GDScript" id="GDScript_h14ep"]
 script/source = "extends Node3D
@@ -46,6 +53,37 @@ func _on_menu_music_finished():
 	menuSong.play()
 
 "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8cwh"]
+albedo_texture = ExtResource("1_bvse0")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eemj8"]
+albedo_texture = ExtResource("1_6e65t")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6hecn"]
+albedo_texture = ExtResource("1_bvse0")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d2y1"]
+albedo_texture = ExtResource("1_ubg56")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smpuk"]
+albedo_texture = ExtResource("1_ubg56")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yei58"]
+albedo_texture = ExtResource("4_3syth")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6bw5"]
+albedo_texture = ExtResource("5_0t3kd")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vme1f"]
+albedo_texture = ExtResource("6_3emxc")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ttsfu"]
 exposure_multiplier = 1.35
@@ -235,15 +273,24 @@ func _process(delta):
 [sub_resource type="GDScript" id="GDScript_aalkd"]
 script/source = "extends Control
 #@onready var animPlayer = $AnimationPlayer
-
+var anykey = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	animPlayer.play(\"start\")
 	$camAnim.play(\"cam\")
-	$bottom/animationPlayer.play(\"flyup\")
 	$logoAnim/logoAnim.play(\"logoanim\")
 func _on_play_button_pressed():
 	pass # Replace with function body.
+
+
+func _on_logo_anim_animation_finished(anim_name):
+	if anim_name == \"logoanim\":
+		anykey = true
+
+func _input(event):
+	if event.is_action_pressed(\"gLeftClick\"):
+		if anykey:
+			$logoAnim/logoAnim.play(\"fade\")
 "
 
 [sub_resource type="Animation" id="Animation_wpqb2"]
@@ -288,6 +335,33 @@ _data = {
 "cam": SubResource("Animation_jj1mn")
 }
 
+[sub_resource type="Animation" id="Animation_egmr4"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_gcjaj"]
 resource_name = "logoanim"
 length = 3.0
@@ -298,14 +372,39 @@ tracks/0/path = NodePath(".:metadata/blend_1")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1.7),
+"times": PackedFloat32Array(0.1, 2.9),
 "transitions": PackedFloat32Array(0.210224, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ebuhq"]
 _data = {
+"fade": SubResource("Animation_egmr4"),
 "logoanim": SubResource("Animation_gcjaj")
 }
 
@@ -320,94 +419,112 @@ script = SubResource("GDScript_h14ep")
 [node name="geometry" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="geometry"]
+material_override = SubResource("StandardMaterial3D_n8cwh")
 size = Vector3(6.93503, 0.343444, 8.97523)
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.57871, 0)
+material_override = SubResource("StandardMaterial3D_eemj8")
 size = Vector3(6.93503, 0.343444, 8.97523)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30011, 3.29274, 0)
+material_override = SubResource("StandardMaterial3D_6hecn")
+size = Vector3(1.01183, 0.915374, 8.97523)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0153286, 3.29274, 0)
+material_override = SubResource("StandardMaterial3D_6hecn")
+size = Vector3(1.01183, 0.915374, 8.97523)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84647, 3.29274, 0)
+material_override = SubResource("StandardMaterial3D_6hecn")
+size = Vector3(1.01183, 0.915374, 8.97523)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3.50112, 3.3924, 0)
-size = Vector3(6.93503, 0.343444, 8.97523)
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 3.50112, 3.3924, -0.0556679)
+material_override = SubResource("StandardMaterial3D_6d2y1")
+size = Vector3(9.18847, 0.343444, 8.97523)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3.49888, 3.3924, 0)
-size = Vector3(6.93503, 0.343444, 8.97523)
+transform = Transform3D(-0.029637, -0.999559, -0.00186657, 0.000192749, -0.0018731, 0.999998, -0.999561, 0.0296366, 0.000248177, -3.48578, 3.39231, 0.44183)
+material_override = SubResource("StandardMaterial3D_6d2y1")
+size = Vector3(7.81908, 0.343444, 8.97523)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.597337, 3.3924, -4.47253)
-size = Vector3(6.93503, 0.343444, 8.97523)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -0.682802, 3.3924, 3.65861)
-size = Vector3(6.93503, 0.343444, 8.97523)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508823, 0.679677, -0.578689)
-size = Vector3(1.72807, 0.0399028, 0.881355)
+transform = Transform3D(1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -1.17986, 3.3924, -3.71327)
+material_override = SubResource("StandardMaterial3D_6d2y1")
+size = Vector3(9.85644, 0.343444, 8.97523)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82116, 0.201497, -2.00572)
-size = Vector3(0.9235, 1.12136, 0.881355)
+transform = Transform3D(1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, 3.08234, 1.63649, -3.24764)
+material_override = SubResource("StandardMaterial3D_smpuk")
+size = Vector3(1.27881, 1.08285, 4.12629)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, -4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -4.37114e-08, -1, -4.37114e-08, -2.79662, 1.7994, -3.24766)
+material_override = SubResource("StandardMaterial3D_6d2y1")
+size = Vector3(1.27881, 1.08285, 4.12629)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(-1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 4.37114e-08, -1, -4.37114e-08, -1, -4.37114e-08, -0.203634, 3.39377, 3.65745)
+material_override = SubResource("StandardMaterial3D_6d2y1")
+size = Vector3(7.89183, 0.343444, 8.97523)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0508551, 0.680463, -0.578702)
+material_override = SubResource("StandardMaterial3D_yei58")
+size = Vector3(1.72807, 0.0399028, 0.881355)
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(0.899413, -0.4371, 0, 0.432097, 0.889119, -0.150864, 0.0659427, 0.135689, 0.988555, -2.85268, 0.711728, -0.644257)
+material_override = SubResource("StandardMaterial3D_i6bw5")
 size = Vector3(0.172434, 1.82244, 0.503757)
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(0.899413, -0.4371, 0, 0.434273, 0.893596, 0.11355, -0.0496327, -0.102128, 0.993532, -2.87652, 0.711728, 0.10809)
+material_override = SubResource("StandardMaterial3D_i6bw5")
 size = Vector3(0.172434, 1.82244, 0.503757)
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(0.898925, 0.0236105, -0.437466, 0.437526, 0.00284481, 0.899201, 0.0224751, -0.999717, -0.00777306, -3.2275, 0.409847, -0.08408)
+material_override = SubResource("StandardMaterial3D_i6bw5")
 size = Vector3(0.172434, 1.54897, 0.503757)
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85914, 0.201497, -2.75053)
-size = Vector3(0.9235, 1.12136, 0.881355)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44822, 1.164, -2.69882)
-size = Vector3(0.9235, 0.783151, 0.881355)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="geometry/CSGBox3D17"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 3.90809, -0.944395, 0.592488)
-size = Vector3(0.9235, 1.12136, 0.881355)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="geometry/CSGBox3D17"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.87651, -0.944395, 1.32896)
-size = Vector3(0.9235, 1.12136, 0.881355)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="geometry/CSGBox3D17"]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 4.67409, 0.0181062, 0.773341)
-size = Vector3(0.9235, 0.783151, 0.881355)
-
 [node name="CSGBox3D12" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.0508823, 1.00007, -0.996765)
+transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.0507103, 1.00074, -0.997042)
+material_override = SubResource("StandardMaterial3D_vme1f")
 size = Vector3(1.72807, 0.0399028, 0.881355)
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="geometry"]
-transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.57578, 1.31419, -0.863864)
+transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, -0.575608, 1.31486, -0.864141)
+material_override = SubResource("StandardMaterial3D_vme1f")
 size = Vector3(0.18359, 0.222883, 0.0445222)
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(0.723811, 0, 0, 0, -4.37114e-08, 0.757895, 0, -1, -3.31287e-08, 0.42422, 1.31419, -0.863864)
+material_override = SubResource("StandardMaterial3D_vme1f")
 size = Vector3(0.18359, 0.222883, 0.0445222)
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860541, 0.283394, -0.202421)
+material_override = SubResource("StandardMaterial3D_yei58")
 size = Vector3(0.105206, 0.756433, 0.110838)
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.860541, 0.283394, -0.964806)
+material_override = SubResource("StandardMaterial3D_yei58")
 size = Vector3(0.105206, 0.756433, 0.110838)
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75531, 0.283394, -0.202421)
+material_override = SubResource("StandardMaterial3D_yei58")
 size = Vector3(0.105206, 0.756433, 0.110838)
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75531, 0.283394, -0.964806)
+material_override = SubResource("StandardMaterial3D_yei58")
 size = Vector3(0.105206, 0.756433, 0.110838)
 
 [node name="HoneyBadger" parent="geometry" instance=ExtResource("1_mmc6m")]
@@ -466,7 +583,6 @@ bones/9/rotation = Quaternion(0.0611276, 0.369202, 0.00295762, 0.927332)
 bones/10/position = Vector3(0.0300253, 0.13663, 0.0188193)
 bones/10/rotation = Quaternion(-0.000990664, -0.714096, 0.0114753, 0.699953)
 bones/11/rotation = Quaternion(-0.206047, 0.805129, 0.119981, 0.543062)
-bones/11/scale = Vector3(0.999994, 0.99999, 1)
 bones/12/rotation = Quaternion(-0.147382, -0.473127, -0.0944767, 0.863425)
 bones/13/rotation = Quaternion(-0.0331268, -0.715024, 0.108502, 0.689834)
 bones/14/rotation = Quaternion(0.13645, -0.921549, 0.181667, 0.314839)
@@ -483,13 +599,11 @@ bones/23/rotation = Quaternion(-0.114046, -0.489638, 0.420609, 0.755205)
 bones/24/rotation = Quaternion(0.356007, -0.0109668, 0.40786, 0.840707)
 bones/24/scale = Vector3(0.999995, 1, 1)
 bones/25/rotation = Quaternion(0.175382, -0.307173, -0.208665, 0.911781)
-bones/25/scale = Vector3(1, 0.999994, 1)
 bones/26/rotation = Quaternion(-0.0730983, 0.7128, -0.124409, 0.686364)
 bones/27/rotation = Quaternion(0.0232806, -0.0593168, 0.0033988, 0.997962)
 bones/28/rotation = Quaternion(0.0611266, -0.369201, -0.00295949, 0.927332)
 bones/29/rotation = Quaternion(-0.110104, 0.731493, -0.0591149, 0.670299)
 bones/30/rotation = Quaternion(-0.214509, -0.80425, -0.12267, 0.540482)
-bones/30/scale = Vector3(0.999994, 0.99999, 1)
 bones/31/rotation = Quaternion(-0.599464, 0.380507, 0.289691, 0.641823)
 bones/31/scale = Vector3(0.999987, 1.00001, 0.999997)
 bones/32/rotation = Quaternion(-0.395467, 0.583166, -0.246129, 0.66554)
@@ -506,21 +620,17 @@ bones/38/scale = Vector3(1.00001, 0.999992, 0.999998)
 bones/39/rotation = Quaternion(-0.205808, -0.89969, 0.0209074, 0.3844)
 bones/40/rotation = Quaternion(-0.0413914, 0.0038635, 0.351315, 0.935334)
 bones/41/rotation = Quaternion(-0.105514, -0.0165745, 0.0438012, 0.993314)
-bones/42/position = Vector3(7.39395e-09, 0.0723969, 0.00485133)
 bones/42/rotation = Quaternion(-0.0820955, 0.689541, -0.0123402, 0.719473)
 bones/43/rotation = Quaternion(0.890526, 0.210286, -0.0577829, 0.399255)
-bones/43/scale = Vector3(1, 0.999992, 0.999986)
 bones/44/rotation = Quaternion(0.575647, 0.00167053, 0.0268122, 0.817257)
 bones/45/rotation = Quaternion(-0.0289115, 0.953779, -0.296268, 0.0411623)
 bones/45/scale = Vector3(1.00001, 0.999989, 0.999979)
 bones/46/rotation = Quaternion(0.427127, -0.0145003, -0.0222568, 0.903801)
-bones/46/scale = Vector3(0.999997, 1.00001, 1)
 bones/47/rotation = Quaternion(0.914117, -0.235013, 0.0509862, 0.326434)
 bones/47/scale = Vector3(1, 0.99999, 0.99999)
 bones/48/rotation = Quaternion(0.558354, -0.0016973, -0.0270084, 0.829161)
 bones/49/rotation = Quaternion(-0.0378017, -0.914885, 0.39687, 0.0636432)
 bones/50/rotation = Quaternion(0.302235, 0.0109896, 0.000367735, 0.95317)
-bones/50/scale = Vector3(0.999992, 0.999995, 0.999988)
 
 [node name="LeftGloveFingerless" parent="playerCharacter/Mesh/MaleSkeleton/Skeleton3D/Clothing" index="0" instance=ExtResource("3_sguoq")]
 
@@ -546,6 +656,9 @@ tip_bone = &"R_Hand"
 target_node = NodePath("../../../../../Marker3D")
 script = SubResource("GDScript_k7ds2")
 
+[node name="Marker3D" parent="playerCharacter/Mesh" index="1"]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -0.0234906, 1.86302, 0.103142)
+
 [node name="AnimationTree" parent="playerCharacter" index="3"]
 active = false
 tree_root = SubResource("AnimationNodeBlendTree_i8yum")
@@ -566,7 +679,7 @@ transform = Transform3D(0.899517, 0.138555, -0.414276, 0.0939821, -0.987523, -0.
 transform = Transform3D(0.90355, -0.41187, -0.118053, -0.259904, -0.307827, -0.915241, 0.340631, 0.857657, -0.385187, -0.0507906, 0.815815, -0.137501)
 
 [node name="RightFoot" parent="playerCharacter/BoneAttatchments" index="5"]
-transform = Transform3D(-0.914931, -0.360729, -0.18096, 0.0967138, -0.631313, 0.769455, -0.391819, 0.686516, 0.612491, -0.308042, 0.298979, 0.201249)
+transform = Transform3D(-0.914931, -0.360723, -0.180963, 0.0967138, -0.631303, 0.769469, -0.391819, 0.686504, 0.612502, -0.308042, 0.298979, 0.201249)
 
 [node name="RightKnee" parent="playerCharacter/BoneAttatchments" index="6"]
 transform = Transform3D(0.92467, -0.225024, 0.307085, -0.220121, -0.974124, -0.050997, 0.310622, -0.020441, -0.950295, -0.217421, 0.691278, 0.209481)
@@ -592,6 +705,60 @@ mesh = ExtResource("2_y054k")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(-0.671323, -0.427437, 0.605494, -0.286504, 0.903103, 0.319875, -0.68355, 0.041263, -0.728736, 1.32167, 1.91478, -1.54405)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, -2.589, 2.83719, 2.35619)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, -2.589, 2.83719, -2.19767)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, -2.589, 2.83719, -4.22476)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 0.354979, 2.83719, 2.35619)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 0.354979, 2.83719, -2.19767)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 0.354979, 2.83719, -4.22476)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 1.61304, 2.7089, 2.35619)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D10" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 1.61304, 2.7089, -2.19767)
+light_energy = 2.733
+shadow_enabled = true
+spot_range = 6.70126
+
+[node name="SpotLight3D11" type="SpotLight3D" parent="."]
+transform = Transform3D(0.286504, -0.903103, -0.319875, 0.0457339, -0.3206, 0.94611, -0.956987, -0.285694, -0.0505507, 1.61304, 2.7089, -4.22476)
 light_energy = 2.733
 shadow_enabled = true
 spot_range = 6.70126
@@ -622,6 +789,7 @@ mouse_filter = 2
 script = SubResource("GDScript_aalkd")
 
 [node name="bottom" type="Control" parent="Menu" node_paths=PackedStringArray("target_controls")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -784,14 +952,15 @@ libraries = {
 }
 
 [node name="logoAnim" type="Control" parent="Menu" node_paths=PackedStringArray("target_controls")]
+modulate = Color(1, 1, 1, 0.8)
 layout_mode = 1
 anchor_top = -0.002
 anchor_right = 0.325
 anchor_bottom = 1.0
-offset_left = -372.0
-offset_top = 107.8
-offset_right = -637.0
-offset_bottom = -523.0
+offset_left = 9.0
+offset_top = 430.8
+offset_right = -256.0
+offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.172809
@@ -799,7 +968,7 @@ mouse_filter = 1
 script = ExtResource("10_b7a2x")
 target_controls = [NodePath("Start"), NodePath("End")]
 metadata/blend_0 = 0.0
-metadata/blend_1 = 0.0
+metadata/blend_1 = 1.0
 
 [node name="Logo" type="TextureRect" parent="Menu/logoAnim"]
 layout_mode = 1
@@ -822,33 +991,54 @@ top_level = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.232
-anchor_top = 0.118
+anchor_top = 0.5
 anchor_right = -0.232
-anchor_bottom = 0.392
-offset_left = -0.799988
-offset_top = -0.200005
-offset_right = 265.2
-offset_bottom = 19.2
+anchor_bottom = 0.791
+offset_left = 55.2
+offset_top = -4.0
+offset_right = 321.2
+offset_bottom = 0.0999756
 grow_vertical = 0
 
 [node name="End" type="ReferenceRect" parent="Menu/logoAnim"]
 top_level = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.012
-anchor_top = 0.114
+anchor_left = 0.006
+anchor_top = 0.477
 anchor_right = 0.012
-anchor_bottom = 0.41
-offset_left = 0.799999
-offset_top = 0.400055
-offset_right = 266.8
-offset_bottom = 3.05176e-05
+anchor_bottom = 0.772
+offset_left = -0.600001
+offset_top = -0.299988
+offset_right = 255.8
+offset_bottom = 0.200073
 rotation = 0.032523
 
 [node name="logoAnim" type="AnimationPlayer" parent="Menu/logoAnim"]
 libraries = {
 "": SubResource("AnimationLibrary_ebuhq")
 }
+
+[node name="label" type="Label" parent="Menu"]
+modulate = Color(1, 1, 1, 0.8)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.777
+anchor_bottom = 0.84
+offset_left = -2.0
+offset_top = 0.700012
+offset_right = 358.0
+offset_bottom = 1.0
+theme = ExtResource("16_r0giw")
+theme_override_font_sizes/font_size = 27
+text = "Press Any key to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuOptions" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(-0.0491924, 0.839506, -0.541119, -0.866504, 0.233576, 0.441149, 0.49674, 0.490583, 0.715945, -0.0128218, 0.926147, 0.0520496)
@@ -867,6 +1057,7 @@ bus = &"Music"
 
 [connection signal="pressed" from="Menu/bottom/playButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Menu/bottom/quitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="animation_finished" from="Menu/logoAnim/logoAnim" to="Menu" method="_on_logo_anim_animation_finished"]
 [connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]
 
 [editable path="playerCharacter"]

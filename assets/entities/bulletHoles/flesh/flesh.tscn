@@ -1,8 +1,37 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwsdqwu6x0g5y"]
+[gd_scene load_steps=7 format=3 uid="uid://bwsdqwu6x0g5y"]
 
 [ext_resource type="Texture2D" uid="uid://bec1o4nxcwu58" path="res://assets/textures/bullet/holes/flesh/flesh1.png" id="1_0wp7x"]
+[ext_resource type="AudioStream" uid="uid://0bwly86406fp" path="res://assets/sounds/gore/flesh4.wav" id="2_aj8jf"]
+[ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="3_il4om"]
+[ext_resource type="AudioStream" uid="uid://c574uajy46jny" path="res://assets/sounds/gore/fleshimpact3.wav" id="5_3loew"]
+
+[sub_resource type="GDScript" id="GDScript_3c2w4"]
+resource_name = "flesh"
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_w6ra4"]
+random_pitch = 1.6
+streams_count = 3
+stream_0/stream = ExtResource("2_aj8jf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_il4om")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_3loew")
+stream_2/weight = 1.0
 
 [node name="bulletHole" type="Node3D"]
+script = SubResource("GDScript_3c2w4")
 
 [node name="decal" type="Decal" parent="."]
 size = Vector3(0.132018, 0.15534, 0.117771)
@@ -10,3 +39,12 @@ texture_albedo = ExtResource("1_0wp7x")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 15.0
+
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_w6ra4")
+volume_db = -0.11
+max_db = 0.85
+pitch_scale = 0.75
+autoplay = true
+max_polyphony = 3
+bus = &"Sounds"

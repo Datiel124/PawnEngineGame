@@ -34,6 +34,9 @@ collisionEnabled = false
 [node name="collisionObject" type="CollisionShape3D" parent="."]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qxw0b")
+}
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -5,6 +5,7 @@ class_name Weapon
 @onready var collisionObject = $collisionObject
 @onready var animationTree = $AnimationTree
 @onready var animationPlayer = $AnimationPlayer
+@onready var weaponBlock = $Mesh/weaponBlock
 var weaponCast : RayCast3D
 var weaponCastEnd
 var weaponState
@@ -20,6 +21,7 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export var isFiring = false
 @export var isAiming = false
 @export var isBusy = false
+@export var isWeaponBlocked = false
 @export_subgroup("Stats")
 ## How much damage does the weapon do?
 @export var weaponDamage = 5.0
@@ -107,13 +109,15 @@ func _physics_process(delta):
 						useRightHand = false
 
 
-
 					if !weaponOwner.meshLookAt:
 						weaponOwner.meshLookAt = true
-					if !weaponRemoteState.get_current_node() == "aim":
-						weaponRemoteState.travel("aim")
+					if !weaponRemoteState.get_current_node() == "aim" and !weaponOwner.preventWeaponFire:
+							weaponRemoteState.travel("aim")
+					elif weaponOwner.preventWeaponFire:
+						weaponRemoteState.travel("idle")
 				if weaponOwner.freeAim:
-					if !weaponRemoteState.get_current_node() == "aim":
+					if !weaponRemoteState.get_current_node() == "aim" and !weaponOwner.preventWeaponFire:
+						weaponRemoteState.travel("aim")
 						if useLeftHandFreeAiming:
 							useLeftHand = true
 						else:
@@ -122,7 +126,8 @@ func _physics_process(delta):
 							useRightHand = true
 						else:
 							useRightHand = false
-						weaponRemoteState.travel("aim")
+					elif weaponOwner.preventWeaponFire:
+						weaponRemoteState.travel("idle")
 
 			collisionEnabled = false
 
@@ -133,49 +138,51 @@ func _physics_process(delta):
 
 
 func fire():
-	if !isFiring:
-		if isAiming:
-			if weaponOwner.attachedCam:
-					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
-					weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
-		else:
-			if weaponOwner.attachedCam:
-				weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
-				weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
-		if weaponCast:
-			weaponCast.position = Vector3(randf_range(-weaponSpread, weaponSpread),randf_range(-weaponSpread, weaponSpread),0)
-		shot_fired.emit()
-		if weaponRemoteState:
-			weaponRemoteState.start("fire")
-		if weaponOwner.attachedCam:
-			weaponOwner.attachedCam.fireRecoil()
-		isFiring = true
-		#Bullet Creation/Raycast Bullet Creation
-		for bullet in weaponShots:
-			bullet = createMuzzle()
-			if weaponShots > 1:
-				bullet.position.x += randf_range(-0.09,0.09)
-				bullet.position.y += randf_range(-0.05,0.05)
-			if checkShooter():
-				if weaponOwner.attachedCam.camCast.is_colliding():
-					raycastHit()
-					var hit = globalParticles.detectMaterial(getHitObject())
-					if hit != null:
-						var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
-						if !pt == null:
-							pt.look_at(getRayColPoint() + getRayNormal())
+	if !weaponOwner.preventWeaponFire:
+		if !isFiring:
+			if isAiming:
+				if weaponOwner.attachedCam:
+						weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrengthAim
+						weaponOwner.attachedCam.applyWeaponSpread(weaponSpreadAim)
 			else:
-				if weaponCast.is_colliding():
-					raycastHit(weaponCast)
-					var hit = globalParticles.detectMaterial(getHitObject(weaponCast))
-					if hit != null:
-						var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
-						if !pt == null:
-							pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
+				if weaponOwner.attachedCam:
+					weaponOwner.attachedCam.camRecoilStrength = weaponRecoilStrength
+					weaponOwner.attachedCam.applyWeaponSpread(weaponSpread)
+			if weaponCast:
+				weaponCast.rotation -= Vector3(randf_range(-weaponSpread, weaponSpread),randf_range(-weaponSpread, weaponSpread),0) * randf_range(1.6,2.5)
+			shot_fired.emit()
+			if weaponRemoteState:
+				weaponRemoteState.start("fire")
+			if weaponOwner.attachedCam:
+				weaponOwner.attachedCam.fireRecoil()
+
+			isFiring = true
+			#Bullet Creation/Raycast Bullet Creation
+			for bullet in weaponShots:
+				bullet = createMuzzle()
+				if weaponShots > 1:
+					bullet.position.x += randf_range(-0.09,0.09)
+					bullet.position.y += randf_range(-0.05,0.05)
+				if checkShooter():
+					if weaponOwner.attachedCam.camCast.is_colliding():
+						raycastHit()
+						var hit = globalParticles.detectMaterial(getHitObject())
+						if hit != null:
+							var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
+							if !pt == null:
+								pt.look_at(getRayColPoint() + getRayNormal())
+				else:
+					if weaponCast.is_colliding():
+						raycastHit(weaponCast)
+						var hit = globalParticles.detectMaterial(getHitObject(weaponCast))
+						if hit != null:
+							var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
+							if !pt == null:
+								pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
 
 
-		await get_tree().create_timer(weaponFireRate).timeout
-		isFiring = false
+			await get_tree().create_timer(weaponFireRate).timeout
+			isFiring = false
 
 
 func createMuzzle():

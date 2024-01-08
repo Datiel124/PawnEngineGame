@@ -29,21 +29,25 @@ func updateState(delta):
 	if get_parent().componentOwner.pawnOwner:
 		if get_parent().componentOwner.pawnOwner.isPawnDead:
 			get_parent().queue_free()
-
+	if get_parent().componentOwner.navAgent != null:
 		if !get_parent().componentOwner.pawnOwner.isPawnDead:
 			if aiMoveTime:
-				if get_parent().componentOwner.navAgent.is_target_reachable():
-					var nextLocation = get_parent().componentOwner.navAgent.get_next_path_position()
-					currLocation = get_parent().componentOwner.pawnOwner.position
-					newVelocity = (nextLocation - currLocation).normalized() * get_parent().componentOwner.pawnOwner.velocityComponent.vMaxSpeed
-					get_parent().componentOwner.navAgent.set_velocity(newVelocity)
-				else:
-					aiMoveTime = false
+				if get_parent().componentOwner.navAgent != null:
+					if get_parent().componentOwner.navAgent.is_target_reachable():
+						var nextLocation = get_parent().componentOwner.navAgent.get_next_path_position()
+						currLocation = get_parent().componentOwner.pawnOwner.position
+						newVelocity = (nextLocation - currLocation).normalized() * get_parent().componentOwner.pawnOwner.velocityComponent.vMaxSpeed
+						get_parent().componentOwner.navAgent.set_velocity(newVelocity)
+					else:
+						aiMoveTime = false
 
 			sightCast.add_exception(get_parent().componentOwner.pawnOwner)
 			#Set Positioning for the raycast
 			moveToEnemy()
 			sightCast.position = get_parent().componentOwner.pawnOwner.neckBone.position
+			sightCast.rotation.y = lerpf(sightCast.rotation.y, get_parent().componentOwner.visionCast.rotation.y, delta*17)
+			sightCast.rotation.x = lerpf(sightCast.rotation.x, get_parent().componentOwner.visionCast.rotation.x, delta*17)
+			sightCast.rotation.z = lerpf(sightCast.rotation.z, get_parent().componentOwner.visionCast.rotation.z, delta*17	)
 			#sightCast.rotation = get_parent().componentOwner.pawnOwner.pawnMesh.rotation
 
 			#Set if the pawn has a weapon that can be equipped or not
@@ -58,7 +62,6 @@ func updateState(delta):
 				if componentOwner.componentOwner.overlappingObject != null:
 					if !componentOwner.componentOwner.overlappingObject.isPawnDead:
 						target = componentOwner.componentOwner.overlappingObject
-						sightCast.rotation.y = lerpf(sightCast.rotation.y, get_parent().componentOwner.coneOfVision.rotation.y, delta*20)
 				else:
 					target = null
 				#pawnToAttack = colliding
@@ -82,7 +85,7 @@ func updateState(delta):
 							get_parent().componentOwner.pawnOwner.meshLookAt = true
 							get_parent().componentOwner.pawnOwner.currentItem.weaponCastEnd = sightcastEnd
 							get_parent().componentOwner.pawnOwner.currentItem.weaponCast = sightCast
-							get_parent().componentOwner.pawnOwner.meshRotation = lerpf(get_parent().componentOwner.pawnOwner.meshRotation, get_parent().componentOwner.coneOfVision.global_transform.basis.get_euler().y, 24*delta)
+							get_parent().componentOwner.pawnOwner.meshRotation = lerpf(get_parent().componentOwner.pawnOwner.meshRotation, get_parent().componentOwner.visionCast.rotation.y, 24*delta)
 						#Firing Logic
 
 							if componentOwner.componentOwner.overlappingObject != null:
@@ -92,7 +95,7 @@ func updateState(delta):
 										if get_parent().componentOwner.aiMindState == 2:
 											await get_tree().create_timer(randf_range(0.2,0.4)).timeout
 											if get_parent().componentOwner.pawnOwner.currentItem:
-												get_parent().componentOwner.pawnOwner.currentItem.isAiming = true
+												get_parent().componentOwner.pawnOwner.freeAim = true
 												if sightCast.is_colliding():
 													get_parent().componentOwner.pawnOwner.currentItem.fire()
 
@@ -108,17 +111,19 @@ func updateState(delta):
 					transitionState.emit(self,"wonderState")
 				await get_tree().create_timer(randf_range(0.5,1)).timeout
 				if get_parent().componentOwner.pawnOwner.currentItem:
-					get_parent().componentOwner.pawnOwner.currentItem.isAiming = false
+					get_parent().componentOwner.pawnOwner.freeAim = false
 				get_parent().componentOwner.pawnOwner.meshLookAt = false
 
 func _on_nav_agent_target_reached():
-	if componentOwner.componentOwner.pawnHasTarget:
-		get_parent().componentOwner.navAgent.target_desired_distance = randf_range(2,6)
+	if get_parent().componentOwner.navAgent != null:
+		if componentOwner.componentOwner.pawnHasTarget:
+			get_parent().componentOwner.navAgent.target_desired_distance = randf_range(2,6)
 
 
 func _on_nav_agent_velocity_computed(safe_velocity):
 	if target:
-		get_parent().componentOwner.pawnOwner.direction = get_parent().componentOwner.pawnOwner.direction.move_toward(safe_velocity, 0.25)
+		if get_parent().componentOwner.navAgent != null:
+			get_parent().componentOwner.pawnOwner.direction = get_parent().componentOwner.pawnOwner.direction.move_toward(safe_velocity, 0.25)
 
 func exitState():
 	$attackTimer.stop()
@@ -127,18 +132,21 @@ func exitState():
 
 func moveToEnemy():
 	if target:
-		aiMoveTime = true
-		get_parent().componentOwner.moveTo.position = target.position
-		get_parent().componentOwner.navAgent.set_target_position(get_parent().componentOwner.moveTo.position)
-		#get_parent().componentOwner.navAgent.target_desired_distance = randf_range(0.02,0.06)
+		if get_parent().componentOwner.navAgent != null:
+			aiMoveTime = true
+			get_parent().componentOwner.moveTo.position = target.position
+			get_parent().componentOwner.navAgent.set_target_position(get_parent().componentOwner.moveTo.position)
+			#get_parent().componentOwner.navAgent.target_desired_distance = randf_range(0.02,0.06)
 
 
 func _on_attack_timer_timeout():
 	$attackTimer.start()
 	if componentOwner.componentOwner.pawnHasTarget:
-		get_parent().componentOwner.navAgent.target_desired_distance = randf_range(2,6)
+		if get_parent().componentOwner.navAgent != null:
+			get_parent().componentOwner.navAgent.target_desired_distance = randf_range(2,6)
 
 func addToHatedPawns(overlappingPawn):
-	for pawns in get_parent().componentOwner.hatedPawns:
-		if overlappingPawn != pawns:
-			get_parent().componentOwner.hatedPawns.append(overlappingPawn)
+	if get_parent().componentOwner.navAgent != null:
+		for pawns in get_parent().componentOwner.hatedPawns:
+			if overlappingPawn != pawns:
+				get_parent().componentOwner.hatedPawns.append(overlappingPawn)

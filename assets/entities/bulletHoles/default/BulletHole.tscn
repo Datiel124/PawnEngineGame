@@ -10,3 +10,4 @@ texture_albedo = ExtResource("1_gqobj")
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 15.0
+autostart = true

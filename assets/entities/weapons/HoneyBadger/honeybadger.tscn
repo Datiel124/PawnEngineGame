@@ -119,7 +119,7 @@ _data = {
 muzzlePoint = NodePath("Mesh/HoneyBadger/Marker3D")
 weaponDamage = 10.0
 weaponFireRate = 0.08
-weaponImpulse = 65.0
+weaponImpulse = 30.0
 weaponRecoil = Vector3(15, 4, 1.9)
 weaponRecoilStrength = 9.0
 weaponRecoilStrengthAim = 8.0
@@ -171,12 +171,15 @@ light_energy = 0.0
 omni_range = 4.20246
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/HoneyBadger/Marker3D/OmniLight3D" index="0"]
-autoplay = "RESET"
 libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
+autoplay = "RESET"
 
 [node name="AnimationTree" parent="." index="3"]
+libraries = {
+"weaponAnims": SubResource("AnimationLibrary_kytnd")
+}
 tree_root = ExtResource("3_ceo6u")
 parameters/weaponStateSpeed/scale = 1.0
 

@@ -34,13 +34,23 @@ func _input(_event):
 	if Input.is_action_just_pressed("dRestartScene"):
 		restartScene()
 
-
-
-func debugToggle():
 	if debugEnabled:
-		debugEnabled = false
-	else:
-		debugEnabled = true
+		if Input.is_action_pressed("dFreecam"):
+			globalGameManager.activeCamera.unposessObject(true)
+
+		if Input.is_action_pressed("dPosess"):
+			var cast : RayCast3D = globalGameManager.activeCamera.debugCast
+			if cast:
+				if cast.is_colliding():
+					if cast.get_collider().is_in_group("Posessable"):
+						globalGameManager.activeCamera.unposessObject(true)
+						globalGameManager.activeCamera.posessObject(cast.get_collider(),cast.get_collider().followNode)
+					else:
+						Console.add_console_message("Cannot posess %s, Its not possessable" %cast.get_collider())
+			else:
+				Console.add_console_message("You can't posess nothing dipshit. Look at a pawn.")
+
+
 
 func takeScreenshot() -> String:
 	print("Initializing screenshot!")
@@ -73,3 +83,4 @@ func strip_bbcode(bbcode_text : String) -> String:
 	var regex := RegEx.new()
 	regex.compile("\\[(.+?)\\]")
 	return regex.sub(bbcode_text, "", true)
+

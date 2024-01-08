@@ -67,11 +67,16 @@ func _process(delta):
 		transparency = lerpf(transparency,1.0,4*delta)
 		$bloodLand.transparency = lerpf($bloodLand.transparency,1.0,4*delta)
 
-		if transparency >= 1.0:
+		if transparency >= 0.9:
 			queue_free()
 
 func _on_timer_timeout():
+	$timer2.start()
 	remove = true
+
+
+func _on_timer_2_timeout():
+	queue_free()
 "
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyjka"]
@@ -145,4 +150,8 @@ fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_pdrmt")
 draw_pass_1 = SubResource("PlaneMesh_aix64")
 
+[node name="timer2" type="Timer" parent="."]
+wait_time = 2.64
+
 [connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="timer2" to="." method="_on_timer_2_timeout"]

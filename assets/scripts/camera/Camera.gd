@@ -34,6 +34,7 @@ var vertVeclocity = Vector3.ZERO
 @onready var camPivot = $camPivot
 @onready var camCast = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D
 @onready var camCastEnd = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D/camRayEnd
+@onready var debugCast = $camPivot/horizonal/vertholder/vertical/Camera/debugCast
 
 @export_subgroup("Behavior")
 var motionX = 0.0
@@ -49,11 +50,23 @@ var camEuler
 @export var camTargetRot : Vector3
 var camReturnVect = Vector3(motionX, motionY, 0)
 @export_subgroup("Zoom")
+var aimFOV
 @export var isZoomed = false
 @export var currentFOV = 90.0
-@export var zoomAmount = 25.0
-@export var zoomSpeed = 16.0
-var aimFOV
+@export var zoomAmount = 25.0:
+	set(value):
+		zoomAmount = value
+		aimFOV = currentFOV - value
+		if cameraData:
+			zoomAmount = cameraData.zoomAmount
+
+var defaultZoomAmount = 25.0
+var defaultZoomSpeed = 16.0
+@export var zoomSpeed = 16.0:
+	set(value):
+		zoomSpeed = value
+		if cameraData:
+			zoomSpeed = cameraData.zoomSpeed
 
 #Component Set
 @export_subgroup("Components")
@@ -156,7 +169,10 @@ func _physics_process(delta):
 	#Freecam Movement
 	if isFreecam:
 		followNode = null
-
+		#followingEntity.inputComponent = null
+		camPivot.global_position.x = lerp(camPivot.global_position.x, self.global_position.x, 8*delta)
+		camPivot.global_position.y = lerp(camPivot.global_position.y, self.global_position.y, 8*delta)
+		camPivot.global_position.z = lerp(camPivot.global_position.z, self.global_position.z, 8*delta)
 		vertVeclocity = Vector3.ZERO
 
 		if !inputComponent == null:
@@ -199,7 +215,9 @@ func _on_input_component_on_mouse_motion(motion):
 	vertical.rotation.x = clamp(vertical.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func posessObject(object, posessPart:Node3D = object):
-	if object.is_in_group("Posessable"):
+	if object.is_in_group("Posessable") and !object == null:
+		if globalGameManager.world:
+			globalGameManager.activeCamera = self
 		followingEntity = object
 		isFreecam = false
 		followNode = posessPart
@@ -208,12 +226,24 @@ func posessObject(object, posessPart:Node3D = object):
 		if object is BasePawn:
 			vertical.add_excluded_object(object.get_rid())
 
+		if "inputComponent" in followingEntity:
+			if followingEntity.inputComponent != null:
+				if followingEntity.inputComponent is InputComponent:
+					followingEntity.inputComponent.movementEnabled = true
+					followingEntity.inputComponent.mouseActionsEnabled = true
+					followingEntity.inputComponent.controllingPawn = object
+
 func unposessObject(freecam:bool = false):
 	if freecam:
 		isFreecam = true
+		if followingEntity.inputComponent is InputComponent:
+			followingEntity.inputComponent.movementEnabled = false
+			followingEntity.inputComponent.mouseActionsEnabled = false
+			followingEntity.inputComponent.controllingPawn = null
 	followingEntity.attachedCam = null
 	cameraData = null
 	followNode = null
+
 
 func getAttachedOwner():
 	if !followNode == null:

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cmd714lbb53ja"]
+
+[ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="1_fe8sr"]
+
+[resource]
+default_font = ExtResource("1_fe8sr")

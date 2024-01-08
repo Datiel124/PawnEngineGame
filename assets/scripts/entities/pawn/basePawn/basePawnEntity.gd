@@ -41,6 +41,7 @@ signal forcingAnimation
 @onready var leftLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftKnee
 @onready var rightLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightKnee
 
+@onready var aimBlockRaycast = $Mesh/aimDetect
 @onready var floorcheck = $floorCast
 @onready var freeAimTimer = $freeAimTimer
 @onready var pawnSkeleton = $Mesh/MaleSkeleton/Skeleton3D
@@ -109,6 +110,7 @@ signal cameraAttached
 signal pawnDied(pawnRagdoll)
 @export var turnAmount : float
 @export var turnSpeed = 18.0
+var preventWeaponFire = false
 @export var isPawnDead = false:
 	set(value):
 		isPawnDead = value
@@ -198,6 +200,12 @@ func _physics_process(delta):
 			if isFirstperson:
 				meshLookAt = true
 				freeAim = true
+
+			##Aimblocking
+			if aimBlockRaycast.is_colliding():
+				preventWeaponFire = true
+			else:
+				preventWeaponFire = false
 
 			##FreeAim
 			if freeAim:
@@ -351,7 +359,8 @@ func _physics_process(delta):
 			#Player movement
 			if inputComponent:
 				if inputComponent is Component:
-					direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
+					if inputComponent.movementEnabled:
+						direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
 
 ##Checks to see if any required components (Base components) Are null
 func checkComponents():
@@ -378,6 +387,7 @@ func checkComponents():
 		return OK
 
 func die():
+	await get_tree().process_frame
 	removeComponents()
 	unequipWeapon()
 	if currentItem:
@@ -395,10 +405,12 @@ func die():
 		attachedCam.resetCamCast()
 
 func _on_health_component_health_depleted():
+	await get_tree().process_frame
 	die()
 	createRagdoll(lastHitPart)
 
 func createRagdoll(impulse_bone : int = 0):
+	await get_tree().process_frame
 	if !ragdollScene == null:
 		collisionEnabled = false
 		self.hide()
@@ -416,7 +428,7 @@ func createRagdoll(impulse_bone : int = 0):
 			if child is RagdollBone:
 				child.linear_velocity = velocity
 				ragdoll.startRagdoll()
-				#child.apply_central_impulse(velocity)
+				child.apply_central_impulse(velocity)
 				if child.get_bone_id() == impulse_bone:
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)

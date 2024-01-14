@@ -66,6 +66,10 @@ func _ready():
 	self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,5)
 	self.lifetime = randf_range(0.5,2)
 func _process(delta):
+	if Engine.get_frames_per_second() < 60:
+		queue_free()
+
+
 	if stopbleeding:
 		self.lifetime += 0.1
 
@@ -94,7 +98,7 @@ transparency = 2
 alpha_scissor_threshold = 0.5
 alpha_antialiasing_mode = 0
 disable_ambient_light = true
-albedo_color = Color(0.505882, 0, 0, 1)
+albedo_color = Color(0.305882, 0, 0, 1)
 albedo_texture = ExtResource("2_ffxk6")
 roughness = 0.0
 normal_enabled = true

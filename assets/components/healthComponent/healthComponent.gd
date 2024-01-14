@@ -4,6 +4,7 @@ signal onDamaged
 signal healthChanged
 signal healthDepleted
 @export_category("Component")
+var lastDealer
 @export var health = 100:
 	set(value):
 		health = value
@@ -12,7 +13,7 @@ signal healthDepleted
 		return health
 @export var isDead = false
 var componentOwner
-
+var killerSignalEmitted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,8 +26,14 @@ func _process(_delta):
 			health = 0
 			emit_signal("healthDepleted")
 			isDead = true
+			if lastDealer != null:
+				if !killerSignalEmitted:
+					lastDealer.emit_signal("killedPawn")
+					killerSignalEmitted = true
 
 func damage(amount, dealer:Node3D = null):
 	emit_signal("onDamaged")
 	health = health - amount
+	lastDealer = dealer
+
 

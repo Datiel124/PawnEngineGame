@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=20 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://btse3nqgw3085" path="res://assets/textures/ui/ammoBar.png" id="10_w541l"]
 [ext_resource type="Shader" path="res://assets/scripts/shaders/vignette/vignette.gdshader" id="11_4xkin"]
 [ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="13_1q303"]
+[ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="14_eq71r"]
+[ext_resource type="AudioStream" uid="uid://ca75a15dd34dx" path="res://assets/sounds/gore/fleshimpact2.wav" id="15_hdgka"]
+[ext_resource type="AudioStream" uid="uid://c574uajy46jny" path="res://assets/sounds/gore/fleshimpact3.wav" id="16_eaodm"]
 
 [sub_resource type="Theme" id="Theme_wcn1k"]
 default_font = ExtResource("4_8av4t")
@@ -22,6 +25,15 @@ shader = ExtResource("11_4xkin")
 shader_parameter/color = Color(0.294118, 0, 0, 1)
 shader_parameter/multiplier = 0.3
 shader_parameter/softness = 10.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bpylg"]
+streams_count = 3
+stream_0/stream = ExtResource("14_eq71r")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("15_hdgka")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("16_eaodm")
+stream_2/weight = 1.0
 
 [node name="Camera" type="CharacterBody3D" node_paths=PackedStringArray("velocityComponent", "inputComponent")]
 collision_layer = 0
@@ -47,7 +59,6 @@ collision_mask = 3
 spring_length = 0.0
 
 [node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertholder/vertical"]
-fov = 90.0
 
 [node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.863349)
@@ -260,6 +271,11 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("13_1q303")
 bbcode_enabled = true
 text = "Use \"Item\""
+
+[node name="killSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_bpylg")
+volume_db = 1.5
+bus = &"Sounds"
 
 [connection signal="mouseButtonHeld" from="inputComponent" to="." method="_on_input_component_mouse_button_held"]
 [connection signal="mouseButtonPressed" from="inputComponent" to="." method="_on_input_component_mouse_button_pressed"]

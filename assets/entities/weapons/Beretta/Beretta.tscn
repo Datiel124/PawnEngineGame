@@ -452,9 +452,9 @@ _data = {
 [node name="Beretta" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_xjnb0")]
 muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 6.0
-weaponFireRate = 0.35
+weaponFireRate = 0.2
 weaponImpulse = 15.0
-weaponRecoil = Vector3(16, 3, 4)
+weaponRecoil = Vector3(4.375, 3, 8.22)
 weaponRecoilStrength = 15.0
 weaponSpread = 0.09
 weaponRecoilStrengthAim = 6.0

@@ -14,6 +14,7 @@ var isFreecam = true
 var speed = 9.0
 var acceleration = 3.0
 var vertVeclocity = Vector3.ZERO
+var killEffect = false
 @export_subgroup("Camera")
 @export var cameraData : CameraData
 @export var followingEntity : Node3D
@@ -62,7 +63,7 @@ var aimFOV
 
 var defaultZoomAmount = 25.0
 var defaultZoomSpeed = 16.0
-@export var zoomSpeed = 16.0:
+@export var zoomSpeed = 11.0:
 	set(value):
 		zoomSpeed = value
 		if cameraData:
@@ -100,6 +101,8 @@ func _physics_process(delta):
 	#Weapon Hud
 	if !followNode == null:
 		if followingEntity is BasePawn:
+			if !followingEntity.killedPawn.is_connected(emitKilleffect):
+				followingEntity.killedPawn.connect(emitKilleffect)
 			if followingEntity.currentItem:
 				$HUD/Crosshair.modulate = lerp(weaponHud.modulate,Color(1,1,1,1),12*delta)
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.8),12*delta)
@@ -157,6 +160,7 @@ func _physics_process(delta):
 	else:
 		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 10.0,4*delta))
 		hpAudio.stop()
+
 
 	if !followNode == null:
 		if followingEntity is BasePawn:
@@ -233,14 +237,19 @@ func posessObject(object, posessPart:Node3D = object):
 					followingEntity.inputComponent.mouseActionsEnabled = true
 					followingEntity.inputComponent.controllingPawn = object
 
+
 func unposessObject(freecam:bool = false):
 	if freecam:
 		isFreecam = true
-		if followingEntity.inputComponent is InputComponent:
-			followingEntity.inputComponent.movementEnabled = false
-			followingEntity.inputComponent.mouseActionsEnabled = false
-			followingEntity.inputComponent.controllingPawn = null
-	followingEntity.attachedCam = null
+		if "inputComponent" in followingEntity:
+			if followingEntity.inputComponent is InputComponent:
+				followingEntity.inputComponent.movementEnabled = false
+				followingEntity.inputComponent.mouseActionsEnabled = false
+				followingEntity.inputComponent.controllingPawn = null
+				followingEntity.killedPawn.disconnect(emitKilleffect)
+	if followingEntity:
+		if "attachedCam" in followingEntity:
+			followingEntity.attachedCam = null
 	cameraData = null
 	followNode = null
 
@@ -268,3 +277,10 @@ func applyWeaponSpread(spread):
 
 func resetCamCast():
 	camCast.position = Vector3.ZERO
+
+func emitKilleffect():
+	Console.add_console_message("Emit the effect retard..")
+	camera.fov += 1.1
+	$killSound.play()
+	killEffect = true
+	fireRecoil(0,0,randf_range(0.5,0.8))

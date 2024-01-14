@@ -6,6 +6,7 @@ signal controllerAssigned
 signal clothingChanged
 signal itemChanged
 signal forcingAnimation
+signal killedPawn
 
 #Sounds
 @onready var soundHolder = $Sounds
@@ -381,6 +382,7 @@ func checkComponents():
 				_cam.camCast.add_exception(self)
 
 
+
 	if velocityComponent == null or healthComponent == null:
 		return null
 	else:
@@ -426,9 +428,9 @@ func createRagdoll(impulse_bone : int = 0):
 		for bones in ragdoll.ragdollSkeleton.get_child_count():
 			var child = ragdoll.ragdollSkeleton.get_child(bones)
 			if child is RagdollBone:
-				child.linear_velocity = velocity
+				child.linear_velocity = velocity * 0.95
 				ragdoll.startRagdoll()
-				child.apply_central_impulse(velocity)
+				child.apply_central_impulse(velocity * 0.95)
 				if child.get_bone_id() == impulse_bone:
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)

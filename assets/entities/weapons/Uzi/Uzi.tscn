@@ -194,8 +194,8 @@ node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &
 muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
 weaponDamage = 4.0
 weaponFireRate = 0.075
-weaponImpulse = 45.0
-weaponRecoil = Vector3(7, 9, 1)
+weaponImpulse = 25.0
+weaponRecoil = Vector3(4.24, 6.88, 2.37)
 weaponRecoilStrength = 10.0
 weaponSpread = 0.5
 weaponRecoilStrengthAim = 2.0
@@ -256,10 +256,6 @@ libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
 autoplay = "RESET"
-
-[node name="weaponBlock" parent="Mesh" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037148, 0.2928)
-target_position = Vector3(0, 0, 0.185)
 
 [node name="AnimationTree" parent="." index="3"]
 libraries = {

@@ -82,10 +82,11 @@ func updateState(delta):
 										addToHatedPawns(componentOwner.componentOwner.overlappingObject)
 
 						if get_parent().componentOwner.pawnOwner.currentItem:
+
 							get_parent().componentOwner.pawnOwner.meshLookAt = true
 							get_parent().componentOwner.pawnOwner.currentItem.weaponCastEnd = sightcastEnd
 							get_parent().componentOwner.pawnOwner.currentItem.weaponCast = sightCast
-							get_parent().componentOwner.pawnOwner.meshRotation = lerpf(get_parent().componentOwner.pawnOwner.meshRotation, get_parent().componentOwner.visionCast.rotation.y, 24*delta)
+							get_parent().componentOwner.pawnOwner.meshRotation = get_parent().componentOwner.visionCast.rotation.y
 						#Firing Logic
 
 							if componentOwner.componentOwner.overlappingObject != null:

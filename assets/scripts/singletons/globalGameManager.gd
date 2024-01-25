@@ -31,6 +31,9 @@ func _input(_event):
 	if Input.is_action_just_pressed("aFullscreen"):
 		pass
 
+	if Input.is_action_just_pressed("dReloadGame"):
+		restartGame()
+
 	if Input.is_action_just_pressed("dRestartScene"):
 		restartScene()
 
@@ -77,6 +80,11 @@ func takeScreenshot() -> String:
 func restartScene():
 	await Fade.fade_out(0.3, Color(0,0,0,1),"GradientVertical",false,true).finished
 	get_tree().reload_current_scene()
+
+func restartGame():
+	get_tree().unload_current_scene()
+	await get_tree().process_frame
+	get_tree().change_scene_to_file("res://assets/scenes/menu/logo.tscn")
 
 
 func strip_bbcode(bbcode_text : String) -> String:

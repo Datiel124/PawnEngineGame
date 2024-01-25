@@ -2,6 +2,7 @@ extends PhysicalBone3D
 class_name RagdollBone
 signal onHit(impulse,vector)
 @export_category("Ragdoll Bone")
+
 @export_subgroup("Impact Hits")
 @export var hardImpactEffectEnabled : bool = true
 @export var impactEffectHard : PackedScene
@@ -79,7 +80,8 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.05
 			if hardImpactEffectEnabled:
 				if impactEffectHard == null:
-					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
+					var particle = globalParticles.createParticle("BloodSpurt",self.position)
+					particle.rotation = self.rotation
 			return
 		if contactForce > mediumImpactThreshold:
 			audioStreamPlayer.stream = mediumImpactSounds
@@ -87,7 +89,8 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.25
 			if mediumImpactEffectEnabled:
 				if impactEffectMedium == null:
-					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
+					var particle = globalParticles.createParticle("BloodSpurt",self.position)
+					particle.rotation = self.rotation
 			return
 		if contactForce > lightImpactThreshold:
 			audioStreamPlayer.stream = lightImpactSounds
@@ -97,7 +100,8 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.25
 			if lightImpactEffectEnabled:
 				if impactEffectLight == null:
-					globalParticles.createParticle("BloodSpurt",self.position).look_at(self.position + contactNormal/2)
+					var particle = globalParticles.createParticle("BloodSpurt",self.position)
+					particle.rotation = self.rotation
 			return
 
 func _process(delta):
@@ -114,3 +118,9 @@ func _process(delta):
 func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 = Vector3.ZERO):
 	emit_signal("onHit",hitImpulse,hitPoint)
 	apply_impulse(hitImpulse, hitPoint)
+	if hitImpulse:
+		var splatterState = get_world_3d().direct_space_state
+		var splatterParams = PhysicsRayQueryParameters3D.new()
+		splatterParams.from = hitPoint
+		splatterParams.to = self.position
+		splatterState.intersect_ray(splatterParams)

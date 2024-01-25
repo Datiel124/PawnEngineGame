@@ -7,8 +7,7 @@
 
 [sub_resource type="GDScript" id="GDScript_3c2w4"]
 resource_name = "flesh"
-script/source = "extends Node3D
-
+script/source = "extends BulletHole
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -271,9 +271,10 @@ func fireRecoil(setRecoilX:float = 0.0,setRecoilY:float = 0.0,setRecoilZ:float =
 
 func applyWeaponSpread(spread):
 	if followingEntity.isFirstperson:
-		camCast.position = Vector3.ZERO
+		camCast.rotation = Vector3.ZERO
 	else:
-		camCast.position = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+		camCast.rotation = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+		#camCast.rotation = Vector3.ZERO
 
 func resetCamCast():
 	camCast.position = Vector3.ZERO
@@ -284,3 +285,4 @@ func emitKilleffect():
 	$killSound.play()
 	killEffect = true
 	fireRecoil(0,0,randf_range(0.5,0.8))
+

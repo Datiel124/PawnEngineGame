@@ -46,7 +46,7 @@ sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_5noax"]
-size = Vector2(0.245, 1)
+size = Vector2(0.03, 1)
 
 [sub_resource type="GDScript" id="GDScript_fb3dx"]
 script/source = "extends GPUParticles3D

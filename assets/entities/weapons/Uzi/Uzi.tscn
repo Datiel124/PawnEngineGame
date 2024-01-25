@@ -193,13 +193,13 @@ node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &
 [node name="Uzi" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_k0gi6")]
 muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
 weaponDamage = 4.0
-weaponFireRate = 0.075
+weaponFireRate = 0.065
 weaponImpulse = 25.0
 weaponRecoil = Vector3(4.24, 6.88, 2.37)
 weaponRecoilStrength = 10.0
-weaponSpread = 0.5
+weaponSpread = 0.035
 weaponRecoilStrengthAim = 2.0
-weaponSpreadAim = 0.15
+weaponSpreadAim = 0.022
 useLeftHandIdle = false
 useLeftHandAiming = false
 useLeftHandFreeAiming = false

@@ -1,5 +1,6 @@
 extends PhysicalBone3D
 class_name RagdollBone
+signal onHit(impulse,vector)
 @export_category("Ragdoll Bone")
 @export_subgroup("Impact Hits")
 @export var hardImpactEffectEnabled : bool = true
@@ -111,4 +112,5 @@ func _process(delta):
 
 
 func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 = Vector3.ZERO):
+	emit_signal("onHit",hitImpulse,hitPoint)
 	apply_impulse(hitImpulse, hitPoint)

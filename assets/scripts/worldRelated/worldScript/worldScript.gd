@@ -42,7 +42,7 @@ func _ready():
 		if !soundScape == null:
 			MusicManager.change_song_to(soundScape)
 		else:
-			print_rich("[color=red]C'mon faggot, atleast set the soundscape. Its null retard.[/color]")
+			print_rich("[color=red]The soundscape.. Its null retard.[/color]")
 
 	##Spawn a player at a point.
 	if !globalGameManager.isMultiplayerGame:

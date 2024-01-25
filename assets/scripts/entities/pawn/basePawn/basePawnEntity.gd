@@ -154,7 +154,7 @@ var currentItem = null
 @export_subgroup("Misc")
 ## First-person, just for shits and giggles
 var isFirstperson = false
-
+var hitboxes : Array[Hitbox]
 @export_subgroup("Staircase Handling")
 @export var step_check_distance : float = 1.0
 @export var step_max_distance : float = 0.5
@@ -356,6 +356,8 @@ func _physics_process(delta):
 			do_stairs()
 			move_and_slide()
 
+			if Input.is_action_just_pressed("dFreeKey"):
+				getCurrentDecalBones()
 
 			#Player movement
 			if inputComponent:
@@ -389,6 +391,7 @@ func checkComponents():
 		return OK
 
 func die():
+	createRagdoll(lastHitPart)
 	await get_tree().process_frame
 	removeComponents()
 	unequipWeapon()
@@ -401,7 +404,6 @@ func die():
 	isPawnDead = true
 	$remover.start()
 	footstepSounds.queue_free()
-
 	if !attachedCam == null:
 		attachedCam.lowHP = false
 		attachedCam.resetCamCast()
@@ -409,14 +411,15 @@ func die():
 func _on_health_component_health_depleted():
 	await get_tree().process_frame
 	die()
-	createRagdoll(lastHitPart)
+
 
 func createRagdoll(impulse_bone : int = 0):
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	if !ragdollScene == null:
 		collisionEnabled = false
 		self.hide()
 		var ragdoll = ragdollScene.instantiate()
+		moveDecalsToRagdoll(ragdoll)
 		ragdoll.global_transform = pawnMesh.global_transform
 		ragdoll.rotation = pawnMesh.rotation
 		ragdoll.targetSkeleton = pawnSkeleton
@@ -428,28 +431,18 @@ func createRagdoll(impulse_bone : int = 0):
 		for bones in ragdoll.ragdollSkeleton.get_child_count():
 			var child = ragdoll.ragdollSkeleton.get_child(bones)
 			if child is RagdollBone:
-				child.linear_velocity = velocity * 0.95
+				child.linear_velocity = velocity
+				child.angular_velocity = velocity
 				ragdoll.startRagdoll()
-				child.apply_central_impulse(velocity * 0.95)
+				child.apply_central_impulse(velocity)
 				if child.get_bone_id() == impulse_bone:
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)
 
 
-
 		emit_signal("pawnDied",ragdoll)
 		await moveClothesToRagdoll(ragdoll)
 		ragdoll.checkClothingHider()
-
-		for decalBones in ragdoll.ragdollSkeleton.get_bone_count():
-			for hboxes in boneAttatchementHolder.get_children():
-				if hboxes is BoneAttachment3D:
-					var boneID = hboxes.bone_idx
-					for decals in hboxes.get_children():
-						for boneParent in ragdoll.ragdollSkeleton.get_children():
-							if boneParent is PhysicalBone3D:
-								if boneParent.get_bone_id() == boneID:
-									decals.reparent(boneParent, true)
 
 		if !attachedCam == null:
 			var cam = attachedCam
@@ -461,6 +454,8 @@ func createRagdoll(impulse_bone : int = 0):
 					cam.vertical.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
 			attachedCam = null
 		collisionShape.queue_free()
+
+
 
 
 func checkItems():
@@ -518,6 +513,19 @@ func checkClothingHider():
 			if clothes.leftLowerLeg:
 				leftLowerLeg.hide()
 
+func moveDecalsToRagdoll(ragdoll):
+	#Decal reparent..
+	for decalBones in boneAttatchementHolder.get_children():
+		var boneID = decalBones.bone_idx
+		for decals in decalBones.get_children():
+			Console.add_console_message("For %s, %s" %[self,getCurrentDecalBones()])
+
+func getCurrentDecalBones():
+	#Decal reparent..
+	for decalBones in boneAttatchementHolder.get_children():
+		var boneID = decalBones.bone_idx
+		for decals in decalBones.get_children():
+			return decals
 func jump():
 	playFootstepAudio()
 	if !isJumping:

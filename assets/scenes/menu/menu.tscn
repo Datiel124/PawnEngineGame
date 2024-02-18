@@ -34,7 +34,7 @@ script/source = "extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	menuSong.play()
-
+	globalGameManager.notify_warn(\"TODO, Better looking menu.. Add smoke, New Logo, New name, UI elements..\", 4, 10)
 
 func _on_play_button_pressed():
 	menuSound.play()
@@ -274,6 +274,7 @@ func _process(delta):
 script/source = "extends Control
 #@onready var animPlayer = $AnimationPlayer
 var anykey = false
+var pressed = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 #	animPlayer.play(\"start\")
@@ -289,8 +290,10 @@ func _on_logo_anim_animation_finished(anim_name):
 
 func _input(event):
 	if event.is_action_pressed(\"gLeftClick\"):
-		if anykey:
+		if anykey and !pressed:
 			$logoAnim/logoAnim.play(\"fade\")
+			pressed = true
+			globalGameManager.notify_warn(\"Add the actual menu options here.. \", 4, 10)
 "
 
 [sub_resource type="Animation" id="Animation_wpqb2"]
@@ -664,22 +667,22 @@ active = false
 tree_root = SubResource("AnimationNodeBlendTree_i8yum")
 
 [node name="UpperChest" parent="playerCharacter/BoneAttatchments" index="0"]
-transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07825, -0.244268)
+transform = Transform3D(0.995069, -0.0219821, -0.0966149, -0.0572318, 0.668451, -0.741537, 0.0808836, 0.743418, 0.663904, -0.0253498, 1.07824, -0.244269)
 
 [node name="LeftThigh" parent="playerCharacter/BoneAttatchments" index="1"]
-transform = Transform3D(0.933909, 0.353972, 0.0500326, 0.130987, -0.20859, -0.969174, -0.332637, 0.911684, -0.24117, 0.0121273, 0.767869, -0.263971)
+transform = Transform3D(0.933914, 0.353966, 0.0500333, 0.130987, -0.208587, -0.969187, -0.332639, 0.911668, -0.241173, 0.0121273, 0.767869, -0.263971)
 
 [node name="LeftFoot" parent="playerCharacter/BoneAttatchments" index="2"]
-transform = Transform3D(-0.937957, 0.23673, 0.253319, -0.00721104, -0.743766, 0.668351, 0.346653, 0.625074, 0.699325, 0.206407, 0.285785, 0.142388)
+transform = Transform3D(-0.937961, 0.236725, 0.253315, -0.00721004, -0.743771, 0.668364, 0.346656, 0.625059, 0.699318, 0.206404, 0.285782, 0.142378)
 
 [node name="LeftKnee" parent="playerCharacter/BoneAttatchments" index="3"]
-transform = Transform3D(0.950149, 0.12682, -0.284768, 0.0939827, -0.987523, -0.126213, -0.297231, 0.0931638, -0.950233, 0.155334, 0.68348, 0.104869)
+transform = Transform3D(0.950154, 0.126819, -0.284762, 0.0939832, -0.987535, -0.126221, -0.297234, 0.0931554, -0.950219, 0.155331, 0.683481, 0.104863)
 
 [node name="RightThigh" parent="playerCharacter/BoneAttatchments" index="4"]
 transform = Transform3D(0.847334, -0.527252, -0.0632828, -0.259904, -0.307827, -0.915241, 0.463096, 0.791971, -0.397871, -0.0883085, 0.771114, -0.270704)
 
 [node name="RightFoot" parent="playerCharacter/BoneAttatchments" index="5"]
-transform = Transform3D(-0.851479, -0.452777, -0.264465, 0.0967138, -0.631303, 0.769467, -0.51537, 0.629604, 0.581345, -0.390212, 0.254278, 0.0289368)
+transform = Transform3D(-0.851478, -0.452785, -0.264461, 0.0967138, -0.631313, 0.769455, -0.51537, 0.629615, 0.581336, -0.390212, 0.254278, 0.0289368)
 
 [node name="RightKnee" parent="playerCharacter/BoneAttatchments" index="6"]
 transform = Transform3D(0.872425, -0.219988, 0.436383, -0.220121, -0.974124, -0.050997, 0.436319, -0.0515671, -0.898293, -0.301619, 0.646577, 0.0497039)
@@ -691,13 +694,13 @@ transform = Transform3D(0.996105, 0.014464, -0.0868649, -0.050516, 0.901819, -0.
 transform = Transform3D(0.997232, 0.0600719, -0.0435702, -0.03222, 0.879394, 0.474995, 0.0668491, -0.472282, 0.878904, -0.0367282, 0.769456, -0.267245)
 
 [node name="Neck" parent="playerCharacter/BoneAttatchments" index="9"]
-transform = Transform3D(0.968913, -0.217724, -0.117402, 0.0627507, 0.675438, -0.734729, 0.239268, 0.704528, 0.668109, -0.0311509, 1.25465, -0.0480805)
+transform = Transform3D(0.986426, -0.0841232, -0.140949, -0.0140389, 0.812298, -0.583057, 0.163543, 0.577127, 0.800099, -0.0311509, 1.25465, -0.0480806)
 
 [node name="leftHand" parent="playerCharacter/BoneAttatchments" index="10"]
-transform = Transform3D(-0.749302, -0.341571, -0.567317, 0.215003, -0.935759, 0.279429, -0.626325, 0.0873898, 0.774624, 0.0633661, 0.745798, 0.0121427)
+transform = Transform3D(-0.749302, -0.341568, -0.567317, 0.215002, -0.935751, 0.279429, -0.626323, 0.0873888, 0.774621, 0.0633664, 0.745799, 0.0121424)
 
 [node name="rightHand" parent="playerCharacter/BoneAttatchments" index="11"]
-transform = Transform3D(-0.0491915, 0.839489, -0.541108, -0.866487, 0.233572, 0.441141, 0.49673, 0.490573, 0.715931, -0.083807, 0.953135, -0.0194975)
+transform = Transform3D(-0.90671, 0.0405782, 0.419774, 0.300591, -0.635951, 0.710751, 0.2958, 0.770621, 0.564451, -0.156213, 0.808649, -0.0915658)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="playerCharacter/BoneAttatchments/rightHand" index="2"]
 transform = Transform3D(-0.585706, -0.810225, 0.022015, -0.11896, 0.112799, 0.986473, -0.801747, 0.575163, -0.162451, -0.0529681, 0.118079, 0.00808746)

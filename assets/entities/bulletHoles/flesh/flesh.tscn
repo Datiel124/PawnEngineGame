@@ -47,3 +47,4 @@ pitch_scale = 0.75
 autoplay = true
 max_polyphony = 3
 bus = &"Sounds"
+attenuation_filter_db = 0.0

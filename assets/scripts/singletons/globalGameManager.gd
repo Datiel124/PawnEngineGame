@@ -5,7 +5,10 @@ extends Node
 var richPresenceEnabled = false
 var activeCamera = null
 var debugEnabled = false
-var visionConesEnabled : bool = false
+var pawnDebug : bool = false
+
+#Notification Hud
+
 
 #Settings
 var userDir = DirAccess.open("user://")
@@ -92,3 +95,70 @@ func strip_bbcode(bbcode_text : String) -> String:
 	regex.compile("\\[(.+?)\\]")
 	return regex.sub(bbcode_text, "", true)
 
+enum NOTIF_POSITION{topleft, topcenter, topright, bottomleft, bottomcenter, bottomright}
+func notifyFade(text : String, position : NOTIF_POSITION = 2, fade_time : float = 3.0):
+	var new_notif
+	var container = Notifications.hudPositions[position]
+
+	new_notif = Notifications.notif_fade.instantiate()
+	container.add_child(new_notif)
+	set_notif_flags(new_notif, position)
+
+	new_notif.set_text(text)
+	if fade_time > 0:
+		new_notif.timer.start(fade_time)
+	return new_notif
+
+
+func notify_warn(text : String, position : NOTIF_POSITION = 2, fade_time : float = -1, texture : Texture = Notifications.warning_texture):
+	var new_notif
+	var container = Notifications.hudPositions[position]
+
+	new_notif = Notifications.notif_warn.instantiate()
+	container.add_child(new_notif)
+	set_notif_flags(new_notif, position)
+
+	new_notif.set_text(text)
+	new_notif.set_warn_params.call(texture, fade_time)
+	if fade_time > 0:
+		new_notif.timer.start(fade_time)
+	return new_notif
+
+
+func notify_click(text : String, call_on_click : Callable, position : NOTIF_POSITION = 2, fade_time : float = -1, binds : Array = []):
+	var new_notif : Control
+	var container = Notifications.hudPositions[position]
+
+	new_notif = Notifications.notif_click.instantiate()
+	container.add_child(new_notif)
+	set_notif_flags(new_notif, position)
+
+	new_notif.set_text(text)
+	new_notif.set_click_params.call(call_on_click, binds, fade_time)
+	if fade_time > 0:
+		new_notif.timer.start(fade_time)
+	return new_notif
+
+
+func set_notif_flags(new_notif, position) -> void:
+	match position % 3:
+		0:
+			new_notif.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		1:
+			new_notif.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+		2:
+			new_notif.size_flags_horizontal = Control.SIZE_SHRINK_END
+
+
+func notify_custom(node : Control, position : NOTIF_POSITION) -> Control:
+	var container = Notifications.hudPositions[position]
+	container.add_child(node)
+	set_notif_flags(node, position)
+	return node
+
+func castRay(cam : Camera3D, range : float = 50000, mask := 0b10111, exceptions : Array[RID] = [], hit_areas : bool = false) -> Dictionary:
+	var state = cam.get_world_3d().direct_space_state
+	var transform = cam.global_transform
+	var params := PhysicsRayQueryParameters3D.create(transform.origin, transform.origin - (transform.basis.z * range), 23, exceptions)
+	params.collide_with_areas = hit_areas
+	return state.intersect_ray(params)

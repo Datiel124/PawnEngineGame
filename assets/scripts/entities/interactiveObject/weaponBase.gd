@@ -5,7 +5,6 @@ class_name Weapon
 @onready var collisionObject = $collisionObject
 @onready var animationTree = $AnimationTree
 @onready var animationPlayer = $AnimationPlayer
-@onready var weaponBlock = $Mesh/weaponBlock
 var weaponCast : RayCast3D
 var weaponCastEnd
 var weaponState
@@ -31,6 +30,8 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export var weaponImpulse = 5.0
 ## How many bullets are shot out? Useful for shotguns. Default is 1.
 @export var weaponShots = 1
+## What crosshair should the weapon force?
+@export var forcedCrosshair : Texture2D
 @export_subgroup("Recoil")
 @export var weaponRecoil : Vector3 = Vector3(5 ,1 , 0.25)
 @export var weaponRecoilStrength : float = 8.0

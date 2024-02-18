@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=22 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -6,12 +6,10 @@
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="4_8av4t"]
 [ext_resource type="Script" path="res://assets/entities/camera/HUD.gd" id="4_r48cc"]
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="5_1qj5n"]
-[ext_resource type="Texture2D" uid="uid://bshsrbn82o1rq" path="res://assets/textures/crosshair/Crosshair.png" id="6_44jcq"]
 [ext_resource type="Texture2D" uid="uid://bkhy36pmg4nfi" path="res://assets/textures/ui/hpBar.png" id="7_0egit"]
 [ext_resource type="Texture2D" uid="uid://btlv87lcgekb7" path="res://assets/textures/ui/healthbar.png" id="8_6fqy3"]
 [ext_resource type="AudioStream" uid="uid://d3eqn61hfgwuf" path="res://assets/sounds/playerhurt/playerhurtambience.wav" id="9_jgajw"]
 [ext_resource type="Texture2D" uid="uid://btse3nqgw3085" path="res://assets/textures/ui/ammoBar.png" id="10_w541l"]
-[ext_resource type="Shader" path="res://assets/scripts/shaders/vignette/vignette.gdshader" id="11_4xkin"]
 [ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="13_1q303"]
 [ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="14_eq71r"]
 [ext_resource type="AudioStream" uid="uid://ca75a15dd34dx" path="res://assets/sounds/gore/fleshimpact2.wav" id="15_hdgka"]
@@ -20,11 +18,97 @@
 [sub_resource type="Theme" id="Theme_wcn1k"]
 default_font = ExtResource("4_8av4t")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vands"]
-shader = ExtResource("11_4xkin")
-shader_parameter/color = Color(0.294118, 0, 0, 1)
-shader_parameter/multiplier = 0.3
-shader_parameter/softness = 10.0
+[sub_resource type="GDScript" id="GDScript_quas3"]
+resource_name = "crosshair"
+script/source = "extends TextureRect
+var defaultCrosshair = preload(\"res://assets/textures/crosshair/crosshair001.png\")
+var positionOverride = get_viewport_rect().size/2 - pivot_offset
+var crosshairSize : Vector2 = Vector2(0.8,0.8)
+var crosshairSizeSpeed = 0.07
+var defaultTint : Color = Color.WHITE
+var tiltSpeed = 15.0
+var tintSpeed = 2.5
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	positionOverride = get_viewport_rect().size/2 - pivot_offset
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if UserConfig.game_crosshair_dynamic_position:
+		setOverride()
+	rotation = lerpf(rotation,0.0,delta*tiltSpeed)
+	scale = lerp(scale,crosshairSize,crosshairSizeSpeed)
+	#self.scale = clamp(scale,Vector2(0.005,0.005),Vector2(10.5,10.5))
+	self_modulate =  lerp(self_modulate,defaultTint,tintSpeed*delta)
+
+
+func setOverride():
+	if positionOverride != null:
+		position = positionOverride - pivot_offset
+	else:
+		position = get_viewport_rect().size/2 - pivot_offset
+
+func addSize(sizeAmount:float = 0.1):
+	self.scale += Vector2(sizeAmount,sizeAmount)
+
+func tintCrosshair(tint:Color):
+	self_modulate = tint
+
+func setCrosshair(crosshairTexture):
+	if crosshairTexture != null:
+		texture = crosshairTexture
+	else:
+		texture = defaultCrosshair
+
+func addTilt(tilt:float = 0.0):
+	rotation += tilt
+"
+
+[sub_resource type="Shader" id="Shader_oyvhc"]
+code = "shader_type canvas_item;
+uniform vec4 color: source_color;
+uniform float multiplier = 0.2;
+uniform float softness = 3.0;
+
+void fragment() {
+	float value = distance(UV,vec2(0.5));
+	COLOR = vec4(color.rgb,smoothstep(multiplier,softness,value));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5giah"]
+shader = SubResource("Shader_oyvhc")
+shader_parameter/color = Color(0.490196, 0.0627451, 0.0784314, 1)
+shader_parameter/multiplier = 0.45
+shader_parameter/softness = 0.99
+
+[sub_resource type="Shader" id="Shader_kenmw"]
+code = "shader_type canvas_item;
+uniform float multiplier = 0.2;
+uniform float softness = 3.0;
+varying vec4 modulator;
+
+void vertex(){
+	modulator = COLOR;
+	}
+
+void light(){
+	vec4 color = texture(TEXTURE,UV);
+	LIGHT = vec4(color.rgb * LIGHT_COLOR.rgb * LIGHT_ENERGY, LIGHT_COLOR.a);
+}
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	float value = distance(UV,vec2(0.5));
+	COLOR = vec4(color.rgb,smoothstep(multiplier,softness,value));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2o42"]
+shader = SubResource("Shader_kenmw")
+shader_parameter/multiplier = 0.235
+shader_parameter/softness = 1.43
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bpylg"]
 streams_count = 3
@@ -44,6 +128,7 @@ script = ExtResource("1_r7vh5")
 camRecoilStrength = 8.0
 camReturnSpeed = 15.0
 camRecoil = Vector3(5, 1, 0.25)
+recoilReturnSpeed = 9.0
 zoomSpeed = 40.0
 velocityComponent = NodePath("velocityComponent")
 inputComponent = NodePath("inputComponent")
@@ -61,7 +146,7 @@ spring_length = 0.0
 [node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertholder/vertical"]
 
 [node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.863349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.12949)
 target_position = Vector3(0, 0, -250)
 collision_mask = 23
 collide_with_areas = true
@@ -78,7 +163,7 @@ vAcceleration = 3.0
 
 [node name="inputComponent" parent="." instance=ExtResource("3_jchmi")]
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="." node_paths=PackedStringArray("cam", "crosshair")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +174,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("4_r48cc")
+cam = NodePath("../camPivot/horizonal/vertholder/vertical/Camera")
+crosshair = NodePath("Crosshair")
 fpsCounterEnabled = true
 
 [node name="WIP" type="Label" parent="HUD"]
@@ -129,18 +216,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -3.5
-offset_top = -4.0
-offset_right = 3.5
-offset_bottom = 4.0
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_44jcq")
-expand_mode = 1
+pivot_offset = Vector2(36.255, 36.145)
+script = SubResource("GDScript_quas3")
 
 [node name="vignette" type="ColorRect" parent="HUD"]
 visible = false
-material = SubResource("ShaderMaterial_vands")
+material = SubResource("ShaderMaterial_5giah")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -154,6 +241,17 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("9_jgajw")
 volume_db = -15.0
 bus = &"Sounds"
+
+[node name="killVignette" type="ColorRect" parent="HUD"]
+material = SubResource("ShaderMaterial_b2o42")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="textureRect" type="TextureRect" parent="HUD"]
 modulate = Color(1, 1, 1, 0.639216)
@@ -274,7 +372,7 @@ text = "Use \"Item\""
 
 [node name="killSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_bpylg")
-volume_db = 1.5
+volume_db = 1.7
 bus = &"Sounds"
 
 [connection signal="mouseButtonHeld" from="inputComponent" to="." method="_on_input_component_mouse_button_held"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://b53hvcf0hvvkw"]
+
+[ext_resource type="Script" path="res://assets/components/aiComponent/aiComponent.gd" id="1_tulq4"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_8gnyr"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_ahaqf"]
+[ext_resource type="Script" path="res://assets/scripts/stateMachine/states/attackState.gd" id="4_3m4kx"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_gaqok"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/condition.gd" id="5_mi484"]
+[ext_resource type="Script" path="res://assets/components/aiComponent/leafs/walkToPosition.gd" id="6_2gunb"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/leaves/action.gd" id="6_du88e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]
+radius = 2.58404
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_q6m5e"]
+radius = 5.43627
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxudk"]
+albedo_color = Color(0, 1, 0.368627, 1)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_t2je8"]
+
+[node name="aiComponent" type="Node3D" node_paths=PackedStringArray("moveTo", "navAgent", "navPointGrabber", "visionTimer", "pawnGrabber")]
+script = ExtResource("1_tulq4")
+moveTo = NodePath("moveTo")
+navAgent = NodePath("navAgent")
+navPointGrabber = NodePath("navPointGrabber")
+visionTimer = NodePath("visionTimer")
+pawnGrabber = NodePath("pawnGrabber")
+
+[node name="aiTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_8gnyr")
+blackboard = NodePath("@Node@31972")
+actor = NodePath("..")
+
+[node name="selectorComposite" type="Node" parent="aiTree"]
+script = ExtResource("3_ahaqf")
+
+[node name="wanderIfNoTarget" type="Node" parent="aiTree/selectorComposite"]
+script = ExtResource("4_gaqok")
+
+[node name="doesNotHaveTarget" type="Node" parent="aiTree/selectorComposite/wanderIfNoTarget"]
+script = ExtResource("5_mi484")
+
+[node name="walkToPosition" type="Node" parent="aiTree/selectorComposite/wanderIfNoTarget"]
+script = ExtResource("6_2gunb")
+
+[node name="attackIfTarget" type="Node" parent="aiTree/selectorComposite"]
+script = ExtResource("4_gaqok")
+
+[node name="hasTarget" type="Node" parent="aiTree/selectorComposite/attackIfTarget"]
+script = ExtResource("5_mi484")
+
+[node name="Attacking" type="Node" parent="aiTree/selectorComposite/attackIfTarget"]
+script = ExtResource("6_du88e")
+
+[node name="States" type="Node" parent="."]
+
+[node name="attackState" type="Node" parent="States" node_paths=PackedStringArray("sightCast", "sightcastEnd", "navAgent")]
+script = ExtResource("4_3m4kx")
+sightCast = NodePath("rayCast3d")
+sightcastEnd = NodePath("rayCast3d/marker3d")
+navAgent = NodePath("../../navAgent")
+
+[node name="rayCast3d" type="RayCast3D" parent="States/attackState"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.18996)
+target_position = Vector3(0, 0, -9)
+collision_mask = 23
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.360784, 0.611765, 0.25098, 1)
+
+[node name="marker3d" type="Marker3D" parent="States/attackState/rayCast3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.98848)
+
+[node name="attackTimer" type="Timer" parent="States/attackState"]
+wait_time = 0.15
+
+[node name="moveTo" type="Marker3D" parent="."]
+
+[node name="navAgent" type="NavigationAgent3D" parent="."]
+target_desired_distance = 5.0
+navigation_layers = 9
+avoidance_enabled = true
+radius = 0.3
+avoidance_layers = 9
+avoidance_mask = 9
+debug_use_custom = true
+debug_path_custom_color = Color(0.239216, 0.745098, 0, 1)
+
+[node name="navPointGrabber" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="navPointGrabber"]
+shape = SubResource("SphereShape3D_102wm")
+
+[node name="pawnGrabber" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="pawnGrabber"]
+shape = SubResource("SphereShape3D_q6m5e")
+
+[node name="rayCast3d" type="RayCast3D" parent="pawnGrabber"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543199, 0)
+target_position = Vector3(0, 0, -15)
+collide_with_areas = true
+debug_shape_custom_color = Color(0.67451, 0, 0, 1)
+
+[node name="meshInstance3d" type="MeshInstance3D" parent="pawnGrabber"]
+material_override = SubResource("StandardMaterial3D_gxudk")
+mesh = SubResource("ImmediateMesh_t2je8")
+
+[node name="visionTimer" type="Timer" parent="."]
+wait_time = 0.025
+autostart = true
+
+[connection signal="timeout" from="States/attackState/attackTimer" to="States/attackState" method="_on_attack_timer_timeout"]
+[connection signal="target_reached" from="navAgent" to="aiTree/selectorComposite/wanderIfNoTarget/walkToPosition" method="_on_nav_agent_target_reached"]
+[connection signal="velocity_computed" from="navAgent" to="aiTree/selectorComposite/wanderIfNoTarget/walkToPosition" method="_on_nav_agent_velocity_computed"]
+[connection signal="timeout" from="visionTimer" to="." method="_on_vision_timer_timeout"]

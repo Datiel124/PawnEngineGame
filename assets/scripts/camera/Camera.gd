@@ -15,6 +15,7 @@ var speed = 9.0
 var acceleration = 3.0
 var vertVeclocity = Vector3.ZERO
 var killEffect = false
+var castLerp : Vector3 = Vector3.ZERO
 @export_subgroup("Camera")
 @export var cameraData : CameraData
 @export var followingEntity : Node3D
@@ -24,6 +25,7 @@ var killEffect = false
 	get:
 		return followNode
 #onReady Set
+@onready var killVignette = $HUD/killVignette
 @onready var vignette = $HUD/vignette
 @onready var hpAudio = $HUD/vignette/lowHP
 @onready var hud = $HUD
@@ -49,6 +51,8 @@ var camEuler
 @export var camRecoil : Vector3
 @export var camCurrRot : Vector3
 @export var camTargetRot : Vector3
+@export var recoilReturnSpeed = 5.0
+@export var recoilLookSpeed = 0.05
 var camReturnVect = Vector3(motionX, motionY, 0)
 @export_subgroup("Zoom")
 var aimFOV
@@ -104,13 +108,12 @@ func _physics_process(delta):
 			if !followingEntity.killedPawn.is_connected(emitKilleffect):
 				followingEntity.killedPawn.connect(emitKilleffect)
 			if followingEntity.currentItem:
-				$HUD/Crosshair.modulate = lerp(weaponHud.modulate,Color(1,1,1,1),12*delta)
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.8),12*delta)
 			else:
-				$HUD/Crosshair.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.2),48*delta)
 				weaponHud.modulate = lerp(weaponHud.modulate,Color(1,1,1,0.0),12*delta)
 
 	##Recoil - Currently broken.. Needs fixing..
+	camCast.rotation = lerp(camCast.rotation,castLerp, recoilReturnSpeed*delta)
 	camTargetRot.x = lerp(camTargetRot.x, 0.0, camReturnSpeed * delta)
 	camTargetRot.y = lerp(camTargetRot.y, 0.0, camReturnSpeed * delta)
 	camTargetRot.z = lerp(camTargetRot.z, 0.0, camReturnSpeed * delta)
@@ -119,8 +122,18 @@ func _physics_process(delta):
 	horizontal.rotation_degrees.y = camCurrRot.y
 	camera.rotation_degrees.z = camCurrRot.z
 
+	#Always Screentilt
+	if UserConfig.game_camera_screentilt_always:
+		camCurrRot.z += -castLerp.y
+	#Cast Lerp
+
+	castLerp = lerp(castLerp,Vector3.ZERO,recoilReturnSpeed*delta)
+	if UserConfig.game_crosshair_tilt:
+		hud.getCrosshair().addTilt(-castLerp.y)
 	#Zooming
 	if isZoomed:
+		if UserConfig.game_aim_screentilt or UserConfig.game_camera_screentilt_always:
+			camCurrRot.z += -castLerp.y
 		camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
 		currentFOV = aimFOV
 	else:
@@ -161,6 +174,9 @@ func _physics_process(delta):
 		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 10.0,4*delta))
 		hpAudio.stop()
 
+	#Kill Vignette
+	if !killVignette.get_material().get_shader_parameter("softness") >= 9.0:
+		killVignette.get_material().set_shader_parameter("softness",lerpf(killVignette.get_material().get_shader_parameter("softness"), 10.0,0.15*delta))
 
 	if !followNode == null:
 		if followingEntity is BasePawn:
@@ -212,7 +228,7 @@ func _on_input_component_mouse_button_held(button):
 func _on_input_component_on_mouse_motion(motion):
 	motionX = rad_to_deg(-motion.relative.x * globalGameManager.mouseSens)
 	motionY = rad_to_deg(-motion.relative.y * globalGameManager.mouseSens)
-
+	castLerp = Vector3(motionY* recoilLookSpeed+0.01,motionX* recoilLookSpeed,0)
 	camPivot.rotation_degrees.y += motionX
 	vertical.rotation_degrees.x += motionY
 	#Lock Cam
@@ -270,19 +286,25 @@ func fireRecoil(setRecoilX:float = 0.0,setRecoilY:float = 0.0,setRecoilZ:float =
 	camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
 
 func applyWeaponSpread(spread):
-	if followingEntity.isFirstperson:
-		camCast.rotation = Vector3.ZERO
-	else:
-		camCast.rotation = Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
-		#camCast.rotation = Vector3.ZERO
+	camCast.rotation += Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+	hud.getCrosshair().addSize(0.85)
+	if UserConfig.game_crosshair_tilt:
+		hud.getCrosshair().addTilt(randf_range(-spread*7,spread*7))
+	#camCast.rotation = Vector3.ZERO
 
 func resetCamCast():
 	camCast.position = Vector3.ZERO
 
 func emitKilleffect():
-	Console.add_console_message("Emit the effect retard..")
 	camera.fov += 1.1
 	$killSound.play()
 	killEffect = true
 	fireRecoil(0,0,randf_range(0.5,0.8))
+	fireVignette(0.9,Color.DIM_GRAY)
+	hud.getCrosshair().tintCrosshair(Color.RED)
+	hud.getCrosshair().addSize(1.5)
+
+func fireVignette(intensity:float = 0.9,color:Color = Color.DARK_RED):
+	killVignette.get_material().set_shader_parameter("softness",intensity)
+	killVignette.get_material().set_shader_parameter("color",color)
 

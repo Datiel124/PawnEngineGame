@@ -1,5 +1,11 @@
 extends Node
 
+#game configs
+var game_camera_screentilt_always = false
+var game_aim_screentilt = true
+var game_crosshair_tilt = true
+var game_crosshair_dynamic_position = true
+
 #audio configs
 var audio_MasterVolume : float = 0.8
 var audio_GameVolume : float = 1.0
@@ -11,8 +17,15 @@ var audio_custom_music_enabled : bool = false
 #graphics settings
 var graphics_resolution : int = 0
 var graphics_fullscreen : bool = false
-var graphics_msaa : int = 0
-var graphics_fxaa : bool = false
+var graphics_screenspace_aa : int = 0:
+	set(value):
+		graphics_screenspace_aa = value
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa",graphics_screenspace_aa)
+var graphics_msaa : int = 0:
+	set(value):
+		graphics_msaa = value
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_3d
+",graphics_msaa)
 var graphics_Ssr : bool = false
 var graphics_Sdfgi : bool = false
 var graphics_Ssil : bool = false

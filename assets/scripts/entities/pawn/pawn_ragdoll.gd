@@ -71,24 +71,15 @@ func _physics_process(delta):
 	if activeRagdollEnabled:
 		if !targetSkeleton == null:
 			for b in physicsBones:
-				if !b.get_bone_id() == 0 or !b.get_bone_id() == 1 or !b.get_bone_id() == 2 or !b.get_bone_id() == 41 or !b.get_bone_id() == 42:
-					var target_transform: Transform3D = targetSkeleton.global_transform * targetSkeleton.get_bone_global_pose(b.get_bone_id())
-					var current_transform: Transform3D = ragdollSkeleton.global_transform * ragdollSkeleton.get_bone_global_pose(b.get_bone_id())
-					var rotation_difference: Basis = (target_transform.basis * current_transform.basis.inverse())
+				var target_transform: Transform3D = targetSkeleton.global_transform * targetSkeleton.get_bone_global_pose(b.get_bone_id())
+				var current_transform: Transform3D = ragdollSkeleton.global_transform * ragdollSkeleton.get_bone_global_pose(b.get_bone_id())
+				var rotation_difference: Basis = target_transform.basis * current_transform.basis.inverse()
 
-					var position_difference:Vector3 = target_transform.origin - current_transform.origin
+				var position_difference:Vector3 = target_transform.origin - current_transform.origin
 
-					if position_difference.length_squared() > 1.0:
-						b.global_position = target_transform.origin
-					else:
-						var force: Vector3 = hookes_law(position_difference, b.linear_velocity, linearSpringStiffness, linearSpringDamping)
-						force = force.limit_length(maxLinearForce)
-						b.linear_velocity += (force * delta)
-
-					var torque = hookes_law(rotation_difference.get_euler(), b.angular_velocity, angularSpringStiffness, angularSpringDamping)
-					torque = torque.limit_length(maxAngularForce)
-					b.angular_velocity += torque * delta
-					print(b.get_bone_id())
+				var torque = hookes_law(rotation_difference.get_euler(), b.angular_velocity, angularSpringStiffness, angularSpringDamping)
+				torque = torque.limit_length(maxAngularForce)
+				b.torque = rotation_difference.get_euler() * 2
 
 	if canTwitch:
 		pass

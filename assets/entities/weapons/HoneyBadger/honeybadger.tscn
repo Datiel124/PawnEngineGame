@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bn07wnk5k005c"]
+[gd_scene load_steps=25 format=3 uid="uid://bn07wnk5k005c"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_821xr"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="2_cf5fr"]
+[ext_resource type="Texture2D" uid="uid://c7b38t83ckisx" path="res://assets/textures/crosshair/crosshair161.png" id="2_eo2hd"]
 [ext_resource type="AudioStream" uid="uid://bsf2lnjdianff" path="res://assets/sounds/weapons/honeybadger/CobaltCatsupGunSoundsForReddit_StdPistolOneShot_Var2.wav" id="2_r5eso"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://cqshqnsojujr4" path="res://assets/entities/weapons/HoneyBadger/honeyBadgerTree.tres" id="3_ceo6u"]
 [ext_resource type="Animation" uid="uid://cprovv54ucski" path="res://assets/models/weapons/honeybadger/anims/BadgerAim.res" id="4_0mbul"]
@@ -120,11 +121,12 @@ muzzlePoint = NodePath("Mesh/HoneyBadger/Marker3D")
 weaponDamage = 10.0
 weaponFireRate = 0.08
 weaponImpulse = 30.0
+forcedCrosshair = ExtResource("2_eo2hd")
 weaponRecoil = Vector3(4.25, 2.3, 6.225)
 weaponRecoilStrength = 9.0
-weaponSpread = 0.03
+weaponSpread = 0.055
 weaponRecoilStrengthAim = 8.0
-weaponSpreadAim = 0.02
+weaponSpreadAim = 0.025
 weaponPositionOffset = Vector3(-0.01, -0.335, 0.115)
 weaponRotationOffset = Vector3(1.54, -0.925, -0.985)
 objectName = "Honeybadger"
@@ -132,6 +134,7 @@ objectName = "Honeybadger"
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
 stream = SubResource("AudioStreamRandomizer_24m82")
 bus = &"Sounds"
+attenuation_filter_db = 0.0
 
 [node name="Mesh" parent="." index="1"]
 transform = Transform3D(1.065, 0, 0, 0, 1.065, 0, 0, 0, 1.065, 0, 0, 0)

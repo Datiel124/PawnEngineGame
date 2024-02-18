@@ -36,8 +36,8 @@ func _process(_delta):
 							if !controllingPawn.attachedCam == null:
 								if controllingPawn.meshRotation:
 									controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
-							controllingPawn.isRunning = false
-							controllingPawn.canRun = false
+						controllingPawn.isRunning = false
+						controllingPawn.canRun = false
 		else:
 			if controllingPawn:
 				controllingPawn.meshLookAt = false
@@ -46,19 +46,18 @@ func _process(_delta):
 					controllingPawn.freeAim = false
 		if Input.is_action_pressed("gLeftClick"):
 			if controllingPawn:
-				if !controllingPawn.isRunning:
-					if !controllingPawn.currentItem == null:
-						if !Input.is_action_pressed("gRightClick"):
-							if !controllingPawn.freeAim:
-								controllingPawn.canRun = false
-								controllingPawn.freeAim = true
-								controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
-						controllingPawn.currentItem.fire()
-						controllingPawn.freeAimTimer.start()
+				if !controllingPawn.currentItem == null:
+					if !Input.is_action_pressed("gRightClick"):
+						if !controllingPawn.freeAim:
+							controllingPawn.freeAim = true
+							controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
+					controllingPawn.currentItem.fire()
+					controllingPawn.freeAimTimer.start()
 		else:
 			if controllingPawn:
 				if !Input.is_action_pressed("gRightClick"):
-					controllingPawn.canRun = true
+					#controllingPawn.canRun = true
+					pass
 
 	if !controllingPawn == null:
 		if !controllingPawn.attachedCam == null:
@@ -107,7 +106,9 @@ func _unhandled_input(event):
 			emit_signal("actionPressed", str(event.keycode))
 			if controllingPawn:
 				controllingPawn.healthComponent.health = 0
-
+				if controllingPawn.attachedCam:
+					controllingPawn.attachedCam.fireVignette(0.8,Color.DARK_RED)
+					globalGameManager.notifyFade("You've died! Press F6 to restart!", 4, 5)
 
 ##Movement Code
 	if movementEnabled:
@@ -116,7 +117,7 @@ func _unhandled_input(event):
 			if controllingPawn:
 				if controllingPawn.canRun:
 					controllingPawn.isRunning = true
-					controllingPawn.freeAim = false
+					#controllingPawn.freeAim = false
 
 		else:
 			if controllingPawn:

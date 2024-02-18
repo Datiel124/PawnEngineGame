@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://ot20of35bq16"]
+
+[ext_resource type="AudioStream" uid="uid://c8f4j3xitvvuk" path="res://assets/sounds/ui/uialert.wav" id="1_30eys"]
+
+[resource]
+streams_count = 1
+stream_0/stream = ExtResource("1_30eys")
+stream_0/weight = 1.0

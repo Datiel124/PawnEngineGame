@@ -41,9 +41,9 @@ signal killedPawn
 @onready var rightUpperLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightThigh
 @onready var leftLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_LeftKnee
 @onready var rightLowerLeg = $Mesh/MaleSkeleton/Skeleton3D/Male_RightKnee
-
+@onready var downCheck = $Mesh/downCheck
 @onready var aimBlockRaycast = $Mesh/aimDetect
-@onready var floorcheck = $floorCast
+@onready var floorcheck = $Mesh/floorCast
 @onready var freeAimTimer = $freeAimTimer
 @onready var pawnSkeleton = $Mesh/MaleSkeleton/Skeleton3D
 @onready var animationTree = $AnimationTree
@@ -119,6 +119,9 @@ var preventWeaponFire = false
 		return isPawnDead
 @export var isMoving = false
 @export_subgroup("Movement")
+var goingUpHill : bool = false
+var goingDownHill : bool = false
+var oldPos : float = 0.0
 @export var canRun : bool = true
 @export var isRunning : bool = false
 @export var JUMP_VELOCITY = 4.5
@@ -196,19 +199,22 @@ func _physics_process(delta):
 		if !isPawnDead:
 			##Debug
 
-			##Firstperson
-
+#region FirstPerson
 			if isFirstperson:
 				meshLookAt = true
 				freeAim = true
+#endregion
 
-			##Aimblocking
+
+#region AimBlocking
 			if aimBlockRaycast.is_colliding():
 				preventWeaponFire = true
 			else:
 				preventWeaponFire = false
+#endregion
 
-			##FreeAim
+
+#region FreeAim
 			if freeAim:
 				if !isFirstperson:
 					meshLookAt = true
@@ -221,17 +227,19 @@ func _physics_process(delta):
 						bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
 					else:
 						bodyIK.interpolation = lerpf(bodyIK.interpolation, 0, turnSpeed * delta)
+#endregion
 			##Movement Code
 			#TODO - AI Stuff here I think
 			if !isMoving and footstepSounds.playing:
 				footstepSounds.stop()
 
-			##Item Equip
+#region Item Equipping
 			if !currentItem == null:
 				#Add equipanimation here, once it it finishes, enable the hand IKs and lerp
 				if currentItem:
 					##Camera set
 					if attachedCam:
+						attachedCam.hud.getCrosshair().setCrosshair(currentItem.forcedCrosshair)
 						attachedCam.itemEquipOffsetToggle = true
 
 					#Weapon Aiming
@@ -273,9 +281,13 @@ func _physics_process(delta):
 					weapon.hide()
 				if attachedCam:
 						attachedCam.itemEquipOffsetToggle = false
+						attachedCam.hud.getCrosshair().setCrosshair(null)
 						attachedCam.resetCamCast()
+
 				animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 0, 12*delta))
-			##Mesh Rotation
+#endregion
+
+#region Mesh Rotation
 			if !meshLookAt:
 				if isMoving:
 					if !is_on_wall():
@@ -287,7 +299,25 @@ func _physics_process(delta):
 				canJump = false
 				bodyIKMarker.rotation.x = turnAmount
 				pawnMesh.rotation.y = lerp_angle(pawnMesh.rotation.y, meshRotation, 23 * delta)
+#endregion
 
+		if floorcheck.is_colliding() and is_on_floor():
+			if isMoving and direction != Vector3.ZERO:
+				if !goingDownHill and !goingUpHill:
+					global_position = lerp(global_position,Vector3(floorcheck.get_collision_point().x,floorcheck.get_collision_point().y+2.0,floorcheck.get_collision_point().z+2.0),delta*20)
+
+		if downCheck.get_collision_normal().y != 1.0:
+			if global_position.y > oldPos:
+				goingDownHill = false
+				goingUpHill = true
+				oldPos = global_position.y
+			elif global_position.y < oldPos:
+				goingDownHill = true
+				goingUpHill = false
+				oldPos = global_position.y
+			else:
+				goingDownHill = false
+				goingUpHill = false
 
 			# Add the gravity
 			if !is_on_floor():
@@ -320,18 +350,24 @@ func _physics_process(delta):
 				else:
 					velocityComponent.vMaxSpeed = defaultRunSpeed
 
+
 			#Jump Animation
 				if isJumping:
 					animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 1.0, delta * 12))
 				else:
 					animationTree.set("parameters/jumpBlend/blend_amount", lerpf(animationTree.get("parameters/jumpBlend/blend_amount"), 0.0, delta * 12))
 
+			animationTree.set("parameters/aimSprintStrafe/blend_position",Vector2(-velocity.x, -velocity.z).rotated(meshRotation))
+			animationTree.set("parameters/strafeSpace/blend_position",Vector2(-velocity.x, -velocity.z).rotated(meshRotation))
 			if meshLookAt:
 				bodyIK.start()
 				bodyIK.interpolation = lerpf(bodyIK.interpolation, 1, turnSpeed * delta)
 				if is_on_floor():
-					animationTree.set("parameters/strafeSpace/blend_position",Vector2(-velocity.x, -velocity.z).rotated(meshRotation))
 					animationTree.set("parameters/aimTransition/transition_request", "aiming")
+					if !isRunning:
+						animationTree.set("parameters/strafeType/transition_request", "walking")
+					else:
+						animationTree.set("parameters/strafeType/transition_request", "running")
 				else:
 					animationTree.set("parameters/aimTransition/transition_request", "notAiming")
 			else:
@@ -352,12 +388,8 @@ func _physics_process(delta):
 						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
 						animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
-			floor_snap_length = 0.0 if (velocity.y > 1.0 or velocity.length() > 16) else 0.1
-			do_stairs()
 			move_and_slide()
 
-			if Input.is_action_just_pressed("dFreeKey"):
-				getCurrentDecalBones()
 
 			#Player movement
 			if inputComponent:
@@ -455,6 +487,11 @@ func createRagdoll(impulse_bone : int = 0):
 			attachedCam = null
 		collisionShape.queue_free()
 
+		if ragdoll.activeRagdollEnabled:
+			if impulse_bone == 41:
+				ragdoll.activeRagdollEnabled = false
+			forceAnimation = true
+			animationToForce = "PawnAnim/WritheRightKneeBack"
 
 
 
@@ -518,7 +555,8 @@ func moveDecalsToRagdoll(ragdoll):
 	for decalBones in boneAttatchementHolder.get_children():
 		var boneID = decalBones.bone_idx
 		for decals in decalBones.get_children():
-			Console.add_console_message("For %s, %s" %[self,getCurrentDecalBones()])
+			pass
+			#Console.add_console_message("For %s, %s" %[self,getCurrentDecalBones()])
 
 func getCurrentDecalBones():
 	#Decal reparent..
@@ -539,6 +577,7 @@ func setupWeaponAnimations():
 	if !currentItem == null:
 		if !currentItem.weaponAnimSet:
 			#Swap out animationLibraries
+			await get_tree().process_frame
 			await get_tree().process_frame
 			animationPlayer.remove_animation_library("weaponAnims")
 			animationPlayer.add_animation_library("weaponAnims", currentItem.animationPlayer.get_animation_library("weaponAnims"))

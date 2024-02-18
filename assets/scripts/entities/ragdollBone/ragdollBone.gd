@@ -2,7 +2,9 @@ extends PhysicalBone3D
 class_name RagdollBone
 signal onHit(impulse,vector)
 @export_category("Ragdoll Bone")
-
+var bonePhysicsServer = PhysicsServer3D
+var bonePhysicsServerExt = PhysicsServer3DExtension
+var torque : Vector3
 @export_subgroup("Impact Hits")
 @export var hardImpactEffectEnabled : bool = true
 @export var impactEffectHard : PackedScene
@@ -34,7 +36,7 @@ var exclusionArray : Array[RID]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	PhysicsServer3D.body_set_max_contacts_reported(RID(self), 1)
+	bonePhysicsServer.body_set_max_contacts_reported(RID(self), 1)
 	audioStreamPlayer = AudioStreamPlayer3D.new()
 	add_child(audioStreamPlayer)
 	audioStreamPlayer.max_polyphony = 2
@@ -82,8 +84,10 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 				if impactEffectHard == null:
 					var particle = globalParticles.createParticle("BloodSpurt",self.position)
 					particle.rotation = self.rotation
+					particle.amount = randi_range(25,75)
+					joint_type = 0
 			return
-		if contactForce > mediumImpactThreshold:
+		elif contactForce > mediumImpactThreshold:
 			audioStreamPlayer.stream = mediumImpactSounds
 			audioStreamPlayer.play()
 			audioCooldown = 0.25
@@ -91,8 +95,9 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 				if impactEffectMedium == null:
 					var particle = globalParticles.createParticle("BloodSpurt",self.position)
 					particle.rotation = self.rotation
+					particle.amount = randi_range(25,40)
 			return
-		if contactForce > lightImpactThreshold:
+		elif contactForce > lightImpactThreshold:
 			audioStreamPlayer.stream = lightImpactSounds
 			var fac = (contactForce - lightImpactThreshold) / (mediumImpactThreshold - lightImpactThreshold)
 			audioStreamPlayer.volume_db = lerp(-5, 0, fac)
@@ -114,6 +119,8 @@ func _process(delta):
 		inAirStreamPlayer.volume_db = lerp(inAirStreamPlayer.volume_db, -80 + (fac * 80), delta * 6)
 		inAirStreamPlayer.pitch_scale = lerp(inAirStreamPlayer.pitch_scale, (angular_velocity.length() / 500.0) + 2.0, delta * 4)
 
+func _physics_process(delta):
+		pass
 
 func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 = Vector3.ZERO):
 	emit_signal("onHit",hitImpulse,hitPoint)
@@ -124,3 +131,7 @@ func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 =
 		splatterParams.from = hitPoint
 		splatterParams.to = self.position
 		splatterState.intersect_ray(splatterParams)
+	if get_bone_id() == 41:
+		if get_owner().activeRagdollEnabled:
+			torque = Vector3.ZERO
+			get_owner().activeRagdollEnabled = false

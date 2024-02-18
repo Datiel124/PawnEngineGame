@@ -1,8 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://dsxt078giobel"]
+[gd_scene load_steps=42 format=3 uid="uid://dsxt078giobel"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_k0gi6"]
 [ext_resource type="AudioStream" uid="uid://c4nv2utpail5c" path="res://assets/sounds/weapons/uzi/uziFire.wav" id="2_2gcbv"]
 [ext_resource type="ArrayMesh" uid="uid://brx711lyumg08" path="res://assets/models/weapons/uzi/uzimodel.res" id="2_56o6k"]
+[ext_resource type="Texture2D" uid="uid://bymv7nt6e8ghx" path="res://assets/textures/crosshair/crosshair179.png" id="2_wo0j2"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_8m6vm"]
 [ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="4_bbw6c"]
 [ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="5_kvnjb"]
@@ -195,6 +196,7 @@ muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
 weaponDamage = 4.0
 weaponFireRate = 0.065
 weaponImpulse = 25.0
+forcedCrosshair = ExtResource("2_wo0j2")
 weaponRecoil = Vector3(4.24, 6.88, 2.37)
 weaponRecoilStrength = 10.0
 weaponSpread = 0.035
@@ -211,6 +213,7 @@ stream = SubResource("AudioStreamRandomizer_rhvhp")
 volume_db = -16.0
 max_polyphony = 8
 bus = &"Sounds"
+attenuation_filter_db = 0.0
 
 [node name="Uzi" type="Node3D" parent="Mesh" index="0"]
 

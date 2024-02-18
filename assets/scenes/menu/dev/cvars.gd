@@ -21,7 +21,8 @@ const HELP_DICT := {
 	"saveToFile(filename, data)":"Saves file as specified filename in 'userData/console_out/', stores data as a var with objects encoded."
 }
 
-
+var config = UserConfig
+var gameManager = globalGameManager
 var userDir = ProjectSettings.globalize_path("user://")
 var help:
 	get:
@@ -76,30 +77,39 @@ func posess():
 		if cast.is_colliding():
 			if cast.get_collider().is_in_group("Posessable"):
 				freecam()
+				globalGameManager.notify_warn("Posessing..", 2, 5)
 				globalGameManager.activeCamera.posessObject(cast.get_collider(),cast.get_collider().followNode)
 			else:
+				globalGameManager.notify_warn("Cannot posess %s, Its not possessable" %cast.get_collider(), 2, 5)
 				Console.add_console_message("Cannot posess %s, Its not possessable" %cast.get_collider())
 	else:
+		globalGameManager.notify_warn("You can't posess nothing dipshit. Look at a pawn.", 2, 5)
 		Console.add_console_message("You can't posess nothing dipshit. Look at a pawn.")
 func freecam():
+	globalGameManager.notify_warn("Freecam Enabled", 2, 5)
 	globalGameManager.activeCamera.unposessObject(true)
 
 func spawnPawn(position : Vector3 = Vector3.INF) -> void:
-	var pawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
-	var controller = load("res://assets/components/aiComponent/aiComponent.tscn").instantiate()
-	globalGameManager.world.worldPawns.add_child(pawn)
+
 	var cast : RayCast3D = globalGameManager.activeCamera.camCast
 	if cast.is_colliding() and !position.is_finite():
+		var pawn = load("res://assets/entities/pawnEntity/pawnEntity.tscn").instantiate()
+		var controller = load("res://assets/components/aiComponent/aiComponent.tscn").instantiate()
+		globalGameManager.world.worldPawns.add_child(pawn)
 		pawn.rotation.y = randf_range(0,360)
 		pawn.global_position = cast.get_collision_point()
 		pawn.global_position.y = pawn.global_position.y + 1
-	if position.is_finite():
-		pawn.global_position = position
-	pawn.componentHolder.add_child(controller)
-	pawn.inputComponent = controller
-	pawn.checkComponents()
-	pawn.fixRot()
-	Console.add_console_message("spawned %s at %s" % [pawn, pawn.global_position])
+		pawn.componentHolder.add_child(controller)
+		pawn.inputComponent = controller
+		pawn.checkComponents()
+		pawn.fixRot()
+		if globalGameManager.debugEnabled:
+			Console.add_console_message("spawned %s at %s" % [pawn, pawn.global_position])
+			globalGameManager.notifyFade("Spawned %s at %s"% [pawn, pawn.global_position], 1, 3)
+	else:
+		if globalGameManager.debugEnabled:
+			globalGameManager.notify_warn("Unable to spawn pawn, Cannot find position.", 2, 10)
+
 
 
 func spawnNode(node : Node, parent : Node = null) -> Node:
@@ -211,14 +221,20 @@ func progressTime(value:bool):
 	if globalGameManager.world:
 		globalGameManager.world.worldSky.simulateTime = value
 
-func visionDebug(value:bool):
+func pawnDebug(value:bool):
 	if globalGameManager.world:
-		globalGameManager.visionConesEnabled = value
+		globalGameManager.pawnDebug = value
+		if value:
+			globalGameManager.notify_warn("Pawn Debugger info will appear above NPC pawns' heads.", 2, 10)
+		else:
+			globalGameManager.notify_warn("Pawn Debugger info will no longer appear above NPC pawns' heads.", 2, 10)
 
 func debugToggle():
 	if globalGameManager.debugEnabled:
+		globalGameManager.notify_warn("Debug controls are disabled.", 2, 10)
 		globalGameManager.debugEnabled = false
 		Console.add_console_message("Debug controls are now disabled.")
 	else:
+		globalGameManager.notify_warn("Debug controls are enabled.", 2, 10)
 		globalGameManager.debugEnabled = true
 		Console.add_console_message("Debug controls are now enabled.")

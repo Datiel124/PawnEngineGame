@@ -9,4 +9,4 @@ camLerpSpeed = 15.0
 itemEquipOffset = Vector3(0.555, 0, 0)
 itemEquipLerpSpeed = 5.0
 zoomAmount = 25.0
-zoomSpeed = 16.0
+zoomSpeed = 0.5

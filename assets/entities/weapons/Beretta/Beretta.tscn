@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://wtqya32cwdbk"]
+[gd_scene load_steps=36 format=3 uid="uid://wtqya32cwdbk"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_xjnb0"]
+[ext_resource type="Texture2D" uid="uid://b65pakuckbcq6" path="res://assets/textures/crosshair/crosshair102.png" id="2_cqrt7"]
 [ext_resource type="AudioStream" uid="uid://cix7ik2at3jmq" path="res://assets/sounds/weapons/baretta/berettafire1.wav" id="2_silaf"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_n7a4b"]
 [ext_resource type="AudioStream" uid="uid://dadd3eqi4bvcm" path="res://assets/sounds/weapons/baretta/berettafire2.wav" id="3_pino1"]
@@ -454,11 +455,12 @@ muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 6.0
 weaponFireRate = 0.2
 weaponImpulse = 15.0
+forcedCrosshair = ExtResource("2_cqrt7")
 weaponRecoil = Vector3(4.375, 3, 8.22)
-weaponRecoilStrength = 15.0
-weaponSpread = 0.04
+weaponRecoilStrength = 13.0
+weaponSpread = 0.07
 weaponRecoilStrengthAim = 6.0
-weaponSpreadAim = 0.01
+weaponSpreadAim = 0.015
 useLeftHandIdle = false
 useLeftHandFreeAiming = false
 weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
@@ -470,6 +472,7 @@ stream = SubResource("AudioStreamRandomizer_3jed7")
 volume_db = -5.0
 max_polyphony = 5
 bus = &"Sounds"
+attenuation_filter_db = 0.0
 
 [node name="Mesh" parent="." index="1"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

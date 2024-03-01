@@ -1,11 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://b53hvcf0hvvkw"]
+[gd_scene load_steps=46 format=3 uid="uid://b53hvcf0hvvkw"]
 
+[ext_resource type="Script" path="res://ai/tasks/unequipWeapon.gd" id="2_0v6xp"]
 [ext_resource type="Script" path="res://ai/tasks/getPosition.gd" id="2_xrxy6"]
 [ext_resource type="Script" path="res://ai/tasks/walkToPosition.gd" id="3_y6x7b"]
-[ext_resource type="Script" path="res://assets/scripts/stateMachine/states/attackState.gd" id="4_3m4kx"]
 [ext_resource type="Script" path="res://assets/components/aiComponent/aiComponent.gd" id="4_gaqok"]
 [ext_resource type="Script" path="res://ai/tasks/aiEquipWeapon.gd" id="4_hqswl"]
 [ext_resource type="BlackboardPlan" uid="uid://y5n7ma7pe4t2" path="res://assets/components/aiComponent/aiPlan.tres" id="4_i5pc7"]
+[ext_resource type="Script" path="res://ai/tasks/lookAtPawn.gd" id="5_hbu71"]
+[ext_resource type="Script" path="res://ai/tasks/pawnShoot.gd" id="7_xug5t"]
+[ext_resource type="Script" path="res://ai/tasks/getPositionToDetectedPawn.gd" id="8_4kek0"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_qvypc"]
 var/pawnType/name = "pawnType"
@@ -63,6 +66,28 @@ var/hasDetectedPawn/type = 1
 var/hasDetectedPawn/value = false
 var/hasDetectedPawn/hint = 0
 var/hasDetectedPawn/hint_string = ""
+var/visionCastRotation/name = "visionCastRotation"
+var/visionCastRotation/type = 9
+var/visionCastRotation/value = Vector3(0, 0, 0)
+var/visionCastRotation/hint = 0
+var/visionCastRotation/hint_string = ""
+var/visionCast/name = "visionCast"
+var/visionCast/type = 24
+var/visionCast/hint = 0
+var/visionCast/hint_string = ""
+var/aimCast/name = "aimCast"
+var/aimCast/type = 24
+var/aimCast/hint = 0
+var/aimCast/hint_string = ""
+var/aimCastEnd/name = "aimCastEnd"
+var/aimCastEnd/type = 24
+var/aimCastEnd/hint = 0
+var/aimCastEnd/hint_string = ""
+var/isAttacking/name = "isAttacking"
+var/isAttacking/type = 1
+var/isAttacking/value = false
+var/isAttacking/hint = 0
+var/isAttacking/hint_string = ""
 resource_local_to_scene = true
 
 [sub_resource type="BBVariant" id="BBVariant_gievn"]
@@ -76,6 +101,17 @@ check_type = 5
 value = SubResource("BBVariant_gievn")
 custom_name = "Check if its an Idle pawn"
 
+[sub_resource type="BBVariant" id="BBVariant_4f3yv"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_pno6g"]
+variable = "isAttacking"
+check_type = 5
+value = SubResource("BBVariant_4f3yv")
+custom_name = "Check if its  in attack"
+
 [sub_resource type="BBVariant" id="BBVariant_7udq0"]
 type = 1
 saved_value = true
@@ -87,17 +123,31 @@ check_type = 5
 value = SubResource("BBVariant_7udq0")
 custom_name = "If it can see an enemy pawn.."
 
+[sub_resource type="BTAction" id="BTAction_8wghn"]
+script = ExtResource("2_0v6xp")
+
 [sub_resource type="BTAction" id="BTAction_rtclt"]
 script = ExtResource("2_xrxy6")
 
 [sub_resource type="BTAction" id="BTAction_iflfc"]
+resource_local_to_scene = true
 script = ExtResource("3_y6x7b")
 currLocation = Vector3(0, 0, 0)
 newVelocity = Vector3(0, 0, 0)
 
 [sub_resource type="BTSequence" id="BTSequence_ph7u6"]
 custom_name = "Wander"
-children = [SubResource("BTCheckVar_4g5yf"), SubResource("BTCheckVar_5apl1"), SubResource("BTAction_rtclt"), SubResource("BTAction_iflfc")]
+children = [SubResource("BTCheckVar_4g5yf"), SubResource("BTCheckVar_pno6g"), SubResource("BTCheckVar_5apl1"), SubResource("BTAction_8wghn"), SubResource("BTAction_rtclt"), SubResource("BTAction_iflfc")]
+
+[sub_resource type="BBVariant" id="BBVariant_wb7pi"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_k1thp"]
+variable = "hasDetectedPawn"
+value = SubResource("BBVariant_wb7pi")
+custom_name = "If is in Detect state"
 
 [sub_resource type="BBVariant" id="BBVariant_h55jq"]
 type = 1
@@ -108,16 +158,61 @@ resource_name = "true"
 variable = "hasTarget"
 value = SubResource("BBVariant_h55jq")
 
-[sub_resource type="BTAction" id="BTAction_prprh"]
+[sub_resource type="BBVariant" id="BBVariant_aiqxi"]
+type = 1
+value_source = 1
+variable = "hasTarget"
+resource_name = "$hasTarget"
+
+[sub_resource type="BTSetVar" id="BTSetVar_7hgy8"]
+variable = "isAttacking"
+value = SubResource("BBVariant_aiqxi")
+
+[sub_resource type="BTAction" id="BTAction_j8thn"]
 script = ExtResource("4_hqswl")
+
+[sub_resource type="BTAction" id="BTAction_6ewbf"]
+custom_name = "Look at Detected Pawn"
+script = ExtResource("5_hbu71")
+
+[sub_resource type="BTAction" id="BTAction_u816v"]
+script = ExtResource("8_4kek0")
+
+[sub_resource type="BTAction" id="BTAction_ex6vk"]
+script = ExtResource("3_y6x7b")
+currLocation = Vector3(0, 0, 0)
+newVelocity = Vector3(0, 0, 0)
+
+[sub_resource type="BTAction" id="BTAction_ahq2h"]
+script = ExtResource("7_xug5t")
 
 [sub_resource type="BTSequence" id="BTSequence_45qv6"]
 custom_name = "AttackSequence"
-children = [SubResource("BTCheckVar_ficuq"), SubResource("BTAction_prprh")]
+children = [SubResource("BTCheckVar_k1thp"), SubResource("BTCheckVar_ficuq"), SubResource("BTSetVar_7hgy8"), SubResource("BTAction_j8thn"), SubResource("BTAction_6ewbf"), SubResource("BTAction_u816v"), SubResource("BTAction_ex6vk"), SubResource("BTAction_ahq2h")]
+
+[sub_resource type="BBVariant" id="BBVariant_cudkl"]
+type = 3
+saved_value = 10.0
+resource_name = "10"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_8bky6"]
+variable = "pawnDetection"
+check_type = 4
+value = SubResource("BBVariant_cudkl")
+
+[sub_resource type="BTAction" id="BTAction_euxt4"]
+script = ExtResource("5_hbu71")
+
+[sub_resource type="BTAction" id="BTAction_prprh"]
+script = ExtResource("4_hqswl")
+
+[sub_resource type="BTSequence" id="BTSequence_lddtm"]
+custom_name = "isDetecting"
+children = [SubResource("BTCheckVar_8bky6"), SubResource("BTAction_euxt4"), SubResource("BTAction_prprh")]
 
 [sub_resource type="BTSelector" id="BTSelector_5u274"]
 custom_name = "Root"
-children = [SubResource("BTSequence_ph7u6"), SubResource("BTSequence_45qv6")]
+children = [SubResource("BTSequence_ph7u6"), SubResource("BTSequence_45qv6"), SubResource("BTSequence_lddtm")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_y5p2n"]
 description = "AI Tree
@@ -129,67 +224,33 @@ resource_local_to_scene = true
 [sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]
 radius = 2.58404
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_q6m5e"]
-radius = 5.43627
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ongu"]
+radius = 7.78618
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gxudk"]
 albedo_color = Color(0, 1, 0.368627, 1)
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_t2je8"]
 
-[node name="aiComponent" type="Node3D" node_paths=PackedStringArray("aiTree", "moveTo", "navAgent", "navPointGrabber", "visionTimer", "pawnGrabber")]
+[sub_resource type="Gradient" id="Gradient_4vyck"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 0.32549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_crd1y"]
+gradient = SubResource("Gradient_4vyck")
+
+[node name="aiComponent" type="Node3D" node_paths=PackedStringArray("aiTree", "moveTo", "navAgent", "navPointGrabber", "visionTimer")]
 script = ExtResource("4_gaqok")
 aiTree = NodePath("aiTree")
 moveTo = NodePath("moveTo")
 navAgent = NodePath("navAgent")
 navPointGrabber = NodePath("navPointGrabber")
 visionTimer = NodePath("visionTimer")
-pawnGrabber = NodePath("pawnGrabber")
 hatedPawnGroups = Array[StringName]([&"Player", &"Hostile"])
+aimSpeed = 10.0
 
 [node name="aiTree" type="BTPlayer" parent="."]
 behavior_tree = SubResource("BehaviorTree_y5p2n")
 blackboard_plan = ExtResource("4_i5pc7")
-
-[node name="blackboard" type="Node" parent="."]
-
-[node name="old" type="Node" parent="."]
-
-[node name="selectorComposite" type="Node" parent="old"]
-
-[node name="wanderSequence" type="Node" parent="old/selectorComposite"]
-
-[node name="getPosition" type="Node" parent="old/selectorComposite/wanderSequence"]
-
-[node name="walkToPosition" type="Node" parent="old/selectorComposite/wanderSequence"]
-
-[node name="idleSequence" type="Node" parent="old/selectorComposite"]
-
-[node name="blackboardCompareCondition" type="Node" parent="old/selectorComposite/idleSequence"]
-
-[node name="idleLeaf" type="Node" parent="old/selectorComposite/idleSequence"]
-
-[node name="States" type="Node" parent="."]
-
-[node name="attackState" type="Node" parent="States" node_paths=PackedStringArray("sightCast", "sightcastEnd", "navAgent")]
-script = ExtResource("4_3m4kx")
-sightCast = NodePath("rayCast3d")
-sightcastEnd = NodePath("rayCast3d/marker3d")
-navAgent = NodePath("../../navAgent")
-
-[node name="rayCast3d" type="RayCast3D" parent="States/attackState"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.18996)
-target_position = Vector3(0, 0, -9)
-collision_mask = 23
-collide_with_areas = true
-collide_with_bodies = false
-debug_shape_custom_color = Color(0.360784, 0.611765, 0.25098, 1)
-
-[node name="marker3d" type="Marker3D" parent="States/attackState/rayCast3d"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.98848)
-
-[node name="attackTimer" type="Timer" parent="States/attackState"]
-wait_time = 0.15
 
 [node name="moveTo" type="Marker3D" parent="."]
 
@@ -200,7 +261,6 @@ avoidance_enabled = true
 radius = 0.3
 avoidance_layers = 9
 avoidance_mask = 9
-debug_use_custom = true
 debug_path_custom_color = Color(0.239216, 0.745098, 0, 1)
 
 [node name="navPointGrabber" type="Area3D" parent="."]
@@ -214,12 +274,11 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="collisionShape3d" type="CollisionShape3D" parent="pawnGrabber"]
-shape = SubResource("SphereShape3D_q6m5e")
+shape = SubResource("SphereShape3D_1ongu")
 
 [node name="rayCast3d" type="RayCast3D" parent="pawnGrabber"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.543199, 0)
 target_position = Vector3(0, 0, -15)
-collide_with_areas = true
 debug_shape_custom_color = Color(0.67451, 0, 0, 1)
 
 [node name="meshInstance3d" type="MeshInstance3D" parent="pawnGrabber"]
@@ -227,8 +286,6 @@ material_override = SubResource("StandardMaterial3D_gxudk")
 mesh = SubResource("ImmediateMesh_t2je8")
 
 [node name="visionTimer" type="Timer" parent="."]
-wait_time = 0.06
-autostart = true
 
 [node name="debugPawnStats" type="Label3D" parent="."]
 pixel_size = 0.003
@@ -240,8 +297,21 @@ Has Target -
 Has Detected -
 "
 
-[connection signal="timeout" from="States/attackState/attackTimer" to="States/attackState" method="_on_attack_timer_timeout"]
-[connection signal="path_changed" from="navAgent" to="old/selectorComposite/wanderSequence/walkToPosition" method="_on_nav_agent_path_changed"]
-[connection signal="target_reached" from="navAgent" to="old/selectorComposite/wanderSequence/walkToPosition" method="_on_nav_agent_target_reached"]
-[connection signal="velocity_computed" from="navAgent" to="old/selectorComposite/wanderSequence/walkToPosition" method="_on_nav_agent_velocity_computed"]
+[node name="sprite3d" type="Sprite3D" parent="."]
+transform = Transform3D(0.0686986, 0, 0, 0, 14.1423, 0, 0, 0, 1.0015, 0, 0, 0)
+visible = false
+texture = SubResource("GradientTexture1D_crd1y")
+
+[node name="aiAimcast" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -250)
+collision_mask = 19
+collide_with_areas = true
+debug_shape_custom_color = Color(1, 0.823529, 0, 1)
+
+[node name="aiAimcastEnd" type="Marker3D" parent="aiAimcast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -63.4755)
+
+[connection signal="area_entered" from="pawnGrabber" to="." method="_on_pawn_grabber_area_entered"]
+[connection signal="body_entered" from="pawnGrabber" to="." method="_on_pawn_grabber_body_entered"]
+[connection signal="body_exited" from="pawnGrabber" to="." method="_on_pawn_grabber_body_exited"]
 [connection signal="timeout" from="visionTimer" to="." method="_on_vision_timer_timeout"]

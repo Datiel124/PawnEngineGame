@@ -3,7 +3,7 @@ extends Control
 @export var cam : Camera3D
 @onready var camVert = $"../camPivot/horizonal/vertholder/vertical"
 @onready var camHoriz = $"../camPivot/horizonal"
-@onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/Camera/RayCast3D"
+@onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"
 @export var crosshair : TextureRect
 @export var fpsCounterEnabled = false
 var slidingCrosshairPos : Vector2 = Vector2.ZERO

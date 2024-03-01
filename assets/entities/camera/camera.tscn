@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=23 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -14,6 +14,9 @@
 [ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="14_eq71r"]
 [ext_resource type="AudioStream" uid="uid://ca75a15dd34dx" path="res://assets/sounds/gore/fleshimpact2.wav" id="15_hdgka"]
 [ext_resource type="AudioStream" uid="uid://c574uajy46jny" path="res://assets/sounds/gore/fleshimpact3.wav" id="16_eaodm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_seysn"]
+radius = 0.55
 
 [sub_resource type="Theme" id="Theme_wcn1k"]
 default_font = ExtResource("4_8av4t")
@@ -139,22 +142,24 @@ inputComponent = NodePath("inputComponent")
 
 [node name="vertholder" type="Node3D" parent="camPivot/horizonal"]
 
-[node name="vertical" type="SpringArm3D" parent="camPivot/horizonal/vertholder"]
+[node name="vertical" type="Node3D" parent="camPivot/horizonal/vertholder"]
+
+[node name="springArm3d" type="SpringArm3D" parent="camPivot/horizonal/vertholder/vertical"]
 collision_mask = 3
-spring_length = 0.0
+shape = SubResource("SphereShape3D_seysn")
 
-[node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertholder/vertical"]
+[node name="Camera" type="Camera3D" parent="camPivot/horizonal/vertholder/vertical/springArm3d"]
 
-[node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/Camera"]
+[node name="RayCast3D" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/springArm3d/Camera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.12949)
 target_position = Vector3(0, 0, -250)
 collision_mask = 23
 collide_with_areas = true
 
-[node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertholder/vertical/Camera/RayCast3D"]
+[node name="camRayEnd" type="Marker3D" parent="camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -250.5)
 
-[node name="debugCast" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/Camera"]
+[node name="debugCast" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/springArm3d/Camera"]
 target_position = Vector3(0, 0, -250)
 collision_mask = 8
 
@@ -174,7 +179,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("4_r48cc")
-cam = NodePath("../camPivot/horizonal/vertholder/vertical/Camera")
+cam = NodePath("../camPivot/horizonal/vertholder/vertical/springArm3d/Camera")
 crosshair = NodePath("Crosshair")
 fpsCounterEnabled = true
 

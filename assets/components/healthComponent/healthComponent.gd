@@ -1,6 +1,6 @@
 extends Component
 class_name HealthComponent
-signal onDamaged
+signal onDamaged(dealer)
 signal healthChanged
 signal healthDepleted
 @export_category("Component")
@@ -32,7 +32,7 @@ func _process(_delta):
 					killerSignalEmitted = true
 
 func damage(amount, dealer:Node3D = null):
-	emit_signal("onDamaged")
+	emit_signal("onDamaged",dealer)
 	health = health - amount
 	lastDealer = dealer
 

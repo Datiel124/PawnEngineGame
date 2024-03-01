@@ -87,3 +87,6 @@ func applyConfigs() -> void:
 	AudioServer.set_bus_volume_db(1, audio_menu_volume)
 	get_window().mode = Window.MODE_FULLSCREEN if graphics_fullscreen else Window.MODE_WINDOWED
 	configs_updated.emit()
+
+func getOption(optionString:String):
+	return optionString

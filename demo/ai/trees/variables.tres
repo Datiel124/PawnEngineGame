@@ -8,27 +8,27 @@ var/triggered/hint = 0
 var/triggered/hint_string = ""
 
 [sub_resource type="BBVariant" id="BBVariant_8bpg1"]
-resource_name = "false"
-saved_value = false
 type = 1
+saved_value = false
+resource_name = "false"
 
 [sub_resource type="BTCheckVar" id="BTCheckVar_g5b0s"]
 variable = "triggered"
 value = SubResource("BBVariant_8bpg1")
 
 [sub_resource type="BBVariant" id="BBVariant_loenl"]
-resource_name = "true"
-saved_value = true
 type = 1
+saved_value = true
+resource_name = "true"
 
 [sub_resource type="BTSetVar" id="BTSetVar_u051c"]
 variable = "triggered"
 value = SubResource("BBVariant_loenl")
 
 [sub_resource type="BBVariant" id="BBVariant_cu1uc"]
-resource_name = "Hello, World!"
-saved_value = "Hello, World!"
 type = 4
+saved_value = "Hello, World!"
+resource_name = "Hello, World!"
 
 [sub_resource type="BTSetVar" id="BTSetVar_2e0uw"]
 variable = "_message"

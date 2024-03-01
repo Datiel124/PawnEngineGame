@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn45u2e0x2o2b"]
+
+[ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="1_ihebm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n55rd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dovvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23nav"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jayx8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eqpgs"]
+
+[sub_resource type="GDScript" id="GDScript_d6bas"]
+resource_name = "optionButton"
+script/source = "extends MenuButton
+@onready var toggleText = $activatedText
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="menuButton" type="MenuButton"]
+anchors_preset = -1
+anchor_bottom = 0.053
+offset_left = 2.0
+offset_right = 431.0
+offset_bottom = 0.299995
+grow_horizontal = 2
+mouse_filter = 1
+theme = ExtResource("1_ihebm")
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_n55rd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dovvq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_23nav")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jayx8")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eqpgs")
+text = "On"
+item_count = 2
+popup/item_0/text = "On"
+popup/item_0/id = 0
+popup/item_1/text = "Off"
+popup/item_1/id = 1
+script = SubResource("GDScript_d6bas")
+
+[node name="optionBG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_right = 427.0
+grow_horizontal = 2
+mouse_filter = 1
+
+[node name="optionText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 0.255999
+offset_right = 298.0
+offset_bottom = 0.255997
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 31
+text = "Fullscreen"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="activatedText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 297.0
+offset_top = 3.0
+offset_right = 422.0
+offset_bottom = -1.0
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 36
+text = "On"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,166 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1x2t2na1bc2b"]
+
+[ext_resource type="PackedScene" uid="uid://wncyofb1f8i7" path="res://assets/scenes/ui/options/optionsMenu.tscn" id="4_fyhf6"]
+[ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="5_bto6s"]
+[ext_resource type="PackedScene" uid="uid://ba0s8u6mtjxns" path="res://assets/scenes/menu/menuButton.tscn" id="5_nxhqu"]
+[ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="6_gqa0f"]
+
+[sub_resource type="GDScript" id="GDScript_xob6c"]
+script/source = "extends Control
+@onready var optionsMenu = $Options
+@onready var buttonHolder = $buttonHolder
+var anykey = false
+var pressed = false
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+func _process(delta):
+	if optionsMenu.visible:
+		buttonHolder.modulate = lerp(buttonHolder.modulate,Color(1, 1, 1, 0),12*delta)
+	else:
+		buttonHolder.modulate = lerp(buttonHolder.modulate,Color(1, 1, 1, 1),12*delta)
+
+func _on_play_button_pressed():
+	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/debug/debugWorld.tscn\")
+
+func _on_quit_button_pressed():
+	await Fade.fade_out(0.4, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().quit()
+
+
+func _on_options_button_pressed():
+	optionsMenu.show()
+
+
+func _on_credits_button_pressed():
+	globalGameManager.notify_warn(\"Not yet implemented.\", 2, 10)
+"
+
+[sub_resource type="Gradient" id="Gradient_ybglh"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0.905882, 0.286275, 0.286275, 0.286275, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x7df6"]
+gradient = SubResource("Gradient_ybglh")
+
+[node name="MenuUI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = SubResource("GDScript_xob6c")
+
+[node name="gradientBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_x7df6")
+
+[node name="Smackneck" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.345098)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_bottom = 165.0
+grow_horizontal = 0
+texture = ExtResource("5_bto6s")
+expand_mode = 1
+
+[node name="gameLogo" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.43
+offset_left = 46.0
+offset_top = 70.0
+offset_right = 419.0
+offset_bottom = -14.0
+texture = ExtResource("6_gqa0f")
+expand_mode = 1
+
+[node name="buttonHolder" type="Control" parent="."]
+layout_mode = 1
+anchor_top = 0.496
+anchor_bottom = 0.768
+offset_left = 19.0
+offset_top = -0.400024
+offset_right = 440.0
+offset_bottom = -0.200012
+scale = Vector2(1.05, 1.05)
+
+[node name="playButton" parent="buttonHolder" instance=ExtResource("5_nxhqu")]
+layout_mode = 1
+anchor_left = 0.019
+anchor_right = 0.019
+anchor_bottom = 0.2
+offset_left = 0.000999451
+offset_top = 1.52588e-05
+offset_right = 350.001
+offset_bottom = 1.52588e-05
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="optionsButton" parent="buttonHolder" instance=ExtResource("5_nxhqu")]
+layout_mode = 1
+anchor_left = 0.019
+anchor_top = 0.298
+anchor_right = 0.019
+anchor_bottom = 0.498
+offset_left = 0.000999451
+offset_top = -0.00999451
+offset_right = 350.001
+offset_bottom = -0.0100021
+grow_horizontal = 1
+grow_vertical = 1
+text = "Options"
+
+[node name="creditsButton" parent="buttonHolder" instance=ExtResource("5_nxhqu")]
+layout_mode = 1
+anchor_left = 0.021
+anchor_top = 0.571
+anchor_right = 0.021
+anchor_bottom = 0.771
+offset_left = 0.158999
+offset_top = 0.10498
+offset_right = 350.159
+offset_bottom = 0.104996
+grow_horizontal = 1
+grow_vertical = 1
+text = "Credits"
+
+[node name="quitButton" parent="buttonHolder" instance=ExtResource("5_nxhqu")]
+layout_mode = 1
+anchor_left = 0.029
+anchor_top = 0.829
+anchor_right = 0.029
+anchor_bottom = 1.029
+offset_left = -0.209
+offset_top = -0.105011
+offset_right = 349.791
+offset_bottom = -0.105026
+grow_horizontal = 1
+grow_vertical = 1
+text = "Quit
+"
+
+[node name="Options" parent="." instance=ExtResource("4_fyhf6")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="buttonHolder/playButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="buttonHolder/optionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="buttonHolder/creditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="buttonHolder/quitButton" to="." method="_on_quit_button_pressed"]

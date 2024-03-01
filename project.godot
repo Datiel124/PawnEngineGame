@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Pawn Engine"
+config/name="Delta Bullet"
+config/version="0.2"
 run/main_scene="res://assets/scenes/menu/logo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -26,8 +27,6 @@ Console="*res://assets/scenes/menu/dev/Console.tscn"
 globalParticles="*res://assets/scripts/singletons/globalParticles.gd"
 MusicManager="*res://assets/scripts/singletons/musicManager.gd"
 UserConfig="*res://assets/scripts/singletons/userConfig.gd"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 Notifications="*res://assets/scripts/singletons/Notifications.tscn"
 
 [dialogic]

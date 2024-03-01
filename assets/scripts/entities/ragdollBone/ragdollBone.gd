@@ -86,6 +86,7 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 					particle.rotation = self.rotation
 					particle.amount = randi_range(25,75)
 					joint_type = 0
+					bounce = 0.25
 			return
 		elif contactForce > mediumImpactThreshold:
 			audioStreamPlayer.stream = mediumImpactSounds

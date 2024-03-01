@@ -40,7 +40,7 @@ func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 =
 	if healthComponent.componentOwner:
 		if healthComponent.componentOwner.attachedCam:
 			healthComponent.componentOwner.attachedCam.fireRecoil(0,randf_range(1,4),randf_range(9,13))
-			healthComponent.componentOwner.attachedCam.fireVignette(1.2,Color.RED)
+			healthComponent.componentOwner.attachedCam.fireVignette(1.2)
 
 func getCollisionObject():
 	if get_child(0) is CollisionObject3D:
@@ -52,3 +52,6 @@ func addException(exception):
 	if healthComponent.componentOwner:
 		if healthComponent.componentOwner.attachedCam:
 			healthComponent.componentOwner.attachedCam.camCast.add_exception(exception)
+		else:
+			if healthComponent.componentOwner.raycaster:
+				healthComponent.componentOwner.raycaster.add_exception(exception)

@@ -28,8 +28,8 @@ func _input(event):
 "
 
 [sub_resource type="Gradient" id="Gradient_efj0f"]
-offsets = PackedFloat32Array(0, 0.994924)
-colors = PackedColorArray(0.728822, 0.728822, 0.728822, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.00955414, 0.994924)
+colors = PackedColorArray(0, 0, 0, 1, 0.389287, 0.389287, 0.389287, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bett4"]
 gradient = SubResource("Gradient_efj0f")

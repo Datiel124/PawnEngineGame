@@ -6,4 +6,7 @@
 [node name="LeftGloveFingerless" instance=ExtResource("1_1trfn")]
 
 [node name="clothingMesh" parent="." index="0"]
+extra_cull_margin = 16384.0
+lod_bias = 128.0
+ignore_occlusion_culling = true
 mesh = ExtResource("2_3ice1")

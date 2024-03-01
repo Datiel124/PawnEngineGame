@@ -4,8 +4,8 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_w5klr"]
 var/triggered/name = "triggered"
-var/triggered/type = 3
-var/triggered/value = 0.0
+var/triggered/type = 1
+var/triggered/value = false
 var/triggered/hint = 0
 var/triggered/hint_string = ""
 

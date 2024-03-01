@@ -33,11 +33,12 @@ var castLerp : Vector3 = Vector3.ZERO
 @onready var horizontal = $camPivot/horizonal
 @onready var verticalHolder = $camPivot/horizonal/vertholder
 @onready var vertical = $camPivot/horizonal/vertholder/vertical
-@onready var camera = $camPivot/horizonal/vertholder/vertical/Camera
+@onready var camSpring = $camPivot/horizonal/vertholder/vertical/springArm3d
+@onready var camera = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera
 @onready var camPivot = $camPivot
-@onready var camCast = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D
-@onready var camCastEnd = $camPivot/horizonal/vertholder/vertical/Camera/RayCast3D/camRayEnd
-@onready var debugCast = $camPivot/horizonal/vertholder/vertical/Camera/debugCast
+@onready var camCast = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D
+@onready var camCastEnd = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D/camRayEnd
+@onready var debugCast = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/debugCast
 
 @export_subgroup("Behavior")
 var motionX = 0.0
@@ -134,11 +135,21 @@ func _physics_process(delta):
 	if isZoomed:
 		if UserConfig.game_aim_screentilt or UserConfig.game_camera_screentilt_always:
 			camCurrRot.z += -castLerp.y
-		camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
-		currentFOV = aimFOV
+		if cameraData.useZoomFOV:
+			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
+			currentFOV = aimFOV
+			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
+		else:
+			currentFOV = globalGameManager.defaultFOV
+			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.zoomSpringAmount, cameraData.zoomInSpeed*delta)
 	else:
-		camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
-		currentFOV = globalGameManager.defaultFOV
+		if cameraData.useZoomFOV:
+			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
+			currentFOV = globalGameManager.defaultFOV
+			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
+		else:
+			currentFOV = globalGameManager.defaultFOV
+			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.zoomOutSpeed*delta)
 
 	##Set the camera rotation
 	camRot = vertical.global_transform.basis.get_euler().y
@@ -159,7 +170,6 @@ func _physics_process(delta):
 		#camPivot.position.x = lerp(camPivot.position.x , cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		#vertical.position.z = lerp(vertical.position.z , cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
 		vertical.position.y = lerp(vertical.position.y, cameraData.cameraOffset.y, cameraData.camLerpSpeed*delta)
-		vertical.spring_length = lerp(vertical.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
 		if !itemEquipOffsetToggle:
 			horizontal.position.x = lerp(horizontal.position.x, cameraData.cameraOffset.x, cameraData.camLerpSpeed*delta)
 		else:
@@ -244,7 +254,7 @@ func posessObject(object, posessPart:Node3D = object):
 		object.attachedCam = self
 		cameraData = object.pawnCameraData
 		if object is BasePawn:
-			vertical.add_excluded_object(object.get_rid())
+			camSpring.add_excluded_object(object.get_rid())
 
 		if "inputComponent" in followingEntity:
 			if followingEntity.inputComponent != null:

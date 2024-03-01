@@ -7,6 +7,7 @@ signal clothingChanged
 signal itemChanged
 signal forcingAnimation
 signal killedPawn
+signal hitboxAssigned(hitbox)
 
 #Sounds
 @onready var soundHolder = $Sounds
@@ -27,6 +28,7 @@ signal killedPawn
 @onready var rightHandBone = $BoneAttatchments/rightHand
 @onready var leftHandBone = $BoneAttatchments/leftHand
 @onready var neckBone = $BoneAttatchments/Neck
+@onready var chestBone = $BoneAttatchments/Stomach
 
 ##Pawn Parts
 @onready var head = $Mesh/MaleSkeleton/Skeleton3D/MaleHead
@@ -57,6 +59,7 @@ var direction = Vector3.ZERO
 var meshRotation : float = 0.0
 ##Component Setup
 @export_category("Pawn")
+var raycaster : RayCast3D
 #Base Components - Components required for this entity to even be used
 @export_subgroup("Base Components")
 @export var velocityComponent : VelocityComponent
@@ -157,7 +160,7 @@ var currentItem = null
 @export_subgroup("Misc")
 ## First-person, just for shits and giggles
 var isFirstperson = false
-var hitboxes : Array[Hitbox]
+var hitboxes : Array
 @export_subgroup("Staircase Handling")
 @export var step_check_distance : float = 1.0
 @export var step_max_distance : float = 0.5
@@ -169,6 +172,7 @@ var hitboxes : Array[Hitbox]
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	hitboxes = hitboxes.duplicate()
 	itemInventory.append(null)
 	checkComponents()
 	checkClothes()
@@ -186,7 +190,7 @@ func _ready():
 	if animationTree:
 		var dup = animationTree.tree_root.duplicate()
 		animationTree.tree_root = dup
-
+	#getAllHitboxes()
 func _physics_process(delta):
 	if forceAnimation:
 		animationTree.active = false
@@ -402,6 +406,11 @@ func checkComponents():
 	if inputComponent:
 		if inputComponent is AIComponent:
 			inputComponent.pawnOwner = self
+			await get_tree().process_frame
+			inputComponent.aimCast.add_exception(self)
+			inputComponent.aimCast.add_exception(getAllHitboxes())
+			raycaster = inputComponent.aimCast
+			healthComponent.connect("onDamaged",inputComponent.instantDetect.bind())
 			#inputComponent.position = self.position
 
 		if inputComponent is Component:
@@ -414,6 +423,7 @@ func checkComponents():
 				globalGameManager.world.worldMisc.add_child(_cam)
 				_cam.posessObject(self, followNode)
 				_cam.camCast.add_exception(self)
+				raycaster = _cam.camCast
 
 
 
@@ -483,7 +493,7 @@ func createRagdoll(impulse_bone : int = 0):
 			await cam.posessObject(ragdoll, ragdoll.rootCameraNode)
 			for bones in ragdoll.ragdollSkeleton.get_child_count():
 				if ragdoll.ragdollSkeleton.get_child(bones) is RagdollBone:
-					cam.vertical.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
+					cam.camSpring.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
 			attachedCam = null
 		collisionShape.queue_free()
 
@@ -558,6 +568,10 @@ func moveDecalsToRagdoll(ragdoll):
 			pass
 			#Console.add_console_message("For %s, %s" %[self,getCurrentDecalBones()])
 
+func getAllHitboxes():
+	for index in hitboxes.size()-1:
+		return hitboxes[index]
+
 func getCurrentDecalBones():
 	#Decal reparent..
 	for decalBones in boneAttatchementHolder.get_children():
@@ -577,10 +591,10 @@ func setupWeaponAnimations():
 	if !currentItem == null:
 		if !currentItem.weaponAnimSet:
 			#Swap out animationLibraries
-			await get_tree().process_frame
-			await get_tree().process_frame
-			animationPlayer.remove_animation_library("weaponAnims")
-			animationPlayer.add_animation_library("weaponAnims", currentItem.animationPlayer.get_animation_library("weaponAnims"))
+			if animationPlayer != null:
+				animationPlayer.remove_animation_library("weaponAnims")
+				if currentItem.animationPlayer != null:
+					animationPlayer.add_animation_library("weaponAnims", currentItem.animationPlayer.get_animation_library("weaponAnims"))
 
 			#Add the weapons stateMachine to the player
 			(animationTree.tree_root as AnimationNodeBlendTree).disconnect_node("weaponBlend", 1)

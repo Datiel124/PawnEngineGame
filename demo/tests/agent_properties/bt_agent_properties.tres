@@ -3,9 +3,9 @@
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_salkr"]
 
 [sub_resource type="BBVariant" id="BBVariant_5o8fh"]
-resource_name = "200"
-saved_value = 200.0
 type = 3
+saved_value = 200.0
+resource_name = "200"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_0nprx"]
 property = &"speed"
@@ -25,18 +25,18 @@ custom_name = "Test 1"
 children = [SubResource("BTSequence_fou4d"), SubResource("BTConsolePrint_ggvml")]
 
 [sub_resource type="BBVariant" id="BBVariant_r2elk"]
-resource_name = "300"
-saved_value = 300.0
 type = 3
+saved_value = 300.0
+resource_name = "300"
 
 [sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_lh1xy"]
 property = &"speed"
 value = SubResource("BBVariant_r2elk")
 
 [sub_resource type="BBVariant" id="BBVariant_jhcxn"]
-resource_name = "200"
-saved_value = 200.0
 type = 3
+saved_value = 200.0
+resource_name = "200"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_p20lt"]
 property = &"speed"
@@ -57,9 +57,9 @@ custom_name = "Test 2"
 children = [SubResource("BTSequence_rp57i"), SubResource("BTConsolePrint_o5xxa")]
 
 [sub_resource type="BBVariant" id="BBVariant_2aotu"]
-resource_name = "400"
-saved_value = 400.0
 type = 3
+saved_value = 400.0
+resource_name = "400"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_avnfr"]
 property = &"speed"
@@ -80,9 +80,9 @@ custom_name = "Test 3"
 children = [SubResource("BTSequence_ykp38"), SubResource("BTConsolePrint_0eshq")]
 
 [sub_resource type="BBVariant" id="BBVariant_28e2y"]
-resource_name = "300"
-saved_value = 300.0
 type = 3
+saved_value = 300.0
+resource_name = "300"
 
 [sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_sayma"]
 property = &"speed"

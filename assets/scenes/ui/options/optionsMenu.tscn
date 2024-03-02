@@ -72,41 +72,26 @@ image = SubResource("Image_iy5fy")
 
 [node name="Options" type="Control"]
 layout_mode = 3
-anchor_left = 0.254
-anchor_top = 0.166
-anchor_right = 0.254
-anchor_bottom = 0.862
-offset_left = 0.0999756
-offset_top = -0.400009
-offset_right = 787.1
-offset_bottom = -24.8
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme = ExtResource("1_j35o7")
 script = SubResource("GDScript_i2vi2")
-metadata/_edit_vertical_guides_ = [424.0, 1344.0]
-metadata/_edit_horizontal_guides_ = [200.0, 696.0]
-
-[node name="control" type="Control" parent="."]
-layout_mode = 1
-anchor_left = -0.496
-anchor_top = -0.225
-anchor_right = 1.517
-anchor_bottom = 1.253
-offset_left = -18.648
-offset_top = -16.55
-offset_right = 37.121
-offset_bottom = 49.694
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="panelHolder" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_bottom = 1.027
-offset_right = 957.0
-offset_bottom = -0.253967
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -288.0
+offset_right = 480.0
+offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
@@ -193,12 +178,18 @@ position = Vector2(604, 15.5)
 shape = SubResource("RectangleShape2D_uechr")
 
 [node name="closeButton" type="Button" parent="."]
-layout_mode = 2
-offset_left = 924.5
-offset_top = 1.52588e-05
-offset_right = 953.5
-offset_bottom = 31.0
-grow_horizontal = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 440.0
+offset_top = -288.0
+offset_right = 480.0
+offset_bottom = -258.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_sfs43")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_r5gou")
@@ -207,6 +198,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_t3v2y")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bxvi1")
 shortcut = SubResource("Shortcut_v2vor")
 icon = SubResource("ImageTexture_lrq7s")
+icon_alignment = 1
 
 [connection signal="pressed" from="panelHolder/panel/save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="panelHolder/panel/revert" to="." method="_on_revert_pressed"]

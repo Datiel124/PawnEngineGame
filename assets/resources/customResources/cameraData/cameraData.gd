@@ -11,3 +11,4 @@ class_name CameraData
 @export var zoomAmount = 25.0
 @export var zoomInSpeed = 16.0
 @export var zoomOutSpeed = 16.0
+@export var zoomSpeed = 5.0

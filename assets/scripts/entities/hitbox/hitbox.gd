@@ -33,14 +33,15 @@ func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 =
 
 	if dealer:
 		if dealer.attachedCam:
-			dealer.attachedCam.hud.getCrosshair().tintCrosshair(Color.LIGHT_CORAL)
+			dealer.attachedCam.hud.getCrosshair().tintCrosshair(Color.RED)
 			dealer.attachedCam.hud.getCrosshair().addTilt(randf_range(-1,1))
-			dealer.attachedCam.camera.fov += 1.1
+			dealer.attachedCam.camera.fov += 1.5
 
 	if healthComponent.componentOwner:
 		if healthComponent.componentOwner.attachedCam:
+			healthComponent.componentOwner.attachedCam.camera.fov -= 1.8
 			healthComponent.componentOwner.attachedCam.fireRecoil(0,randf_range(1,4),randf_range(9,13))
-			healthComponent.componentOwner.attachedCam.fireVignette(1.2)
+			healthComponent.componentOwner.attachedCam.fireVignette(1.2,Color.RED)
 
 func getCollisionObject():
 	if get_child(0) is CollisionObject3D:

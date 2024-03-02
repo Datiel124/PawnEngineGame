@@ -1,5 +1,6 @@
-[gd_resource type="Environment" load_steps=2 format=3 uid="uid://wwq6f40kybqq"]
+[gd_resource type="Environment" load_steps=3 format=3 uid="uid://wwq6f40kybqq"]
 
+[ext_resource type="CompressedTexture3D" uid="uid://sr0kr5d88j54" path="res://assets/textures/misc/neutral-lut.png" id="1_dmacc"]
 [ext_resource type="Sky" uid="uid://bq7217qbtqsdc" path="res://GodotSky/WorldEnvironment/default_sky.tres" id="1_o86xx"]
 
 [resource]
@@ -24,3 +25,4 @@ volumetric_fog_temporal_reprojection_enabled = false
 adjustment_enabled = true
 adjustment_contrast = 1.11
 adjustment_saturation = 2.0
+adjustment_color_correction = ExtResource("1_dmacc")

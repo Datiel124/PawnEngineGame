@@ -6,10 +6,11 @@
 script = ExtResource("1_2kdei")
 useZoomFOV = false
 zoomSpringAmount = 0.5
-cameraOffset = Vector3(0.3, 0.48, 2)
+cameraOffset = Vector3(0.3, 0.48, 1.67)
 camLerpSpeed = 50.0
 itemEquipOffset = Vector3(0.555, 0, 0)
 itemEquipLerpSpeed = 5.0
 zoomAmount = 25.0
-zoomInSpeed = 24.0
-zoomOutSpeed = 24.0
+zoomInSpeed = 25.0
+zoomOutSpeed = 25.0
+zoomSpeed = 8.51

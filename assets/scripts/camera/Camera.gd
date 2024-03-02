@@ -140,6 +140,7 @@ func _physics_process(delta):
 			currentFOV = aimFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
 		else:
+			camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
 			currentFOV = globalGameManager.defaultFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.zoomSpringAmount, cameraData.zoomInSpeed*delta)
 	else:
@@ -148,6 +149,7 @@ func _physics_process(delta):
 			currentFOV = globalGameManager.defaultFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
 		else:
+			camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
 			currentFOV = globalGameManager.defaultFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.zoomOutSpeed*delta)
 
@@ -186,7 +188,7 @@ func _physics_process(delta):
 
 	#Kill Vignette
 	if !killVignette.get_material().get_shader_parameter("softness") >= 9.0:
-		killVignette.get_material().set_shader_parameter("softness",lerpf(killVignette.get_material().get_shader_parameter("softness"), 10.0,0.15*delta))
+		killVignette.get_material().set_shader_parameter("softness",lerpf(killVignette.get_material().get_shader_parameter("softness"), 10.0,0.6*delta))
 
 	if !followNode == null:
 		if followingEntity is BasePawn:
@@ -306,15 +308,15 @@ func resetCamCast():
 	camCast.position = Vector3.ZERO
 
 func emitKilleffect():
-	camera.fov += 1.1
+	camera.fov += 2.0
 	$killSound.play()
 	killEffect = true
 	fireRecoil(0,0,randf_range(0.5,0.8))
-	fireVignette(0.9,Color.DIM_GRAY)
+	#fireVignette(0.9,Color.DIM_GRAY)
 	hud.getCrosshair().tintCrosshair(Color.RED)
 	hud.getCrosshair().addSize(1.5)
 
 func fireVignette(intensity:float = 0.9,color:Color = Color.DARK_RED):
-	killVignette.get_material().set_shader_parameter("softness",intensity)
 	killVignette.get_material().set_shader_parameter("color",color)
+	killVignette.get_material().set_shader_parameter("softness",intensity)
 

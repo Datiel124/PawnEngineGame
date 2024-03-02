@@ -305,24 +305,6 @@ func _physics_process(delta):
 				pawnMesh.rotation.y = lerp_angle(pawnMesh.rotation.y, meshRotation, 23 * delta)
 #endregion
 
-		if floorcheck.is_colliding() and is_on_floor():
-			if isMoving and direction != Vector3.ZERO:
-				if !goingDownHill and !goingUpHill:
-					global_position = lerp(global_position,Vector3(floorcheck.get_collision_point().x,floorcheck.get_collision_point().y+2.0,floorcheck.get_collision_point().z+2.0),delta*20)
-
-		if downCheck.get_collision_normal().y != 1.0:
-			if global_position.y > oldPos:
-				goingDownHill = false
-				goingUpHill = true
-				oldPos = global_position.y
-			elif global_position.y < oldPos:
-				goingDownHill = true
-				goingUpHill = false
-				oldPos = global_position.y
-			else:
-				goingDownHill = false
-				goingUpHill = false
-
 			# Add the gravity
 			if !is_on_floor():
 				canJump = false

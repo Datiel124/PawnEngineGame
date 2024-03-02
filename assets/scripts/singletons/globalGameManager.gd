@@ -164,3 +164,10 @@ func castRay(cam : Camera3D, range : float = 50000, mask := 0b10111, exceptions 
 	var params := PhysicsRayQueryParameters3D.create(transform.origin, transform.origin - (transform.basis.z * range), 23, exceptions)
 	params.collide_with_areas = hit_areas
 	return state.intersect_ray(params)
+
+
+func getEventSignal(event : StringName) -> Signal:
+	event = &"__gameEventSignals__" + str(event)
+	if !has_user_signal(event):
+		add_user_signal(event)
+	return Signal(self, event)

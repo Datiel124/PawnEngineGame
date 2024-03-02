@@ -25,11 +25,18 @@ var world : WorldScene
 #Multiplayer
 var isMultiplayerGame = false
 
+const dialogue_cam : PackedScene = preload("res://assets/entities/camera/DialogueCamera.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	if richPresenceEnabled:
 		pass
+
+
+func create_dialogue_camera() -> Camera3D:
+	var new_cam = dialogue_cam.instantiate()
+	return new_cam
 
 
 func _input(_event):

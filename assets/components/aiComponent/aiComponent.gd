@@ -1,6 +1,7 @@
 extends Node3D
 class_name AIComponent
 signal interactSpeakTrigger
+
 @onready var aimCast = $aiAimcast
 @onready var aimCastEnd = $aiAimcast/aiAimcastEnd
 @onready var pawnDebugLabel = $debugPawnStats
@@ -200,6 +201,7 @@ func _on_pawn_grabber_body_exited(body):
 		if body == overlappingObject:
 			undetectPawn()
 
+
 func speakTrigger(dialogue):
 	if pawnOwner:
 		if !pawnOwner.isPawnDead:
@@ -207,4 +209,9 @@ func speakTrigger(dialogue):
 				if Dialogic.current_timeline != null:
 					return
 				Dialogic.start(dialogue)
+				if has_node(^"dialogueCamTarget"):
+					var dialogue_cam : Camera3D = globalGameManager.create_dialogue_camera()
+					globalGameManager.world.add_child(dialogue_cam)
+					dialogue_cam.activate(get_viewport().get_camera_3d(), get_node(^"dialogueCamTarget").global_transform)
+					Dialogic.timeline_ended.connect(dialogue_cam.remove)
 				get_viewport().set_input_as_handled()

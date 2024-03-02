@@ -13,7 +13,9 @@
 [sub_resource type="Resource" id="Resource_t2tt8"]
 script = ExtResource("2_ridwo")
 scene = ExtResource("1_wjxe6")
-overrides = {}
+overrides = {
+"disabled": "true"
+}
 
 [sub_resource type="Resource" id="Resource_6fieg"]
 script = ExtResource("2_ridwo")

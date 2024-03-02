@@ -28,11 +28,15 @@ globalParticles="*res://assets/scripts/singletons/globalParticles.gd"
 MusicManager="*res://assets/scripts/singletons/musicManager.gd"
 UserConfig="*res://assets/scripts/singletons/userConfig.gd"
 Notifications="*res://assets/scripts/singletons/Notifications.tscn"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"dudetest": "res://assets/scripts/dialogic/timelines/test/fatbobby/dudetest.dtl",
+"fatbobbytest": "res://assets/scripts/dialogic/timelines/test/fatbobby/fatbobbytest.dtl"
+}
 glossary/default_case_sensitive=true
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -51,8 +55,8 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 variables={}
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://assets/scripts/dialogic/themes/Default.tres"]
+layout/default_style="res://assets/scripts/dialogic/themes/Default.tres"
 
 [display]
 

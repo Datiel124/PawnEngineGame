@@ -17,6 +17,7 @@ signal hitboxAssigned(hitbox)
 @onready var footstepMaterialChecker = $Misc/footstepMaterialChecker
 @onready var componentHolder = $Components
 @onready var boneAttatchementHolder = $BoneAttatchments
+@onready var interactRaycast = $Mesh/interactRaycast
 
 ##IK
 @onready var bodyIK = $Mesh/MaleSkeleton/Skeleton3D/bodyIK
@@ -781,3 +782,10 @@ func do_stairs() -> void:
 					position += (step_ray_dir * 0.1)
 					return
 #			print("Couldn't climb up the step.")
+
+func getInteractionObject():
+	if interactRaycast.is_colliding():
+		var col = interactRaycast.get_collider()
+		if col.is_in_group("Interactable"):
+			globalGameManager.getEventSignal("interactableFound").emit()
+			return col

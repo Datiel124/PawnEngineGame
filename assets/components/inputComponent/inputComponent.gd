@@ -101,6 +101,10 @@ func _unhandled_input(event):
 
 		if event.is_action_pressed("gUse"):
 			emit_signal("actionPressed", str(event.keycode))
+			if controllingPawn:
+				var interactObj = controllingPawn.getInteractionObject()
+				if interactObj != null:
+					interactObj.inputComponent.interactSpeakTrigger.emit()
 
 		if event.is_action_pressed("dKill"):
 			emit_signal("actionPressed", str(event.keycode))

@@ -1,5 +1,6 @@
 extends Node3D
 class_name AIComponent
+signal interactSpeakTrigger
 @onready var aimCast = $aiAimcast
 @onready var aimCastEnd = $aiAimcast/aiAimcastEnd
 @onready var pawnDebugLabel = $debugPawnStats
@@ -9,6 +10,8 @@ class_name AIComponent
 @export_category("AI Component")
 @export var pawnOwner : BasePawn
 @export var aiTree : BTPlayer
+@export var isInteractable : bool = false
+@export var dialogueString : String
 @export_subgroup("Identification")
 @export var pawnName : String
 @export_enum("Idle","Wander","Patrol") var aiType = 0
@@ -39,6 +42,11 @@ func _ready():
 	immediateMesh.mesh = losDraw
 	visionTimer.start()
 	await get_tree().process_frame
+	if isInteractable:
+		if pawnOwner:
+			pawnOwner.add_to_group("Interactable")
+			interactSpeakTrigger.connect(speakTrigger.bind(dialogueString))
+
 	if immediateMesh.get_material_override():
 		var losDrawMat = immediateMesh.get_material_override().duplicate()
 		immediateMesh.set_material_override(losDrawMat)
@@ -187,8 +195,16 @@ func _on_pawn_grabber_area_entered(area):
 func _on_pawn_grabber_body_entered(body):
 	lookForPawn()
 
-
 func _on_pawn_grabber_body_exited(body):
 	if pawnHasTarget:
 		if body == overlappingObject:
 			undetectPawn()
+
+func speakTrigger(dialogue):
+	if pawnOwner:
+		if !pawnOwner.isPawnDead:
+			if dialogue != "":
+				if Dialogic.current_timeline != null:
+					return
+				Dialogic.start(dialogue)
+				get_viewport().set_input_as_handled()

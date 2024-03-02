@@ -36,6 +36,7 @@ var castLerp : Vector3 = Vector3.ZERO
 @onready var camSpring = $camPivot/horizonal/vertholder/vertical/springArm3d
 @onready var camera = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera
 @onready var camPivot = $camPivot
+@onready var interactCast = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/interactCast
 @onready var camCast = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D
 @onready var camCastEnd = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D/camRayEnd
 @onready var debugCast = $camPivot/horizonal/vertholder/vertical/springArm3d/Camera/debugCast
@@ -92,6 +93,7 @@ func _ready():
 	aimFOV = currentFOV - zoomAmount
 	Fade.fade_in(0.3, Color(0,0,0,1),"GradientVertical",false,true)
 
+
 func _input(_event):
 	if Input.is_action_pressed("gEscape"):
 		freeCursor = true
@@ -106,6 +108,7 @@ func _physics_process(delta):
 	#Weapon Hud
 	if !followNode == null:
 		if followingEntity is BasePawn:
+			followingEntity.interactRaycast = interactCast
 			if !followingEntity.killedPawn.is_connected(emitKilleffect):
 				followingEntity.killedPawn.connect(emitKilleffect)
 			if followingEntity.currentItem:

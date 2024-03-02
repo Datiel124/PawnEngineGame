@@ -1,9 +1,13 @@
 The fuck do you want?
+[music path="res://assets/music/menu/HHb2.mp3" fade="0.5" volume="-25.0" bus="Music"]
 - Nothing, I'll leave you be.
 	Damn right you will, jackass.
+	[music fade="0.5" volume="0.0"]
 - Excuse me?
 	You heard me, I'm stuck in this shitty ass world and I'm pissed about it.
 	- Sorry to hear, I'll let you go.
 		Wise choice.
+		[music fade="0.5" volume="0.0"]
 	- Not my problem, prick.
 		Suck my dick, asshole!
+		[music fade="0.5" volume="0.0"]

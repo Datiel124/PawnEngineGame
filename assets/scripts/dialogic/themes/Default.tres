@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=19 format=3 uid="uid://b0yk6gvsekcxp"]
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=17 format=3 uid="uid://b0yk6gvsekcxp"]
 
 [ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="1_wjxe6"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_ridwo"]
-[ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="3_xmvde"]
 [ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="4_vfto7"]
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_e1qj7"]
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="6_542yl"]
@@ -14,11 +13,6 @@
 [sub_resource type="Resource" id="Resource_t2tt8"]
 script = ExtResource("2_ridwo")
 scene = ExtResource("1_wjxe6")
-overrides = {}
-
-[sub_resource type="Resource" id="Resource_vbnkl"]
-script = ExtResource("2_ridwo")
-scene = ExtResource("3_xmvde")
 overrides = {}
 
 [sub_resource type="Resource" id="Resource_6fieg"]
@@ -43,7 +37,11 @@ overrides = {}
 [sub_resource type="Resource" id="Resource_kwuka"]
 script = ExtResource("2_ridwo")
 scene = ExtResource("7_0mei0")
-overrides = {}
+overrides = {
+"sounds_focus": "\"res://assets/sounds/ui/uipopup.wav\"",
+"sounds_hover": "\"res://assets/sounds/ui/uiappear.wav\"",
+"sounds_pressed": "\"res://assets/sounds/ui/uiclick.wav\""
+}
 
 [sub_resource type="Resource" id="Resource_o7sbc"]
 script = ExtResource("2_ridwo")
@@ -58,6 +56,8 @@ overrides = {}
 [resource]
 script = ExtResource("10_kgrot")
 name = "Default"
-base_overrides = {}
-layers = Array[ExtResource("2_ridwo")]([SubResource("Resource_t2tt8"), SubResource("Resource_vbnkl"), SubResource("Resource_6fieg"), SubResource("Resource_ssv64"), SubResource("Resource_vhy4t"), SubResource("Resource_kwuka"), SubResource("Resource_o7sbc"), SubResource("Resource_1uixs")])
-metadata/_latest_layer = 3
+base_overrides = {
+"global_bg_color": "Color(0.0941176, 0.0235294, 0.0235294, 0.901961)"
+}
+layers = Array[ExtResource("2_ridwo")]([SubResource("Resource_t2tt8"), SubResource("Resource_6fieg"), SubResource("Resource_ssv64"), SubResource("Resource_vhy4t"), SubResource("Resource_kwuka"), SubResource("Resource_o7sbc"), SubResource("Resource_1uixs")])
+metadata/_latest_layer = 1

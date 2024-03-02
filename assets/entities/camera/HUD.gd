@@ -21,10 +21,13 @@ var slidingCrosshairPos : Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hudEnabled = true
-
+	Dialogic.timeline_started.connect(showMouse)
+	Dialogic.timeline_ended.connect(hideMouse)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
+
 	#Crosshair Follow
 	if UserConfig.game_crosshair_dynamic_position:
 		var pos
@@ -54,3 +57,9 @@ func _process(delta):
 func getCrosshair():
 	if crosshair:
 		return crosshair
+
+func showMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func hideMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

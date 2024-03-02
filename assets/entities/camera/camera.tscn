@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=24 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btlv87lcgekb7" path="res://assets/textures/ui/healthbar.png" id="8_6fqy3"]
 [ext_resource type="AudioStream" uid="uid://d3eqn61hfgwuf" path="res://assets/sounds/playerhurt/playerhurtambience.wav" id="9_jgajw"]
 [ext_resource type="Texture2D" uid="uid://btse3nqgw3085" path="res://assets/textures/ui/ammoBar.png" id="10_w541l"]
+[ext_resource type="AudioStream" uid="uid://08mwbmwvrolu" path="res://assets/sounds/ui/uiAppear2.wav" id="12_vxs2k"]
 [ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="13_1q303"]
 [ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="14_eq71r"]
 [ext_resource type="AudioStream" uid="uid://ca75a15dd34dx" path="res://assets/sounds/gore/fleshimpact2.wav" id="15_hdgka"]
@@ -386,6 +387,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press F to Interact"
 horizontal_alignment = 1
+
+[node name="textboxAppearSound" type="AudioStreamPlayer" parent="HUD"]
+stream = ExtResource("12_vxs2k")
+volume_db = -10.0
+bus = &"UI"
 
 [node name="killSound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_bpylg")

@@ -92,7 +92,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	aimFOV = currentFOV - zoomAmount
 	Fade.fade_in(0.3, Color(0,0,0,1),"GradientVertical",false,true)
-
+	Dialogic.timeline_started.connect(playTextAppearSound)
 
 func _input(_event):
 	if Input.is_action_pressed("gEscape"):
@@ -323,3 +323,5 @@ func fireVignette(intensity:float = 0.9,color:Color = Color.DARK_RED):
 	killVignette.get_material().set_shader_parameter("color",color)
 	killVignette.get_material().set_shader_parameter("softness",intensity)
 
+func playTextAppearSound():
+	$HUD/textboxAppearSound.play()

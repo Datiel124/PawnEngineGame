@@ -1,42 +1,41 @@
-[gd_scene load_steps=12 format=3 uid="uid://wncyofb1f8i7"]
+[gd_scene load_steps=13 format=3 uid="uid://wncyofb1f8i7"]
 
 [ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="1_j35o7"]
-[ext_resource type="PackedScene" uid="uid://bn45u2e0x2o2b" path="res://assets/scenes/menu/toggleOption.tscn" id="2_42vxv"]
 
 [sub_resource type="GDScript" id="GDScript_i2vi2"]
 resource_name = "optionsNode"
 script/source = "extends Control
-var selected = false
-@onready var closeButton = $closeButton
-@onready var optionsPanel = $panelHolder
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	modulate = Color(1, 1, 1, 0)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if visible:
-		modulate = lerp(modulate,Color(1, 1, 1, 1),12*delta)
-	if selected:
-		followMouse()
+@onready var save_button : Button = $panelHolder/panel/save
+@onready var revert_button : Button = $panelHolder/panel/revert
 
-func _on_close_button_pressed():
-	modulate = Color(1, 1, 1, 0)
+
+func _ready() -> void:
+	UserConfig.configs_updated.connect(apply_from_settings)
+
+
+func apply_from_settings() -> void:
+	print(\"Applying from saved values...\")
+	$panelHolder/panel/optionsPanel/Game/vBoxContainer/Fullscreen.button_pressed = UserConfig.graphics_fullscreen
+
+
+func _on_save_pressed() -> void:
+	#Saves all the settings
+	UserConfig.graphics_fullscreen = $panelHolder/panel/optionsPanel/Game/vBoxContainer/Fullscreen.button_pressed
+	UserConfig.saveConfigs()
+
+
+func _on_revert_pressed() -> void:
+	#Reverts to saved state
+	revert_button.disabled = true
+	get_tree().create_timer(1.0).timeout.connect(revert_button.set.bind(&\"disabled\", false))
+	apply_from_settings()
+
+
+func _on_close_button_pressed() -> void:
+	_on_revert_pressed()
 	hide()
-
-func followMouse():
-	optionsPanel.position = get_global_mouse_position()
-
-
-
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event.pressed:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			selected = true
-		else:
-			selected = false
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uechr"]
@@ -52,7 +51,14 @@ size = Vector2(629, 29)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxvi1"]
 
-[sub_resource type="Image" id="Image_yffi2"]
+[sub_resource type="InputEventKey" id="InputEventKey_60klc"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_v2vor"]
+events = [SubResource("InputEventKey_60klc")]
+
+[sub_resource type="Image" id="Image_iy5fy"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -62,7 +68,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_lrq7s"]
-image = SubResource("Image_yffi2")
+image = SubResource("Image_iy5fy")
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -77,7 +83,10 @@ offset_bottom = -24.8
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_j35o7")
 script = SubResource("GDScript_i2vi2")
+metadata/_edit_vertical_guides_ = [424.0, 1344.0]
+metadata/_edit_horizontal_guides_ = [200.0, 696.0]
 
 [node name="control" type="Control" parent="."]
 layout_mode = 1
@@ -106,47 +115,76 @@ theme = ExtResource("1_j35o7")
 [node name="panel" type="Panel" parent="panelHolder"]
 layout_mode = 2
 
-[node name="optionsPanel" type="TabContainer" parent="panelHolder"]
-layout_mode = 2
+[node name="optionsPanel" type="TabContainer" parent="panelHolder/panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 1.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_j35o7")
 
-[node name="Game" type="Control" parent="panelHolder/optionsPanel"]
+[node name="Game" type="Control" parent="panelHolder/panel/optionsPanel"]
 layout_mode = 2
 
-[node name="vBoxContainer" type="VBoxContainer" parent="panelHolder/optionsPanel/Game"]
+[node name="vBoxContainer" type="VBoxContainer" parent="panelHolder/panel/optionsPanel/Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 20.0
+offset_right = -19.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fullscreen" type="CheckButton" parent="panelHolder/panel/optionsPanel/Game/vBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Video" type="Control" parent="panelHolder/panel/optionsPanel"]
+visible = false
+layout_mode = 2
+
+[node name="Audio" type="Control" parent="panelHolder/panel/optionsPanel"]
+visible = false
+layout_mode = 2
+
+[node name="Controls" type="Control" parent="panelHolder/panel/optionsPanel"]
+visible = false
+layout_mode = 2
+
+[node name="save" type="Button" parent="panelHolder/panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_bottom = 0.971
-offset_left = 16.0
-offset_top = 6.0
-offset_right = 942.0
-offset_bottom = 0.0229492
+anchor_top = 1.0
+anchor_right = 0.511
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -63.0
+offset_right = 0.972961
+offset_bottom = -5.0
+grow_vertical = 0
+text = "save"
 
-[node name="menuButton" parent="panelHolder/optionsPanel/Game/vBoxContainer" instance=ExtResource("2_42vxv")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 26
-text = "0"
-
-[node name="optionBG" parent="panelHolder/optionsPanel/Game/vBoxContainer/menuButton" index="1"]
-offset_right = 925.0
-
-[node name="activatedText" parent="panelHolder/optionsPanel/Game/vBoxContainer/menuButton" index="3"]
-offset_left = 795.5
-offset_top = 1.00002
-offset_right = 920.5
-offset_bottom = 1.00002
-
-[node name="Video" type="Control" parent="panelHolder/optionsPanel"]
-visible = false
-layout_mode = 2
-
-[node name="Audio" type="Control" parent="panelHolder/optionsPanel"]
-visible = false
-layout_mode = 2
-
-[node name="Controls" type="Control" parent="panelHolder/optionsPanel"]
-visible = false
-layout_mode = 2
+[node name="revert" type="Button" parent="panelHolder/panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -211.0
+offset_top = -63.0
+offset_right = -19.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "revert"
 
 [node name="area2d" type="Area2D" parent="panelHolder"]
 
@@ -167,9 +205,10 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_r5gou")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_8tfve")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_t3v2y")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bxvi1")
+shortcut = SubResource("Shortcut_v2vor")
 icon = SubResource("ImageTexture_lrq7s")
 
+[connection signal="pressed" from="panelHolder/panel/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="panelHolder/panel/revert" to="." method="_on_revert_pressed"]
 [connection signal="input_event" from="panelHolder/area2d" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="closeButton" to="." method="_on_close_button_pressed"]
-
-[editable path="panelHolder/optionsPanel/Game/vBoxContainer/menuButton"]

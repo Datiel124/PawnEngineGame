@@ -90,8 +90,8 @@ func applyConfigs() -> void:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS,true)
 	else:
 		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS,false)
-
 	configs_updated.emit()
+
 
 func getOption(optionString:String):
 	return optionString

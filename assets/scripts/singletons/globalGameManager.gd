@@ -20,6 +20,7 @@ var mouseSens = 0.0020
 var defaultFOV = 90
 
 #World
+var dialogueCamLerpSpeed = 5.0
 var world : WorldScene
 
 #Multiplayer
@@ -34,7 +35,7 @@ func _ready():
 		pass
 
 
-func create_dialogue_camera() -> Camera3D:
+func create_dialogue_camera() -> Node3D:
 	var new_cam = dialogue_cam.instantiate()
 	return new_cam
 

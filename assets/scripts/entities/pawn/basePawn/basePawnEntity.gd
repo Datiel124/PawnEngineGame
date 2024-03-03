@@ -246,6 +246,7 @@ func _physics_process(delta):
 					if attachedCam:
 						attachedCam.hud.getCrosshair().setCrosshair(currentItem.forcedCrosshair)
 						attachedCam.itemEquipOffsetToggle = true
+						Dialogic.VAR.set('playerHasWeaponEquipped',true)
 
 					#Weapon Aiming
 					if meshLookAt and !freeAim:
@@ -285,6 +286,7 @@ func _physics_process(delta):
 				for weapon in itemHolder.get_children():
 					weapon.hide()
 				if attachedCam:
+						Dialogic.VAR.set('playerHasWeaponEquipped',false)
 						attachedCam.itemEquipOffsetToggle = false
 						attachedCam.hud.getCrosshair().setCrosshair(null)
 						attachedCam.resetCamCast()
@@ -433,6 +435,7 @@ func die():
 	if !attachedCam == null:
 		attachedCam.lowHP = false
 		attachedCam.resetCamCast()
+		Dialogic.end_timeline()
 
 func _on_health_component_health_depleted():
 	await get_tree().process_frame

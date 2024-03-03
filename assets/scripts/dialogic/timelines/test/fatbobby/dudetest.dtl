@@ -1,13 +1,48 @@
 The fuck do you want?
-[music path="res://assets/music/menu/HHb2.mp3" fade="0.5" volume="-25.0" bus="Music"]
+[music path="res://assets/music/menu/polli.mp3" fade="0.0" volume="-15.0" bus="Music"]
+- Relax, What can you tell me?
+	What do you wanna know?
+	- How can I buy guns?
+		Well, as of late. There hasn't been any merchants around, if you ask me... I think its cause the developer is an incompotent sack of shit and hasn't yet implemented a shop system but, you didn't hear that from me.
+		- ...
+			Just sayin' it how I see it, now fuck off.
+		- You're an ass.
+			You're a cunt.
+			[music fade="0.5" volume="0.0"]
+		- Thanks..
+			No problem, now fuck off I wanna be pissed.
+			[music fade="0.5" volume="0.0"]
+	- How do I uninstall this shit?
+		How'd you even get access to this?
+		[music fade="0.5" volume="0.0"]
+	- Got the directions to your mothers house?
+		Up your ass and to the left.
+		[music fade="0.5" volume="0.0"]
+	- What is there to do here?
+		Well, this is a test area. You can tell cause there isn't any fucking gameplay.
 - Nothing, I'll leave you be.
 	Damn right you will, jackass.
+	You know what, go and bother Fat Bobby in the other room. I'm sure his punk ass would looove your company! Fuckin' annoying sack of shit..
+	- You're a real douche.
+	- Say it again, my gun couldn't hear you. [if {playerHasWeaponEquipped} == true][else="hide"]
+		...I wanna apologize, I had no clue.
+		- See you around then.
+		- Apology accepted, I forgive you.
+		- Use your eyes next time, jackass.
+	- You should really try some Zen training. Channeling your inner anger and turning it into something positive.
+		I'm gonna channel my boot up your ass if you don't shut the fuck up.
 	[music fade="0.5" volume="0.0"]
 - Excuse me?
 	You heard me, I'm stuck in this shitty ass world and I'm pissed about it.
-	- Sorry to hear, I'll let you go.
+	- Sorry to hear about it, but you shouldn't take your anger out on people. [if {playerHasWeaponEquipped} == true]
+		Yeah I know that now, thanks dude. You can be on your way.
+	- Not my problem. [if {playerHasWeaponEquipped} == true]
+		I-I know its not..
+	- I can fix that right now, a bullet right in the center of your head. Hell, it'd just be target practice. [if {playerHasWeaponEquipped} == true]
+		I'd really like it if you didn't. I'm just upset, sorry for the trouble.
+	- Sorry to hear, I'll let you go. [if {playerHasWeaponEquipped} == false]
 		Wise choice.
 		[music fade="0.5" volume="0.0"]
-	- Not my problem, prick.
+	- Not my problem, prick. [if {playerHasWeaponEquipped} == false]
 		Suck my dick, asshole!
 		[music fade="0.5" volume="0.0"]

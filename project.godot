@@ -54,7 +54,9 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
-variables={}
+variables={
+"playerHasWeaponEquipped": false
+}
 layout/style_list=["res://assets/scripts/dialogic/themes/Default.tres"]
 layout/default_style="res://assets/scripts/dialogic/themes/Default.tres"
 

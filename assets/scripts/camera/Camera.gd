@@ -87,6 +87,8 @@ var camRot
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	Dialogic.current_timeline = null
+	Dialogic.end_timeline()
 	globalGameManager.activeCamera = self
 	currentFOV = globalGameManager.defaultFOV
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

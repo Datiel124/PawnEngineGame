@@ -42,6 +42,7 @@ func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 =
 			healthComponent.componentOwner.attachedCam.camera.fov -= 1.8
 			healthComponent.componentOwner.attachedCam.fireRecoil(0,randf_range(1,4),randf_range(9,13))
 			healthComponent.componentOwner.attachedCam.fireVignette(1.2,Color.RED)
+			Dialogic.end_timeline()
 
 func getCollisionObject():
 	if get_child(0) is CollisionObject3D:

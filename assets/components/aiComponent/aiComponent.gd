@@ -12,6 +12,8 @@ signal interactSpeakTrigger
 @export var pawnOwner : BasePawn
 @export var aiTree : BTPlayer
 @export var isInteractable : bool = false
+@export_category("Dialogue")
+@export var dialogueStartingCamera : Marker3D
 @export var dialogueString : String
 @export_subgroup("Identification")
 @export var pawnName : String
@@ -44,9 +46,7 @@ func _ready():
 	visionTimer.start()
 	await get_tree().process_frame
 	if isInteractable:
-		if pawnOwner:
-			pawnOwner.add_to_group("Interactable")
-			interactSpeakTrigger.connect(speakTrigger.bind(dialogueString))
+		setInteractablePawn(true)
 
 	if immediateMesh.get_material_override():
 		var losDrawMat = immediateMesh.get_material_override().duplicate()
@@ -209,9 +209,19 @@ func speakTrigger(dialogue):
 				if Dialogic.current_timeline != null:
 					return
 				Dialogic.start(dialogue)
-				if has_node(^"dialogueCamTarget"):
-					var dialogue_cam : Camera3D = globalGameManager.create_dialogue_camera()
+				if dialogueStartingCamera != null:
+					var dialogue_cam : Node3D = globalGameManager.create_dialogue_camera()
 					globalGameManager.world.add_child(dialogue_cam)
-					dialogue_cam.activate(get_viewport().get_camera_3d(), get_node(^"dialogueCamTarget").global_transform)
+					dialogue_cam.activate(get_viewport().get_camera_3d(), dialogueStartingCamera.position,dialogueStartingCamera.rotation)
 					Dialogic.timeline_ended.connect(dialogue_cam.remove)
 				get_viewport().set_input_as_handled()
+
+func setInteractablePawn(value:bool = false):
+	if value == true:
+		if pawnOwner:
+			pawnOwner.add_to_group("Interactable")
+			interactSpeakTrigger.connect(speakTrigger.bind(dialogueString))
+	else:
+		if pawnOwner:
+			pawnOwner.remove_from_group("Interactable")
+			interactSpeakTrigger.disconnect(speakTrigger)

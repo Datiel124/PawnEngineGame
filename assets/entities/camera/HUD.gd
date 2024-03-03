@@ -6,6 +6,8 @@ extends Control
 @onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"
 @export var crosshair : TextureRect
 @export var fpsCounterEnabled = false
+@onready var healthBG = $hpBG
+@onready var healthTexture = $healthTexture
 var slidingCrosshairPos : Vector2 = Vector2.ZERO
 @export var hudEnabled = true:
 	set(value):
@@ -26,8 +28,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-
-
+	# If in Dialogue
+	if Dialogic.current_timeline != null:
+		crosshair.tintCrosshair(Color.TRANSPARENT)
+		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.TRANSPARENT,12*delta)
+		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.TRANSPARENT,12*delta)
+		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.TRANSPARENT,12*delta)
+	else:
+		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.WHITE,12*delta)
+		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.WHITE,12*delta)
+		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.WHITE,12*delta)
 	#Crosshair Follow
 	if UserConfig.game_crosshair_dynamic_position:
 		var pos

@@ -90,135 +90,135 @@ var/isAttacking/hint = 0
 var/isAttacking/hint_string = ""
 resource_local_to_scene = true
 
-[sub_resource type="BBVariant" id="BBVariant_gievn"]
+[sub_resource type="BBVariant" id="BBVariant_a2qxt"]
 type = 2
 saved_value = 0
 resource_name = "0"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_4g5yf"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_giyfg"]
 variable = "pawnType"
 check_type = 5
-value = SubResource("BBVariant_gievn")
+value = SubResource("BBVariant_a2qxt")
 custom_name = "Check if its an Idle pawn"
 
-[sub_resource type="BBVariant" id="BBVariant_4f3yv"]
+[sub_resource type="BBVariant" id="BBVariant_omxeo"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_pno6g"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_h7is0"]
 variable = "isAttacking"
 check_type = 5
-value = SubResource("BBVariant_4f3yv")
+value = SubResource("BBVariant_omxeo")
 custom_name = "Check if its  in attack"
 
-[sub_resource type="BBVariant" id="BBVariant_7udq0"]
+[sub_resource type="BBVariant" id="BBVariant_5mlre"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_5apl1"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_xqnoc"]
 variable = "hasTarget"
 check_type = 5
-value = SubResource("BBVariant_7udq0")
+value = SubResource("BBVariant_5mlre")
 custom_name = "If it can see an enemy pawn.."
 
-[sub_resource type="BTAction" id="BTAction_8wghn"]
+[sub_resource type="BTAction" id="BTAction_p0a40"]
 script = ExtResource("2_0v6xp")
 
-[sub_resource type="BTAction" id="BTAction_rtclt"]
+[sub_resource type="BTAction" id="BTAction_0nwqu"]
 script = ExtResource("2_xrxy6")
 
-[sub_resource type="BTAction" id="BTAction_iflfc"]
+[sub_resource type="BTAction" id="BTAction_7se06"]
 resource_local_to_scene = true
 script = ExtResource("3_y6x7b")
 currLocation = Vector3(0, 0, 0)
 newVelocity = Vector3(0, 0, 0)
 
-[sub_resource type="BTSequence" id="BTSequence_ph7u6"]
+[sub_resource type="BTSequence" id="BTSequence_qy4rb"]
 custom_name = "Wander"
-children = [SubResource("BTCheckVar_4g5yf"), SubResource("BTCheckVar_pno6g"), SubResource("BTCheckVar_5apl1"), SubResource("BTAction_8wghn"), SubResource("BTAction_rtclt"), SubResource("BTAction_iflfc")]
+children = [SubResource("BTCheckVar_giyfg"), SubResource("BTCheckVar_h7is0"), SubResource("BTCheckVar_xqnoc"), SubResource("BTAction_p0a40"), SubResource("BTAction_0nwqu"), SubResource("BTAction_7se06")]
 
-[sub_resource type="BBVariant" id="BBVariant_wb7pi"]
+[sub_resource type="BBVariant" id="BBVariant_btaij"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_k1thp"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_du3gt"]
 variable = "hasDetectedPawn"
-value = SubResource("BBVariant_wb7pi")
+value = SubResource("BBVariant_btaij")
 custom_name = "If is in Detect state"
 
-[sub_resource type="BBVariant" id="BBVariant_h55jq"]
+[sub_resource type="BBVariant" id="BBVariant_uigmm"]
 type = 1
 saved_value = true
 resource_name = "true"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_ficuq"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_fiq5e"]
 variable = "hasTarget"
-value = SubResource("BBVariant_h55jq")
+value = SubResource("BBVariant_uigmm")
 
-[sub_resource type="BBVariant" id="BBVariant_aiqxi"]
+[sub_resource type="BBVariant" id="BBVariant_3cr4y"]
 type = 1
 value_source = 1
 variable = "hasTarget"
 resource_name = "$hasTarget"
 
-[sub_resource type="BTSetVar" id="BTSetVar_7hgy8"]
+[sub_resource type="BTSetVar" id="BTSetVar_eudhe"]
 variable = "isAttacking"
-value = SubResource("BBVariant_aiqxi")
+value = SubResource("BBVariant_3cr4y")
 
-[sub_resource type="BTAction" id="BTAction_j8thn"]
+[sub_resource type="BTAction" id="BTAction_72408"]
 script = ExtResource("4_hqswl")
 
-[sub_resource type="BTAction" id="BTAction_6ewbf"]
+[sub_resource type="BTAction" id="BTAction_dl235"]
 custom_name = "Look at Detected Pawn"
 script = ExtResource("5_hbu71")
 
-[sub_resource type="BTAction" id="BTAction_u816v"]
+[sub_resource type="BTAction" id="BTAction_6khvu"]
 script = ExtResource("8_4kek0")
 
-[sub_resource type="BTAction" id="BTAction_ex6vk"]
+[sub_resource type="BTAction" id="BTAction_vqx54"]
 script = ExtResource("3_y6x7b")
 currLocation = Vector3(0, 0, 0)
 newVelocity = Vector3(0, 0, 0)
 
-[sub_resource type="BTAction" id="BTAction_ahq2h"]
+[sub_resource type="BTAction" id="BTAction_odk3u"]
 script = ExtResource("7_xug5t")
 
-[sub_resource type="BTSequence" id="BTSequence_45qv6"]
+[sub_resource type="BTSequence" id="BTSequence_vhoo6"]
 custom_name = "AttackSequence"
-children = [SubResource("BTCheckVar_k1thp"), SubResource("BTCheckVar_ficuq"), SubResource("BTSetVar_7hgy8"), SubResource("BTAction_j8thn"), SubResource("BTAction_6ewbf"), SubResource("BTAction_u816v"), SubResource("BTAction_ex6vk"), SubResource("BTAction_ahq2h")]
+children = [SubResource("BTCheckVar_du3gt"), SubResource("BTCheckVar_fiq5e"), SubResource("BTSetVar_eudhe"), SubResource("BTAction_72408"), SubResource("BTAction_dl235"), SubResource("BTAction_6khvu"), SubResource("BTAction_vqx54"), SubResource("BTAction_odk3u")]
 
-[sub_resource type="BBVariant" id="BBVariant_cudkl"]
+[sub_resource type="BBVariant" id="BBVariant_m4msn"]
 type = 3
 saved_value = 10.0
 resource_name = "10"
 
-[sub_resource type="BTCheckVar" id="BTCheckVar_8bky6"]
+[sub_resource type="BTCheckVar" id="BTCheckVar_fyxdd"]
 variable = "pawnDetection"
 check_type = 4
-value = SubResource("BBVariant_cudkl")
+value = SubResource("BBVariant_m4msn")
 
-[sub_resource type="BTAction" id="BTAction_euxt4"]
+[sub_resource type="BTAction" id="BTAction_qquk4"]
 script = ExtResource("5_hbu71")
 
-[sub_resource type="BTAction" id="BTAction_prprh"]
+[sub_resource type="BTAction" id="BTAction_ux3ee"]
 script = ExtResource("4_hqswl")
 
-[sub_resource type="BTSequence" id="BTSequence_lddtm"]
+[sub_resource type="BTSequence" id="BTSequence_nb1sv"]
 custom_name = "isDetecting"
-children = [SubResource("BTCheckVar_8bky6"), SubResource("BTAction_euxt4"), SubResource("BTAction_prprh")]
+children = [SubResource("BTCheckVar_fyxdd"), SubResource("BTAction_qquk4"), SubResource("BTAction_ux3ee")]
 
-[sub_resource type="BTSelector" id="BTSelector_5u274"]
+[sub_resource type="BTSelector" id="BTSelector_qk130"]
 custom_name = "Root"
-children = [SubResource("BTSequence_ph7u6"), SubResource("BTSequence_45qv6"), SubResource("BTSequence_lddtm")]
+children = [SubResource("BTSequence_qy4rb"), SubResource("BTSequence_vhoo6"), SubResource("BTSequence_nb1sv")]
 
 [sub_resource type="BehaviorTree" id="BehaviorTree_y5p2n"]
 description = "AI Tree
 "
 blackboard_plan = SubResource("BlackboardPlan_qvypc")
-root_task = SubResource("BTSelector_5u274")
+root_task = SubResource("BTSelector_qk130")
 resource_local_to_scene = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_102wm"]

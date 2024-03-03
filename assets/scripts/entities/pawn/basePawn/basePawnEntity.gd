@@ -386,7 +386,8 @@ func _physics_process(delta):
 					if inputComponent.movementEnabled:
 						if Dialogic.current_timeline == null:
 							direction = inputComponent.getInputDir().rotated(Vector3.UP, meshRotation)
-
+						else:
+							direction = Vector3.ZERO
 ##Checks to see if any required components (Base components) Are null
 func checkComponents():
 	if inputComponent:

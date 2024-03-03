@@ -85,11 +85,7 @@ func applyConfigs() -> void:
 	AudioServer.set_bus_volume_db(3, audio_MusicVolume)
 	AudioServer.set_bus_volume_db(4, audio_ambience_volume)
 	AudioServer.set_bus_volume_db(1, audio_menu_volume)
-	get_window().mode = Window.MODE_FULLSCREEN if graphics_fullscreen else Window.MODE_WINDOWED
-	if get_window().mode == Window.MODE_FULLSCREEN:
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS,true)
-	else:
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS,false)
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if graphics_fullscreen else Window.MODE_WINDOWED
 	configs_updated.emit()
 
 

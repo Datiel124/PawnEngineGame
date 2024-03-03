@@ -1,5 +1,5 @@
 The fuck do you want?
-[music path="res://assets/music/menu/polli.mp3" fade="0.0" volume="-15.0" bus="Music"]
+[music path="res://assets/music/menu/portla.mp3" fade="0.0" volume="-15.0" bus="Music"]
 - Relax, What can you tell me?
 	What do you wanna know?
 	- How can I buy guns?
@@ -20,15 +20,20 @@ The fuck do you want?
 		[music fade="0.5" volume="0.0"]
 	- What is there to do here?
 		Well, this is a test area. You can tell cause there isn't any fucking gameplay.
+		[music fade="0.5" volume="0.0"]
 - Nothing, I'll leave you be.
 	Damn right you will, jackass.
 	You know what, go and bother Fat Bobby in the other room. I'm sure his punk ass would looove your company! Fuckin' annoying sack of shit..
 	- You're a real douche.
+		[music fade="0.5" volume="0.0"]
 	- Say it again, my gun couldn't hear you. [if {playerHasWeaponEquipped} == true][else="hide"]
 		...I wanna apologize, I had no clue.
 		- See you around then.
+			[music fade="0.5" volume="0.0"]
 		- Apology accepted, I forgive you.
+			[music fade="0.5" volume="0.0"]
 		- Use your eyes next time, jackass.
+			[music fade="0.5" volume="0.0"]
 	- You should really try some Zen training. Channeling your inner anger and turning it into something positive.
 		I'm gonna channel my boot up your ass if you don't shut the fuck up.
 	[music fade="0.5" volume="0.0"]

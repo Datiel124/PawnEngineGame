@@ -156,7 +156,7 @@ target_position = Vector3(0, 0, -250)
 collision_mask = 8
 
 [node name="interactCast" type="RayCast3D" parent="camPivot/horizonal/vertholder/vertical/springArm3d/Camera"]
-target_position = Vector3(0, 0, -3)
+target_position = Vector3(0, 0, -3.5)
 collision_mask = 11
 
 [node name="velocityComponent" parent="." instance=ExtResource("2_rb4ck")]

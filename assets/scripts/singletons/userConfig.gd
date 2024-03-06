@@ -39,6 +39,7 @@ var configs_loaded : bool = false
 signal finish_loading_configs
 signal configs_updated
 func _ready() -> void:
+	print(getSettingsDict())
 	loadConfigs()
 
 
@@ -87,6 +88,18 @@ func applyConfigs() -> void:
 	AudioServer.set_bus_volume_db(1, audio_menu_volume)
 	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if graphics_fullscreen else Window.MODE_WINDOWED
 	configs_updated.emit()
+
+
+func getSettingsDict() -> Dictionary:
+	var output : Dictionary = {}
+	for property in get_script().get_script_property_list():
+		if property["usage"] == 128:
+			continue
+		var section = (property["name"] as String).split("_", 0)
+		if section[0] == "configs":
+			continue
+		output[property["name"]] = get(property["name"])
+	return output
 
 
 func getOption(optionString:String):

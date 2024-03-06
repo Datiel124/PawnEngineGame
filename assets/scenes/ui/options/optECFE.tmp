@@ -11,14 +11,14 @@ script/source = "extends Control
 @onready var save_button : Button = $panelHolder/panel/saveSettings
 @onready var revert_button : Button = $panelHolder/panel/revertSettings
 const setting_remap : Dictionary = {
-	'graphics_fullscreen' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/Fullscreen:button_pressed',
-	'graphics_Sdfgi' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/sdfgiToggle:button_pressed',
-	'graphics_Ssil' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssilToggle:button_pressed',
-	'graphics_Ssr' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssrToggle:button_pressed'
+	'graphics_fullscreen' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/Fullscreen.button_pressed',
+	'graphics_Sdfgi' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/sdfgiToggle.button_pressed',
+	'graphics_Ssil' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssilToggle.button_pressed',
+	'graphics_Ssr' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssrToggle.button_pressed'
 }
 
+
 func _ready() -> void:
-	print(getRemappedValue('graphics_fullscreen'))
 	UserConfig.configs_updated.connect(getSettingsFromConfig)
 
 
@@ -31,44 +31,31 @@ func _on_save_pressed() -> void:
 
 func _on_revert_pressed() -> void:
 	#Reverts to saved state
-	#revert_button.disabled = true
+	revert_button.disabled = true
 	getSettingsFromConfig()
 
 
 func _on_close_button_pressed() -> void:
-	if checkChangesExist():
-		globalGameManager.notify_warn(\"You have unsaved changes.\\nPlease Revert or Save & Apply.\", 2, 2.0)
-		return
+	_on_revert_pressed()
 	hide()
 
 
 func applySettings():
 	for s in setting_remap.keys():
-		UserConfig.set(s, getRemappedValue(s))
+		UserConfig.set(s, get_indexed(setting_remap[s]))
 	UserConfig.saveConfigs()
 
 
 func getSettingsFromConfig():
-	for s in setting_remap.keys():
-		setRemappedValue(setting_remap[s], UserConfig.get(s))
-
-
-func getRemappedValue(key : String) -> Variant:
-	var path : NodePath = setting_remap[key]
-	var node : Node = get_node(path)
-	var value = node.get_indexed(NodePath(path.get_concatenated_subnames()))
-	return value
-
-
-func setRemappedValue(path : NodePath, value : Variant) -> void:
-	var node : Node = get_node(path)
-	node.set_indexed(NodePath(path.get_concatenated_subnames()), value)
+	$panelHolder/panel/optionsPanel/Video/vBoxContainer/sdfgiToggle.button_pressed = UserConfig.graphics_Sdfgi
+	$panelHolder/panel/optionsPanel/Video/vBoxContainer/ssilToggle.button_pressed = UserConfig.graphics_Ssil
+	$panelHolder/panel/optionsPanel/Video/vBoxContainer/ssrToggle.button_pressed = UserConfig.graphics_Ssr
+	$panelHolder/panel/optionsPanel/Video/vBoxContainer/Fullscreen.button_pressed = UserConfig.graphics_fullscreen
 
 
 func checkChangesExist() -> bool:
-	for k in setting_remap.keys():
-		if UserConfig.get(k) != getRemappedValue(k):
-			return true
+	var dict = UserConfig.getSettingsDict()
+	for k in dict[keys()]:
 	return false
 
 

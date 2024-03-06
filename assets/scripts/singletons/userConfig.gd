@@ -30,9 +30,9 @@ var graphics_Ssr : bool = false
 var graphics_Sdfgi : bool = false
 var graphics_Ssil : bool = false
 enum PARTICLE_COUNT{VERY_FEW, LESS, NORMAL}
-enum STAGE_DETAILS{VERY_FEW, LESS, NORMAL}
+enum WORLD_DETAILS{VERY_FEW, LESS, NORMAL}
 var graphics_particle_amount : PARTICLE_COUNT = PARTICLE_COUNT.NORMAL
-var graphics_stage_details : STAGE_DETAILS = STAGE_DETAILS.NORMAL
+var graphics_world_details : WORLD_DETAILS = WORLD_DETAILS.NORMAL
 
 
 var configs_loaded : bool = false

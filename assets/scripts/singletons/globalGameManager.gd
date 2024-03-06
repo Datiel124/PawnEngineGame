@@ -119,6 +119,19 @@ func notifyFade(text : String, position : NOTIF_POSITION = 2, fade_time : float 
 		new_notif.timer.start(fade_time)
 	return new_notif
 
+func notifyCheck(text : String, position : NOTIF_POSITION = 2, fade_time : float = -1, texture : Texture = Notifications.checkmarkTexture):
+	var new_notif
+	var container = Notifications.hudPositions[position]
+
+	new_notif = Notifications.notifCheck.instantiate()
+	container.add_child(new_notif)
+	set_notif_flags(new_notif, position)
+
+	new_notif.set_text(text)
+	new_notif.set_warn_params.call(texture, fade_time)
+	if fade_time > 0:
+		new_notif.timer.start(fade_time)
+	return new_notif
 
 func notify_warn(text : String, position : NOTIF_POSITION = 2, fade_time : float = -1, texture : Texture = Notifications.warning_texture):
 	var new_notif

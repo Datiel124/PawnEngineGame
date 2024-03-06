@@ -794,3 +794,7 @@ func getInteractionObject():
 		if col.is_in_group("Interactable"):
 			globalGameManager.getEventSignal("interactableFound").emit()
 			return col
+
+func getClothes():
+	for clothes in clothingHolder.get_children():
+		return clothes

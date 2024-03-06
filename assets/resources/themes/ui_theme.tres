@@ -1,5 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cmd714lbb53ja"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cmd714lbb53ja"]
 
+[ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="1_20opa"]
 [ext_resource type="FontFile" uid="uid://xmwjvmqspojb" path="res://assets/fonts/Grand_Aventure_Text.otf" id="1_fe8sr"]
 
 [sub_resource type="Gradient" id="Gradient_ky8k2"]
@@ -14,6 +15,8 @@ fill_from = Vector2(1, 1)
 texture = SubResource("GradientTexture2D_bi0ku")
 
 [resource]
+Button/font_sizes/font_size = 25
+CheckButton/fonts/font = ExtResource("1_20opa")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 1)

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://diaquwqm7clur"]
+
+[ext_resource type="PackedScene" uid="uid://d3tap8lr0nbpi" path="res://assets/scripts/singletons/notifs/notif_fade.tscn" id="1_s8rw1"]
+[ext_resource type="Texture2D" uid="uid://c2al3bxets5mo" path="res://assets/scripts/singletons/notifs/accept_button.png" id="2_3n3g8"]
+[ext_resource type="AudioStream" uid="uid://ot20of35bq16" path="res://assets/scripts/singletons/notifs/notifRandomizerWarn.tres" id="3_atvh5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qe8nk"]
+bg_color = Color(0.27451, 0.552941, 0, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 0, 0, 0)
+corner_detail = 1
+
+[node name="notifCheck" instance=ExtResource("1_s8rw1")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_qe8nk")
+y_scale_mult = 1.0
+
+[node name="Label" parent="." index="0"]
+offset_left = 32.0
+offset_right = 272.0
+text = "Success!
+"
+
+[node name="TextureRect" type="TextureRect" parent="Label" index="0"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_right = -4.0
+grow_vertical = 2
+texture = ExtResource("2_3n3g8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("3_atvh5")
+stream_paused = false

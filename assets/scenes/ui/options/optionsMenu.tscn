@@ -18,7 +18,6 @@ const setting_remap : Dictionary = {
 }
 
 func _ready() -> void:
-	print(getRemappedValue('graphics_fullscreen'))
 	UserConfig.configs_updated.connect(getSettingsFromConfig)
 
 

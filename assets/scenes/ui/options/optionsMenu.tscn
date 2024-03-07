@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wncyofb1f8i7"]
+[gd_scene load_steps=14 format=3 uid="uid://wncyofb1f8i7"]
 
 [ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="1_j35o7"]
 [ext_resource type="AudioStream" uid="uid://doah0b50uqi2n" path="res://assets/sounds/ui/uiSoft.wav" id="2_w3nni"]
@@ -78,9 +78,6 @@ func _on_options_panel_tab_clicked(tab):
 func _on_visibility_changed():
 	getSettingsFromConfig()
 "
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uechr"]
-size = Vector2(629, 29)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfs43"]
 
@@ -232,12 +229,6 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Revert"
 
-[node name="area2d" type="Area2D" parent="panelHolder"]
-
-[node name="collisionShape2d" type="CollisionShape2D" parent="panelHolder/area2d"]
-position = Vector2(604, 15.5)
-shape = SubResource("RectangleShape2D_uechr")
-
 [node name="closeButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -270,5 +261,4 @@ bus = &"UI"
 [connection signal="tab_clicked" from="panelHolder/panel/optionsPanel" to="." method="_on_options_panel_tab_clicked"]
 [connection signal="pressed" from="panelHolder/panel/saveSettings" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="panelHolder/panel/revertSettings" to="." method="_on_revert_pressed"]
-[connection signal="input_event" from="panelHolder/area2d" to="." method="_on_area_2d_input_event"]
 [connection signal="pressed" from="closeButton" to="." method="_on_close_button_pressed"]

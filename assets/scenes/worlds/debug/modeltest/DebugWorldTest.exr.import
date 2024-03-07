@@ -1,0 +1,26 @@
+[remap]
+
+importer="2d_array_texture"
+type="CompressedTexture2DArray"
+uid="uid://ncypfrqodw6"
+path="res://.godot/imported/DebugWorldTest.exr-42384d09cfca5cb5a1ba4d24019ac6b8.ctexarray"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/scenes/worlds/debug/modeltest/DebugWorldTest.exr"
+dest_files=["res://.godot/imported/DebugWorldTest.exr-42384d09cfca5cb5a1ba4d24019ac6b8.ctexarray"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=1

@@ -1,0 +1,1491 @@
+[gd_scene load_steps=51 format=3 uid="uid://cgunekse1vc0y"]
+
+[ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_67ne2"]
+[ext_resource type="PackedScene" uid="uid://b4mgs5g7ahuj7" path="res://assets/scenes/worlds/debug/modeltest/DebugMapModelConversionTest.gltf" id="2_k1j6f"]
+[ext_resource type="LightmapGIData" uid="uid://dqhqutvgsg7b1" path="res://assets/scenes/worlds/debug/modeltest/DebugWorldTest.lmbake" id="3_hrucs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5juin"]
+resource_name = "Material_2"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut25f"]
+resource_name = "Material_3"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1buvf"]
+resource_name = "Material_4"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0oik5"]
+resource_name = "Material_5"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wabrw"]
+resource_name = "Material_6"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abwgk"]
+resource_name = "Material_7"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j1or"]
+resource_name = "Material_8"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fmkk"]
+resource_name = "Material_9"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahecd"]
+resource_name = "Material_10"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdww8"]
+resource_name = "Material_11"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu44y"]
+resource_name = "Material_12"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8okr"]
+resource_name = "Material_13"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi45e"]
+resource_name = "Material_14"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3i5p"]
+resource_name = "Material_15"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omcjy"]
+resource_name = "Material_16"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvlya"]
+resource_name = "Material_17"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vovig"]
+resource_name = "Material_18"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqevb"]
+resource_name = "Material_19"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqbce"]
+resource_name = "Material_20"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8awkw"]
+resource_name = "Material_21"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm8sb"]
+resource_name = "Material_22"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn4pd"]
+resource_name = "Material_23"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auywu"]
+resource_name = "Material_24"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nptgy"]
+resource_name = "Material_25"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieiqv"]
+resource_name = "Material_26"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xltfw"]
+resource_name = "Material_27"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyly8"]
+resource_name = "Material_28"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d7tp"]
+resource_name = "Material_29"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlmhd"]
+resource_name = "Material_30"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm6r8"]
+resource_name = "Material_31"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymnbg"]
+resource_name = "Material_32"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct6cv"]
+resource_name = "Material_33"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dvqt"]
+resource_name = "Material_34"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1f1u"]
+resource_name = "Material_35"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff5s"]
+resource_name = "Material_36"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wm13"]
+resource_name = "Material_37"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anb4k"]
+resource_name = "Material_38"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pri4w"]
+resource_name = "Material_39"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qwks"]
+resource_name = "Material_40"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njy23"]
+resource_name = "Material_41"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckh2f"]
+resource_name = "Material_42"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evnvy"]
+resource_name = "Material_43"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egbfl"]
+resource_name = "Material_44"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcxja"]
+resource_name = "Material_61"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4fmt"]
+resource_name = "Material_62"
+albedo_color = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_bjjvn"]
+_surfaces = [{
+"aabb": AABB(-3.9995, 0.23641, -7.5547, 7.999, 9.99868e-06, 15.1094),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_2",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-4.181, 0.128399, -8.529, 6.75337, 7.00001, 1.00001),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_3",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-4.181, 0.128399, 7.471, 8.27339, 7.00001, 1.00001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 2, 0, 1, 0, 4, 0, 4, 0, 5, 0, 2, 0),
+"name": "Material_4",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.63433, 0.128399, 6.97045, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_5",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.63433, 0.128399, -2.71343, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_6",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(7.63433, 0.128399, -2.71343, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_7",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(11.753, 0.128399, -2.71343, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_8",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(9.75295, 0.128399, -13.7134, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_9",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(7.63433, 0.128399, 2.28657, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_10",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(11.753, 0.128399, 2.28657, 1.20465, 7.00001, 1.33168),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_11",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.63433, 0.113249, 2.21293, 1.20465, 7.27931, 1.47676),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_12",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(15.9154, 0.128399, 6.97045, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_13",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(15.9154, 0.128399, -3.02954, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_14",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(15.9154, 0.128399, -13.0295, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_15",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(15.9154, 0.128399, -19.0295, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_16",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.9154, 0.128399, -19.0295, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_17",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.63433, 0.128399, -8.17224, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_18",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-3.92616, 0.128399, -8.17224, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_19",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-3.92616, 0.128399, 6.32905, 1.20465, 7.00001, 1.5005),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_20",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-4.87714, 0.128399, -8.5198, 1.00001, 7.00001, 16.8354),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 0, 0, 0, 0, 3, 0, 4, 0),
+"name": "Material_21",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0, 254, 255, 254, 255, 255, 255, 0, 0)
+}, {
+"aabb": AABB(17.1228, 0.128399, -19.8619, 9.53674e-06, 7.00001, 32.3203),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_22",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 102, 102, 0, 0, 0, 0, 0, 0, 102, 102, 254, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(2.51725, 0.128399, -11.7602, 1.4131, 7.00001, 4.23121),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_23",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(2.51725, 0.128399, -20.529, 1.4131, 7.00001, 7.00001),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0),
+"name": "Material_24",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.8964, 0.128399, -20.529, 13.2893, 7.00001, 0.777353),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 4, 0, 5, 0, 5, 0, 1, 0, 0, 0, 0, 0, 3, 0, 6, 0, 6, 0, 4, 0, 0, 0, 5, 0, 4, 0, 6, 0, 6, 0, 7, 0, 5, 0, 6, 0, 3, 0, 2, 0, 2, 0, 7, 0, 6, 0),
+"name": "Material_25",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-8.72394, 0.128399, -18.442, 9.53674e-06, 7.00001, 9.98659),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_26",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0)
+}, {
+"aabb": AABB(-24.7239, 0.128399, -18.5917, 16, 7, 9.53674e-06),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_27",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-24.7239, 0.128399, -29.5917, 25, 7.00001, 9.53674e-06),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_28",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-23.7239, 0.128399, -30.5917, 9.53674e-06, 7.00001, 13),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_29",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0)
+}, {
+"aabb": AABB(-0.723969, 0.128399, -30.5917, 1.00136e-05, 7.00001, 12.0269),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_30",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-2.70541, 0.128399, -18.5917, 5.52247, 7.00001, 1.00001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 3, 0, 2, 0, 2, 0, 5, 0, 4, 0, 6, 0, 7, 0, 4, 0, 4, 0, 5, 0, 6, 0),
+"name": "Material_31",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-8.72394, 0.128399, -18.5917, 3.00001, 7.00001, 1.00001),
+"format": 34896613377,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_32",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-5.72392, 5.1284, -18.5917, 3.03858, 2.00001, 1.00001),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 2, 0, 1, 0, 4, 0, 4, 0, 5, 0, 2, 0, 4, 0, 6, 0, 7, 0, 7, 0, 5, 0, 4, 0),
+"name": "Material_33",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-9.48274, 0.128399, -13.529, 13.4131, 7, 4.07363),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0),
+"name": "Material_34",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 255, 255, 0, 0, 0, 0, 6, 229, 255, 255, 0, 0, 0, 0, 6, 229, 0, 0, 0, 0, 0, 0, 6, 229, 0, 0, 255, 255, 0, 0, 6, 229, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0)
+}, {
+"aabb": AABB(2.51725, 3.39913, -13.5222, 1.4131, 4.46975, 1.76402),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 4, 0, 5, 0, 5, 0, 1, 0, 0, 0, 0, 0, 3, 0, 6, 0, 6, 0, 4, 0, 0, 0, 5, 0, 4, 0, 6, 0, 6, 0, 7, 0, 5, 0, 6, 0, 3, 0, 2, 0, 2, 0, 7, 0, 6, 0, 2, 0, 1, 0, 5, 0, 5, 0, 7, 0, 2, 0),
+"name": "Material_35",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 254, 255, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.22476, 0.128399, 12.4068, 13.9751, 7.00001, 1.14441e-05),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_36",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 254, 255, 170, 42, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 170, 42, 0, 0)
+}, {
+"aabb": AABB(2.68582, 0.128399, 8.36965, 1.41309, 7.00001, 4.05731),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 3, 0, 2, 0, 2, 0, 5, 0, 4, 0),
+"name": "Material_37",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 255, 255, 0, 0, 254, 255, 0, 0, 255, 255, 0, 0)
+}, {
+"aabb": AABB(3.89255, 0.23641, -19.9465, 13.2641, 9.99868e-06, 32.7735),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_38",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-9.10749, 0.23641, -18.6097, 13.2641, 9.99868e-06, 10.397),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_39",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-24.6252, 0.23641, -30.1033, 24.6343, 9.99868e-06, 11.5905),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"name": "Material_40",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-9.10744, 5.76359, -18.6097, 12.8226, 0.47283, 10.397),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 4, 0, 3, 0, 2, 0, 2, 0, 7, 0, 4, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_41",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 253, 255, 254, 255, 0, 0, 254, 255, 253, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-24.6252, 5.76359, -30.1033, 24.6343, 0.47283, 11.6842),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 4, 0, 3, 0, 2, 0, 2, 0, 7, 0, 4, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_42",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 253, 255, 254, 255, 0, 0, 254, 255, 253, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(-3.9995, 6.89679, -7.5547, 7.999, 0.47283, 15.1094),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 4, 0, 3, 0, 2, 0, 2, 0, 7, 0, 4, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_43",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 253, 255, 254, 255, 0, 0, 254, 255, 253, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.87595, 6.89679, -19.9465, 13.3877, 0.47283, 32.7735),
+"format": 34896613377,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 3, 0, 4, 0, 4, 0, 5, 0, 0, 0, 6, 0, 5, 0, 4, 0, 4, 0, 7, 0, 6, 0, 4, 0, 3, 0, 2, 0, 2, 0, 7, 0, 4, 0, 2, 0, 1, 0, 6, 0, 6, 0, 7, 0, 2, 0),
+"name": "Material_44",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(254, 255, 253, 255, 254, 255, 0, 0, 254, 255, 253, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 253, 255, 254, 255, 0, 0, 0, 0, 253, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.73417, 0.225959, -7.56199, 0.23829, 4.40089, 5.60298),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 4, 0, 5, 0, 5, 0, 1, 0, 0, 0, 0, 0, 3, 0, 6, 0, 6, 0, 4, 0, 0, 0, 5, 0, 4, 0, 6, 0, 6, 0, 7, 0, 5, 0, 6, 0, 3, 0, 2, 0, 2, 0, 7, 0, 6, 0, 2, 0, 1, 0, 5, 0, 5, 0, 7, 0, 2, 0),
+"name": "Material_61",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(252, 255, 254, 255, 254, 255, 0, 0, 252, 255, 254, 255, 0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 0, 0, 252, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}, {
+"aabb": AABB(3.73417, 0.225959, 3.2394, 0.23829, 4.40089, 4.19001),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 0, 0, 4, 0, 5, 0, 5, 0, 1, 0, 0, 0, 0, 0, 3, 0, 6, 0, 6, 0, 4, 0, 0, 0, 5, 0, 4, 0, 6, 0, 6, 0, 7, 0, 5, 0, 6, 0, 3, 0, 2, 0, 2, 0, 7, 0, 6, 0, 2, 0, 1, 0, 5, 0, 5, 0, 7, 0, 2, 0),
+"name": "Material_62",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(252, 255, 254, 255, 254, 255, 0, 0, 252, 255, 254, 255, 0, 0, 0, 0, 252, 255, 0, 0, 0, 0, 0, 0, 252, 255, 0, 0, 254, 255, 0, 0, 0, 0, 254, 255, 254, 255, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 254, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mfeik"]
+resource_name = "DebugMapModelConversionTest_Mesh_2"
+lightmap_size_hint = Vector2i(1518, 1518)
+_surfaces = [{
+"aabb": AABB(-3.9995, 0.23641, -7.5547, 7.99889, 9.99868e-06, 15.1092),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 103, 176, 51, 63, 108, 64, 71, 63, 0, 0, 0, 0, 0, 0, 128, 63, 103, 176, 51, 63, 162, 25, 44, 63, 0, 0, 128, 63, 0, 0, 128, 63, 194, 64, 0, 63, 162, 25, 44, 63, 0, 0, 128, 63, 0, 0, 0, 0, 194, 64, 0, 63, 108, 64, 71, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_5juin"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(228, 245, 127, 64, 119, 21, 114, 62, 74, 190, 241, 64, 186, 247, 127, 192, 119, 21, 114, 62, 74, 190, 241, 64, 186, 247, 127, 192, 119, 21, 114, 62, 26, 192, 241, 192, 228, 245, 127, 64, 119, 21, 114, 62, 26, 192, 241, 192, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-4.181, 0.128399, -8.529, 6.75328, 6.99991, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 54, 103, 162, 62, 53, 46, 65, 63, 0, 0, 0, 0, 0, 0, 128, 63, 246, 81, 155, 62, 53, 46, 65, 63, 0, 0, 128, 63, 0, 0, 128, 63, 246, 81, 155, 62, 223, 102, 41, 63, 0, 0, 128, 63, 0, 0, 0, 0, 54, 103, 162, 62, 223, 102, 41, 63, 0, 0, 0, 0, 0, 0, 0, 0, 198, 179, 109, 63, 204, 238, 100, 63, 0, 0, 0, 0, 0, 0, 128, 63, 198, 179, 109, 63, 118, 39, 77, 63, 0, 0, 128, 63, 0, 0, 128, 63, 33, 153, 86, 63, 118, 39, 77, 63, 0, 0, 128, 63, 0, 0, 0, 0, 33, 153, 86, 63, 204, 238, 100, 63, 0, 0, 0, 0, 0, 0, 0, 0, 54, 217, 36, 63, 202, 95, 124, 63, 0, 0, 0, 0, 0, 0, 128, 63, 54, 217, 36, 63, 106, 234, 127, 63, 0, 0, 128, 63, 0, 0, 128, 63, 224, 17, 13, 63, 106, 234, 127, 63, 0, 0, 128, 63, 0, 0, 0, 0, 224, 17, 13, 63, 202, 95, 124, 63, 0, 0, 0, 0, 0, 0, 0, 0, 119, 96, 110, 63, 158, 109, 221, 62, 0, 0, 0, 0, 0, 0, 128, 63, 119, 96, 110, 63, 37, 126, 6, 63, 0, 0, 128, 63, 0, 0, 128, 63, 209, 69, 87, 63, 37, 126, 6, 63, 0, 0, 128, 63, 0, 0, 0, 0, 209, 69, 87, 63, 158, 109, 221, 62),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_ut25f"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(8, 160, 36, 64, 13, 27, 228, 64, 155, 237, 240, 192, 8, 160, 36, 64, 13, 27, 228, 64, 200, 118, 8, 193, 8, 160, 36, 64, 0, 123, 3, 62, 200, 118, 8, 193, 8, 160, 36, 64, 0, 123, 3, 62, 155, 237, 240, 192, 8, 160, 36, 64, 13, 27, 228, 64, 155, 237, 240, 192, 8, 160, 36, 64, 0, 123, 3, 62, 155, 237, 240, 192, 191, 202, 133, 192, 0, 123, 3, 62, 155, 237, 240, 192, 191, 202, 133, 192, 13, 27, 228, 64, 155, 237, 240, 192, 191, 202, 133, 192, 13, 27, 228, 64, 200, 118, 8, 193, 191, 202, 133, 192, 13, 27, 228, 64, 155, 237, 240, 192, 191, 202, 133, 192, 0, 123, 3, 62, 155, 237, 240, 192, 191, 202, 133, 192, 0, 123, 3, 62, 200, 118, 8, 193, 8, 160, 36, 64, 0, 123, 3, 62, 200, 118, 8, 193, 8, 160, 36, 64, 13, 27, 228, 64, 200, 118, 8, 193, 191, 202, 133, 192, 13, 27, 228, 64, 200, 118, 8, 193, 191, 202, 133, 192, 0, 123, 3, 62, 200, 118, 8, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-4.181, 0.128399, 7.471, 8.27327, 6.99991, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 106, 234, 127, 63, 113, 208, 26, 62, 0, 0, 0, 0, 0, 0, 128, 63, 202, 95, 124, 63, 113, 208, 26, 62, 0, 0, 128, 63, 0, 0, 128, 63, 202, 95, 124, 63, 101, 204, 110, 61, 0, 0, 128, 63, 0, 0, 0, 0, 106, 234, 127, 63, 101, 204, 110, 61, 0, 0, 0, 0, 0, 0, 0, 0, 238, 249, 125, 62, 64, 78, 104, 63, 0, 0, 0, 0, 0, 0, 128, 63, 163, 139, 174, 62, 64, 78, 104, 63, 0, 0, 128, 63, 0, 0, 128, 63, 163, 139, 174, 62, 21, 206, 75, 63, 0, 0, 128, 63, 0, 0, 0, 0, 238, 249, 125, 62, 21, 206, 75, 63),
+"format": 34359742519,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0),
+"material": SubResource("StandardMaterial3D_1buvf"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(212, 243, 130, 64, 13, 27, 228, 64, 50, 137, 7, 65, 212, 243, 130, 64, 13, 27, 228, 64, 112, 18, 239, 64, 212, 243, 130, 64, 0, 123, 3, 62, 112, 18, 239, 64, 212, 243, 130, 64, 0, 123, 3, 62, 50, 137, 7, 65, 212, 243, 130, 64, 0, 123, 3, 62, 112, 18, 239, 64, 212, 243, 130, 64, 13, 27, 228, 64, 112, 18, 239, 64, 192, 202, 133, 192, 13, 27, 228, 64, 112, 18, 239, 64, 192, 202, 133, 192, 0, 123, 3, 62, 112, 18, 239, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.63433, 0.128399, 6.97045, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 137, 102, 48, 62, 234, 191, 113, 63, 0, 0, 0, 0, 0, 0, 128, 63, 137, 102, 48, 62, 56, 47, 108, 63, 0, 0, 128, 63, 0, 0, 128, 63, 98, 146, 162, 61, 56, 47, 108, 63, 0, 0, 128, 63, 0, 0, 0, 0, 98, 146, 162, 61, 234, 191, 113, 63, 0, 0, 0, 0, 0, 0, 0, 0, 167, 55, 125, 63, 149, 49, 123, 63, 0, 0, 0, 0, 0, 0, 128, 63, 167, 55, 125, 63, 63, 106, 99, 63, 0, 0, 128, 63, 0, 0, 128, 63, 86, 0, 121, 63, 63, 106, 99, 63, 0, 0, 128, 63, 0, 0, 0, 0, 86, 0, 121, 63, 149, 49, 123, 63, 0, 0, 0, 0, 0, 0, 0, 0, 56, 47, 108, 63, 237, 78, 154, 62, 0, 0, 0, 0, 0, 0, 128, 63, 234, 191, 113, 63, 237, 78, 154, 62, 0, 0, 128, 63, 0, 0, 128, 63, 234, 191, 113, 63, 130, 128, 85, 62, 0, 0, 128, 63, 0, 0, 0, 0, 56, 47, 108, 63, 130, 128, 85, 62, 0, 0, 0, 0, 0, 0, 0, 0, 228, 75, 89, 63, 185, 61, 127, 63, 0, 0, 0, 0, 0, 0, 128, 63, 58, 19, 113, 63, 185, 61, 127, 63, 0, 0, 128, 63, 0, 0, 128, 63, 58, 19, 113, 63, 105, 6, 123, 63, 0, 0, 128, 63, 0, 0, 0, 0, 228, 75, 89, 63, 105, 6, 123, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_0oik5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(200, 216, 154, 64, 13, 27, 228, 64, 239, 136, 7, 65, 200, 216, 154, 64, 13, 27, 228, 64, 246, 13, 223, 64, 200, 216, 154, 64, 0, 123, 3, 62, 246, 13, 223, 64, 200, 216, 154, 64, 0, 123, 3, 62, 239, 136, 7, 65, 200, 216, 154, 64, 13, 27, 228, 64, 239, 136, 7, 65, 200, 216, 154, 64, 0, 123, 3, 62, 239, 136, 7, 65, 223, 152, 104, 64, 0, 123, 3, 62, 239, 136, 7, 65, 223, 152, 104, 64, 13, 27, 228, 64, 239, 136, 7, 65, 223, 152, 104, 64, 13, 27, 228, 64, 246, 13, 223, 64, 223, 152, 104, 64, 13, 27, 228, 64, 239, 136, 7, 65, 223, 152, 104, 64, 0, 123, 3, 62, 239, 136, 7, 65, 223, 152, 104, 64, 0, 123, 3, 62, 246, 13, 223, 64, 200, 216, 154, 64, 0, 123, 3, 62, 246, 13, 223, 64, 200, 216, 154, 64, 13, 27, 228, 64, 246, 13, 223, 64, 223, 152, 104, 64, 13, 27, 228, 64, 246, 13, 223, 64, 223, 152, 104, 64, 0, 123, 3, 62, 246, 13, 223, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.63433, 0.128399, -2.71343, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 33, 210, 119, 63, 15, 204, 117, 63, 0, 0, 0, 0, 0, 0, 128, 63, 33, 210, 119, 63, 13, 232, 112, 63, 0, 0, 128, 63, 0, 0, 128, 63, 203, 10, 96, 63, 13, 232, 112, 63, 0, 0, 128, 63, 0, 0, 0, 0, 203, 10, 96, 63, 15, 204, 117, 63, 0, 0, 0, 0, 0, 0, 0, 0, 205, 153, 72, 63, 185, 61, 127, 63, 0, 0, 0, 0, 0, 0, 128, 63, 119, 210, 48, 63, 185, 61, 127, 63, 0, 0, 128, 63, 0, 0, 128, 63, 119, 210, 48, 63, 105, 6, 123, 63, 0, 0, 128, 63, 0, 0, 0, 0, 205, 153, 72, 63, 105, 6, 123, 63, 0, 0, 0, 0, 0, 0, 0, 0, 112, 37, 119, 63, 151, 135, 2, 62, 0, 0, 0, 0, 0, 0, 128, 63, 111, 65, 114, 63, 151, 135, 2, 62, 0, 0, 128, 63, 0, 0, 128, 63, 111, 65, 114, 63, 251, 168, 13, 61, 0, 0, 128, 63, 0, 0, 0, 0, 112, 37, 119, 63, 251, 168, 13, 61, 0, 0, 0, 0, 0, 0, 0, 0, 184, 89, 186, 62, 8, 145, 126, 63, 0, 0, 0, 0, 0, 0, 128, 63, 100, 232, 233, 62, 8, 145, 126, 63, 0, 0, 128, 63, 0, 0, 128, 63, 100, 232, 233, 62, 184, 89, 122, 63, 0, 0, 128, 63, 0, 0, 0, 0, 184, 89, 186, 62, 184, 89, 122, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_wabrw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(200, 216, 154, 64, 13, 27, 228, 64, 1, 222, 176, 191, 200, 216, 154, 64, 13, 27, 228, 64, 234, 168, 45, 192, 200, 216, 154, 64, 0, 123, 3, 62, 234, 168, 45, 192, 200, 216, 154, 64, 0, 123, 3, 62, 1, 222, 176, 191, 200, 216, 154, 64, 13, 27, 228, 64, 1, 222, 176, 191, 200, 216, 154, 64, 0, 123, 3, 62, 1, 222, 176, 191, 223, 152, 104, 64, 0, 123, 3, 62, 1, 222, 176, 191, 223, 152, 104, 64, 13, 27, 228, 64, 1, 222, 176, 191, 223, 152, 104, 64, 13, 27, 228, 64, 234, 168, 45, 192, 223, 152, 104, 64, 13, 27, 228, 64, 1, 222, 176, 191, 223, 152, 104, 64, 0, 123, 3, 62, 1, 222, 176, 191, 223, 152, 104, 64, 0, 123, 3, 62, 234, 168, 45, 192, 200, 216, 154, 64, 0, 123, 3, 62, 234, 168, 45, 192, 200, 216, 154, 64, 13, 27, 228, 64, 234, 168, 45, 192, 223, 152, 104, 64, 13, 27, 228, 64, 234, 168, 45, 192, 223, 152, 104, 64, 0, 123, 3, 62, 234, 168, 45, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(7.63433, 0.128399, -2.71343, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 152, 50, 38, 63, 112, 37, 119, 63, 0, 0, 0, 0, 0, 0, 128, 63, 152, 50, 38, 63, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 128, 63, 66, 107, 14, 63, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 0, 0, 66, 107, 14, 63, 112, 37, 119, 63, 0, 0, 0, 0, 0, 0, 0, 0, 69, 222, 123, 63, 132, 72, 223, 61, 0, 0, 0, 0, 0, 0, 128, 63, 69, 222, 123, 63, 81, 55, 132, 60, 0, 0, 128, 63, 0, 0, 128, 63, 245, 166, 119, 63, 81, 55, 132, 60, 0, 0, 128, 63, 0, 0, 0, 0, 245, 166, 119, 63, 132, 72, 223, 61, 0, 0, 0, 0, 0, 0, 0, 0, 147, 219, 115, 62, 112, 37, 119, 63, 0, 0, 0, 0, 0, 0, 128, 63, 147, 219, 115, 62, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 128, 63, 59, 190, 20, 62, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 0, 0, 59, 190, 20, 62, 112, 37, 119, 63, 0, 0, 0, 0, 0, 0, 0, 0, 8, 145, 126, 63, 212, 70, 2, 63, 0, 0, 0, 0, 0, 0, 128, 63, 8, 145, 126, 63, 42, 14, 26, 63, 0, 0, 128, 63, 0, 0, 128, 63, 184, 89, 122, 63, 42, 14, 26, 63, 0, 0, 128, 63, 0, 0, 0, 0, 184, 89, 122, 63, 212, 70, 2, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_abwgk"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(94, 108, 13, 65, 13, 27, 228, 64, 1, 222, 176, 191, 94, 108, 13, 65, 13, 27, 228, 64, 234, 168, 45, 192, 94, 108, 13, 65, 0, 123, 3, 62, 234, 168, 45, 192, 94, 108, 13, 65, 0, 123, 3, 62, 1, 222, 176, 191, 94, 108, 13, 65, 13, 27, 228, 64, 1, 222, 176, 191, 94, 108, 13, 65, 0, 123, 3, 62, 1, 222, 176, 191, 101, 76, 244, 64, 0, 123, 3, 62, 1, 222, 176, 191, 101, 76, 244, 64, 13, 27, 228, 64, 1, 222, 176, 191, 101, 76, 244, 64, 13, 27, 228, 64, 234, 168, 45, 192, 101, 76, 244, 64, 13, 27, 228, 64, 1, 222, 176, 191, 101, 76, 244, 64, 0, 123, 3, 62, 1, 222, 176, 191, 101, 76, 244, 64, 0, 123, 3, 62, 234, 168, 45, 192, 94, 108, 13, 65, 0, 123, 3, 62, 234, 168, 45, 192, 94, 108, 13, 65, 13, 27, 228, 64, 234, 168, 45, 192, 101, 76, 244, 64, 13, 27, 228, 64, 234, 168, 45, 192, 101, 76, 244, 64, 0, 123, 3, 62, 234, 168, 45, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(11.753, 0.128399, -2.71343, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 235, 106, 85, 63, 15, 204, 117, 63, 0, 0, 0, 0, 0, 0, 128, 63, 235, 106, 85, 63, 13, 232, 112, 63, 0, 0, 128, 63, 0, 0, 128, 63, 149, 163, 61, 63, 13, 232, 112, 63, 0, 0, 128, 63, 0, 0, 0, 0, 149, 163, 61, 63, 15, 204, 117, 63, 0, 0, 0, 0, 0, 0, 0, 0, 246, 138, 124, 63, 205, 153, 72, 63, 0, 0, 0, 0, 0, 0, 128, 63, 246, 138, 124, 63, 119, 210, 48, 63, 0, 0, 128, 63, 0, 0, 128, 63, 166, 83, 120, 63, 119, 210, 48, 63, 0, 0, 128, 63, 0, 0, 0, 0, 166, 83, 120, 63, 205, 153, 72, 63, 0, 0, 0, 0, 0, 0, 0, 0, 86, 142, 118, 62, 211, 41, 92, 63, 0, 0, 0, 0, 0, 0, 128, 63, 86, 142, 118, 62, 209, 69, 87, 63, 0, 0, 128, 63, 0, 0, 128, 63, 254, 112, 23, 62, 209, 69, 87, 63, 0, 0, 128, 63, 0, 0, 0, 0, 254, 112, 23, 62, 211, 41, 92, 63, 0, 0, 0, 0, 0, 0, 0, 0, 167, 55, 125, 63, 100, 33, 75, 63, 0, 0, 0, 0, 0, 0, 128, 63, 167, 55, 125, 63, 186, 232, 98, 63, 0, 0, 128, 63, 0, 0, 128, 63, 86, 0, 121, 63, 186, 232, 98, 63, 0, 0, 128, 63, 0, 0, 0, 0, 86, 0, 121, 63, 100, 33, 75, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_8j1or"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(65, 82, 79, 65, 13, 27, 228, 64, 1, 222, 176, 191, 65, 82, 79, 65, 13, 27, 228, 64, 234, 168, 45, 192, 65, 82, 79, 65, 0, 123, 3, 62, 234, 168, 45, 192, 65, 82, 79, 65, 0, 123, 3, 62, 1, 222, 176, 191, 65, 82, 79, 65, 13, 27, 228, 64, 1, 222, 176, 191, 65, 82, 79, 65, 0, 123, 3, 62, 1, 222, 176, 191, 22, 12, 60, 65, 0, 123, 3, 62, 1, 222, 176, 191, 22, 12, 60, 65, 13, 27, 228, 64, 1, 222, 176, 191, 22, 12, 60, 65, 13, 27, 228, 64, 234, 168, 45, 192, 22, 12, 60, 65, 13, 27, 228, 64, 1, 222, 176, 191, 22, 12, 60, 65, 0, 123, 3, 62, 1, 222, 176, 191, 22, 12, 60, 65, 0, 123, 3, 62, 234, 168, 45, 192, 65, 82, 79, 65, 0, 123, 3, 62, 234, 168, 45, 192, 65, 82, 79, 65, 13, 27, 228, 64, 234, 168, 45, 192, 22, 12, 60, 65, 13, 27, 228, 64, 234, 168, 45, 192, 22, 12, 60, 65, 0, 123, 3, 62, 234, 168, 45, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(9.75295, 0.128399, -13.7134, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 33, 210, 119, 63, 224, 159, 74, 63, 0, 0, 0, 0, 0, 0, 128, 63, 32, 238, 114, 63, 224, 159, 74, 63, 0, 0, 128, 63, 0, 0, 128, 63, 32, 238, 114, 63, 138, 216, 50, 63, 0, 0, 128, 63, 0, 0, 0, 0, 33, 210, 119, 63, 138, 216, 50, 63, 0, 0, 0, 0, 0, 0, 0, 0, 238, 50, 159, 60, 167, 55, 125, 63, 0, 0, 0, 0, 0, 0, 128, 63, 238, 50, 159, 60, 81, 112, 101, 63, 0, 0, 128, 63, 0, 0, 128, 63, 212, 70, 66, 59, 81, 112, 101, 63, 0, 0, 128, 63, 0, 0, 0, 0, 212, 70, 66, 59, 167, 55, 125, 63, 0, 0, 0, 0, 0, 0, 0, 0, 111, 65, 114, 63, 13, 118, 110, 62, 0, 0, 0, 0, 0, 0, 128, 63, 112, 37, 119, 63, 13, 118, 110, 62, 0, 0, 128, 63, 0, 0, 128, 63, 112, 37, 119, 63, 181, 88, 15, 62, 0, 0, 128, 63, 0, 0, 0, 0, 111, 65, 114, 63, 181, 88, 15, 62, 0, 0, 0, 0, 0, 0, 0, 0, 69, 222, 123, 63, 47, 243, 9, 62, 0, 0, 0, 0, 0, 0, 128, 63, 69, 222, 123, 63, 135, 16, 105, 62, 0, 0, 128, 63, 0, 0, 128, 63, 245, 166, 119, 63, 135, 16, 105, 62, 0, 0, 128, 63, 0, 0, 0, 0, 245, 166, 119, 63, 47, 243, 9, 62),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_6fmkk"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(65, 82, 47, 65, 13, 27, 228, 64, 191, 27, 70, 193, 65, 82, 47, 65, 13, 27, 228, 64, 58, 106, 91, 193, 65, 82, 47, 65, 0, 123, 3, 62, 58, 106, 91, 193, 65, 82, 47, 65, 0, 123, 3, 62, 191, 27, 70, 193, 65, 82, 47, 65, 13, 27, 228, 64, 191, 27, 70, 193, 65, 82, 47, 65, 0, 123, 3, 62, 191, 27, 70, 193, 22, 12, 28, 65, 0, 123, 3, 62, 191, 27, 70, 193, 22, 12, 28, 65, 13, 27, 228, 64, 191, 27, 70, 193, 22, 12, 28, 65, 13, 27, 228, 64, 58, 106, 91, 193, 22, 12, 28, 65, 13, 27, 228, 64, 191, 27, 70, 193, 22, 12, 28, 65, 0, 123, 3, 62, 191, 27, 70, 193, 22, 12, 28, 65, 0, 123, 3, 62, 58, 106, 91, 193, 65, 82, 47, 65, 0, 123, 3, 62, 58, 106, 91, 193, 65, 82, 47, 65, 13, 27, 228, 64, 58, 106, 91, 193, 22, 12, 28, 65, 13, 27, 228, 64, 58, 106, 91, 193, 22, 12, 28, 65, 0, 123, 3, 62, 58, 106, 91, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(7.63433, 0.128399, 2.28657, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 15, 204, 117, 63, 101, 147, 205, 62, 0, 0, 0, 0, 0, 0, 128, 63, 13, 232, 112, 63, 101, 147, 205, 62, 0, 0, 128, 63, 0, 0, 128, 63, 13, 232, 112, 63, 185, 4, 158, 62, 0, 0, 128, 63, 0, 0, 0, 0, 15, 204, 117, 63, 185, 4, 158, 62, 0, 0, 0, 0, 0, 0, 0, 0, 110, 150, 14, 63, 69, 222, 123, 63, 0, 0, 0, 0, 0, 0, 128, 63, 48, 158, 237, 62, 69, 222, 123, 63, 0, 0, 128, 63, 0, 0, 128, 63, 48, 158, 237, 62, 245, 166, 119, 63, 0, 0, 128, 63, 0, 0, 0, 0, 110, 150, 14, 63, 245, 166, 119, 63, 0, 0, 0, 0, 0, 0, 0, 0, 172, 142, 111, 63, 31, 67, 15, 63, 0, 0, 0, 0, 0, 0, 128, 63, 173, 114, 116, 63, 31, 67, 15, 63, 0, 0, 128, 63, 0, 0, 128, 63, 173, 114, 116, 63, 145, 247, 238, 62, 0, 0, 128, 63, 0, 0, 0, 0, 172, 142, 111, 63, 145, 247, 238, 62, 0, 0, 0, 0, 0, 0, 0, 0, 47, 243, 9, 62, 69, 222, 123, 63, 0, 0, 0, 0, 0, 0, 128, 63, 135, 16, 105, 62, 69, 222, 123, 63, 0, 0, 128, 63, 0, 0, 128, 63, 135, 16, 105, 62, 245, 166, 119, 63, 0, 0, 128, 63, 0, 0, 0, 0, 47, 243, 9, 62, 245, 166, 119, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_ahecd"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(94, 108, 13, 65, 13, 27, 228, 64, 255, 144, 103, 64, 94, 108, 13, 65, 13, 27, 228, 64, 22, 87, 18, 64, 94, 108, 13, 65, 0, 123, 3, 62, 22, 87, 18, 64, 94, 108, 13, 65, 0, 123, 3, 62, 255, 144, 103, 64, 94, 108, 13, 65, 13, 27, 228, 64, 255, 144, 103, 64, 94, 108, 13, 65, 0, 123, 3, 62, 255, 144, 103, 64, 101, 76, 244, 64, 0, 123, 3, 62, 255, 144, 103, 64, 101, 76, 244, 64, 13, 27, 228, 64, 255, 144, 103, 64, 101, 76, 244, 64, 13, 27, 228, 64, 22, 87, 18, 64, 101, 76, 244, 64, 13, 27, 228, 64, 255, 144, 103, 64, 101, 76, 244, 64, 0, 123, 3, 62, 255, 144, 103, 64, 101, 76, 244, 64, 0, 123, 3, 62, 22, 87, 18, 64, 94, 108, 13, 65, 0, 123, 3, 62, 22, 87, 18, 64, 94, 108, 13, 65, 13, 27, 228, 64, 22, 87, 18, 64, 101, 76, 244, 64, 13, 27, 228, 64, 22, 87, 18, 64, 101, 76, 244, 64, 0, 123, 3, 62, 22, 87, 18, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(11.753, 0.128399, 2.28657, 1.20464, 6.99991, 1.33167),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 173, 114, 116, 63, 249, 139, 39, 63, 0, 0, 0, 0, 0, 0, 128, 63, 172, 142, 111, 63, 249, 139, 39, 63, 0, 0, 128, 63, 0, 0, 128, 63, 172, 142, 111, 63, 163, 196, 15, 63, 0, 0, 128, 63, 0, 0, 0, 0, 173, 114, 116, 63, 163, 196, 15, 63, 0, 0, 0, 0, 0, 0, 0, 0, 126, 127, 170, 62, 149, 49, 123, 63, 0, 0, 0, 0, 0, 0, 128, 63, 165, 225, 117, 62, 149, 49, 123, 63, 0, 0, 128, 63, 0, 0, 128, 63, 165, 225, 117, 62, 68, 250, 118, 63, 0, 0, 128, 63, 0, 0, 0, 0, 126, 127, 170, 62, 68, 250, 118, 63, 0, 0, 0, 0, 0, 0, 0, 0, 149, 106, 220, 62, 251, 225, 110, 63, 0, 0, 0, 0, 0, 0, 128, 63, 149, 106, 220, 62, 253, 197, 115, 63, 0, 0, 128, 63, 0, 0, 128, 63, 233, 219, 172, 62, 253, 197, 115, 63, 0, 0, 128, 63, 0, 0, 0, 0, 233, 219, 172, 62, 251, 225, 110, 63, 0, 0, 0, 0, 0, 0, 0, 0, 216, 128, 78, 63, 6, 201, 180, 60, 0, 0, 0, 0, 0, 0, 128, 63, 46, 72, 102, 63, 6, 201, 180, 60, 0, 0, 128, 63, 0, 0, 128, 63, 46, 72, 102, 63, 201, 123, 183, 59, 0, 0, 128, 63, 0, 0, 0, 0, 216, 128, 78, 63, 201, 123, 183, 59),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_tdww8"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(65, 82, 79, 65, 13, 27, 228, 64, 255, 144, 103, 64, 65, 82, 79, 65, 13, 27, 228, 64, 22, 87, 18, 64, 65, 82, 79, 65, 0, 123, 3, 62, 22, 87, 18, 64, 65, 82, 79, 65, 0, 123, 3, 62, 255, 144, 103, 64, 65, 82, 79, 65, 13, 27, 228, 64, 255, 144, 103, 64, 65, 82, 79, 65, 0, 123, 3, 62, 255, 144, 103, 64, 22, 12, 60, 65, 0, 123, 3, 62, 255, 144, 103, 64, 22, 12, 60, 65, 13, 27, 228, 64, 255, 144, 103, 64, 22, 12, 60, 65, 13, 27, 228, 64, 22, 87, 18, 64, 22, 12, 60, 65, 13, 27, 228, 64, 255, 144, 103, 64, 22, 12, 60, 65, 0, 123, 3, 62, 255, 144, 103, 64, 22, 12, 60, 65, 0, 123, 3, 62, 22, 87, 18, 64, 65, 82, 79, 65, 0, 123, 3, 62, 22, 87, 18, 64, 65, 82, 79, 65, 13, 27, 228, 64, 22, 87, 18, 64, 22, 12, 60, 65, 13, 27, 228, 64, 22, 87, 18, 64, 22, 12, 60, 65, 0, 123, 3, 62, 22, 87, 18, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.63433, 0.113249, 2.21293, 1.20464, 7.27921, 1.47675),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 23, 93, 52, 63, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 128, 63, 23, 93, 52, 63, 2, 29, 102, 63, 0, 0, 128, 63, 0, 0, 128, 63, 96, 60, 27, 63, 2, 29, 102, 63, 0, 0, 128, 63, 0, 0, 0, 0, 96, 60, 27, 63, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 0, 0, 234, 191, 113, 63, 53, 46, 65, 63, 0, 0, 0, 0, 0, 0, 128, 63, 234, 191, 113, 63, 126, 13, 40, 63, 0, 0, 128, 63, 0, 0, 128, 63, 154, 136, 109, 63, 126, 13, 40, 63, 0, 0, 128, 63, 0, 0, 0, 0, 154, 136, 109, 63, 53, 46, 65, 63, 0, 0, 0, 0, 0, 0, 0, 0, 226, 245, 17, 63, 208, 154, 179, 62, 0, 0, 0, 0, 0, 0, 128, 63, 226, 245, 17, 63, 53, 188, 190, 62, 0, 0, 128, 63, 0, 0, 128, 63, 84, 170, 241, 62, 53, 188, 190, 62, 0, 0, 128, 63, 0, 0, 0, 0, 84, 170, 241, 62, 208, 154, 179, 62, 0, 0, 0, 0, 0, 0, 0, 0, 132, 72, 31, 63, 238, 50, 159, 60, 0, 0, 0, 0, 0, 0, 128, 63, 60, 105, 56, 63, 238, 50, 159, 60, 0, 0, 128, 63, 0, 0, 128, 63, 60, 105, 56, 63, 212, 70, 66, 59, 0, 0, 128, 63, 0, 0, 0, 0, 132, 72, 31, 63, 212, 70, 66, 59),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_fu44y"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(200, 216, 154, 64, 240, 142, 236, 64, 116, 35, 108, 64, 200, 216, 154, 64, 240, 142, 236, 64, 151, 160, 13, 64, 200, 216, 154, 64, 32, 239, 231, 61, 151, 160, 13, 64, 200, 216, 154, 64, 32, 239, 231, 61, 116, 35, 108, 64, 200, 216, 154, 64, 240, 142, 236, 64, 116, 35, 108, 64, 200, 216, 154, 64, 32, 239, 231, 61, 116, 35, 108, 64, 223, 152, 104, 64, 32, 239, 231, 61, 116, 35, 108, 64, 223, 152, 104, 64, 240, 142, 236, 64, 116, 35, 108, 64, 223, 152, 104, 64, 240, 142, 236, 64, 151, 160, 13, 64, 223, 152, 104, 64, 240, 142, 236, 64, 116, 35, 108, 64, 223, 152, 104, 64, 32, 239, 231, 61, 116, 35, 108, 64, 223, 152, 104, 64, 32, 239, 231, 61, 151, 160, 13, 64, 200, 216, 154, 64, 32, 239, 231, 61, 151, 160, 13, 64, 200, 216, 154, 64, 240, 142, 236, 64, 151, 160, 13, 64, 223, 152, 104, 64, 240, 142, 236, 64, 151, 160, 13, 64, 223, 152, 104, 64, 32, 239, 231, 61, 151, 160, 13, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(15.9154, 0.128399, 6.97045, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 231, 133, 37, 63, 97, 32, 32, 63, 0, 0, 0, 0, 0, 0, 128, 63, 53, 245, 31, 63, 97, 32, 32, 63, 0, 0, 128, 63, 0, 0, 128, 63, 53, 245, 31, 63, 11, 89, 8, 63, 0, 0, 128, 63, 0, 0, 0, 0, 231, 133, 37, 63, 11, 89, 8, 63, 0, 0, 0, 0, 0, 0, 0, 0, 82, 84, 106, 63, 147, 77, 118, 63, 0, 0, 0, 0, 0, 0, 128, 63, 252, 140, 82, 63, 147, 77, 118, 63, 0, 0, 128, 63, 0, 0, 128, 63, 252, 140, 82, 63, 228, 132, 122, 63, 0, 0, 128, 63, 0, 0, 0, 0, 82, 84, 106, 63, 228, 132, 122, 63, 0, 0, 0, 0, 0, 0, 0, 0, 56, 47, 108, 63, 76, 25, 51, 62, 0, 0, 0, 0, 0, 0, 128, 63, 234, 191, 113, 63, 76, 25, 51, 62, 0, 0, 128, 63, 0, 0, 128, 63, 234, 191, 113, 63, 232, 247, 167, 61, 0, 0, 128, 63, 0, 0, 0, 0, 56, 47, 108, 63, 232, 247, 167, 61, 0, 0, 0, 0, 0, 0, 0, 0, 251, 168, 13, 61, 69, 222, 123, 63, 0, 0, 0, 0, 0, 0, 128, 63, 151, 135, 2, 62, 69, 222, 123, 63, 0, 0, 128, 63, 0, 0, 128, 63, 151, 135, 2, 62, 245, 166, 119, 63, 0, 0, 128, 63, 0, 0, 0, 0, 251, 168, 13, 61, 245, 166, 119, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_l8okr"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(210, 245, 136, 65, 13, 27, 228, 64, 239, 136, 7, 65, 210, 245, 136, 65, 13, 27, 228, 64, 246, 13, 223, 64, 210, 245, 136, 65, 0, 123, 3, 62, 246, 13, 223, 64, 210, 245, 136, 65, 0, 123, 3, 62, 239, 136, 7, 65, 210, 245, 136, 65, 13, 27, 228, 64, 239, 136, 7, 65, 210, 245, 136, 65, 0, 123, 3, 62, 239, 136, 7, 65, 122, 165, 126, 65, 0, 123, 3, 62, 239, 136, 7, 65, 122, 165, 126, 65, 13, 27, 228, 64, 239, 136, 7, 65, 122, 165, 126, 65, 13, 27, 228, 64, 246, 13, 223, 64, 122, 165, 126, 65, 13, 27, 228, 64, 239, 136, 7, 65, 122, 165, 126, 65, 0, 123, 3, 62, 239, 136, 7, 65, 122, 165, 126, 65, 0, 123, 3, 62, 246, 13, 223, 64, 210, 245, 136, 65, 0, 123, 3, 62, 246, 13, 223, 64, 210, 245, 136, 65, 13, 27, 228, 64, 246, 13, 223, 64, 122, 165, 126, 65, 13, 27, 228, 64, 246, 13, 223, 64, 122, 165, 126, 65, 0, 123, 3, 62, 246, 13, 223, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(15.9154, 0.128399, -3.02954, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 231, 76, 196, 61, 17, 34, 61, 63, 0, 0, 0, 0, 0, 0, 128, 63, 86, 199, 151, 61, 17, 34, 61, 63, 0, 0, 128, 63, 0, 0, 128, 63, 86, 199, 151, 61, 187, 90, 37, 63, 0, 0, 128, 63, 0, 0, 0, 0, 231, 76, 196, 61, 187, 90, 37, 63, 0, 0, 0, 0, 0, 0, 0, 0, 35, 40, 63, 63, 147, 77, 118, 63, 0, 0, 0, 0, 0, 0, 128, 63, 205, 96, 39, 63, 147, 77, 118, 63, 0, 0, 128, 63, 0, 0, 128, 63, 205, 96, 39, 63, 228, 132, 122, 63, 0, 0, 128, 63, 0, 0, 0, 0, 35, 40, 63, 63, 228, 132, 122, 63, 0, 0, 0, 0, 0, 0, 0, 0, 216, 185, 111, 63, 207, 239, 207, 62, 0, 0, 0, 0, 0, 0, 128, 63, 216, 185, 111, 63, 52, 17, 219, 62, 0, 0, 128, 63, 0, 0, 128, 63, 130, 242, 87, 63, 52, 17, 219, 62, 0, 0, 128, 63, 0, 0, 0, 0, 130, 242, 87, 63, 207, 239, 207, 62, 0, 0, 0, 0, 0, 0, 0, 0, 228, 132, 122, 63, 104, 148, 120, 62, 0, 0, 0, 0, 0, 0, 128, 63, 228, 132, 122, 63, 224, 216, 171, 62, 0, 0, 128, 63, 0, 0, 128, 63, 147, 77, 118, 63, 224, 216, 171, 62, 0, 0, 128, 63, 0, 0, 0, 0, 147, 77, 118, 63, 104, 148, 120, 62),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_bi45e"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(210, 245, 136, 65, 13, 27, 228, 64, 117, 184, 195, 191, 210, 245, 136, 65, 13, 27, 228, 64, 12, 228, 65, 192, 210, 245, 136, 65, 0, 123, 3, 62, 12, 228, 65, 192, 210, 245, 136, 65, 0, 123, 3, 62, 117, 184, 195, 191, 210, 245, 136, 65, 13, 27, 228, 64, 117, 184, 195, 191, 210, 245, 136, 65, 0, 123, 3, 62, 117, 184, 195, 191, 122, 165, 126, 65, 0, 123, 3, 62, 117, 184, 195, 191, 122, 165, 126, 65, 13, 27, 228, 64, 117, 184, 195, 191, 122, 165, 126, 65, 13, 27, 228, 64, 12, 228, 65, 192, 122, 165, 126, 65, 13, 27, 228, 64, 117, 184, 195, 191, 122, 165, 126, 65, 0, 123, 3, 62, 117, 184, 195, 191, 122, 165, 126, 65, 0, 123, 3, 62, 12, 228, 65, 192, 210, 245, 136, 65, 0, 123, 3, 62, 12, 228, 65, 192, 210, 245, 136, 65, 13, 27, 228, 64, 12, 228, 65, 192, 122, 165, 126, 65, 13, 27, 228, 64, 12, 228, 65, 192, 122, 165, 126, 65, 0, 123, 3, 62, 12, 228, 65, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(15.9154, 0.128399, -13.0295, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 163, 139, 174, 62, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 128, 63, 163, 139, 174, 62, 197, 207, 104, 63, 0, 0, 128, 63, 0, 0, 128, 63, 238, 249, 125, 62, 197, 207, 104, 63, 0, 0, 128, 63, 0, 0, 0, 0, 238, 249, 125, 62, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 0, 0, 50, 244, 116, 63, 6, 2, 22, 63, 0, 0, 0, 0, 0, 0, 128, 63, 50, 244, 116, 63, 96, 117, 252, 62, 0, 0, 128, 63, 0, 0, 128, 63, 131, 43, 121, 63, 96, 117, 252, 62, 0, 0, 128, 63, 0, 0, 0, 0, 131, 43, 121, 63, 6, 2, 22, 63, 0, 0, 0, 0, 0, 0, 0, 0, 17, 91, 158, 62, 189, 176, 172, 57, 0, 0, 0, 0, 0, 0, 128, 63, 17, 91, 158, 62, 6, 201, 180, 60, 0, 0, 128, 63, 0, 0, 128, 63, 202, 152, 93, 62, 6, 201, 180, 60, 0, 0, 128, 63, 0, 0, 0, 0, 202, 152, 93, 62, 189, 176, 172, 57, 0, 0, 0, 0, 0, 0, 0, 0, 228, 132, 122, 63, 111, 65, 178, 62, 0, 0, 0, 0, 0, 0, 128, 63, 228, 132, 122, 63, 27, 208, 225, 62, 0, 0, 128, 63, 0, 0, 128, 63, 147, 77, 118, 63, 27, 208, 225, 62, 0, 0, 128, 63, 0, 0, 0, 0, 147, 77, 118, 63, 111, 65, 178, 62),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_i3i5p"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(210, 245, 136, 65, 13, 27, 228, 64, 15, 119, 56, 193, 210, 245, 136, 65, 13, 27, 228, 64, 3, 121, 80, 193, 210, 245, 136, 65, 0, 123, 3, 62, 3, 121, 80, 193, 210, 245, 136, 65, 0, 123, 3, 62, 15, 119, 56, 193, 210, 245, 136, 65, 13, 27, 228, 64, 15, 119, 56, 193, 210, 245, 136, 65, 0, 123, 3, 62, 15, 119, 56, 193, 122, 165, 126, 65, 0, 123, 3, 62, 15, 119, 56, 193, 122, 165, 126, 65, 13, 27, 228, 64, 15, 119, 56, 193, 122, 165, 126, 65, 13, 27, 228, 64, 3, 121, 80, 193, 122, 165, 126, 65, 13, 27, 228, 64, 15, 119, 56, 193, 122, 165, 126, 65, 0, 123, 3, 62, 15, 119, 56, 193, 122, 165, 126, 65, 0, 123, 3, 62, 3, 121, 80, 193, 210, 245, 136, 65, 0, 123, 3, 62, 3, 121, 80, 193, 210, 245, 136, 65, 13, 27, 228, 64, 3, 121, 80, 193, 122, 165, 126, 65, 13, 27, 228, 64, 3, 121, 80, 193, 122, 165, 126, 65, 0, 123, 3, 62, 3, 121, 80, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(15.9154, 0.128399, -19.0295, 1.20464, 6.99991, 1.50048),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 102, 5, 80, 63, 176, 1, 157, 62, 0, 0, 0, 0, 0, 0, 128, 63, 102, 5, 80, 63, 76, 224, 145, 62, 0, 0, 128, 63, 0, 0, 128, 63, 16, 62, 56, 63, 76, 224, 145, 62, 0, 0, 128, 63, 0, 0, 0, 0, 16, 62, 56, 63, 176, 1, 157, 62, 0, 0, 0, 0, 0, 0, 0, 0, 227, 160, 117, 63, 66, 164, 47, 63, 0, 0, 0, 0, 0, 0, 128, 63, 227, 160, 117, 63, 236, 220, 23, 63, 0, 0, 128, 63, 0, 0, 128, 63, 51, 216, 121, 63, 236, 220, 23, 63, 0, 0, 128, 63, 0, 0, 0, 0, 51, 216, 121, 63, 66, 164, 47, 63, 0, 0, 0, 0, 0, 0, 0, 0, 5, 30, 81, 61, 212, 212, 63, 63, 0, 0, 0, 0, 0, 0, 128, 63, 199, 37, 240, 60, 212, 212, 63, 63, 0, 0, 128, 63, 0, 0, 128, 63, 199, 37, 240, 60, 126, 13, 40, 63, 0, 0, 128, 63, 0, 0, 0, 0, 5, 30, 81, 61, 126, 13, 40, 63, 0, 0, 0, 0, 0, 0, 0, 0, 115, 237, 0, 63, 199, 151, 178, 62, 0, 0, 0, 0, 0, 0, 128, 63, 201, 180, 24, 63, 199, 151, 178, 62, 0, 0, 128, 63, 0, 0, 128, 63, 201, 180, 24, 63, 38, 41, 170, 62, 0, 0, 128, 63, 0, 0, 0, 0, 115, 237, 0, 63, 38, 41, 170, 62),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_omcjy"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(210, 245, 136, 65, 13, 27, 228, 64, 121, 59, 140, 193, 210, 245, 136, 65, 13, 27, 228, 64, 114, 60, 152, 193, 210, 245, 136, 65, 0, 123, 3, 62, 114, 60, 152, 193, 210, 245, 136, 65, 0, 123, 3, 62, 121, 59, 140, 193, 210, 245, 136, 65, 13, 27, 228, 64, 121, 59, 140, 193, 210, 245, 136, 65, 0, 123, 3, 62, 121, 59, 140, 193, 122, 165, 126, 65, 0, 123, 3, 62, 121, 59, 140, 193, 122, 165, 126, 65, 13, 27, 228, 64, 121, 59, 140, 193, 122, 165, 126, 65, 13, 27, 228, 64, 114, 60, 152, 193, 122, 165, 126, 65, 13, 27, 228, 64, 121, 59, 140, 193, 122, 165, 126, 65, 0, 123, 3, 62, 121, 59, 140, 193, 122, 165, 126, 65, 0, 123, 3, 62, 114, 60, 152, 193, 210, 245, 136, 65, 0, 123, 3, 62, 114, 60, 152, 193, 210, 245, 136, 65, 13, 27, 228, 64, 114, 60, 152, 193, 122, 165, 126, 65, 13, 27, 228, 64, 114, 60, 152, 193, 122, 165, 126, 65, 0, 123, 3, 62, 114, 60, 152, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.9154, 0.128399, -19.0295, 1.20464, 6.99991, 1.50048),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 237, 135, 59, 61, 211, 41, 92, 63, 0, 0, 0, 0, 0, 0, 128, 63, 151, 249, 196, 60, 211, 41, 92, 63, 0, 0, 128, 63, 0, 0, 128, 63, 151, 249, 196, 60, 125, 98, 68, 63, 0, 0, 128, 63, 0, 0, 0, 0, 237, 135, 59, 61, 125, 98, 68, 63, 0, 0, 0, 0, 0, 0, 0, 0, 210, 126, 120, 63, 64, 78, 104, 63, 0, 0, 0, 0, 0, 0, 128, 63, 210, 126, 120, 63, 234, 134, 80, 63, 0, 0, 128, 63, 0, 0, 128, 63, 129, 71, 116, 63, 234, 134, 80, 63, 0, 0, 128, 63, 0, 0, 0, 0, 129, 71, 116, 63, 64, 78, 104, 63, 0, 0, 0, 0, 0, 0, 0, 0, 137, 102, 48, 62, 197, 65, 235, 62, 0, 0, 0, 0, 0, 0, 128, 63, 137, 102, 48, 62, 97, 32, 224, 62, 0, 0, 128, 63, 0, 0, 128, 63, 98, 146, 162, 61, 97, 32, 224, 62, 0, 0, 128, 63, 0, 0, 0, 0, 98, 146, 162, 61, 197, 65, 235, 62, 0, 0, 0, 0, 0, 0, 0, 0, 136, 130, 171, 62, 51, 216, 121, 63, 0, 0, 0, 0, 0, 0, 128, 63, 52, 17, 219, 62, 51, 216, 121, 63, 0, 0, 128, 63, 0, 0, 128, 63, 52, 17, 219, 62, 227, 160, 117, 63, 0, 0, 128, 63, 0, 0, 0, 0, 136, 130, 171, 62, 227, 160, 117, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_mvlya"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(78, 215, 163, 64, 13, 27, 228, 64, 121, 59, 140, 193, 78, 215, 163, 64, 13, 27, 228, 64, 114, 60, 152, 193, 78, 215, 163, 64, 0, 123, 3, 62, 114, 60, 152, 193, 78, 215, 163, 64, 0, 123, 3, 62, 121, 59, 140, 193, 78, 215, 163, 64, 13, 27, 228, 64, 121, 59, 140, 193, 78, 215, 163, 64, 0, 123, 3, 62, 121, 59, 140, 193, 235, 149, 122, 64, 0, 123, 3, 62, 121, 59, 140, 193, 235, 149, 122, 64, 13, 27, 228, 64, 121, 59, 140, 193, 235, 149, 122, 64, 13, 27, 228, 64, 114, 60, 152, 193, 235, 149, 122, 64, 13, 27, 228, 64, 121, 59, 140, 193, 235, 149, 122, 64, 0, 123, 3, 62, 121, 59, 140, 193, 235, 149, 122, 64, 0, 123, 3, 62, 114, 60, 152, 193, 78, 215, 163, 64, 0, 123, 3, 62, 114, 60, 152, 193, 78, 215, 163, 64, 13, 27, 228, 64, 114, 60, 152, 193, 235, 149, 122, 64, 13, 27, 228, 64, 114, 60, 152, 193, 235, 149, 122, 64, 0, 123, 3, 62, 114, 60, 152, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.63433, 0.128399, -8.17224, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 41, 99, 54, 63, 225, 188, 48, 61, 0, 0, 0, 0, 0, 0, 128, 63, 41, 99, 54, 63, 128, 99, 175, 60, 0, 0, 128, 63, 0, 0, 128, 63, 211, 155, 30, 63, 128, 99, 175, 60, 0, 0, 128, 63, 0, 0, 0, 0, 211, 155, 30, 63, 225, 188, 48, 61, 0, 0, 0, 0, 0, 0, 0, 0, 90, 58, 5, 62, 192, 120, 118, 63, 0, 0, 0, 0, 0, 0, 128, 63, 7, 116, 24, 61, 192, 120, 118, 63, 0, 0, 128, 63, 0, 0, 128, 63, 7, 116, 24, 61, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 0, 0, 90, 58, 5, 62, 111, 65, 114, 63, 0, 0, 0, 0, 0, 0, 0, 0, 127, 241, 44, 63, 108, 7, 38, 63, 0, 0, 0, 0, 0, 0, 128, 63, 127, 241, 44, 63, 30, 152, 43, 63, 0, 0, 128, 63, 0, 0, 128, 63, 41, 42, 21, 63, 30, 152, 43, 63, 0, 0, 128, 63, 0, 0, 0, 0, 41, 42, 21, 63, 108, 7, 38, 63, 0, 0, 0, 0, 0, 0, 0, 0, 135, 215, 7, 63, 100, 33, 75, 63, 0, 0, 0, 0, 0, 0, 128, 63, 135, 215, 7, 63, 186, 232, 98, 63, 0, 0, 128, 63, 0, 0, 128, 63, 54, 160, 3, 63, 186, 232, 98, 63, 0, 0, 128, 63, 0, 0, 0, 0, 54, 160, 3, 63, 100, 33, 75, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_vovig"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(200, 216, 154, 64, 13, 27, 228, 64, 29, 127, 213, 192, 200, 216, 154, 64, 13, 27, 228, 64, 131, 193, 2, 193, 200, 216, 154, 64, 0, 123, 3, 62, 131, 193, 2, 193, 200, 216, 154, 64, 0, 123, 3, 62, 29, 127, 213, 192, 200, 216, 154, 64, 13, 27, 228, 64, 29, 127, 213, 192, 200, 216, 154, 64, 0, 123, 3, 62, 29, 127, 213, 192, 223, 152, 104, 64, 0, 123, 3, 62, 29, 127, 213, 192, 223, 152, 104, 64, 13, 27, 228, 64, 29, 127, 213, 192, 223, 152, 104, 64, 13, 27, 228, 64, 131, 193, 2, 193, 223, 152, 104, 64, 13, 27, 228, 64, 29, 127, 213, 192, 223, 152, 104, 64, 0, 123, 3, 62, 29, 127, 213, 192, 223, 152, 104, 64, 0, 123, 3, 62, 131, 193, 2, 193, 200, 216, 154, 64, 0, 123, 3, 62, 131, 193, 2, 193, 200, 216, 154, 64, 13, 27, 228, 64, 131, 193, 2, 193, 223, 152, 104, 64, 13, 27, 228, 64, 131, 193, 2, 193, 223, 152, 104, 64, 0, 123, 3, 62, 131, 193, 2, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-3.92616, 0.128399, -8.17224, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 247, 53, 32, 62, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 128, 63, 247, 53, 32, 62, 2, 29, 102, 63, 0, 0, 128, 63, 0, 0, 128, 63, 62, 49, 130, 61, 2, 29, 102, 63, 0, 0, 128, 63, 0, 0, 0, 0, 62, 49, 130, 61, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 0, 0, 126, 127, 170, 62, 192, 120, 118, 63, 0, 0, 0, 0, 0, 0, 128, 63, 165, 225, 117, 62, 192, 120, 118, 63, 0, 0, 128, 63, 0, 0, 128, 63, 165, 225, 117, 62, 111, 65, 114, 63, 0, 0, 128, 63, 0, 0, 0, 0, 126, 127, 170, 62, 111, 65, 114, 63, 0, 0, 0, 0, 0, 0, 0, 0, 85, 85, 213, 62, 171, 227, 11, 63, 0, 0, 0, 0, 0, 0, 128, 63, 186, 118, 224, 62, 171, 227, 11, 63, 0, 0, 128, 63, 0, 0, 128, 63, 186, 118, 224, 62, 170, 56, 232, 62, 0, 0, 128, 63, 0, 0, 0, 0, 85, 85, 213, 62, 170, 56, 232, 62, 0, 0, 0, 0, 0, 0, 0, 0, 33, 153, 86, 63, 242, 165, 76, 63, 0, 0, 0, 0, 0, 0, 128, 63, 119, 96, 110, 63, 242, 165, 76, 63, 0, 0, 128, 63, 0, 0, 128, 63, 119, 96, 110, 63, 161, 110, 72, 63, 0, 0, 128, 63, 0, 0, 0, 0, 33, 153, 86, 63, 161, 110, 72, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_fqevb"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(130, 45, 46, 192, 13, 27, 228, 64, 29, 127, 213, 192, 130, 45, 46, 192, 13, 27, 228, 64, 131, 193, 2, 193, 130, 45, 46, 192, 0, 123, 3, 62, 131, 193, 2, 193, 130, 45, 46, 192, 0, 123, 3, 62, 29, 127, 213, 192, 130, 45, 46, 192, 13, 27, 228, 64, 29, 127, 213, 192, 130, 45, 46, 192, 0, 123, 3, 62, 29, 127, 213, 192, 49, 70, 123, 192, 0, 123, 3, 62, 29, 127, 213, 192, 49, 70, 123, 192, 13, 27, 228, 64, 29, 127, 213, 192, 49, 70, 123, 192, 13, 27, 228, 64, 131, 193, 2, 193, 49, 70, 123, 192, 13, 27, 228, 64, 29, 127, 213, 192, 49, 70, 123, 192, 0, 123, 3, 62, 29, 127, 213, 192, 49, 70, 123, 192, 0, 123, 3, 62, 131, 193, 2, 193, 130, 45, 46, 192, 0, 123, 3, 62, 131, 193, 2, 193, 130, 45, 46, 192, 13, 27, 228, 64, 131, 193, 2, 193, 49, 70, 123, 192, 13, 27, 228, 64, 131, 193, 2, 193, 49, 70, 123, 192, 0, 123, 3, 62, 131, 193, 2, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-3.92616, 0.128399, 6.32905, 1.20464, 6.99991, 1.50049),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 40, 184, 18, 62, 150, 220, 94, 63, 0, 0, 0, 0, 0, 0, 128, 63, 40, 184, 18, 62, 228, 75, 89, 63, 0, 0, 128, 63, 0, 0, 128, 63, 66, 107, 78, 61, 228, 75, 89, 63, 0, 0, 128, 63, 0, 0, 0, 0, 66, 107, 78, 61, 150, 220, 94, 63, 0, 0, 0, 0, 0, 0, 0, 0, 82, 84, 106, 63, 162, 167, 105, 63, 0, 0, 0, 0, 0, 0, 128, 63, 252, 140, 82, 63, 162, 167, 105, 63, 0, 0, 128, 63, 0, 0, 128, 63, 252, 140, 82, 63, 81, 112, 101, 63, 0, 0, 128, 63, 0, 0, 0, 0, 82, 84, 106, 63, 81, 112, 101, 63, 0, 0, 0, 0, 0, 0, 0, 0, 143, 161, 103, 63, 215, 213, 106, 63, 0, 0, 0, 0, 0, 0, 128, 63, 143, 161, 103, 63, 137, 102, 112, 63, 0, 0, 128, 63, 0, 0, 128, 63, 57, 218, 79, 63, 137, 102, 112, 63, 0, 0, 128, 63, 0, 0, 0, 0, 57, 218, 79, 63, 215, 213, 106, 63, 0, 0, 0, 0, 0, 0, 0, 0, 231, 133, 229, 62, 112, 37, 119, 63, 0, 0, 0, 0, 0, 0, 128, 63, 74, 138, 10, 63, 112, 37, 119, 63, 0, 0, 128, 63, 0, 0, 128, 63, 74, 138, 10, 63, 32, 238, 114, 63, 0, 0, 128, 63, 0, 0, 0, 0, 231, 133, 229, 62, 32, 238, 114, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_eqbce"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(130, 45, 46, 192, 13, 27, 228, 64, 135, 139, 250, 64, 130, 45, 46, 192, 13, 27, 228, 64, 158, 135, 202, 64, 130, 45, 46, 192, 0, 123, 3, 62, 158, 135, 202, 64, 130, 45, 46, 192, 0, 123, 3, 62, 135, 139, 250, 64, 130, 45, 46, 192, 13, 27, 228, 64, 135, 139, 250, 64, 130, 45, 46, 192, 0, 123, 3, 62, 135, 139, 250, 64, 49, 70, 123, 192, 0, 123, 3, 62, 135, 139, 250, 64, 49, 70, 123, 192, 13, 27, 228, 64, 135, 139, 250, 64, 49, 70, 123, 192, 13, 27, 228, 64, 158, 135, 202, 64, 49, 70, 123, 192, 13, 27, 228, 64, 135, 139, 250, 64, 49, 70, 123, 192, 0, 123, 3, 62, 135, 139, 250, 64, 49, 70, 123, 192, 0, 123, 3, 62, 158, 135, 202, 64, 130, 45, 46, 192, 0, 123, 3, 62, 158, 135, 202, 64, 130, 45, 46, 192, 13, 27, 228, 64, 158, 135, 202, 64, 49, 70, 123, 192, 13, 27, 228, 64, 158, 135, 202, 64, 49, 70, 123, 192, 0, 123, 3, 62, 158, 135, 202, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-4.87714, 0.128399, -8.5198, 1.00001, 6.99991, 16.8354),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 156, 222, 244, 61, 106, 234, 127, 63, 0, 0, 0, 0, 0, 0, 128, 63, 156, 222, 244, 61, 202, 95, 124, 63, 0, 0, 128, 63, 0, 0, 128, 63, 175, 143, 218, 60, 202, 95, 124, 63, 0, 0, 128, 63, 0, 0, 0, 0, 175, 143, 218, 60, 106, 234, 127, 63, 0, 0, 0, 0, 0, 0, 0, 0, 114, 123, 62, 63, 18, 205, 32, 63, 0, 0, 0, 0, 0, 0, 128, 63, 28, 180, 38, 63, 18, 205, 32, 63, 0, 0, 128, 63, 0, 0, 128, 63, 28, 180, 38, 63, 207, 239, 207, 62, 0, 0, 128, 63, 0, 0, 0, 0, 114, 123, 62, 63, 207, 239, 207, 62),
+"format": 34359742519,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0),
+"material": SubResource("StandardMaterial3D_8awkw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(33, 35, 120, 192, 13, 27, 228, 64, 25, 81, 8, 193, 134, 17, 156, 192, 13, 27, 228, 64, 25, 81, 8, 193, 134, 17, 156, 192, 0, 123, 3, 62, 25, 81, 8, 193, 33, 35, 120, 192, 0, 123, 3, 62, 25, 81, 8, 193, 33, 35, 120, 192, 0, 123, 3, 62, 181, 12, 5, 65, 33, 35, 120, 192, 13, 27, 228, 64, 181, 12, 5, 65, 33, 35, 120, 192, 13, 27, 228, 64, 25, 81, 8, 193, 33, 35, 120, 192, 0, 123, 3, 62, 25, 81, 8, 193, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 2, 128, 0, 0, 253, 255, 254, 255, 2, 128, 0, 0, 253, 255, 254, 255, 2, 128, 0, 0, 253, 255, 254, 255, 2, 128, 0, 0, 253, 255)
+}, {
+"aabb": AABB(17.1228, 0.128399, -19.8619, 9.53674e-06, 6.99991, 32.3198),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 161, 53, 231, 62, 149, 106, 220, 62, 0, 0, 0, 0, 0, 0, 128, 63, 245, 166, 183, 62, 149, 106, 220, 62, 0, 0, 128, 63, 0, 0, 128, 63, 245, 166, 183, 62, 212, 70, 66, 59, 0, 0, 128, 63, 0, 0, 0, 0, 161, 53, 231, 62, 212, 70, 66, 59),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_dm8sb"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(136, 251, 136, 65, 13, 27, 228, 64, 216, 83, 71, 65, 136, 251, 136, 65, 0, 123, 3, 62, 216, 83, 71, 65, 138, 251, 136, 65, 0, 123, 3, 62, 18, 229, 158, 193, 138, 251, 136, 65, 13, 27, 228, 64, 18, 229, 158, 193, 0, 0, 250, 127, 254, 255, 253, 255, 0, 0, 250, 127, 254, 255, 253, 255, 0, 0, 250, 127, 254, 255, 253, 255, 0, 0, 250, 127, 254, 255, 253, 255)
+}, {
+"aabb": AABB(2.51725, 0.128399, -11.7602, 1.41309, 6.99991, 4.23116),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 124, 41, 227, 62, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 128, 63, 124, 41, 227, 62, 203, 10, 96, 63, 0, 0, 128, 63, 0, 0, 128, 63, 208, 154, 179, 62, 203, 10, 96, 63, 0, 0, 128, 63, 0, 0, 0, 0, 208, 154, 179, 62, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 0, 0, 157, 194, 57, 63, 58, 19, 113, 63, 0, 0, 0, 0, 0, 0, 128, 63, 71, 251, 33, 63, 58, 19, 113, 63, 0, 0, 128, 63, 0, 0, 128, 63, 71, 251, 33, 63, 56, 47, 108, 63, 0, 0, 128, 63, 0, 0, 0, 0, 157, 194, 57, 63, 56, 47, 108, 63, 0, 0, 0, 0, 0, 0, 0, 0, 26, 94, 95, 63, 101, 147, 205, 62, 0, 0, 0, 0, 0, 0, 128, 63, 198, 179, 109, 63, 101, 147, 205, 62, 0, 0, 128, 63, 0, 0, 128, 63, 198, 179, 109, 63, 185, 4, 158, 62, 0, 0, 128, 63, 0, 0, 0, 0, 26, 94, 95, 63, 185, 4, 158, 62, 0, 0, 0, 0, 0, 0, 0, 0, 76, 25, 115, 63, 252, 140, 82, 63, 0, 0, 0, 0, 0, 0, 128, 63, 76, 25, 115, 63, 82, 84, 106, 63, 0, 0, 128, 63, 0, 0, 128, 63, 75, 53, 110, 63, 82, 84, 106, 63, 0, 0, 128, 63, 0, 0, 0, 0, 75, 53, 110, 63, 252, 140, 82, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_rn4pd"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(108, 138, 123, 64, 13, 27, 228, 64, 1, 238, 240, 192, 108, 138, 123, 64, 13, 27, 228, 64, 198, 41, 60, 193, 108, 138, 123, 64, 0, 123, 3, 62, 198, 41, 60, 193, 108, 138, 123, 64, 0, 123, 3, 62, 1, 238, 240, 192, 108, 138, 123, 64, 13, 27, 228, 64, 1, 238, 240, 192, 108, 138, 123, 64, 0, 123, 3, 62, 1, 238, 240, 192, 140, 26, 33, 64, 0, 123, 3, 62, 1, 238, 240, 192, 140, 26, 33, 64, 13, 27, 228, 64, 1, 238, 240, 192, 140, 26, 33, 64, 13, 27, 228, 64, 198, 41, 60, 193, 140, 26, 33, 64, 13, 27, 228, 64, 1, 238, 240, 192, 140, 26, 33, 64, 0, 123, 3, 62, 1, 238, 240, 192, 140, 26, 33, 64, 0, 123, 3, 62, 198, 41, 60, 193, 108, 138, 123, 64, 0, 123, 3, 62, 198, 41, 60, 193, 108, 138, 123, 64, 13, 27, 228, 64, 198, 41, 60, 193, 140, 26, 33, 64, 13, 27, 228, 64, 198, 41, 60, 193, 140, 26, 33, 64, 0, 123, 3, 62, 198, 41, 60, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(2.51725, 0.128399, -20.529, 1.41309, 6.99991, 6.99991),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 242, 165, 76, 63, 3, 1, 107, 63, 0, 0, 0, 0, 0, 0, 128, 63, 242, 165, 76, 63, 173, 57, 83, 63, 0, 0, 128, 63, 0, 0, 128, 63, 156, 222, 52, 63, 173, 57, 83, 63, 0, 0, 128, 63, 0, 0, 0, 0, 156, 222, 52, 63, 3, 1, 107, 63, 0, 0, 0, 0, 0, 0, 0, 0, 21, 7, 109, 63, 236, 220, 23, 63, 0, 0, 0, 0, 0, 0, 128, 63, 21, 7, 109, 63, 66, 164, 47, 63, 0, 0, 128, 63, 0, 0, 128, 63, 191, 63, 85, 63, 66, 164, 47, 63, 0, 0, 128, 63, 0, 0, 0, 0, 191, 63, 85, 63, 236, 220, 23, 63),
+"format": 34359742519,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0),
+"material": SubResource("StandardMaterial3D_auywu"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(108, 138, 123, 64, 13, 27, 228, 64, 78, 119, 88, 193, 108, 138, 123, 64, 13, 27, 228, 64, 116, 59, 164, 193, 108, 138, 123, 64, 0, 123, 3, 62, 116, 59, 164, 193, 108, 138, 123, 64, 0, 123, 3, 62, 78, 119, 88, 193, 140, 26, 33, 64, 13, 27, 228, 64, 116, 59, 164, 193, 140, 26, 33, 64, 13, 27, 228, 64, 78, 119, 88, 193, 140, 26, 33, 64, 0, 123, 3, 62, 78, 119, 88, 193, 140, 26, 33, 64, 0, 123, 3, 62, 116, 59, 164, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128)
+}, {
+"aabb": AABB(3.8964, 0.128399, -20.529, 13.2891, 6.99991, 0.777351),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 106, 234, 127, 63, 164, 54, 146, 62, 0, 0, 0, 0, 0, 0, 128, 63, 123, 12, 125, 63, 164, 54, 146, 62, 0, 0, 128, 63, 0, 0, 128, 63, 123, 12, 125, 63, 240, 79, 69, 62, 0, 0, 128, 63, 0, 0, 0, 0, 106, 234, 127, 63, 240, 79, 69, 62, 0, 0, 0, 0, 0, 0, 0, 0, 156, 23, 86, 63, 70, 137, 95, 63, 0, 0, 0, 0, 0, 0, 128, 63, 156, 23, 86, 63, 217, 43, 50, 63, 0, 0, 128, 63, 0, 0, 128, 63, 173, 57, 83, 63, 217, 43, 50, 63, 0, 0, 128, 63, 0, 0, 0, 0, 173, 57, 83, 63, 70, 137, 95, 63, 0, 0, 0, 0, 0, 0, 0, 0, 196, 150, 135, 61, 77, 196, 86, 63, 0, 0, 0, 0, 0, 0, 128, 63, 196, 150, 135, 61, 247, 252, 62, 63, 0, 0, 128, 63, 0, 0, 128, 63, 25, 65, 121, 62, 247, 252, 62, 63, 0, 0, 128, 63, 0, 0, 0, 0, 25, 65, 121, 62, 77, 196, 86, 63, 0, 0, 0, 0, 0, 0, 0, 0, 11, 146, 233, 62, 85, 85, 21, 63, 0, 0, 0, 0, 0, 0, 128, 63, 234, 77, 239, 62, 85, 85, 21, 63, 0, 0, 128, 63, 0, 0, 128, 63, 234, 77, 239, 62, 255, 27, 251, 62, 0, 0, 128, 63, 0, 0, 0, 0, 11, 146, 233, 62, 255, 27, 251, 62, 0, 0, 0, 0, 0, 0, 0, 0, 88, 228, 61, 62, 9, 60, 98, 63, 0, 0, 0, 0, 0, 0, 128, 63, 20, 234, 6, 60, 9, 60, 98, 63, 0, 0, 128, 63, 0, 0, 128, 63, 20, 234, 6, 60, 26, 94, 95, 63, 0, 0, 128, 63, 0, 0, 0, 0, 88, 228, 61, 62, 26, 94, 95, 63),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_nptgy"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(234, 123, 137, 65, 13, 27, 228, 64, 118, 3, 158, 193, 234, 123, 137, 65, 13, 27, 228, 64, 117, 59, 164, 193, 234, 123, 137, 65, 0, 123, 3, 62, 117, 59, 164, 193, 234, 123, 137, 65, 0, 123, 3, 62, 118, 3, 158, 193, 234, 123, 137, 65, 13, 27, 228, 64, 118, 3, 158, 193, 158, 94, 121, 64, 13, 27, 228, 64, 118, 3, 158, 193, 158, 94, 121, 64, 13, 27, 228, 64, 117, 59, 164, 193, 234, 123, 137, 65, 13, 27, 228, 64, 117, 59, 164, 193, 234, 123, 137, 65, 13, 27, 228, 64, 118, 3, 158, 193, 234, 123, 137, 65, 0, 123, 3, 62, 118, 3, 158, 193, 158, 94, 121, 64, 0, 123, 3, 62, 118, 3, 158, 193, 158, 94, 121, 64, 13, 27, 228, 64, 118, 3, 158, 193, 158, 94, 121, 64, 13, 27, 228, 64, 117, 59, 164, 193, 158, 94, 121, 64, 13, 27, 228, 64, 118, 3, 158, 193, 158, 94, 121, 64, 0, 123, 3, 62, 118, 3, 158, 193, 158, 94, 121, 64, 0, 123, 3, 62, 117, 59, 164, 193, 158, 94, 121, 64, 0, 123, 3, 62, 118, 3, 158, 193, 234, 123, 137, 65, 0, 123, 3, 62, 118, 3, 158, 193, 234, 123, 137, 65, 0, 123, 3, 62, 117, 59, 164, 193, 158, 94, 121, 64, 0, 123, 3, 62, 117, 59, 164, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255)
+}, {
+"aabb": AABB(-8.72394, 0.128399, -18.442, 9.53674e-06, 6.99991, 9.98645),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 52, 131, 93, 63, 101, 147, 205, 62, 0, 0, 0, 0, 0, 0, 128, 63, 131, 157, 59, 63, 101, 147, 205, 62, 0, 0, 128, 63, 0, 0, 128, 63, 131, 157, 59, 63, 185, 4, 158, 62, 0, 0, 128, 63, 0, 0, 0, 0, 52, 131, 93, 63, 185, 4, 158, 62),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_ieiqv"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(70, 149, 11, 193, 13, 27, 228, 64, 241, 73, 7, 193, 70, 149, 11, 193, 13, 27, 228, 64, 50, 137, 147, 193, 70, 149, 11, 193, 0, 123, 3, 62, 50, 137, 147, 193, 70, 149, 11, 193, 0, 123, 3, 62, 241, 73, 7, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128)
+}, {
+"aabb": AABB(-24.7239, 0.128399, -18.5917, 15.9998, 7, 9.53674e-06),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 95, 145, 55, 63, 66, 221, 144, 62, 0, 0, 0, 0, 0, 0, 128, 63, 181, 88, 79, 63, 66, 221, 144, 62, 0, 0, 128, 63, 0, 0, 128, 63, 181, 88, 79, 63, 208, 97, 146, 61, 0, 0, 128, 63, 0, 0, 0, 0, 95, 145, 55, 63, 208, 97, 146, 61),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_xltfw"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(54, 150, 11, 193, 0, 123, 3, 62, 189, 187, 148, 193, 54, 150, 11, 193, 216, 27, 228, 64, 189, 187, 148, 193, 160, 202, 197, 193, 216, 27, 228, 64, 189, 187, 148, 193, 160, 202, 197, 193, 0, 123, 3, 62, 189, 187, 148, 193, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-24.7239, 0.128399, -29.5917, 24.9996, 6.99991, 9.53674e-06),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 218, 15, 55, 63, 125, 212, 198, 62, 0, 0, 0, 0, 0, 0, 128, 63, 132, 72, 31, 63, 125, 212, 198, 62, 0, 0, 128, 63, 0, 0, 128, 63, 132, 72, 31, 63, 101, 204, 110, 61, 0, 0, 128, 63, 0, 0, 0, 0, 218, 15, 55, 63, 101, 204, 110, 61),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_qyly8"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(64, 39, 141, 62, 13, 27, 228, 64, 189, 187, 236, 193, 64, 39, 141, 62, 0, 123, 3, 62, 189, 187, 236, 193, 160, 202, 197, 193, 0, 123, 3, 62, 189, 187, 236, 193, 160, 202, 197, 193, 13, 27, 228, 64, 189, 187, 236, 193, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-23.7239, 0.128399, -30.5917, 9.53674e-06, 6.99991, 12.9998),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 77, 196, 86, 63, 165, 168, 20, 63, 0, 0, 0, 0, 0, 0, 128, 63, 77, 196, 86, 63, 49, 73, 209, 62, 0, 0, 128, 63, 0, 0, 128, 63, 247, 252, 62, 63, 49, 73, 209, 62, 0, 0, 128, 63, 0, 0, 0, 0, 247, 252, 62, 63, 165, 168, 20, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_6d7tp"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(160, 202, 189, 193, 13, 27, 228, 64, 31, 188, 140, 193, 160, 202, 189, 193, 13, 27, 228, 64, 188, 187, 244, 193, 160, 202, 189, 193, 0, 123, 3, 62, 188, 187, 244, 193, 160, 202, 189, 193, 0, 123, 3, 62, 31, 188, 140, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128)
+}, {
+"aabb": AABB(-0.723969, 0.128399, -30.5917, 1.00136e-05, 6.99991, 12.0269),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 188, 5, 9, 63, 168, 226, 96, 63, 0, 0, 0, 0, 0, 0, 128, 63, 84, 170, 49, 63, 168, 226, 96, 63, 0, 0, 128, 63, 0, 0, 128, 63, 84, 170, 49, 63, 82, 27, 73, 63, 0, 0, 128, 63, 0, 0, 0, 0, 188, 5, 9, 63, 82, 27, 73, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_hlmhd"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(16, 86, 57, 191, 13, 27, 228, 64, 200, 187, 244, 193, 16, 86, 57, 191, 13, 27, 228, 64, 176, 132, 148, 193, 16, 86, 57, 191, 0, 123, 3, 62, 176, 132, 148, 193, 16, 86, 57, 191, 0, 123, 3, 62, 200, 187, 244, 193, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128)
+}, {
+"aabb": AABB(-2.70541, 0.128399, -18.5917, 5.5224, 6.99991, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 64, 78, 104, 63, 78, 168, 155, 62, 0, 0, 0, 0, 0, 0, 128, 63, 234, 134, 80, 63, 78, 168, 155, 62, 0, 0, 128, 63, 0, 0, 128, 63, 234, 134, 80, 63, 153, 22, 107, 62, 0, 0, 128, 63, 0, 0, 0, 0, 64, 78, 104, 63, 153, 22, 107, 62, 0, 0, 0, 0, 0, 0, 0, 0, 139, 188, 55, 63, 135, 215, 199, 62, 0, 0, 0, 0, 0, 0, 128, 63, 139, 188, 55, 63, 198, 236, 206, 62, 0, 0, 128, 63, 0, 0, 128, 63, 53, 245, 31, 63, 198, 236, 206, 62, 0, 0, 128, 63, 0, 0, 0, 0, 53, 245, 31, 63, 135, 215, 199, 62, 0, 0, 0, 0, 0, 0, 0, 0, 148, 248, 89, 63, 199, 37, 48, 63, 0, 0, 0, 0, 0, 0, 128, 63, 148, 248, 89, 63, 29, 237, 71, 63, 0, 0, 128, 63, 0, 0, 128, 63, 21, 7, 109, 63, 29, 237, 71, 63, 0, 0, 128, 63, 0, 0, 0, 0, 21, 7, 109, 63, 199, 37, 48, 63),
+"format": 34359742519,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0),
+"material": SubResource("StandardMaterial3D_hm6r8"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(86, 73, 52, 64, 13, 27, 228, 64, 192, 187, 140, 193, 86, 73, 52, 64, 0, 123, 3, 62, 192, 187, 140, 193, 110, 37, 45, 192, 0, 123, 3, 62, 192, 187, 140, 193, 110, 37, 45, 192, 13, 27, 228, 64, 192, 187, 140, 193, 110, 37, 45, 192, 13, 27, 228, 64, 189, 187, 148, 193, 110, 37, 45, 192, 13, 27, 228, 64, 192, 187, 140, 193, 110, 37, 45, 192, 0, 123, 3, 62, 192, 187, 140, 193, 110, 37, 45, 192, 0, 123, 3, 62, 189, 187, 148, 193, 86, 73, 52, 64, 0, 123, 3, 62, 189, 187, 148, 193, 86, 73, 52, 64, 13, 27, 228, 64, 189, 187, 148, 193, 110, 37, 45, 192, 13, 27, 228, 64, 189, 187, 148, 193, 110, 37, 45, 192, 0, 123, 3, 62, 189, 187, 148, 193, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-8.72394, 0.128399, -18.5917, 2.99997, 6.99991, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 224, 216, 171, 62, 185, 61, 127, 63, 0, 0, 0, 0, 0, 0, 128, 63, 224, 216, 171, 62, 25, 179, 123, 63, 0, 0, 128, 63, 0, 0, 128, 63, 104, 148, 120, 62, 25, 179, 123, 63, 0, 0, 128, 63, 0, 0, 0, 0, 104, 148, 120, 62, 185, 61, 127, 63, 0, 0, 0, 0, 0, 0, 0, 0, 50, 187, 147, 61, 49, 73, 17, 63, 0, 0, 0, 0, 0, 0, 128, 63, 50, 187, 147, 61, 182, 3, 243, 62, 0, 0, 128, 63, 0, 0, 128, 63, 239, 221, 2, 61, 182, 3, 243, 62, 0, 0, 128, 63, 0, 0, 0, 0, 239, 221, 2, 61, 49, 73, 17, 63, 0, 0, 0, 0, 0, 0, 0, 0, 105, 6, 123, 63, 210, 183, 217, 62, 0, 0, 0, 0, 0, 0, 128, 63, 8, 145, 126, 63, 210, 183, 217, 62, 0, 0, 128, 63, 0, 0, 128, 63, 8, 145, 126, 63, 38, 41, 170, 62, 0, 0, 128, 63, 0, 0, 0, 0, 105, 6, 123, 63, 38, 41, 170, 62, 0, 0, 0, 0, 0, 0, 0, 0, 212, 70, 2, 63, 140, 103, 27, 63, 0, 0, 0, 0, 0, 0, 128, 63, 42, 14, 26, 63, 140, 103, 27, 63, 0, 0, 128, 63, 0, 0, 128, 63, 42, 14, 26, 63, 5, 30, 17, 63, 0, 0, 128, 63, 0, 0, 0, 0, 212, 70, 2, 63, 5, 30, 17, 63),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0),
+"material": SubResource("StandardMaterial3D_ymnbg"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray(207, 42, 183, 192, 13, 27, 228, 64, 192, 187, 140, 193, 207, 42, 183, 192, 13, 27, 228, 64, 189, 187, 148, 193, 207, 42, 183, 192, 0, 123, 3, 62, 189, 187, 148, 193, 207, 42, 183, 192, 0, 123, 3, 62, 192, 187, 140, 193, 207, 42, 183, 192, 13, 27, 228, 64, 192, 187, 140, 193, 207, 42, 183, 192, 0, 123, 3, 62, 192, 187, 140, 193, 66, 149, 11, 193, 0, 123, 3, 62, 192, 187, 140, 193, 66, 149, 11, 193, 13, 27, 228, 64, 192, 187, 140, 193, 66, 149, 11, 193, 13, 27, 228, 64, 189, 187, 148, 193, 66, 149, 11, 193, 13, 27, 228, 64, 192, 187, 140, 193, 66, 149, 11, 193, 0, 123, 3, 62, 192, 187, 140, 193, 66, 149, 11, 193, 0, 123, 3, 62, 189, 187, 148, 193, 207, 42, 183, 192, 0, 123, 3, 62, 189, 187, 148, 193, 207, 42, 183, 192, 13, 27, 228, 64, 189, 187, 148, 193, 66, 149, 11, 193, 13, 27, 228, 64, 189, 187, 148, 193, 66, 149, 11, 193, 0, 123, 3, 62, 189, 187, 148, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-5.72392, 5.1284, -18.5917, 3.03854, 1.99999, 1),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 50, 187, 147, 61, 219, 186, 26, 63, 0, 0, 0, 0, 0, 0, 128, 63, 50, 187, 147, 61, 200, 208, 19, 63, 0, 0, 128, 63, 0, 0, 128, 63, 239, 221, 2, 61, 200, 208, 19, 63, 0, 0, 128, 63, 0, 0, 0, 0, 239, 221, 2, 61, 219, 186, 26, 63, 0, 0, 0, 0, 0, 0, 0, 0, 31, 67, 15, 63, 91, 229, 40, 63, 0, 0, 0, 0, 0, 0, 128, 63, 151, 249, 4, 63, 91, 229, 40, 63, 0, 0, 128, 63, 0, 0, 128, 63, 151, 249, 4, 63, 187, 90, 37, 63, 0, 0, 128, 63, 0, 0, 0, 0, 31, 67, 15, 63, 187, 90, 37, 63, 0, 0, 0, 0, 0, 0, 0, 0, 39, 212, 77, 63, 236, 220, 23, 63, 0, 0, 0, 0, 0, 0, 128, 63, 59, 190, 84, 63, 236, 220, 23, 63, 0, 0, 128, 63, 0, 0, 128, 63, 59, 190, 84, 63, 115, 38, 34, 63, 0, 0, 128, 63, 0, 0, 0, 0, 39, 212, 77, 63, 115, 38, 34, 63),
+"format": 34359742519,
+"index_count": 18,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0),
+"material": SubResource("StandardMaterial3D_ct6cv"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(113, 221, 43, 192, 181, 27, 228, 64, 192, 187, 140, 193, 113, 221, 43, 192, 224, 27, 164, 64, 192, 187, 140, 193, 100, 42, 183, 192, 224, 27, 164, 64, 192, 187, 140, 193, 100, 42, 183, 192, 181, 27, 228, 64, 192, 187, 140, 193, 100, 42, 183, 192, 224, 27, 164, 64, 192, 187, 140, 193, 113, 221, 43, 192, 224, 27, 164, 64, 192, 187, 140, 193, 113, 221, 43, 192, 224, 27, 164, 64, 189, 187, 148, 193, 100, 42, 183, 192, 224, 27, 164, 64, 189, 187, 148, 193, 113, 221, 43, 192, 224, 27, 164, 64, 189, 187, 148, 193, 113, 221, 43, 192, 181, 27, 228, 64, 189, 187, 148, 193, 100, 42, 183, 192, 181, 27, 228, 64, 189, 187, 148, 193, 100, 42, 183, 192, 224, 27, 164, 64, 189, 187, 148, 193, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-9.48274, 0.128399, -13.529, 13.4129, 7, 4.07364),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 159, 24, 1, 63, 240, 193, 71, 63, 0, 0, 0, 0, 0, 0, 128, 63, 159, 24, 1, 63, 70, 137, 95, 63, 0, 0, 128, 63, 0, 0, 128, 63, 13, 232, 176, 62, 70, 137, 95, 63, 0, 0, 128, 63, 0, 0, 0, 0, 13, 232, 176, 62, 240, 193, 71, 63, 0, 0, 128, 63, 0, 0, 0, 0, 90, 172, 7, 63, 233, 219, 108, 63, 0, 0, 0, 0, 0, 0, 128, 63, 176, 115, 31, 63, 234, 191, 113, 63, 0, 0, 0, 0, 0, 0, 0, 0, 176, 115, 31, 63, 233, 219, 108, 63, 0, 0, 128, 63, 0, 0, 128, 63, 90, 172, 7, 63, 234, 191, 113, 63),
+"format": 34359742519,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 4, 0, 7, 0, 5, 0),
+"material": SubResource("StandardMaterial3D_0dvqt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(20, 24, 33, 64, 0, 123, 3, 62, 81, 73, 23, 193, 20, 24, 33, 64, 216, 27, 228, 64, 81, 73, 23, 193, 77, 185, 23, 193, 216, 27, 228, 64, 81, 73, 23, 193, 77, 185, 23, 193, 0, 123, 3, 62, 81, 73, 23, 193, 104, 135, 123, 64, 0, 123, 3, 62, 232, 118, 88, 193, 20, 24, 33, 64, 216, 27, 228, 64, 232, 118, 88, 193, 104, 135, 123, 64, 216, 27, 228, 64, 232, 118, 88, 193, 20, 24, 33, 64, 0, 123, 3, 62, 232, 118, 88, 193, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 255, 127, 254, 127, 1, 128, 0, 128, 255, 127, 254, 127, 1, 128, 0, 128, 255, 127, 254, 127, 1, 128, 0, 128, 255, 127, 254, 127, 1, 128, 0, 128)
+}, {
+"aabb": AABB(2.51725, 3.39913, -13.5222, 1.41309, 4.46969, 1.764),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 124, 41, 227, 62, 158, 109, 29, 63, 0, 0, 0, 0, 0, 0, 128, 63, 183, 174, 214, 62, 158, 109, 29, 63, 0, 0, 128, 63, 0, 0, 128, 63, 183, 174, 214, 62, 145, 190, 13, 63, 0, 0, 128, 63, 0, 0, 0, 0, 124, 41, 227, 62, 145, 190, 13, 63, 0, 0, 0, 0, 0, 0, 0, 0, 8, 145, 126, 63, 123, 126, 255, 62, 0, 0, 0, 0, 0, 0, 128, 63, 7, 173, 121, 63, 123, 126, 255, 62, 0, 0, 128, 63, 0, 0, 128, 63, 7, 173, 121, 63, 182, 3, 243, 62, 0, 0, 128, 63, 0, 0, 0, 0, 8, 145, 126, 63, 182, 3, 243, 62, 0, 0, 0, 0, 0, 0, 0, 0, 52, 131, 93, 63, 104, 91, 23, 63, 0, 0, 0, 0, 0, 0, 128, 63, 52, 131, 93, 63, 90, 172, 7, 63, 0, 0, 128, 63, 0, 0, 128, 63, 51, 159, 88, 63, 90, 172, 7, 63, 0, 0, 128, 63, 0, 0, 0, 0, 51, 159, 88, 63, 104, 91, 23, 63, 0, 0, 0, 0, 0, 0, 0, 0, 106, 177, 94, 63, 123, 69, 94, 62, 0, 0, 0, 0, 0, 0, 128, 63, 204, 238, 100, 63, 123, 69, 94, 62, 0, 0, 128, 63, 0, 0, 128, 63, 204, 238, 100, 63, 70, 137, 31, 62, 0, 0, 128, 63, 0, 0, 0, 0, 106, 177, 94, 63, 70, 137, 31, 62, 0, 0, 0, 0, 0, 0, 0, 0, 92, 144, 12, 63, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 128, 63, 92, 144, 12, 63, 178, 201, 102, 63, 0, 0, 128, 63, 0, 0, 128, 63, 249, 82, 6, 63, 178, 201, 102, 63, 0, 0, 128, 63, 0, 0, 0, 0, 249, 82, 6, 63, 180, 173, 107, 63, 0, 0, 0, 0, 0, 0, 0, 0, 238, 249, 125, 62, 29, 237, 71, 63, 0, 0, 0, 0, 0, 0, 128, 63, 17, 91, 158, 62, 29, 237, 71, 63, 0, 0, 128, 63, 0, 0, 128, 63, 17, 91, 158, 62, 27, 9, 67, 63, 0, 0, 128, 63, 0, 0, 0, 0, 238, 249, 125, 62, 27, 9, 67, 63),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0, 20, 0, 21, 0, 22, 0, 22, 0, 23, 0, 20, 0),
+"material": SubResource("StandardMaterial3D_o1f1u"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(108, 138, 123, 64, 84, 205, 251, 64, 163, 33, 60, 193, 108, 138, 123, 64, 84, 205, 251, 64, 243, 90, 88, 193, 108, 138, 123, 64, 100, 139, 89, 64, 243, 90, 88, 193, 108, 138, 123, 64, 100, 139, 89, 64, 163, 33, 60, 193, 108, 138, 123, 64, 84, 205, 251, 64, 163, 33, 60, 193, 140, 26, 33, 64, 84, 205, 251, 64, 163, 33, 60, 193, 140, 26, 33, 64, 84, 205, 251, 64, 243, 90, 88, 193, 108, 138, 123, 64, 84, 205, 251, 64, 243, 90, 88, 193, 108, 138, 123, 64, 84, 205, 251, 64, 163, 33, 60, 193, 108, 138, 123, 64, 100, 139, 89, 64, 163, 33, 60, 193, 140, 26, 33, 64, 100, 139, 89, 64, 163, 33, 60, 193, 140, 26, 33, 64, 84, 205, 251, 64, 163, 33, 60, 193, 140, 26, 33, 64, 84, 205, 251, 64, 243, 90, 88, 193, 140, 26, 33, 64, 84, 205, 251, 64, 163, 33, 60, 193, 140, 26, 33, 64, 100, 139, 89, 64, 163, 33, 60, 193, 140, 26, 33, 64, 100, 139, 89, 64, 243, 90, 88, 193, 140, 26, 33, 64, 100, 139, 89, 64, 163, 33, 60, 193, 108, 138, 123, 64, 100, 139, 89, 64, 163, 33, 60, 193, 108, 138, 123, 64, 100, 139, 89, 64, 243, 90, 88, 193, 140, 26, 33, 64, 100, 139, 89, 64, 243, 90, 88, 193, 108, 138, 123, 64, 100, 139, 89, 64, 243, 90, 88, 193, 108, 138, 123, 64, 84, 205, 251, 64, 243, 90, 88, 193, 140, 26, 33, 64, 84, 205, 251, 64, 243, 90, 88, 193, 140, 26, 33, 64, 100, 139, 89, 64, 243, 90, 88, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.22476, 0.128399, 12.4068, 13.9749, 6.99991, 1.14441e-05),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 199, 94, 81, 63, 40, 184, 82, 63, 0, 0, 0, 0, 0, 0, 128, 63, 199, 94, 81, 63, 169, 84, 35, 63, 0, 0, 128, 63, 0, 0, 128, 63, 113, 151, 57, 63, 169, 84, 35, 63, 0, 0, 128, 63, 0, 0, 0, 0, 113, 151, 57, 63, 40, 184, 82, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_4ff5s"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(230, 152, 137, 65, 13, 27, 228, 64, 19, 130, 70, 65, 120, 98, 78, 64, 13, 27, 228, 64, 17, 130, 70, 65, 120, 98, 78, 64, 0, 123, 3, 62, 17, 130, 70, 65, 230, 152, 137, 65, 0, 123, 3, 62, 19, 130, 70, 65, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128, 254, 255, 1, 0, 1, 128, 1, 128)
+}, {
+"aabb": AABB(2.68582, 0.128399, 8.36965, 1.41309, 6.99991, 4.05731),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 236, 21, 57, 63, 22, 178, 80, 63, 0, 0, 0, 0, 0, 0, 128, 63, 236, 21, 57, 63, 192, 234, 56, 63, 0, 0, 128, 63, 0, 0, 128, 63, 235, 49, 52, 63, 192, 234, 56, 63, 0, 0, 128, 63, 0, 0, 0, 0, 235, 49, 52, 63, 22, 178, 80, 63, 0, 0, 0, 0, 0, 0, 0, 0, 46, 72, 102, 63, 163, 82, 13, 62, 0, 0, 0, 0, 0, 0, 128, 63, 130, 242, 87, 63, 163, 82, 13, 62, 0, 0, 128, 63, 0, 0, 128, 63, 130, 242, 87, 63, 42, 213, 56, 61, 0, 0, 128, 63, 0, 0, 0, 0, 46, 72, 102, 63, 42, 213, 56, 61),
+"format": 34359742519,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0),
+"material": SubResource("StandardMaterial3D_0wm13"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray(102, 228, 43, 64, 13, 27, 228, 64, 17, 234, 5, 65, 102, 228, 43, 64, 0, 123, 3, 62, 17, 234, 5, 65, 60, 42, 131, 64, 0, 123, 3, 62, 17, 234, 5, 65, 60, 42, 131, 64, 13, 27, 228, 64, 17, 234, 5, 65, 15, 42, 131, 64, 13, 27, 228, 64, 207, 212, 70, 65, 60, 42, 131, 64, 13, 27, 228, 64, 17, 234, 5, 65, 60, 42, 131, 64, 0, 123, 3, 62, 17, 234, 5, 65, 15, 42, 131, 64, 0, 123, 3, 62, 207, 212, 70, 65, 0, 0, 0, 0, 255, 255, 254, 191, 0, 0, 0, 0, 255, 255, 254, 191, 0, 0, 0, 0, 255, 255, 254, 191, 0, 0, 0, 0, 255, 255, 254, 191, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128)
+}, {
+"aabb": AABB(3.89255, 0.23641, -19.9465, 13.2639, 9.99868e-06, 32.773),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 236, 163, 182, 62, 197, 65, 235, 62, 0, 0, 0, 0, 0, 0, 128, 63, 33, 210, 55, 62, 197, 65, 235, 62, 0, 0, 128, 63, 0, 0, 128, 63, 33, 210, 55, 62, 175, 143, 218, 60, 0, 0, 128, 63, 0, 0, 0, 0, 236, 163, 182, 62, 175, 143, 218, 60),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_anb4k"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(109, 64, 137, 65, 119, 21, 114, 62, 44, 57, 77, 65, 138, 31, 121, 64, 119, 21, 114, 62, 44, 57, 77, 65, 138, 31, 121, 64, 119, 21, 114, 62, 136, 146, 159, 193, 109, 64, 137, 65, 119, 21, 114, 62, 136, 146, 159, 193, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-9.10749, 0.23641, -18.6097, 13.2639, 9.99868e-06, 10.3969),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 140, 103, 27, 63, 207, 239, 15, 63, 0, 0, 0, 0, 0, 0, 128, 63, 140, 103, 27, 63, 196, 36, 197, 62, 0, 0, 128, 63, 0, 0, 128, 63, 243, 80, 240, 62, 196, 36, 197, 62, 0, 0, 128, 63, 0, 0, 0, 0, 243, 80, 240, 62, 207, 239, 15, 63),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_pri4w"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(96, 1, 133, 64, 119, 21, 114, 62, 212, 103, 3, 193, 72, 184, 17, 193, 119, 21, 114, 62, 212, 103, 3, 193, 72, 184, 17, 193, 119, 21, 114, 62, 170, 224, 148, 193, 96, 1, 133, 64, 119, 21, 114, 62, 170, 224, 148, 193, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-24.6252, 0.23641, -30.1033, 24.6339, 9.99868e-06, 11.5903),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 198, 236, 206, 62, 158, 109, 29, 63, 0, 0, 0, 0, 0, 0, 128, 63, 98, 146, 162, 61, 158, 109, 29, 63, 0, 0, 128, 63, 0, 0, 128, 63, 98, 146, 162, 61, 206, 68, 236, 62, 0, 0, 128, 63, 0, 0, 0, 0, 198, 236, 206, 62, 206, 68, 236, 62),
+"format": 34359742519,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0),
+"material": SubResource("StandardMaterial3D_0qwks"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 72, 15, 60, 119, 21, 114, 62, 168, 26, 148, 193, 100, 0, 197, 193, 119, 21, 114, 62, 168, 26, 148, 193, 100, 0, 197, 193, 119, 21, 114, 62, 169, 211, 240, 193, 0, 72, 15, 60, 119, 21, 114, 62, 169, 211, 240, 193, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128)
+}, {
+"aabb": AABB(-9.10744, 5.76359, -18.6097, 12.8224, 0.472826, 10.3969),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 149, 49, 59, 62, 63, 106, 99, 63, 0, 0, 0, 0, 0, 0, 128, 63, 42, 213, 56, 61, 63, 106, 99, 63, 0, 0, 128, 63, 0, 0, 128, 63, 42, 213, 56, 61, 125, 155, 101, 63, 0, 0, 128, 63, 0, 0, 0, 0, 149, 49, 59, 62, 125, 155, 101, 63, 0, 0, 0, 0, 0, 0, 0, 0, 40, 184, 82, 63, 1, 171, 99, 62, 0, 0, 0, 0, 0, 0, 128, 63, 234, 134, 80, 63, 1, 171, 99, 62, 0, 0, 128, 63, 0, 0, 128, 63, 234, 134, 80, 63, 78, 54, 89, 61, 0, 0, 128, 63, 0, 0, 0, 0, 40, 184, 82, 63, 78, 54, 89, 61, 0, 0, 0, 0, 0, 0, 0, 0, 241, 250, 104, 63, 81, 55, 132, 60, 0, 0, 0, 0, 0, 0, 128, 63, 241, 250, 104, 63, 52, 131, 29, 62, 0, 0, 128, 63, 0, 0, 128, 63, 178, 201, 102, 63, 52, 131, 29, 62, 0, 0, 128, 63, 0, 0, 0, 0, 178, 201, 102, 63, 81, 55, 132, 60, 0, 0, 0, 0, 0, 0, 0, 0, 246, 24, 250, 62, 108, 64, 71, 63, 0, 0, 0, 0, 0, 0, 128, 63, 63, 106, 163, 62, 108, 64, 71, 63, 0, 0, 128, 63, 0, 0, 128, 63, 63, 106, 163, 62, 89, 1, 36, 63, 0, 0, 128, 63, 0, 0, 0, 0, 246, 24, 250, 62, 89, 1, 36, 63, 0, 0, 0, 0, 0, 0, 0, 0, 180, 173, 107, 63, 13, 118, 110, 62, 0, 0, 0, 0, 0, 0, 128, 63, 117, 124, 105, 63, 13, 118, 110, 62, 0, 0, 128, 63, 0, 0, 128, 63, 117, 124, 105, 63, 62, 49, 130, 61, 0, 0, 128, 63, 0, 0, 0, 0, 180, 173, 107, 63, 62, 49, 130, 61),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_njy23"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(40, 194, 109, 64, 163, 144, 199, 64, 212, 103, 3, 193, 40, 194, 109, 64, 163, 144, 199, 64, 170, 224, 148, 193, 40, 194, 109, 64, 84, 111, 184, 64, 170, 224, 148, 193, 40, 194, 109, 64, 84, 111, 184, 64, 212, 103, 3, 193, 40, 194, 109, 64, 163, 144, 199, 64, 212, 103, 3, 193, 40, 194, 109, 64, 84, 111, 184, 64, 212, 103, 3, 193, 18, 184, 17, 193, 84, 111, 184, 64, 212, 103, 3, 193, 18, 184, 17, 193, 163, 144, 199, 64, 212, 103, 3, 193, 18, 184, 17, 193, 163, 144, 199, 64, 170, 224, 148, 193, 18, 184, 17, 193, 163, 144, 199, 64, 212, 103, 3, 193, 18, 184, 17, 193, 84, 111, 184, 64, 212, 103, 3, 193, 18, 184, 17, 193, 84, 111, 184, 64, 170, 224, 148, 193, 18, 184, 17, 193, 84, 111, 184, 64, 212, 103, 3, 193, 40, 194, 109, 64, 84, 111, 184, 64, 212, 103, 3, 193, 40, 194, 109, 64, 84, 111, 184, 64, 170, 224, 148, 193, 18, 184, 17, 193, 84, 111, 184, 64, 170, 224, 148, 193, 40, 194, 109, 64, 84, 111, 184, 64, 170, 224, 148, 193, 40, 194, 109, 64, 163, 144, 199, 64, 170, 224, 148, 193, 18, 184, 17, 193, 163, 144, 199, 64, 170, 224, 148, 193, 18, 184, 17, 193, 84, 111, 184, 64, 170, 224, 148, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-24.6252, 5.76359, -30.1033, 24.6339, 0.472826, 11.684),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 52, 74, 124, 61, 40, 184, 82, 63, 0, 0, 0, 0, 0, 0, 128, 63, 52, 74, 124, 61, 65, 192, 42, 63, 0, 0, 128, 63, 0, 0, 128, 63, 78, 54, 89, 61, 65, 192, 42, 63, 0, 0, 128, 63, 0, 0, 0, 0, 78, 54, 89, 61, 40, 184, 82, 63, 0, 0, 0, 0, 0, 0, 0, 0, 199, 151, 178, 62, 36, 211, 34, 63, 0, 0, 0, 0, 0, 0, 128, 63, 199, 151, 178, 62, 230, 161, 32, 63, 0, 0, 128, 63, 0, 0, 128, 63, 151, 249, 196, 60, 230, 161, 32, 63, 0, 0, 128, 63, 0, 0, 0, 0, 151, 249, 196, 60, 36, 211, 34, 63, 0, 0, 0, 0, 0, 0, 0, 0, 215, 156, 137, 60, 241, 108, 43, 63, 0, 0, 0, 0, 0, 0, 128, 63, 215, 156, 137, 60, 217, 100, 83, 63, 0, 0, 128, 63, 0, 0, 128, 63, 20, 234, 6, 60, 217, 100, 83, 63, 0, 0, 128, 63, 0, 0, 0, 0, 20, 234, 6, 60, 241, 108, 43, 63, 0, 0, 0, 0, 0, 0, 0, 0, 61, 20, 28, 63, 29, 38, 169, 62, 0, 0, 0, 0, 0, 0, 128, 63, 61, 20, 28, 63, 201, 123, 183, 59, 0, 0, 128, 63, 0, 0, 128, 63, 170, 56, 232, 62, 201, 123, 183, 59, 0, 0, 128, 63, 0, 0, 0, 0, 170, 56, 232, 62, 29, 38, 169, 62, 0, 0, 0, 0, 0, 0, 0, 0, 41, 99, 54, 63, 213, 127, 35, 63, 0, 0, 0, 0, 0, 0, 128, 63, 41, 99, 54, 63, 150, 78, 33, 63, 0, 0, 128, 63, 0, 0, 128, 63, 37, 126, 198, 62, 150, 78, 33, 63, 0, 0, 128, 63, 0, 0, 0, 0, 37, 126, 198, 62, 213, 127, 35, 63),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_ckh2f"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(0, 72, 15, 60, 163, 144, 199, 64, 182, 90, 147, 193, 0, 72, 15, 60, 163, 144, 199, 64, 156, 211, 240, 193, 0, 72, 15, 60, 84, 111, 184, 64, 156, 211, 240, 193, 0, 72, 15, 60, 84, 111, 184, 64, 182, 90, 147, 193, 0, 72, 15, 60, 163, 144, 199, 64, 182, 90, 147, 193, 0, 72, 15, 60, 84, 111, 184, 64, 182, 90, 147, 193, 100, 0, 197, 193, 84, 111, 184, 64, 182, 90, 147, 193, 100, 0, 197, 193, 163, 144, 199, 64, 182, 90, 147, 193, 100, 0, 197, 193, 163, 144, 199, 64, 156, 211, 240, 193, 100, 0, 197, 193, 163, 144, 199, 64, 182, 90, 147, 193, 100, 0, 197, 193, 84, 111, 184, 64, 182, 90, 147, 193, 100, 0, 197, 193, 84, 111, 184, 64, 156, 211, 240, 193, 100, 0, 197, 193, 84, 111, 184, 64, 182, 90, 147, 193, 0, 72, 15, 60, 84, 111, 184, 64, 182, 90, 147, 193, 0, 72, 15, 60, 84, 111, 184, 64, 156, 211, 240, 193, 100, 0, 197, 193, 84, 111, 184, 64, 156, 211, 240, 193, 0, 72, 15, 60, 84, 111, 184, 64, 156, 211, 240, 193, 0, 72, 15, 60, 163, 144, 199, 64, 156, 211, 240, 193, 100, 0, 197, 193, 163, 144, 199, 64, 156, 211, 240, 193, 100, 0, 197, 193, 84, 111, 184, 64, 156, 211, 240, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(-3.9995, 6.89679, -7.5547, 7.99889, 0.472826, 15.1092),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 191, 63, 85, 63, 196, 93, 102, 62, 0, 0, 0, 0, 0, 0, 128, 63, 191, 63, 85, 63, 151, 249, 196, 60, 0, 0, 128, 63, 0, 0, 128, 63, 254, 112, 87, 63, 151, 249, 196, 60, 0, 0, 128, 63, 0, 0, 0, 0, 254, 112, 87, 63, 196, 93, 102, 62, 0, 0, 0, 0, 0, 0, 0, 0, 134, 44, 36, 63, 196, 36, 5, 63, 0, 0, 0, 0, 0, 0, 128, 63, 71, 251, 33, 63, 196, 36, 5, 63, 0, 0, 128, 63, 0, 0, 128, 63, 71, 251, 33, 63, 244, 251, 211, 62, 0, 0, 128, 63, 0, 0, 0, 0, 134, 44, 36, 63, 244, 251, 211, 62, 0, 0, 0, 0, 0, 0, 0, 0, 6, 201, 180, 60, 170, 56, 232, 62, 0, 0, 0, 0, 0, 0, 128, 63, 6, 201, 180, 60, 249, 139, 39, 63, 0, 0, 128, 63, 0, 0, 128, 63, 114, 66, 93, 60, 249, 139, 39, 63, 0, 0, 128, 63, 0, 0, 0, 0, 114, 66, 93, 60, 170, 56, 232, 62, 0, 0, 0, 0, 0, 0, 0, 0, 237, 78, 154, 62, 114, 123, 62, 63, 0, 0, 0, 0, 0, 0, 128, 63, 237, 78, 154, 62, 169, 84, 35, 63, 0, 0, 128, 63, 0, 0, 128, 63, 145, 190, 205, 61, 169, 84, 35, 63, 0, 0, 128, 63, 0, 0, 0, 0, 145, 190, 205, 61, 114, 123, 62, 63, 0, 0, 0, 0, 0, 0, 0, 0, 79, 225, 60, 60, 104, 91, 23, 63, 0, 0, 0, 0, 0, 0, 128, 63, 212, 70, 66, 59, 104, 91, 23, 63, 0, 0, 128, 63, 0, 0, 128, 63, 212, 70, 66, 59, 60, 105, 248, 62, 0, 0, 128, 63, 0, 0, 0, 0, 79, 225, 60, 60, 60, 105, 248, 62),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_evnvy"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(228, 245, 127, 64, 211, 211, 235, 64, 74, 190, 241, 64, 228, 245, 127, 64, 211, 211, 235, 64, 26, 192, 241, 192, 228, 245, 127, 64, 132, 178, 220, 64, 26, 192, 241, 192, 228, 245, 127, 64, 132, 178, 220, 64, 74, 190, 241, 64, 228, 245, 127, 64, 211, 211, 235, 64, 74, 190, 241, 64, 228, 245, 127, 64, 132, 178, 220, 64, 74, 190, 241, 64, 186, 247, 127, 192, 132, 178, 220, 64, 74, 190, 241, 64, 186, 247, 127, 192, 211, 211, 235, 64, 74, 190, 241, 64, 186, 247, 127, 192, 211, 211, 235, 64, 26, 192, 241, 192, 186, 247, 127, 192, 211, 211, 235, 64, 74, 190, 241, 64, 186, 247, 127, 192, 132, 178, 220, 64, 74, 190, 241, 64, 186, 247, 127, 192, 132, 178, 220, 64, 26, 192, 241, 192, 186, 247, 127, 192, 132, 178, 220, 64, 74, 190, 241, 64, 228, 245, 127, 64, 132, 178, 220, 64, 74, 190, 241, 64, 228, 245, 127, 64, 132, 178, 220, 64, 26, 192, 241, 192, 186, 247, 127, 192, 132, 178, 220, 64, 26, 192, 241, 192, 228, 245, 127, 64, 132, 178, 220, 64, 26, 192, 241, 192, 228, 245, 127, 64, 211, 211, 235, 64, 26, 192, 241, 192, 186, 247, 127, 192, 211, 211, 235, 64, 26, 192, 241, 192, 186, 247, 127, 192, 132, 178, 220, 64, 26, 192, 241, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.87595, 6.89679, -19.9465, 13.3875, 0.472826, 32.773),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 207, 239, 15, 63, 35, 239, 29, 63, 0, 0, 0, 0, 0, 0, 128, 63, 169, 141, 4, 62, 35, 239, 29, 63, 0, 0, 128, 63, 0, 0, 128, 63, 169, 141, 4, 62, 97, 32, 32, 63, 0, 0, 128, 63, 0, 0, 0, 0, 207, 239, 15, 63, 97, 32, 32, 63, 0, 0, 0, 0, 0, 0, 0, 0, 2, 143, 232, 62, 61, 20, 28, 63, 0, 0, 0, 0, 0, 0, 128, 63, 134, 44, 228, 62, 61, 20, 28, 63, 0, 0, 128, 63, 0, 0, 128, 63, 134, 44, 228, 62, 158, 109, 221, 62, 0, 0, 128, 63, 0, 0, 0, 0, 2, 143, 232, 62, 158, 109, 221, 62, 0, 0, 0, 0, 0, 0, 0, 0, 0, 199, 30, 63, 181, 88, 15, 62, 0, 0, 0, 0, 0, 0, 128, 63, 0, 199, 30, 63, 146, 162, 18, 63, 0, 0, 128, 63, 0, 0, 128, 63, 193, 149, 28, 63, 146, 162, 18, 63, 0, 0, 128, 63, 0, 0, 0, 0, 193, 149, 28, 63, 181, 88, 15, 62, 0, 0, 0, 0, 0, 0, 0, 0, 15, 204, 53, 62, 247, 195, 221, 62, 0, 0, 0, 0, 0, 0, 128, 63, 189, 176, 172, 57, 247, 195, 221, 62, 0, 0, 128, 63, 0, 0, 128, 63, 189, 176, 172, 57, 189, 176, 172, 57, 0, 0, 128, 63, 0, 0, 0, 0, 15, 204, 53, 62, 189, 176, 172, 57, 0, 0, 0, 0, 0, 0, 0, 0, 103, 176, 51, 63, 125, 155, 101, 63, 0, 0, 0, 0, 0, 0, 128, 63, 103, 176, 51, 63, 63, 106, 99, 63, 0, 0, 128, 63, 0, 0, 128, 63, 249, 82, 6, 63, 63, 106, 99, 63, 0, 0, 128, 63, 0, 0, 0, 0, 249, 82, 6, 63, 125, 155, 101, 63),
+"format": 34359742519,
+"index_count": 30,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_egbfl"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray(143, 27, 138, 65, 211, 211, 235, 64, 44, 57, 77, 65, 143, 27, 138, 65, 211, 211, 235, 64, 136, 146, 159, 193, 143, 27, 138, 65, 132, 178, 220, 64, 136, 146, 159, 193, 143, 27, 138, 65, 132, 178, 220, 64, 44, 57, 77, 65, 143, 27, 138, 65, 211, 211, 235, 64, 44, 57, 77, 65, 143, 27, 138, 65, 132, 178, 220, 64, 44, 57, 77, 65, 146, 15, 120, 64, 132, 178, 220, 64, 44, 57, 77, 65, 146, 15, 120, 64, 211, 211, 235, 64, 44, 57, 77, 65, 146, 15, 120, 64, 211, 211, 235, 64, 136, 146, 159, 193, 146, 15, 120, 64, 211, 211, 235, 64, 44, 57, 77, 65, 146, 15, 120, 64, 132, 178, 220, 64, 44, 57, 77, 65, 146, 15, 120, 64, 132, 178, 220, 64, 136, 146, 159, 193, 146, 15, 120, 64, 132, 178, 220, 64, 44, 57, 77, 65, 143, 27, 138, 65, 132, 178, 220, 64, 44, 57, 77, 65, 143, 27, 138, 65, 132, 178, 220, 64, 136, 146, 159, 193, 146, 15, 120, 64, 132, 178, 220, 64, 136, 146, 159, 193, 143, 27, 138, 65, 132, 178, 220, 64, 136, 146, 159, 193, 143, 27, 138, 65, 211, 211, 235, 64, 136, 146, 159, 193, 146, 15, 120, 64, 211, 211, 235, 64, 136, 146, 159, 193, 146, 15, 120, 64, 132, 178, 220, 64, 136, 146, 159, 193, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.73417, 0.225959, -7.56199, 0.238289, 4.40083, 5.6029),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 83, 255, 77, 63, 38, 240, 136, 61, 0, 0, 0, 0, 0, 0, 128, 63, 210, 240, 58, 63, 38, 240, 136, 61, 0, 0, 128, 63, 0, 0, 128, 63, 210, 240, 58, 63, 20, 234, 6, 60, 0, 0, 128, 63, 0, 0, 0, 0, 83, 255, 77, 63, 20, 234, 6, 60, 0, 0, 0, 0, 0, 0, 0, 0, 124, 41, 227, 62, 92, 144, 12, 63, 0, 0, 0, 0, 0, 0, 128, 63, 195, 121, 225, 62, 92, 144, 12, 63, 0, 0, 128, 63, 0, 0, 128, 63, 195, 121, 225, 62, 182, 3, 243, 62, 0, 0, 128, 63, 0, 0, 0, 0, 124, 41, 227, 62, 182, 3, 243, 62, 0, 0, 0, 0, 0, 0, 0, 0, 26, 37, 254, 62, 53, 46, 65, 63, 0, 0, 0, 0, 0, 0, 128, 63, 26, 37, 254, 62, 217, 43, 50, 63, 0, 0, 128, 63, 0, 0, 128, 63, 96, 117, 252, 62, 217, 43, 50, 63, 0, 0, 128, 63, 0, 0, 0, 0, 96, 117, 252, 62, 53, 46, 65, 63, 0, 0, 0, 0, 0, 0, 0, 0, 220, 243, 123, 62, 8, 88, 93, 63, 0, 0, 0, 0, 0, 0, 128, 63, 220, 243, 123, 62, 137, 102, 112, 63, 0, 0, 128, 63, 0, 0, 128, 63, 106, 234, 63, 62, 137, 102, 112, 63, 0, 0, 128, 63, 0, 0, 0, 0, 106, 234, 63, 62, 8, 88, 93, 63, 0, 0, 0, 0, 0, 0, 0, 0, 182, 3, 51, 63, 211, 41, 92, 63, 0, 0, 0, 0, 0, 0, 128, 63, 217, 43, 50, 63, 211, 41, 92, 63, 0, 0, 128, 63, 0, 0, 128, 63, 217, 43, 50, 63, 82, 27, 73, 63, 0, 0, 128, 63, 0, 0, 0, 0, 182, 3, 51, 63, 82, 27, 73, 63, 0, 0, 0, 0, 0, 0, 0, 0, 59, 190, 84, 63, 89, 1, 100, 61, 0, 0, 0, 0, 0, 0, 128, 63, 59, 190, 84, 63, 144, 19, 234, 61, 0, 0, 128, 63, 0, 0, 128, 63, 94, 230, 83, 63, 144, 19, 234, 61, 0, 0, 128, 63, 0, 0, 0, 0, 94, 230, 83, 63, 89, 1, 100, 61),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0, 20, 0, 21, 0, 22, 0, 22, 0, 23, 0, 20, 0),
+"material": SubResource("StandardMaterial3D_lcxja"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(157, 60, 126, 64, 153, 14, 148, 64, 120, 195, 250, 191, 157, 60, 126, 64, 153, 14, 148, 64, 200, 251, 241, 192, 157, 60, 126, 64, 224, 97, 103, 62, 200, 251, 241, 192, 157, 60, 126, 64, 224, 97, 103, 62, 120, 195, 250, 191, 157, 60, 126, 64, 153, 14, 148, 64, 120, 195, 250, 191, 167, 252, 110, 64, 153, 14, 148, 64, 120, 195, 250, 191, 167, 252, 110, 64, 153, 14, 148, 64, 200, 251, 241, 192, 157, 60, 126, 64, 153, 14, 148, 64, 200, 251, 241, 192, 157, 60, 126, 64, 153, 14, 148, 64, 120, 195, 250, 191, 157, 60, 126, 64, 224, 97, 103, 62, 120, 195, 250, 191, 167, 252, 110, 64, 224, 97, 103, 62, 120, 195, 250, 191, 167, 252, 110, 64, 153, 14, 148, 64, 120, 195, 250, 191, 167, 252, 110, 64, 153, 14, 148, 64, 200, 251, 241, 192, 167, 252, 110, 64, 153, 14, 148, 64, 120, 195, 250, 191, 167, 252, 110, 64, 224, 97, 103, 62, 120, 195, 250, 191, 167, 252, 110, 64, 224, 97, 103, 62, 200, 251, 241, 192, 167, 252, 110, 64, 224, 97, 103, 62, 120, 195, 250, 191, 157, 60, 126, 64, 224, 97, 103, 62, 120, 195, 250, 191, 157, 60, 126, 64, 224, 97, 103, 62, 200, 251, 241, 192, 167, 252, 110, 64, 224, 97, 103, 62, 200, 251, 241, 192, 157, 60, 126, 64, 224, 97, 103, 62, 200, 251, 241, 192, 157, 60, 126, 64, 153, 14, 148, 64, 200, 251, 241, 192, 167, 252, 110, 64, 153, 14, 148, 64, 200, 251, 241, 192, 167, 252, 110, 64, 224, 97, 103, 62, 200, 251, 241, 192, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}, {
+"aabb": AABB(3.73417, 0.225959, 3.2394, 0.238289, 4.40083, 4.18996),
+"attribute_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 177, 30, 3, 63, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 128, 63, 177, 30, 3, 63, 203, 10, 96, 63, 0, 0, 128, 63, 0, 0, 128, 63, 170, 56, 232, 62, 203, 10, 96, 63, 0, 0, 128, 63, 0, 0, 0, 0, 170, 56, 232, 62, 119, 96, 110, 63, 0, 0, 0, 0, 0, 0, 0, 0, 46, 72, 102, 63, 233, 20, 78, 62, 0, 0, 0, 0, 0, 0, 128, 63, 81, 112, 101, 63, 233, 20, 78, 62, 0, 0, 128, 63, 0, 0, 128, 63, 81, 112, 101, 63, 59, 190, 20, 62, 0, 0, 128, 63, 0, 0, 0, 0, 46, 72, 102, 63, 59, 190, 20, 62, 0, 0, 0, 0, 0, 0, 0, 0, 218, 15, 55, 63, 15, 204, 117, 63, 0, 0, 0, 0, 0, 0, 128, 63, 126, 13, 40, 63, 15, 204, 117, 63, 0, 0, 128, 63, 0, 0, 128, 63, 126, 13, 40, 63, 50, 244, 116, 63, 0, 0, 128, 63, 0, 0, 0, 0, 218, 15, 55, 63, 50, 244, 116, 63, 0, 0, 0, 0, 0, 0, 0, 0, 119, 96, 110, 63, 90, 172, 7, 63, 0, 0, 0, 0, 0, 0, 128, 63, 119, 96, 110, 63, 6, 2, 22, 63, 0, 0, 128, 63, 0, 0, 128, 63, 26, 94, 95, 63, 6, 2, 22, 63, 0, 0, 128, 63, 0, 0, 0, 0, 26, 94, 95, 63, 90, 172, 7, 63, 0, 0, 0, 0, 0, 0, 0, 0, 60, 105, 56, 63, 84, 170, 49, 63, 0, 0, 0, 0, 0, 0, 128, 63, 95, 145, 55, 63, 84, 170, 49, 63, 0, 0, 128, 63, 0, 0, 128, 63, 95, 145, 55, 63, 169, 84, 35, 63, 0, 0, 128, 63, 0, 0, 0, 0, 60, 105, 56, 63, 169, 84, 35, 63, 0, 0, 0, 0, 0, 0, 0, 0, 54, 160, 3, 63, 89, 200, 194, 62, 0, 0, 0, 0, 0, 0, 128, 63, 146, 162, 18, 63, 89, 200, 194, 62, 0, 0, 128, 63, 0, 0, 128, 63, 146, 162, 18, 63, 159, 24, 193, 62, 0, 0, 128, 63, 0, 0, 0, 0, 54, 160, 3, 63, 159, 24, 193, 62),
+"format": 34359742519,
+"index_count": 36,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 2, 0, 3, 0, 0, 0, 4, 0, 5, 0, 6, 0, 6, 0, 7, 0, 4, 0, 8, 0, 9, 0, 10, 0, 10, 0, 11, 0, 8, 0, 12, 0, 13, 0, 14, 0, 14, 0, 15, 0, 12, 0, 16, 0, 17, 0, 18, 0, 18, 0, 19, 0, 16, 0, 20, 0, 21, 0, 22, 0, 22, 0, 23, 0, 20, 0),
+"material": SubResource("StandardMaterial3D_a4fmt"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray(157, 60, 126, 64, 153, 14, 148, 64, 52, 189, 237, 64, 157, 60, 126, 64, 153, 14, 148, 64, 85, 82, 79, 64, 157, 60, 126, 64, 224, 97, 103, 62, 85, 82, 79, 64, 157, 60, 126, 64, 224, 97, 103, 62, 52, 189, 237, 64, 157, 60, 126, 64, 153, 14, 148, 64, 52, 189, 237, 64, 167, 252, 110, 64, 153, 14, 148, 64, 52, 189, 237, 64, 167, 252, 110, 64, 153, 14, 148, 64, 85, 82, 79, 64, 157, 60, 126, 64, 153, 14, 148, 64, 85, 82, 79, 64, 157, 60, 126, 64, 153, 14, 148, 64, 52, 189, 237, 64, 157, 60, 126, 64, 224, 97, 103, 62, 52, 189, 237, 64, 167, 252, 110, 64, 224, 97, 103, 62, 52, 189, 237, 64, 167, 252, 110, 64, 153, 14, 148, 64, 52, 189, 237, 64, 167, 252, 110, 64, 153, 14, 148, 64, 85, 82, 79, 64, 167, 252, 110, 64, 153, 14, 148, 64, 52, 189, 237, 64, 167, 252, 110, 64, 224, 97, 103, 62, 52, 189, 237, 64, 167, 252, 110, 64, 224, 97, 103, 62, 85, 82, 79, 64, 167, 252, 110, 64, 224, 97, 103, 62, 52, 189, 237, 64, 157, 60, 126, 64, 224, 97, 103, 62, 52, 189, 237, 64, 157, 60, 126, 64, 224, 97, 103, 62, 85, 82, 79, 64, 167, 252, 110, 64, 224, 97, 103, 62, 85, 82, 79, 64, 157, 60, 126, 64, 224, 97, 103, 62, 85, 82, 79, 64, 157, 60, 126, 64, 153, 14, 148, 64, 85, 82, 79, 64, 167, 252, 110, 64, 153, 14, 148, 64, 85, 82, 79, 64, 167, 252, 110, 64, 224, 97, 103, 62, 85, 82, 79, 64, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 254, 255, 250, 127, 252, 127, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 1, 128, 254, 255, 0, 0, 0, 128, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 254, 127, 254, 127, 0, 0, 255, 191, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 2, 0, 249, 127, 2, 128, 0, 128, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 8, 128, 2, 0, 248, 255, 253, 255, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191, 254, 255, 0, 0, 0, 0, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_bjjvn")
+
+[node name="DebugWorldTest" instance=ExtResource("1_67ne2")]
+
+[node name="GodotSky" parent="Environment" index="0"]
+timeOfDay = 2400.0
+rateOfTime = 0.0
+
+[node name="DebugMapModelConversionTest" parent="Geometry" index="0" instance=ExtResource("2_k1j6f")]
+
+[node name="CSGBox" parent="Geometry/DebugMapModelConversionTest" index="0"]
+mesh = SubResource("ArrayMesh_mfeik")
+
+[node name="spotLight3d" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4542, 66.3871, 22.5584)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 9.1351
+spot_angle = 47.7459
+
+[node name="spotLight3d2" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 22.5584)
+light_energy = 5.45
+light_indirect_energy = 322.0
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d3" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 31.2852)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d4" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 11.5591)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d5" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="5"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.06065, 66.3871, 21.4294)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d6" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="6"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 9.10215)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d7" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="7"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 0.197153)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d8" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="8"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20.5761, 65.0282, 0.197153)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d9" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="9"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -25.7189, 65.0282, 0.197153)
+light_energy = 5.45
+shadow_enabled = true
+spot_range = 17.7456
+spot_angle = 60.6231
+
+[node name="spotLight3d10" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="10"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d11" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="11"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d12" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="12"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d13" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="13"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d14" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="14"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d15" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="15"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d16" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="16"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d17" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="17"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="lightmapGi" type="LightmapGI" parent="Geometry" index="1"]
+quality = 2
+interior = true
+max_texture_size = 4096
+generate_probes_subdiv = 3
+light_data = ExtResource("3_hrucs")
+
+[node name="lightmapProbe" type="LightmapProbe" parent="Geometry/lightmapGi" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.935231, 59.6784, 6.35545)
+
+[node name="lightmapProbe2" type="LightmapProbe" parent="Geometry/lightmapGi" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.935231, 64.2729, 6.35545)
+
+[node name="lightmapProbe3" type="LightmapProbe" parent="Geometry/lightmapGi" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 59.6784, 6.35545)
+
+[node name="lightmapProbe4" type="LightmapProbe" parent="Geometry/lightmapGi" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 64.2729, 6.35545)
+
+[node name="lightmapProbe5" type="LightmapProbe" parent="Geometry/lightmapGi" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 59.6784, 34.678)
+
+[node name="lightmapProbe6" type="LightmapProbe" parent="Geometry/lightmapGi" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 64.2729, 34.678)
+
+[node name="lightmapProbe7" type="LightmapProbe" parent="Geometry/lightmapGi" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47236, 59.6784, 34.8722)
+
+[node name="lightmapProbe8" type="LightmapProbe" parent="Geometry/lightmapGi" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47236, 64.2729, 34.8722)
+
+[node name="lightmapProbe9" type="LightmapProbe" parent="Geometry/lightmapGi" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 59.6784, 29.8722)
+
+[node name="lightmapProbe10" type="LightmapProbe" parent="Geometry/lightmapGi" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 64.2729, 29.8722)
+
+[node name="lightmapProbe11" type="LightmapProbe" parent="Geometry/lightmapGi" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 59.6784, 18.8722)
+
+[node name="lightmapProbe12" type="LightmapProbe" parent="Geometry/lightmapGi" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 64.2729, 18.8722)
+
+[node name="lightmapProbe13" type="LightmapProbe" parent="Geometry/lightmapGi" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47236, 59.6784, 24.8722)
+
+[node name="lightmapProbe14" type="LightmapProbe" parent="Geometry/lightmapGi" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47236, 64.2729, 24.8722)
+
+[node name="lightmapProbe15" type="LightmapProbe" parent="Geometry/lightmapGi" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52764, 59.6784, 24.8722)
+
+[node name="lightmapProbe16" type="LightmapProbe" parent="Geometry/lightmapGi" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52764, 64.2729, 24.8722)
+
+[node name="lightmapProbe17" type="LightmapProbe" parent="Geometry/lightmapGi" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.472364, 59.6784, 14.8722)
+
+[node name="lightmapProbe18" type="LightmapProbe" parent="Geometry/lightmapGi" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.472364, 64.2729, 14.8722)
+
+[node name="lightmapProbe19" type="LightmapProbe" parent="Geometry/lightmapGi" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74383, 59.6784, 15.5327)
+
+[node name="lightmapProbe20" type="LightmapProbe" parent="Geometry/lightmapGi" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74383, 64.2729, 15.5327)
+
+[node name="lightmapProbe21" type="LightmapProbe" parent="Geometry/lightmapGi" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25617, 59.6784, 13.5327)
+
+[node name="lightmapProbe22" type="LightmapProbe" parent="Geometry/lightmapGi" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25617, 64.2729, 13.5327)
+
+[node name="lightmapProbe23" type="LightmapProbe" parent="Geometry/lightmapGi" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21732, 59.6784, 9.18137)
+
+[node name="lightmapProbe24" type="LightmapProbe" parent="Geometry/lightmapGi" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21732, 64.2729, 9.18137)
+
+[node name="lightmapProbe25" type="LightmapProbe" parent="Geometry/lightmapGi" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 59.6784, 9.18137)
+
+[node name="lightmapProbe26" type="LightmapProbe" parent="Geometry/lightmapGi" index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 64.2729, 9.18137)
+
+[node name="lightmapProbe27" type="LightmapProbe" parent="Geometry/lightmapGi" index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 59.6784, 13.1814)
+
+[node name="lightmapProbe28" type="LightmapProbe" parent="Geometry/lightmapGi" index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 64.2729, 13.1814)
+
+[node name="lightmapProbe29" type="LightmapProbe" parent="Geometry/lightmapGi" index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 59.6784, 3.18137)
+
+[node name="lightmapProbe30" type="LightmapProbe" parent="Geometry/lightmapGi" index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 64.2729, 3.18137)
+
+[node name="lightmapProbe31" type="LightmapProbe" parent="Geometry/lightmapGi" index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 59.6784, -2.81863)
+
+[node name="lightmapProbe32" type="LightmapProbe" parent="Geometry/lightmapGi" index="31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 64.2729, -2.81863)
+
+[node name="lightmapProbe33" type="LightmapProbe" parent="Geometry/lightmapGi" index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 59.6784, -2.81863)
+
+[node name="lightmapProbe34" type="LightmapProbe" parent="Geometry/lightmapGi" index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 64.2729, -2.81863)
+
+[node name="lightmapProbe35" type="LightmapProbe" parent="Geometry/lightmapGi" index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 59.6784, 3.18137)
+
+[node name="lightmapProbe36" type="LightmapProbe" parent="Geometry/lightmapGi" index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 64.2729, 3.18137)
+
+[node name="lightmapProbe37" type="LightmapProbe" parent="Geometry/lightmapGi" index="36"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 59.6784, 3.18137)
+
+[node name="lightmapProbe38" type="LightmapProbe" parent="Geometry/lightmapGi" index="37"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 64.2729, 3.18137)
+
+[node name="lightmapProbe39" type="LightmapProbe" parent="Geometry/lightmapGi" index="38"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 59.6784, -2.81863)
+
+[node name="lightmapProbe40" type="LightmapProbe" parent="Geometry/lightmapGi" index="39"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 64.2729, -2.81863)
+
+[node name="lightmapProbe41" type="LightmapProbe" parent="Geometry/lightmapGi" index="40"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2173, 59.6784, -2.81863)
+
+[node name="lightmapProbe42" type="LightmapProbe" parent="Geometry/lightmapGi" index="41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2173, 64.2729, -2.81863)
+
+[node name="lightmapProbe43" type="LightmapProbe" parent="Geometry/lightmapGi" index="42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.295, 59.6784, 3.31985)
+
+[node name="lightmapProbe44" type="LightmapProbe" parent="Geometry/lightmapGi" index="43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.295, 64.2729, 3.31985)
+
+[node name="lightmapProbe45" type="LightmapProbe" parent="Geometry/lightmapGi" index="44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 59.6784, 3.31985)
+
+[node name="lightmapProbe46" type="LightmapProbe" parent="Geometry/lightmapGi" index="45"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 64.2729, 3.31985)
+
+[node name="lightmapProbe47" type="LightmapProbe" parent="Geometry/lightmapGi" index="46"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 59.6784, -2.68015)
+
+[node name="lightmapProbe48" type="LightmapProbe" parent="Geometry/lightmapGi" index="47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 64.2729, -2.68015)
+
+[node name="lightmapProbe49" type="LightmapProbe" parent="Geometry/lightmapGi" index="48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 59.6784, 11.3199)
+
+[node name="lightmapProbe50" type="LightmapProbe" parent="Geometry/lightmapGi" index="49"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 64.2729, 11.3199)
+
+[node name="lightmapProbe51" type="LightmapProbe" parent="Geometry/lightmapGi" index="50"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70498, 59.6784, 11.3199)
+
+[node name="lightmapProbe52" type="LightmapProbe" parent="Geometry/lightmapGi" index="51"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70498, 64.2729, 11.3199)
+
+[node name="lightmapProbe53" type="LightmapProbe" parent="Geometry/lightmapGi" index="52"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 59.6784, 8.31985)
+
+[node name="lightmapProbe54" type="LightmapProbe" parent="Geometry/lightmapGi" index="53"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 64.2729, 8.31985)
+
+[node name="lightmapProbe55" type="LightmapProbe" parent="Geometry/lightmapGi" index="54"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70498, 59.6784, 18.3199)
+
+[node name="lightmapProbe56" type="LightmapProbe" parent="Geometry/lightmapGi" index="55"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70498, 64.2729, 18.3199)
+
+[node name="lightmapProbe57" type="LightmapProbe" parent="Geometry/lightmapGi" index="56"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 26.3199)
+
+[node name="lightmapProbe58" type="LightmapProbe" parent="Geometry/lightmapGi" index="57"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 26.3199)
+
+[node name="lightmapProbe59" type="LightmapProbe" parent="Geometry/lightmapGi" index="58"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 59.6784, 19.3199)
+
+[node name="lightmapProbe60" type="LightmapProbe" parent="Geometry/lightmapGi" index="59"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 64.2729, 19.3199)
+
+[node name="lightmapProbe61" type="LightmapProbe" parent="Geometry/lightmapGi" index="60"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29502, 59.6784, 21.3199)
+
+[node name="lightmapProbe62" type="LightmapProbe" parent="Geometry/lightmapGi" index="61"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29502, 64.2729, 21.3199)
+
+[node name="lightmapProbe63" type="LightmapProbe" parent="Geometry/lightmapGi" index="62"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 59.6784, 30.3199)
+
+[node name="lightmapProbe64" type="LightmapProbe" parent="Geometry/lightmapGi" index="63"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 64.2729, 30.3199)
+
+[node name="lightmapProbe65" type="LightmapProbe" parent="Geometry/lightmapGi" index="64"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 59.6784, 32.3199)
+
+[node name="lightmapProbe66" type="LightmapProbe" parent="Geometry/lightmapGi" index="65"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 64.2729, 32.3199)
+
+[node name="lightmapProbe67" type="LightmapProbe" parent="Geometry/lightmapGi" index="66"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 59.6784, 24.3199)
+
+[node name="lightmapProbe68" type="LightmapProbe" parent="Geometry/lightmapGi" index="67"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 64.2729, 24.3199)
+
+[node name="lightmapProbe69" type="LightmapProbe" parent="Geometry/lightmapGi" index="68"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 19.3199)
+
+[node name="lightmapProbe70" type="LightmapProbe" parent="Geometry/lightmapGi" index="69"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 19.3199)
+
+[editable path="Geometry/DebugMapModelConversionTest"]

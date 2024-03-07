@@ -7,7 +7,6 @@ extends Control
 @onready var camHoriz = $"../camPivot/horizonal"
 @onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"
 @export var crosshair : TextureRect
-@export var fpsCounterEnabled = false
 @onready var healthBG = $hpBG
 @onready var healthTexture = $healthTexture
 var slidingCrosshairPos : Vector2 = Vector2.ZERO
@@ -37,7 +36,8 @@ func _process(delta):
 		interactHud.position.y = lerpf(interactHud.position.y, crosshair.position.y + 15, 8*delta)
 		interactHud.position.x = lerpf(interactHud.position.x, crosshair.position.x + 35, 8*delta)
 	else:
-		interactHud.modulate = lerp(interactHud.modulate, Color.TRANSPARENT, 8*delta)
+		interactHud.modulate = lerp(interactHud.modulate, Color.TRANSPARENT, 24*delta)
+		interactHud.position = lerp(interactHud.position, crosshair.position, 16*delta)
 
 	if Dialogic.current_timeline != null:
 		hudEnabled = true
@@ -68,7 +68,7 @@ func _process(delta):
 		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.TRANSPARENT,12*delta)
 		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.TRANSPARENT,12*delta)
 
-	if fpsCounterEnabled:
+	if UserConfig.game_show_fps:
 		fpsControl.show()
 		fpsLabel.text = "FPS: %s" %Engine.get_frames_per_second()
 	else:

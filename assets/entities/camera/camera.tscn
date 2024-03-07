@@ -177,7 +177,6 @@ mouse_filter = 2
 script = ExtResource("4_r48cc")
 cam = NodePath("../camPivot/horizonal/vertholder/vertical/springArm3d/Camera")
 crosshair = NodePath("Crosshair")
-fpsCounterEnabled = true
 
 [node name="WIP" type="Label" parent="HUD"]
 visible = false
@@ -355,7 +354,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 
 [node name="panel" type="Panel" parent="HUD/Interact"]
 layout_mode = 1
@@ -368,6 +367,7 @@ offset_left = -41.0
 offset_top = 18.0
 offset_right = 164.0
 offset_bottom = 43.0
+mouse_filter = 2
 
 [node name="richTextLabel" type="RichTextLabel" parent="HUD/Interact"]
 layout_mode = 1

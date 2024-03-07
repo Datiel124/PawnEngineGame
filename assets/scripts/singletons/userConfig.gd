@@ -1,6 +1,7 @@
 extends Node
 
 #game configs
+var game_show_fps = false
 var game_camera_screentilt_always = false
 var game_aim_screentilt = true
 var game_crosshair_tilt = true

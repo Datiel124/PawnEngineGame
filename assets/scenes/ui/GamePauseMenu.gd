@@ -1,20 +1,20 @@
 extends Control
-var fadeSpeed = 4
+var fadeSpeed = 8
 @onready var soundPlayer = $audioStreamPlayer
 @onready var secondSound = $audioStreamPlayer2
 @onready var gradientBG = $gradientBG
 
 func _ready() -> void:
 	gradientBG.self_modulate = Color.TRANSPARENT
-	self_modulate = Color.TRANSPARENT
+	modulate = Color.TRANSPARENT
 	hide()
 
 func _process(delta):
 	if get_tree().paused:
-		self_modulate = lerp(self_modulate,Color.WHITE,fadeSpeed*delta)
+		modulate = lerp(modulate,Color.WHITE,fadeSpeed*delta)
 		gradientBG.self_modulate = lerp(gradientBG.self_modulate,Color.WHITE,fadeSpeed*delta)
 	else:
-		self_modulate = Color.TRANSPARENT
+		modulate = Color.TRANSPARENT
 		gradientBG.self_modulate = lerp(gradientBG.self_modulate,Color.TRANSPARENT,fadeSpeed*delta)
 
 func _input(event: InputEvent) -> void:

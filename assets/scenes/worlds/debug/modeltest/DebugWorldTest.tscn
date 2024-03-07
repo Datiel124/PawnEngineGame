@@ -1454,9 +1454,14 @@ bus = &"Ambience"
 attenuation_filter_db = 0.0
 
 [node name="lightmapGi" type="LightmapGI" parent="Geometry" index="1"]
-quality = 2
+quality = 3
+bounces = 6
+directional = true
 interior = true
 max_texture_size = 4096
+environment_mode = 3
+environment_custom_color = Color(0, 0, 0, 1)
+environment_custom_energy = 0.0
 generate_probes_subdiv = 3
 light_data = ExtResource("3_hrucs")
 

@@ -39,4 +39,3 @@ stretch_mode = 5
 
 [node name="AudioStreamPlayer" parent="." index="3"]
 stream = SubResource("AudioStreamRandomizer_b83n4")
-stream_paused = false

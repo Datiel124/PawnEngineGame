@@ -11,6 +11,8 @@ signal interactSpeakTrigger
 @export_category("AI Component")
 @export var pawnOwner : BasePawn
 @export var aiTree : BTPlayer
+@export_category("Interaction")
+@export_enum("Dialogue") var interactType = 0
 @export var isInteractable : bool = false
 @export_category("Dialogue")
 @export var dialogueStartingCamera : Marker3D

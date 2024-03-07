@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dodu8jdt3nw06"]
+[gd_scene load_steps=9 format=3 uid="uid://dodu8jdt3nw06"]
 
+[ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="1_d5vm4"]
 [ext_resource type="Script" path="res://assets/scenes/ui/GamePauseMenu.gd" id="1_h7sny"]
 [ext_resource type="PackedScene" uid="uid://wncyofb1f8i7" path="res://assets/scenes/ui/options/optionsMenu.tscn" id="1_nxica"]
+[ext_resource type="PackedScene" uid="uid://ba0s8u6mtjxns" path="res://assets/scenes/menu/menuButton.tscn" id="3_mr0iv"]
+[ext_resource type="AudioStream" uid="uid://08mwbmwvrolu" path="res://assets/sounds/ui/uiAppear2.wav" id="5_0havd"]
+[ext_resource type="AudioStream" uid="uid://c8f4j3xitvvuk" path="res://assets/sounds/ui/uialert.wav" id="6_raf1m"]
+
+[sub_resource type="Gradient" id="Gradient_flboi"]
+offsets = PackedFloat32Array(0, 0.171171, 1)
+colors = PackedColorArray(0, 0, 0, 0.67451, 0.0235294, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jqr86"]
+gradient = SubResource("Gradient_flboi")
+fill_from = Vector2(1, 1)
 
 [node name="GamePauseMenu" type="Control"]
 process_mode = 3
@@ -11,7 +23,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_d5vm4")
 script = ExtResource("1_h7sny")
+
+[node name="gradientBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_jqr86")
+
+[node name="panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.611765)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -199.0
+offset_right = 220.0
+offset_bottom = 158.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="label" type="Label" parent="."]
 layout_mode = 1
@@ -20,47 +58,74 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.5
-offset_top = -122.0
-offset_right = 28.5
-offset_bottom = -99.0
+offset_left = -82.0
+offset_top = -181.0
+offset_right = 66.0
+offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 46
 text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Optionsbtn" type="Button" parent="."]
+[node name="ResumeButton" parent="." instance=ExtResource("3_mr0iv")]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.419
+anchor_right = 0.5
+anchor_bottom = 0.419
+offset_left = -170.0
+offset_top = -23.1
+offset_right = 171.0
+offset_bottom = 23.9
+grow_horizontal = 1
+grow_vertical = 1
+text = "Resume"
+
+[node name="OptionsButton" parent="." instance=ExtResource("3_mr0iv")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = -74.0
-offset_right = 96.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "OPTIONS"
+offset_left = -170.0
+offset_top = -24.0
+offset_right = 171.0
+offset_bottom = 23.0
+grow_horizontal = 1
+grow_vertical = 1
+text = "Options"
 
-[node name="MainMenubtn" type="Button" parent="."]
+[node name="menuButton" parent="." instance=ExtResource("3_mr0iv")]
 layout_mode = 1
-anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.574
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -96.0
-offset_top = 6.0
-offset_right = 96.0
-offset_bottom = 70.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "MAIN MENU"
+anchor_bottom = 0.574
+offset_left = -170.0
+offset_top = -23.6
+offset_right = 171.0
+offset_bottom = 23.4
+grow_horizontal = 1
+grow_vertical = 1
+text = "exit to menu"
 
 [node name="Options" parent="." instance=ExtResource("1_nxica")]
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="Optionsbtn" to="Options" method="show"]
-[connection signal="pressed" from="MainMenubtn" to="." method="_on_main_menubtn_pressed"]
+[node name="audioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_0havd")
+volume_db = -10.0
+bus = &"UI"
+
+[node name="audioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_raf1m")
+volume_db = -15.0
+bus = &"UI"
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="Options" method="show"]
+[connection signal="pressed" from="menuButton" to="." method="_on_menu_button_pressed"]

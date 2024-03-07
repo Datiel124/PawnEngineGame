@@ -41,10 +41,13 @@ The fuck do you want?
 	You heard me, I'm stuck in this shitty ass world and I'm pissed about it.
 	- Sorry to hear about it, but you shouldn't take your anger out on people. [if {playerHasWeaponEquipped} == true]
 		Yeah I know that now, thanks dude. You can be on your way.
+		[music fade="0.5" volume="0.0"]
 	- Not my problem. [if {playerHasWeaponEquipped} == true]
 		I-I know its not..
+		[music fade="0.0" volume="0.0"]
 	- I can fix that right now, a bullet right in the center of your head. Hell, it'd just be target practice. [if {playerHasWeaponEquipped} == true]
 		I'd really like it if you didn't. I'm just upset, sorry for the trouble.
+		[music fade="0.0" volume="0.0"]
 	- Sorry to hear, I'll let you go. [if {playerHasWeaponEquipped} == false]
 		Wise choice.
 		[music fade="0.5" volume="0.0"]

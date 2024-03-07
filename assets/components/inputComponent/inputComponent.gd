@@ -53,8 +53,9 @@ func _process(_delta):
 								if !controllingPawn.freeAim:
 									controllingPawn.freeAim = true
 									controllingPawn.meshRotation = controllingPawn.attachedCam.camRot
-							controllingPawn.currentItem.fire()
-							controllingPawn.freeAimTimer.start()
+							if Dialogic.current_timeline == null:
+								controllingPawn.currentItem.fire()
+								controllingPawn.freeAimTimer.start()
 				else:
 					if controllingPawn:
 						if !Input.is_action_pressed("gRightClick"):

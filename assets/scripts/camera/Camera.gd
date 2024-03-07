@@ -2,14 +2,6 @@ extends CharacterBody3D
 class_name PlayerCamera
 ##Variable Set
 var lowHP = false
-var freeCursor = false:
-	set(value):
-		if value == false:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		if value == true:
-			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	get:
-		return freeCursor
 var isFreecam = true
 var speed = 9.0
 var acceleration = 3.0
@@ -91,15 +83,12 @@ func _ready():
 	Dialogic.end_timeline()
 	globalGameManager.activeCamera = self
 	currentFOV = globalGameManager.defaultFOV
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	globalGameManager.hideMouse()
 	aimFOV = currentFOV - zoomAmount
 	Fade.fade_in(0.3, Color(0,0,0,1),"GradientVertical",false,true)
 	Dialogic.timeline_started.connect(playTextAppearSound)
 
 func _input(_event):
-	if Input.is_action_pressed("gEscape"):
-		freeCursor = true
-
 	if Input.is_action_pressed("gRightClick"):
 		isZoomed = true
 	else:
@@ -107,6 +96,23 @@ func _input(_event):
 
 
 func _physics_process(delta):
+	#Interact Cast HUD
+	if interactCast.is_colliding():
+		if followingEntity != null:
+			if followingEntity is BasePawn:
+				var obj = followingEntity.getInteractionObject()
+				if obj != null:
+					if obj is BasePawn:
+						if obj.inputComponent is AIComponent:
+							if obj.inputComponent.interactType == 0:
+								hud.setInteractionText("Speak to %s" %obj.inputComponent.pawnName)
+
+					hud.interactVisible = true
+				else:
+					hud.interactVisible = false
+	else:
+		hud.interactVisible = false
+
 	#Weapon Hud
 	if !followNode == null:
 		if followingEntity is BasePawn:
@@ -232,9 +238,7 @@ func _physics_process(delta):
 
 
 func _on_input_component_mouse_button_pressed(button):
-	if isFreecam:
-		if button == 1:
-			freeCursor = false
+	pass
 
 
 func _on_input_component_mouse_button_held(button):

@@ -48,7 +48,8 @@ func _input(_event):
 		restartGame()
 
 	if Input.is_action_just_pressed("dRestartScene"):
-		restartScene()
+		if get_tree().paused == false:
+			restartScene()
 
 	if debugEnabled:
 		if Input.is_action_pressed("dFreecam"):
@@ -192,3 +193,9 @@ func getEventSignal(event : StringName) -> Signal:
 	if !has_user_signal(event):
 		add_user_signal(event)
 	return Signal(self, event)
+
+func showMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func hideMouse():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

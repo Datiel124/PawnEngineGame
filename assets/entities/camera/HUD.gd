@@ -1,6 +1,8 @@
 extends Control
 @export_category("Hud")
 @export var cam : Camera3D
+@onready var interactHud = $Interact
+@onready var interactText = $Interact/richTextLabel
 @onready var camVert = $"../camPivot/horizonal/vertholder/vertical"
 @onready var camHoriz = $"../camPivot/horizonal"
 @onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"
@@ -19,25 +21,28 @@ var slidingCrosshairPos : Vector2 = Vector2.ZERO
 @onready var healthBar = $hpBar
 @onready var fpsControl = $FPSCounter
 @onready var fpsLabel = $FPSCounter/label
+var interactVisible = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hudEnabled = true
-	Dialogic.timeline_started.connect(showMouse)
-	Dialogic.timeline_ended.connect(hideMouse)
+	Dialogic.timeline_started.connect(globalGameManager.showMouse)
+	Dialogic.timeline_ended.connect(globalGameManager.hideMouse)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# If in Dialogue
-	if Dialogic.current_timeline != null:
-		crosshair.tintCrosshair(Color.TRANSPARENT)
-		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.TRANSPARENT,12*delta)
-		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.TRANSPARENT,12*delta)
-		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.TRANSPARENT,12*delta)
+	if interactVisible:
+		interactHud.modulate = lerp(interactHud.modulate, Color.WHITE, 8*delta)
+		interactHud.position.y = lerpf(interactHud.position.y, crosshair.position.y + 15, 8*delta)
+		interactHud.position.x = lerpf(interactHud.position.x, crosshair.position.x + 35, 8*delta)
 	else:
-		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.WHITE,12*delta)
-		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.WHITE,12*delta)
-		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.WHITE,12*delta)
+		interactHud.modulate = lerp(interactHud.modulate, Color.TRANSPARENT, 8*delta)
+
+	if Dialogic.current_timeline != null:
+		hudEnabled = true
+	else:
+		hudEnabled = false
 	#Crosshair Follow
 	if UserConfig.game_crosshair_dynamic_position:
 		var pos
@@ -54,9 +59,14 @@ func _process(delta):
 		crosshair.positionOverride = lerp(crosshair.positionOverride, slidingCrosshairPos, get_owner().recoilReturnSpeed*delta)
 
 	if hudEnabled:
-		self.show()
+		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.WHITE,12*delta)
+		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.WHITE,12*delta)
+		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.WHITE,12*delta)
 	else:
-		self.hide()
+		crosshair.tintCrosshair(Color.TRANSPARENT)
+		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.TRANSPARENT,12*delta)
+		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.TRANSPARENT,12*delta)
+		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.TRANSPARENT,12*delta)
 
 	if fpsCounterEnabled:
 		fpsControl.show()
@@ -68,8 +78,5 @@ func getCrosshair():
 	if crosshair:
 		return crosshair
 
-func showMouse():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-func hideMouse():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+func setInteractionText(text : String):
+	interactText.text = text

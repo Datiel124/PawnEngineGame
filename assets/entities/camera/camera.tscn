@@ -343,7 +343,6 @@ text = "FPS:"
 vertical_alignment = 1
 
 [node name="Interact" type="Control" parent="HUD"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -356,6 +355,19 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+
+[node name="panel" type="Panel" parent="HUD/Interact"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = 18.0
+offset_right = 164.0
+offset_bottom = 43.0
 
 [node name="richTextLabel" type="RichTextLabel" parent="HUD/Interact"]
 layout_mode = 1
@@ -370,23 +382,6 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("13_1q303")
 bbcode_enabled = true
 text = "Use \"Item\""
-
-[node name="interaction" type="Label" parent="HUD"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.453
-anchor_top = 0.553
-anchor_right = 0.453
-anchor_bottom = 0.611
-offset_left = 0.200012
-offset_top = 0.299957
-offset_right = 142.2
-offset_bottom = 0.0999756
-grow_horizontal = 2
-grow_vertical = 2
-text = "Press F to Interact"
-horizontal_alignment = 1
 
 [node name="textboxAppearSound" type="AudioStreamPlayer" parent="HUD"]
 stream = ExtResource("12_vxs2k")

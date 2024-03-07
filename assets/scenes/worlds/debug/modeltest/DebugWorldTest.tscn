@@ -1327,64 +1327,54 @@ mesh = SubResource("ArrayMesh_mfeik")
 
 [node name="spotLight3d" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4542, 66.3871, 22.5584)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 9.1351
 spot_angle = 47.7459
 
 [node name="spotLight3d2" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 22.5584)
-light_energy = 5.45
-light_indirect_energy = 322.0
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d3" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 31.2852)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d4" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 11.5591)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d5" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="5"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.06065, 66.3871, 21.4294)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d6" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 9.10215)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d7" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="7"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 0.197153)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d8" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="8"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20.5761, 65.0282, 0.197153)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
 [node name="spotLight3d9" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="9"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -25.7189, 65.0282, 0.197153)
-light_energy = 5.45
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
@@ -1762,40 +1752,40 @@ bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
 tree_root = SubResource("AnimationNodeBlendTree_ncfh7")
 
 [node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
-transform = Transform3D(-0.995797, 0.0145953, 0.0903086, 0.0115047, 0.999324, -0.0346531, -0.0907541, -0.0334688, -0.995301, 3.91197, 75.2826, 18.2899)
+transform = Transform3D(-0.995796, 0.0145952, 0.0903086, 0.0115047, 0.999324, -0.0346518, -0.090754, -0.0334677, -0.995301, 3.91197, 75.2827, 18.2899)
 
 [node name="LeftThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
-transform = Transform3D(-0.989155, -0.146494, 0.0102141, 0.145471, -0.98696, -0.0684912, 0.0201169, -0.0662609, 0.997595, 3.86031, 74.9428, 18.2695)
+transform = Transform3D(-0.989158, -0.146494, 0.010214, 0.145472, -0.98696, -0.0684915, 0.020117, -0.0662612, 0.997595, 3.86031, 74.9428, 18.2695)
 
 [node name="LeftFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="2"]
-transform = Transform3D(0.97653, -0.211647, -0.0394175, -0.135861, -0.747806, 0.649795, -0.167018, -0.629198, -0.759056, 3.77035, 74.1648, 18.3762)
+transform = Transform3D(0.976532, -0.211648, -0.0394183, -0.135861, -0.747803, 0.64979, -0.167018, -0.629204, -0.759055, 3.77035, 74.1648, 18.3762)
 
 [node name="LeftKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="3"]
-transform = Transform3D(-0.995726, -0.0762134, 0.0518269, 0.0890657, -0.94037, 0.328198, 0.0237258, 0.33143, 0.943173, 3.80104, 74.5435, 18.2427)
+transform = Transform3D(-0.995728, -0.0762128, 0.0518269, 0.089066, -0.940365, 0.328199, 0.0237258, 0.331427, 0.943177, 3.80104, 74.5435, 18.2427)
 
 [node name="RightThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
-transform = Transform3D(-0.963351, 0.217582, -0.156857, -0.153512, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96003, 74.942, 18.2835)
+transform = Transform3D(-0.963354, 0.217582, -0.156856, -0.153513, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96004, 74.9421, 18.2836)
 
 [node name="RightFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="5"]
-transform = Transform3D(0.93136, 0.318863, 0.17573, 0.0594614, -0.609377, 0.790612, 0.3592, -0.725911, -0.586525, 4.08753, 74.1664, 18.1658)
+transform = Transform3D(0.93136, 0.318864, 0.17573, 0.0594615, -0.609378, 0.790613, 0.359199, -0.725913, -0.586523, 4.08753, 74.1664, 18.1658)
 
 [node name="RightKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="6"]
-transform = Transform3D(-0.973176, 0.0979982, -0.208056, -0.0989946, -0.995046, -0.00568661, -0.207589, 0.0150775, 0.97809, 4.04806, 74.5671, 18.1597)
+transform = Transform3D(-0.973179, 0.097998, -0.208055, -0.0989949, -0.995045, -0.00568739, -0.207589, 0.0150768, 0.978087, 4.04806, 74.5671, 18.1597)
 
 [node name="Stomach" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="7"]
-transform = Transform3D(-0.993768, 0.0341266, 0.10602, 0.0228222, 0.994077, -0.106066, -0.109014, -0.102987, -0.988671, 3.90493, 75.0778, 18.3111)
+transform = Transform3D(-0.993767, 0.0341264, 0.10602, 0.0228221, 0.994078, -0.106065, -0.109014, -0.102986, -0.988671, 3.90494, 75.0778, 18.3111)
 
 [node name="Hips" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="8"]
-transform = Transform3D(-0.99017, -0.0277991, 0.137007, 0.00743441, 0.968168, 0.250174, -0.1396, 0.248736, -0.958454, 3.90882, 74.9424, 18.2763)
+transform = Transform3D(-0.99017, -0.0277992, 0.137007, 0.00743444, 0.968168, 0.250175, -0.1396, 0.248737, -0.958454, 3.90882, 74.9425, 18.2764)
 
 [node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="9"]
-transform = Transform3D(-0.995472, 0.0260082, 0.0913147, 0.0170978, 0.995124, -0.0970422, -0.0933941, -0.0950425, -0.991073, 3.91582, 75.5464, 18.281)
+transform = Transform3D(-0.995471, 0.026008, 0.0913147, 0.0170977, 0.995124, -0.097041, -0.093394, -0.0950414, -0.991072, 3.91582, 75.5464, 18.2811)
 
 [node name="leftHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="10"]
-transform = Transform3D(0.43177, -0.0226908, -0.901685, 0.186793, -0.975748, 0.113996, -0.8824, -0.217641, -0.417063, 3.73619, 75.0143, 18.2354)
+transform = Transform3D(0.431775, -0.0226912, -0.90168, 0.186794, -0.975748, 0.113996, -0.882402, -0.217643, -0.417058, 3.73619, 75.0143, 18.2354)
 
 [node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="11"]
-transform = Transform3D(0.156643, 0.18882, 0.969438, -0.0779173, -0.976106, 0.202711, 0.984566, -0.107263, -0.138189, 4.08094, 75.0161, 18.3379)
+transform = Transform3D(0.156647, 0.18882, 0.969435, -0.0779182, -0.976102, 0.202711, 0.984566, -0.107266, -0.138188, 4.08095, 75.0161, 18.338)
 
 [editable path="Geometry/DebugMapModelConversionTest"]
 [editable path="Pawns/Players/pawnEntity"]

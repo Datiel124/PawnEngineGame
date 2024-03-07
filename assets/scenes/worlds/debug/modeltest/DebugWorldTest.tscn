@@ -1,188 +1,147 @@
-[gd_scene load_steps=51 format=3 uid="uid://cgunekse1vc0y"]
+[gd_scene load_steps=95 format=3 uid="uid://cgunekse1vc0y"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_67ne2"]
 [ext_resource type="PackedScene" uid="uid://b4mgs5g7ahuj7" path="res://assets/scenes/worlds/debug/modeltest/DebugMapModelConversionTest.gltf" id="2_k1j6f"]
 [ext_resource type="LightmapGIData" uid="uid://dqhqutvgsg7b1" path="res://assets/scenes/worlds/debug/modeltest/DebugWorldTest.lmbake" id="3_hrucs"]
+[ext_resource type="AudioStream" uid="uid://dlc3pd7oubk0m" path="res://assets/sounds/ambient/statichum.wav" id="3_hwa6i"]
+[ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="4_4dx60"]
+[ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="4_4qh7k"]
+[ext_resource type="PackedScene" uid="uid://cmyxa8pfmhpcy" path="res://assets/components/inputComponent/inputComponent.tscn" id="5_bkru1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5juin"]
 resource_name = "Material_2"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ut25f"]
 resource_name = "Material_3"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1buvf"]
 resource_name = "Material_4"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0oik5"]
 resource_name = "Material_5"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wabrw"]
 resource_name = "Material_6"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abwgk"]
 resource_name = "Material_7"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j1or"]
 resource_name = "Material_8"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fmkk"]
 resource_name = "Material_9"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ahecd"]
 resource_name = "Material_10"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdww8"]
 resource_name = "Material_11"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fu44y"]
 resource_name = "Material_12"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8okr"]
 resource_name = "Material_13"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bi45e"]
 resource_name = "Material_14"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3i5p"]
 resource_name = "Material_15"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omcjy"]
 resource_name = "Material_16"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvlya"]
 resource_name = "Material_17"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vovig"]
 resource_name = "Material_18"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqevb"]
 resource_name = "Material_19"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqbce"]
 resource_name = "Material_20"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8awkw"]
 resource_name = "Material_21"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm8sb"]
 resource_name = "Material_22"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn4pd"]
 resource_name = "Material_23"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_auywu"]
 resource_name = "Material_24"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nptgy"]
 resource_name = "Material_25"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieiqv"]
 resource_name = "Material_26"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xltfw"]
 resource_name = "Material_27"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qyly8"]
 resource_name = "Material_28"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6d7tp"]
 resource_name = "Material_29"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hlmhd"]
 resource_name = "Material_30"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hm6r8"]
 resource_name = "Material_31"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymnbg"]
 resource_name = "Material_32"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ct6cv"]
 resource_name = "Material_33"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0dvqt"]
 resource_name = "Material_34"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1f1u"]
 resource_name = "Material_35"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ff5s"]
 resource_name = "Material_36"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wm13"]
 resource_name = "Material_37"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_anb4k"]
 resource_name = "Material_38"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pri4w"]
 resource_name = "Material_39"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qwks"]
 resource_name = "Material_40"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njy23"]
 resource_name = "Material_41"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckh2f"]
 resource_name = "Material_42"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_evnvy"]
 resource_name = "Material_43"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egbfl"]
 resource_name = "Material_44"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcxja"]
 resource_name = "Material_61"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4fmt"]
 resource_name = "Material_62"
-albedo_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bjjvn"]
 _surfaces = [{
@@ -1140,6 +1099,221 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bjjvn")
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ss3j1"]
+animation = &"PawnAnim/Run4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vdh4l"]
+animation = &"PawnAnim/Jump"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_d4lwx"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d5y0w"]
+animation = &"PawnAnim/Run4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d6uhn"]
+animation = &"PawnAnim/WalkBackwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_31dhj"]
+animation = &"PawnAnim/WalkBackwardsLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vldn5"]
+animation = &"PawnAnim/WalkBackwardsR"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qmwb2"]
+animation = &"PawnAnim/RunUpRightNew"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yg8pp"]
+animation = &"PawnAnim/RunUpLeftNew"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_awdj7"]
+animation = &"PawnAnim/WalkLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1sukj"]
+animation = &"PawnAnim/WalkRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0k3lb"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_q8dd2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_d5y0w")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_d6uhn")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_31dhj")
+blend_point_2/pos = Vector2(-1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_vldn5")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_qmwb2")
+blend_point_4/pos = Vector2(-1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_yg8pp")
+blend_point_5/pos = Vector2(1, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_awdj7")
+blend_point_6/pos = Vector2(-1, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_1sukj")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_0k3lb")
+blend_point_8/pos = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_rb71h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0yvgy"]
+sync = true
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_rb71h")
+input_0/name = "notAiming"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "aiming"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dfvt8"]
+animation = &"PawnAnim/Fall"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_et8lm"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eqdaj"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eq7at"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6c4p"]
+animation = &"PawnAnim/runCartoonish"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_ovg2d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_eqdaj")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_eq7at")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_v6c4p")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_8xlap"]
+sync = true
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_vc7lw"]
+filter_enabled = true
+filters = ["MaleSkeleton/Skeleton3D:Head", "MaleSkeleton/Skeleton3D:L_Foot", "MaleSkeleton/Skeleton3D:L_Forearm", "MaleSkeleton/Skeleton3D:L_Hand", "MaleSkeleton/Skeleton3D:L_LowerLeg", "MaleSkeleton/Skeleton3D:L_Shoulder", "MaleSkeleton/Skeleton3D:L_Toe", "MaleSkeleton/Skeleton3D:L_UpperArm", "MaleSkeleton/Skeleton3D:L_UpperLeg", "MaleSkeleton/Skeleton3D:R_Foot", "MaleSkeleton/Skeleton3D:R_Forearm", "MaleSkeleton/Skeleton3D:R_Hand", "MaleSkeleton/Skeleton3D:R_LowerLeg", "MaleSkeleton/Skeleton3D:R_Shoulder", "MaleSkeleton/Skeleton3D:R_Toe", "MaleSkeleton/Skeleton3D:R_UpperArm", "MaleSkeleton/Skeleton3D:R_UpperLeg", "MaleSkeleton/Skeleton3D:Spine_0", "MaleSkeleton/Skeleton3D:Spine_1", "MaleSkeleton/Skeleton3D:Spine_2"]
+sync = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_tcam2"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pjje5"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xtpyh"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lmygh"]
+animation = &"PawnAnim/NewerWalkUpleft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tlfed"]
+animation = &"PawnAnim/NewerWalkUpRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q00t3"]
+animation = &"PawnAnim/WalkBackwardsLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cca1i"]
+animation = &"PawnAnim/WalkBackwardsR"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v6f21"]
+animation = &"PawnAnim/WalkBackwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pgp3t"]
+animation = &"PawnAnim/WalkLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pxgfj"]
+animation = &"PawnAnim/WalkRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lfy6r"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pjje5")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xtpyh")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_lmygh")
+blend_point_2/pos = Vector2(1, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_tlfed")
+blend_point_3/pos = Vector2(-1, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_q00t3")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_cca1i")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_v6f21")
+blend_point_6/pos = Vector2(0, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_pgp3t")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_pxgfj")
+blend_point_8/pos = Vector2(-1, 0)
+max_space = Vector2(1.02, 1)
+
+[sub_resource type="Curve" id="Curve_r3nv4"]
+_data = [Vector2(0.00857142, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.986229), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_d4ymq"]
+sync = true
+xfade_time = 0.35
+xfade_curve = SubResource("Curve_r3nv4")
+input_0/name = "walking"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "running"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4bprq"]
+filter_enabled = true
+filters = ["MaleSkeleton/Skeleton3D:Head", "MaleSkeleton/Skeleton3D:Neck", "MaleSkeleton/Skeleton3D:R_Forearm", "MaleSkeleton/Skeleton3D:R_Hand", "MaleSkeleton/Skeleton3D:R_Index0", "MaleSkeleton/Skeleton3D:R_Index1", "MaleSkeleton/Skeleton3D:R_Index2", "MaleSkeleton/Skeleton3D:R_Middle0", "MaleSkeleton/Skeleton3D:R_Middle1", "MaleSkeleton/Skeleton3D:R_Middle2", "MaleSkeleton/Skeleton3D:R_Pinkie0", "MaleSkeleton/Skeleton3D:R_Pinkie1", "MaleSkeleton/Skeleton3D:R_Pinkie2", "MaleSkeleton/Skeleton3D:R_Ring0", "MaleSkeleton/Skeleton3D:R_Ring1", "MaleSkeleton/Skeleton3D:R_Ring2", "MaleSkeleton/Skeleton3D:R_Shoulder", "MaleSkeleton/Skeleton3D:R_Thumb0", "MaleSkeleton/Skeleton3D:R_Thumb1", "MaleSkeleton/Skeleton3D:R_Thumb2", "MaleSkeleton/Skeleton3D:R_UpperArm"]
+sync = true
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_habef"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_veimu"]
+graph_offset = Vector2(-314, 54)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_habef")
+nodes/BlendSpace1D/position = Vector2(60, 160)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ncfh7"]
+resource_local_to_scene = true
+resource_name = "PawnAnimTree"
+nodes/Animation/node = SubResource("AnimationNodeAnimation_ss3j1")
+nodes/Animation/position = Vector2(-1340, -200)
+nodes/Jump/node = SubResource("AnimationNodeAnimation_vdh4l")
+nodes/Jump/position = Vector2(-880, -140)
+nodes/aimSprintScale/node = SubResource("AnimationNodeTimeScale_d4lwx")
+nodes/aimSprintScale/position = Vector2(-660, 140)
+nodes/aimSprintStrafe/node = SubResource("AnimationNodeBlendSpace2D_q8dd2")
+nodes/aimSprintStrafe/position = Vector2(-900, 180)
+nodes/aimTransition/node = SubResource("AnimationNodeTransition_0yvgy")
+nodes/aimTransition/position = Vector2(-120, -240)
+nodes/fallAnim/node = SubResource("AnimationNodeAnimation_dfvt8")
+nodes/fallAnim/position = Vector2(-640, -160)
+nodes/fallBlend/node = SubResource("AnimationNodeBlend2_et8lm")
+nodes/fallBlend/position = Vector2(-380, -400)
+nodes/idleSpace/node = SubResource("AnimationNodeBlendSpace1D_ovg2d")
+nodes/idleSpace/position = Vector2(-1340, -340)
+nodes/jumpBlend/node = SubResource("AnimationNodeBlend2_8xlap")
+nodes/jumpBlend/position = Vector2(-600, -340)
+nodes/output/position = Vector2(880, -280)
+nodes/runBlend/node = SubResource("AnimationNodeBlend2_vc7lw")
+nodes/runBlend/position = Vector2(-780, -340)
+nodes/runSpeed/node = SubResource("AnimationNodeTimeScale_tcam2")
+nodes/runSpeed/position = Vector2(-1040, -240)
+nodes/strafeSpace/node = SubResource("AnimationNodeBlendSpace2D_lfy6r")
+nodes/strafeSpace/position = Vector2(-900, 0)
+nodes/strafeType/node = SubResource("AnimationNodeTransition_d4ymq")
+nodes/strafeType/position = Vector2(-460, 0)
+nodes/weaponBlend/node = SubResource("AnimationNodeBlend2_4bprq")
+nodes/weaponBlend/position = Vector2(320, -220)
+nodes/weaponState/node = SubResource("AnimationNodeBlendTree_veimu")
+nodes/weaponState/position = Vector2(-120, -40)
+node_connections = [&"aimSprintScale", 0, &"aimSprintStrafe", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeType", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"output", 0, &"weaponBlend", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"strafeType", 0, &"strafeSpace", &"strafeType", 1, &"aimSprintScale", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
+
 [node name="DebugWorldTest" instance=ExtResource("1_67ne2")]
 
 [node name="GodotSky" parent="Environment" index="0"]
@@ -1270,6 +1444,24 @@ light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
+
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.12689, 61.902, 24.7375)
+stream = ExtResource("3_hwa6i")
+volume_db = -25.0
+autoplay = true
+max_distance = 12.82
+bus = &"Ambience"
+attenuation_filter_db = 0.0
+
+[node name="audioStreamPlayer3d2" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6365, 61.902, -0.889332)
+stream = ExtResource("4_4qh7k")
+volume_db = -15.0
+autoplay = true
+max_distance = 15.32
+bus = &"Ambience"
+attenuation_filter_db = 0.0
 
 [node name="lightmapGi" type="LightmapGI" parent="Geometry" index="1"]
 quality = 2
@@ -1488,4 +1680,122 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 19.3199)
 [node name="lightmapProbe70" type="LightmapProbe" parent="Geometry/lightmapGi" index="69"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 19.3199)
 
+[node name="pawnEntity" parent="Pawns/Players" index="0" node_paths=PackedStringArray("inputComponent") instance=ExtResource("4_4dx60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93921, 75.0654, 18.1874)
+inputComponent = NodePath("Components/inputComponent")
+
+[node name="Skeleton3D" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton" index="0"]
+bones/0/position = Vector3(0.0303878, 0.87706, -0.0889621)
+bones/0/rotation = Quaternion(-0.126046, -0.0698829, -0.00514498, 0.989547)
+bones/1/rotation = Quaternion(0.178821, 0.0147938, 0.0088007, 0.983731)
+bones/2/rotation = Quaternion(-0.0356494, 0.00876475, -0.00629227, 0.999306)
+bones/3/rotation = Quaternion(0.560432, 0.335299, 0.564222, -0.505118)
+bones/4/rotation = Quaternion(-0.457116, 0.305503, -0.341646, 0.762227)
+bones/5/rotation = Quaternion(0.0735096, 0.0130691, -0.0841575, 0.993651)
+bones/6/rotation = Quaternion(-0.0189167, -0.247564, -0.00809043, 0.968653)
+bones/7/position = Vector3(0.0661816, 0.0680553, -0.00886162)
+bones/7/rotation = Quaternion(-0.0937621, -0.708541, 0.142522, 0.684738)
+bones/8/rotation = Quaternion(0.0232312, 0.0592699, -0.00339844, 0.997966)
+bones/9/rotation = Quaternion(0.0611467, 0.369236, 0.00296311, 0.927317)
+bones/10/position = Vector3(0.0300397, 0.13663, 0.0188187)
+bones/10/rotation = Quaternion(-0.00100391, -0.714084, 0.0114813, 0.699965)
+bones/11/rotation = Quaternion(-0.155419, 0.81857, 0.11741, 0.540373)
+bones/11/scale = Vector3(0.999989, 1.00001, 1)
+bones/12/rotation = Quaternion(0.00740728, -0.465132, -0.0290839, 0.884732)
+bones/13/rotation = Quaternion(-0.0186076, -0.713171, 0.10419, 0.692954)
+bones/14/rotation = Quaternion(-0.0970497, 0.929771, -0.13679, -0.327712)
+bones/15/rotation = Quaternion(0.0743461, -0.253101, -0.0923558, 0.960147)
+bones/16/rotation = Quaternion(0.0372315, -0.710114, 0.0752804, 0.69906)
+bones/17/rotation = Quaternion(-0.282331, 0.949491, -0.136483, -0.0113265)
+bones/18/rotation = Quaternion(0.0221029, 0.0836344, -0.0305865, 0.995782)
+bones/19/rotation = Quaternion(0.0222753, -0.715493, 0.0758634, 0.694131)
+bones/20/rotation = Quaternion(-0.168808, 0.907778, -0.0188168, 0.383522)
+bones/21/rotation = Quaternion(0.0377941, 0.048796, -0.0715359, 0.995527)
+bones/22/position = Vector3(-0.00273529, 0.263898, 1.48658e-05)
+bones/22/rotation = Quaternion(0.563249, -0.319394, -0.552101, -0.525283)
+bones/23/rotation = Quaternion(-0.513458, -0.310426, 0.252868, 0.758983)
+bones/24/rotation = Quaternion(0.125461, -0.0129101, 0.143651, 0.981559)
+bones/24/scale = Vector3(1.00001, 0.99998, 1.00001)
+bones/25/rotation = Quaternion(0.034174, 0.215084, -0.0457028, 0.974927)
+bones/25/scale = Vector3(1.00001, 0.999998, 1)
+bones/26/rotation = Quaternion(-0.0731264, 0.712784, -0.124435, 0.686372)
+bones/27/rotation = Quaternion(0.0232313, -0.0592721, 0.00339999, 0.997966)
+bones/28/rotation = Quaternion(0.0611459, -0.369235, -0.0029648, 0.927318)
+bones/29/rotation = Quaternion(0.0200968, 0.714479, 0.00662603, 0.699337)
+bones/30/rotation = Quaternion(-0.155419, -0.818569, -0.11741, 0.540374)
+bones/30/scale = Vector3(0.99999, 1.00001, 1)
+bones/31/rotation = Quaternion(0.00740824, 0.465131, 0.0290841, 0.884733)
+bones/31/scale = Vector3(0.999988, 0.999989, 1.00001)
+bones/32/rotation = Quaternion(0.0022567, 0.716174, -0.0860468, 0.692594)
+bones/32/scale = Vector3(0.999981, 1.00002, 0.999977)
+bones/33/rotation = Quaternion(0.097049, 0.929772, -0.136789, 0.327712)
+bones/34/rotation = Quaternion(0.074346, 0.253101, 0.092356, 0.960147)
+bones/34/scale = Vector3(1.00001, 0.999999, 1.00001)
+bones/35/rotation = Quaternion(0.0582507, 0.712186, -0.0572761, 0.697221)
+bones/35/scale = Vector3(0.999977, 1.00001, 1)
+bones/36/rotation = Quaternion(0.28233, 0.949492, -0.136482, 0.0113276)
+bones/37/rotation = Quaternion(0.0221024, -0.0836325, 0.0305875, 0.995782)
+bones/38/rotation = Quaternion(0.0431758, 0.717612, -0.05769, 0.692705)
+bones/38/scale = Vector3(0.999974, 1.00002, 0.999989)
+bones/39/rotation = Quaternion(0.168809, 0.907775, -0.0188109, -0.383529)
+bones/40/rotation = Quaternion(0.0377987, -0.0488047, 0.071536, 0.995526)
+bones/41/rotation = Quaternion(0.0312496, -0.00114219, 0.00287834, 0.999507)
+bones/42/rotation = Quaternion(0.0101936, 0.71014, 0.0515586, 0.702096)
+bones/43/rotation = Quaternion(0.989646, 0.0809168, -0.0677767, -0.0972637)
+bones/43/scale = Vector3(1.00001, 0.999975, 1)
+bones/44/rotation = Quaternion(0.201276, 0.00205635, 0.0283774, 0.979121)
+bones/45/rotation = Quaternion(0.0366956, 0.866606, -0.493175, 0.0665303)
+bones/45/scale = Vector3(0.999998, 0.999974, 0.99999)
+bones/46/rotation = Quaternion(0.42714, -0.0145162, -0.0222624, 0.903795)
+bones/46/scale = Vector3(0.999997, 1.00002, 1.00001)
+bones/47/rotation = Quaternion(0.994728, -0.089512, 0.0160597, 0.0473868)
+bones/47/scale = Vector3(1.00001, 0.999974, 1)
+bones/48/rotation = Quaternion(0.172446, -0.00206984, -0.0283061, 0.98461)
+bones/49/rotation = Quaternion(-0.0171915, 0.898372, -0.431686, -0.0792391)
+bones/49/scale = Vector3(1.00001, 1.00001, 0.999992)
+bones/50/rotation = Quaternion(0.30223, 0.0110163, 0.000401621, 0.953171)
+bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
+
+[node name="inputComponent" parent="Pawns/Players/pawnEntity/Components" index="2" instance=ExtResource("5_bkru1")]
+
+[node name="AnimationTree" parent="Pawns/Players/pawnEntity" index="3"]
+tree_root = SubResource("AnimationNodeBlendTree_ncfh7")
+
+[node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
+transform = Transform3D(-0.995797, 0.0145953, 0.0903086, 0.0115047, 0.999324, -0.0346531, -0.0907541, -0.0334688, -0.995301, 3.91197, 75.2826, 18.2899)
+
+[node name="LeftThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
+transform = Transform3D(-0.989155, -0.146494, 0.0102141, 0.145471, -0.98696, -0.0684912, 0.0201169, -0.0662609, 0.997595, 3.86031, 74.9428, 18.2695)
+
+[node name="LeftFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="2"]
+transform = Transform3D(0.97653, -0.211647, -0.0394175, -0.135861, -0.747806, 0.649795, -0.167018, -0.629198, -0.759056, 3.77035, 74.1648, 18.3762)
+
+[node name="LeftKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="3"]
+transform = Transform3D(-0.995726, -0.0762134, 0.0518269, 0.0890657, -0.94037, 0.328198, 0.0237258, 0.33143, 0.943173, 3.80104, 74.5435, 18.2427)
+
+[node name="RightThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
+transform = Transform3D(-0.963351, 0.217582, -0.156857, -0.153512, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96003, 74.942, 18.2835)
+
+[node name="RightFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="5"]
+transform = Transform3D(0.93136, 0.318863, 0.17573, 0.0594614, -0.609377, 0.790612, 0.3592, -0.725911, -0.586525, 4.08753, 74.1664, 18.1658)
+
+[node name="RightKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="6"]
+transform = Transform3D(-0.973176, 0.0979982, -0.208056, -0.0989946, -0.995046, -0.00568661, -0.207589, 0.0150775, 0.97809, 4.04806, 74.5671, 18.1597)
+
+[node name="Stomach" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="7"]
+transform = Transform3D(-0.993768, 0.0341266, 0.10602, 0.0228222, 0.994077, -0.106066, -0.109014, -0.102987, -0.988671, 3.90493, 75.0778, 18.3111)
+
+[node name="Hips" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="8"]
+transform = Transform3D(-0.99017, -0.0277991, 0.137007, 0.00743441, 0.968168, 0.250174, -0.1396, 0.248736, -0.958454, 3.90882, 74.9424, 18.2763)
+
+[node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="9"]
+transform = Transform3D(-0.995472, 0.0260082, 0.0913147, 0.0170978, 0.995124, -0.0970422, -0.0933941, -0.0950425, -0.991073, 3.91582, 75.5464, 18.281)
+
+[node name="leftHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="10"]
+transform = Transform3D(0.43177, -0.0226908, -0.901685, 0.186793, -0.975748, 0.113996, -0.8824, -0.217641, -0.417063, 3.73619, 75.0143, 18.2354)
+
+[node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="11"]
+transform = Transform3D(0.156643, 0.18882, 0.969438, -0.0779173, -0.976106, 0.202711, 0.984566, -0.107263, -0.138189, 4.08094, 75.0161, 18.3379)
+
 [editable path="Geometry/DebugMapModelConversionTest"]
+[editable path="Pawns/Players/pawnEntity"]

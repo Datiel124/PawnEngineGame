@@ -1802,7 +1802,7 @@ transform = Transform3D(0.156647, 0.18882, 0.969435, -0.0779182, -0.976102, 0.20
 transform = Transform3D(-3.09086e-08, 0.990268, -0.139173, -0.866025, 0.0695865, 0.495134, 0.5, 0.120527, 0.857597, -3.96339, 58.7011, 23.2684)
 
 [node name="Honeybadger" parent="Props" index="1" groups=["Interactable"] instance=ExtResource("9_om7fk")]
-transform = Transform3D(-0.0455951, 0.998896, -0.0113017, 0.504059, 0.0327727, 0.863047, 0.862465, 0.033654, -0.504997, -21.0553, 59.0885, -4.81284)
+transform = Transform3D(0.862465, 0.033654, -0.504997, 0.504059, 0.0327727, 0.863047, 0.045595, -0.998896, 0.0113017, -4.04125, 59.0885, 14.9717)
 canBeUsed = true
 
 [editable path="Geometry/DebugMapModelConversionTest"]

@@ -497,6 +497,7 @@ func createRagdoll(impulse_bone : int = 0):
 func checkItems():
 	for items in itemHolder.get_children():
 		items.freeze = true
+		items.collisionObject.disabled = true
 		items.collisionEnabled = false
 		items.visible = false
 		items.position = Vector3.ZERO

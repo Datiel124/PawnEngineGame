@@ -1,4 +1,4 @@
-[gd_scene load_steps=251 format=3 uid="uid://dpeqrnidy6scn"]
+[gd_scene load_steps=256 format=3 uid="uid://dpeqrnidy6scn"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_ffcsn"]
 [ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="2_gfvm1"]
@@ -42,6 +42,7 @@
 [ext_resource type="Script" path="res://ai/tasks/pawnShoot.gd" id="40_2s2o3"]
 [ext_resource type="PackedScene" uid="uid://bb5qvdslt6004" path="res://assets/entities/clothing/Pants/armored_pants.tscn" id="41_og8qx"]
 [ext_resource type="PackedScene" uid="uid://fbfo4av0cb8r" path="res://assets/entities/wallMountedMedkit/WallMountedMedkit.tscn" id="42_t76hv"]
+[ext_resource type="AudioStream" uid="uid://c8f4j3xitvvuk" path="res://assets/sounds/ui/uialert.wav" id="43_bqukx"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sx0h8"]
 streams_count = 1
@@ -1522,6 +1523,37 @@ nodes/weaponState/node = SubResource("AnimationNodeBlendTree_veimu")
 nodes/weaponState/position = Vector2(-120, -40)
 node_connections = [&"aimSprintScale", 0, &"aimSprintStrafe", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeType", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"output", 0, &"weaponBlend", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"strafeType", 0, &"strafeSpace", &"strafeType", 1, &"aimSprintScale", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
 
+[sub_resource type="GDScript" id="GDScript_mso3o"]
+resource_name = "debugWorld-FunnyButton"
+script/source = "extends InteractiveObject
+@onready var mesh = $meshInstance3d
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	objectUsed.connect(gotoHell)
+	mesh.material_override.albedo_color = Color.RED
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func gotoHell(pawn:BasePawn):
+	$audioStreamPlayer3d.play()
+	mesh.material_override.albedo_color = Color.GREEN
+	remove_from_group(\"Interactable\")
+	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
+	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/debug/modeltest/DebugWorldTest.tscn\")
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dymuj"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ljhou"]
+size = Vector3(0.16, 0.15, 0.085)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ae5er"]
+size = Vector3(0.18425, 0.199585, 0.119446)
+
 [node name="worldBase" instance=ExtResource("1_ffcsn")]
 worldName = "Debug World"
 worldDescription = "Testing Bitch!"
@@ -2706,6 +2738,33 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1000.0
+
+[node name="funnybutton" type="RigidBody3D" parent="Props" index="4" groups=["Interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10672, 60.1045, 12.127)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = SubResource("GDScript_mso3o")
+objectName = "?"
+interactType = 1
+canBeUsed = true
+
+[node name="meshInstance3d" type="MeshInstance3D" parent="Props/funnybutton" index="0"]
+material_override = SubResource("StandardMaterial3D_dymuj")
+mesh = SubResource("BoxMesh_ljhou")
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="Props/funnybutton" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00371552, 0.000793457, 0.0135193)
+shape = SubResource("BoxShape3D_ae5er")
+
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Props/funnybutton" index="2"]
+stream = ExtResource("43_bqukx")
+bus = &"Sounds"
+attenuation_filter_db = 0.0
 
 [node name="marker3d" type="Marker3D" parent="Misc/WaypointNodes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39298, 59.4435, 30.0013)

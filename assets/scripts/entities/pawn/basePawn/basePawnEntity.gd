@@ -499,7 +499,8 @@ func checkItems():
 		items.freeze = true
 		items.collisionObject.disabled = true
 		items.collisionEnabled = false
-		items.visible = false
+		if !items.isEquipped:
+			items.visible = false
 		items.position = Vector3.ZERO
 		items.rotation = Vector3.ZERO
 		if !itemInventory.has(items):

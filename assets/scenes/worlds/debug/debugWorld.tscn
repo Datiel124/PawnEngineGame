@@ -2248,10 +2248,13 @@ transform = Transform3D(-0.513556, -0.000608581, 0.85804, 0.175119, -0.979013, 0
 transform = Transform3D(-0.110273, -0.186596, -0.976225, -0.0755548, -0.977772, 0.195429, -0.991016, 0.0952836, 0.0937177, 2.63484, 59.5657, 14.9267)
 
 [node name="Uzi" parent="Pawns/Players/pawnEntity/BoneAttatchments/rightHand/Weapons" index="0" instance=ExtResource("14_s320q")]
+canBeUsed = false
 
 [node name="Honeybadger" parent="Pawns/Players/pawnEntity/BoneAttatchments/rightHand/Weapons" index="1" instance=ExtResource("16_wri4e")]
+canBeUsed = false
 
 [node name="Beretta" parent="Pawns/Players/pawnEntity/BoneAttatchments/rightHand/Weapons" index="2" instance=ExtResource("15_clc8g")]
+canBeUsed = false
 
 [node name="wonderAI" parent="Pawns" index="1" node_paths=PackedStringArray("inputComponent") instance=ExtResource("7_p48cf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.01289, 59.7224, 31.4592)
@@ -2352,8 +2355,10 @@ transform = Transform3D(-0.109675, -0.0305741, -0.993481, -0.296529, -0.952989, 
 transform = Transform3D(0.817154, -0.220284, 0.532624, -0.52241, -0.673519, 0.522913, 0.243536, -0.705551, -0.665452, 4.16085, 59.7516, 31.268)
 
 [node name="Uzi" parent="Pawns/wonderAI/BoneAttatchments/rightHand/Weapons" index="0" instance=ExtResource("14_s320q")]
+canBeUsed = false
 
 [node name="Beretta" parent="Pawns/wonderAI/BoneAttatchments/rightHand/Weapons" index="1" instance=ExtResource("15_clc8g")]
+canBeUsed = false
 
 [node name="pawnEntity2" parent="Pawns" index="2" node_paths=PackedStringArray("inputComponent") instance=ExtResource("7_p48cf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4807, 59.8066, 1.36318)
@@ -2448,6 +2453,7 @@ transform = Transform3D(-0.109675, -0.0305741, -0.993481, -0.296529, -0.952989, 
 transform = Transform3D(0.817154, -0.220284, 0.532624, -0.52241, -0.673519, 0.522913, 0.243536, -0.705551, -0.665452, -15.3327, 59.8358, 1.17197)
 
 [node name="Honeybadger" parent="Pawns/pawnEntity2/BoneAttatchments/rightHand/Weapons" index="0" instance=ExtResource("16_wri4e")]
+canBeUsed = false
 
 [node name="FatBobby" parent="Pawns" index="3" node_paths=PackedStringArray("inputComponent") instance=ExtResource("7_p48cf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.6172, 59.6464, 0.617642)

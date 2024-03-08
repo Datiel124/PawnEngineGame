@@ -285,6 +285,8 @@ func equipToPawn(pawn:BasePawn):
 	collisionEnabled = false
 	collisionObject.disabled = true
 	pawn.moveItemToWeapons(self)
+	if objectUsed.is_connected(equipToPawn):
+		objectUsed.disconnect(equipToPawn)
 	if pawn.attachedCam:
 		globalGameManager.notifyFade("%s Added to inventory." %objectName)
 		pawn.equipSound.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://wtqya32cwdbk"]
+[gd_scene load_steps=37 format=3 uid="uid://wtqya32cwdbk"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_xjnb0"]
 [ext_resource type="Texture2D" uid="uid://b65pakuckbcq6" path="res://assets/textures/crosshair/crosshair102.png" id="2_cqrt7"]
@@ -450,6 +450,9 @@ _data = {
 "light_flash": SubResource("Animation_4v8w6")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pqwnp"]
+size = Vector3(0.286377, 0.192932, 0.0449829)
+
 [node name="Beretta" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_xjnb0")]
 muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
 weaponDamage = 6.0
@@ -524,6 +527,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
 autoplay = "RESET"
+
+[node name="collisionObject" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0487061, -0.0311584, -0.00283813)
+shape = SubResource("BoxShape3D_pqwnp")
 
 [node name="AnimationTree" parent="." index="3"]
 libraries = {

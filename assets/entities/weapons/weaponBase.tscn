@@ -25,9 +25,10 @@ _data = {
 "unequip": SubResource("Animation_aoqdk")
 }
 
-[node name="weaponBase" type="RigidBody3D"]
+[node name="weaponBase" type="RigidBody3D" groups=["Interactable"]]
 script = ExtResource("1_37cvt")
 collisionEnabled = false
+canBeUsed = true
 
 [node name="Mesh" type="Node3D" parent="."]
 

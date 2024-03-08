@@ -410,6 +410,7 @@ func checkComponents():
 				globalGameManager.world.worldMisc.add_child(_cam)
 				_cam.posessObject(self, followNode)
 				_cam.camCast.add_exception(self)
+				_cam.interactCast.add_exception(self)
 				raycaster = _cam.camCast
 
 
@@ -791,9 +792,10 @@ func do_stairs() -> void:
 func getInteractionObject():
 	if interactRaycast.is_colliding():
 		var col = interactRaycast.get_collider()
-		if col.is_in_group("Interactable"):
-			globalGameManager.getEventSignal("interactableFound").emit()
-			return col
+		if col != null:
+			if col.is_in_group("Interactable"):
+				globalGameManager.getEventSignal("interactableFound").emit()
+				return col
 
 func getClothes():
 	for clothes in clothingHolder.get_children():

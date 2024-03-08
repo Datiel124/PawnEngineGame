@@ -2,5 +2,9 @@
 
 [ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/interactiveObject.gd" id="1_10pe7"]
 
-[node name="interactiveObject" type="RigidBody3D"]
+[node name="interactiveObject" type="RigidBody3D" groups=["Interactable"]]
 script = ExtResource("1_10pe7")
+
+[node name="useSound" type="AudioStreamPlayer" parent="."]
+
+[node name="useSound3D" type="AudioStreamPlayer3D" parent="."]

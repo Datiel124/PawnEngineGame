@@ -106,7 +106,13 @@ func _physics_process(delta):
 						if obj.inputComponent is AIComponent:
 							if obj.inputComponent.interactType == 0:
 								hud.setInteractionText("Speak to %s" %obj.inputComponent.pawnName)
-
+					elif  obj is InteractiveObject:
+						if !obj.beenUsed:
+							if obj.canBeUsed:
+								if obj.interactType == 1:
+									hud.setInteractionText("Use %s" %obj.objectName)
+						else:
+							hud.interactVisible = false
 					hud.interactVisible = true
 				else:
 					hud.interactVisible = false

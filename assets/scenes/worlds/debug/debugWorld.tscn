@@ -1,4 +1,4 @@
-[gd_scene load_steps=250 format=3 uid="uid://dpeqrnidy6scn"]
+[gd_scene load_steps=251 format=3 uid="uid://dpeqrnidy6scn"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_ffcsn"]
 [ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="2_gfvm1"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" path="res://ai/tasks/getPositionToDetectedPawn.gd" id="39_gl05d"]
 [ext_resource type="Script" path="res://ai/tasks/pawnShoot.gd" id="40_2s2o3"]
 [ext_resource type="PackedScene" uid="uid://bb5qvdslt6004" path="res://assets/entities/clothing/Pants/armored_pants.tscn" id="41_og8qx"]
+[ext_resource type="PackedScene" uid="uid://fbfo4av0cb8r" path="res://assets/entities/wallMountedMedkit/WallMountedMedkit.tscn" id="42_t76hv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sx0h8"]
 streams_count = 1
@@ -2671,6 +2672,45 @@ transform = Transform3D(-0.837034, -0.203713, -0.507753, 0.175119, -0.979013, 0.
 
 [node name="rightHand" parent="Pawns/pawnEntity/BoneAttatchments" index="11"]
 transform = Transform3D(0.991627, -0.0942203, -0.0881617, -0.0755548, -0.977772, 0.195429, -0.104632, -0.187135, -0.976742, 7.88932, 59.5982, 17.2656)
+
+[node name="wallMountedMedkit" parent="Props" index="0" instance=ExtResource("42_t76hv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.640464, 59.9793, 22.3398)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
+
+[node name="wallMountedMedkit2" parent="Props" index="1" instance=ExtResource("42_t76hv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.25404, 59.9793, 13.3398)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
+
+[node name="wallMountedMedkit3" parent="Props" index="2" instance=ExtResource("42_t76hv")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -10.8864, 59.9793, 14.9696)
+collision_mask = 1
+mass = 1000.0
+gravity_scale = 0.0
+
+[node name="wallMountedMedkit4" parent="Props" index="3" instance=ExtResource("42_t76hv")]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -19.3387, 59.9793, 5.84051)
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 1000.0
+gravity_scale = 0.0
 
 [node name="marker3d" type="Marker3D" parent="Misc/WaypointNodes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39298, 59.4435, 30.0013)

@@ -2,6 +2,11 @@ extends Node
 ## Global Game Manager Start
 var menuScenes = [preload("res://assets/scenes/menu/menuScenes/menuscene1.tscn"),preload("res://assets/scenes/menu/menuScenes/menuScene2.tscn")]
 
+#Global Sound Player
+var soundPlayer = AudioStreamPlayer.new()
+var sounds : Dictionary = {"healSound" = preload("res://assets/sounds/ui/rareItemFound.wav"),
+			"alertSound" = preload("res://assets/sounds/ui/uialert.wav")
+			}
 
 #Misc
 var richPresenceEnabled = false
@@ -31,6 +36,7 @@ const dialogue_cam : PackedScene = preload("res://assets/entities/camera/Dialogu
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	soundPlayer.bus = "Sounds"
 	if richPresenceEnabled:
 		pass
 
@@ -199,3 +205,11 @@ func showMouse():
 
 func hideMouse():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+func playSound(stream):
+	soundPlayer.stream = stream
+	soundPlayer.play()
+
+func getGlobalSound(soundname: String):
+	if sounds.get(soundname) != null:
+		return sounds.get(soundname)

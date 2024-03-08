@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://fbfo4av0cb8r"]
+
+[ext_resource type="PackedScene" uid="uid://ccjm54ftqg7qc" path="res://assets/entities/interactiveObject/interactiveObject.tscn" id="1_jsdx8"]
+[ext_resource type="Script" path="res://assets/entities/wallMountedMedkit/WallMountedMedkit.gd" id="2_gj1ma"]
+[ext_resource type="Shader" path="res://assets/scripts/shaders/itemGlow/itemGlow.gdshader" id="3_6meri"]
+[ext_resource type="AudioStream" uid="uid://dbxyo1p3kd36u" path="res://assets/sounds/ui/uievaluate.wav" id="3_fs4re"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5i0o"]
+render_priority = 1
+shader = ExtResource("3_6meri")
+shader_parameter/shine_color = Color(0.992157, 1, 0.811765, 1)
+shader_parameter/cycle_interval = 1.671
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8d4fi"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yo30w"]
+material = SubResource("StandardMaterial3D_8d4fi")
+size = Vector3(0.5, 0.345, 0.11)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kjb3"]
+size = Vector3(0.499878, 0.348572, 0.134521)
+
+[node name="wallMountedMedkit" instance=ExtResource("1_jsdx8")]
+gravity_scale = 0.0
+script = ExtResource("2_gj1ma")
+objectName = "Medkit"
+interactType = 1
+canBePickedUp = false
+canBeUsed = true
+
+[node name="meshInstance3d" type="MeshInstance3D" parent="." index="0"]
+material_overlay = SubResource("ShaderMaterial_r5i0o")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_yo30w")
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, -0.0015564, 0.00427246)
+shape = SubResource("BoxShape3D_2kjb3")
+
+[node name="useSound" parent="." index="2"]
+stream = ExtResource("3_fs4re")
+volume_db = -2.0
+bus = &"Sounds"

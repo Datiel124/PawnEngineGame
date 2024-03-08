@@ -111,6 +111,8 @@ func _physics_process(delta):
 							if obj.canBeUsed:
 								if obj.interactType == 1:
 									hud.setInteractionText("Use %s" %obj.objectName)
+								elif obj.interactType == 0:
+										hud.setInteractionText("Pick up '%s'" %obj.objectName)
 						else:
 							hud.interactVisible = false
 					hud.interactVisible = true

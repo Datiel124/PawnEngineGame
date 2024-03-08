@@ -24,4 +24,5 @@ func healPawn(pawn:BasePawn):
 					globalGameManager.notifyFade("You've been healed.",2,1.5)
 					globalGameManager.playSound(globalGameManager.getGlobalSound("healSound"))
 					useSound.play()
+				remove_from_group("Interactable")
 				beenUsed = true

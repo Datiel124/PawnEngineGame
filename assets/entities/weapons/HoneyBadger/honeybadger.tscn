@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bn07wnk5k005c"]
+[gd_scene load_steps=26 format=3 uid="uid://bn07wnk5k005c"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_821xr"]
 [ext_resource type="PackedScene" uid="uid://ce6f4sqfdrpvt" path="res://assets/models/weapons/honeybadger/HoneyBadger.fbx" id="2_cf5fr"]
@@ -109,6 +109,9 @@ _data = {
 "light_flash": SubResource("Animation_4v8w6")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojrgr"]
+size = Vector3(0.0790253, 0.358887, 1.01904)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kytnd"]
 _data = {
 "aim": ExtResource("4_0mbul"),
@@ -179,6 +182,10 @@ libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
 autoplay = "RESET"
+
+[node name="collisionObject" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109177, -0.0476074, -0.00952148)
+shape = SubResource("BoxShape3D_ojrgr")
 
 [node name="AnimationTree" parent="." index="3"]
 libraries = {

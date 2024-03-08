@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://cgunekse1vc0y"]
+[gd_scene load_steps=97 format=3 uid="uid://cgunekse1vc0y"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_67ne2"]
 [ext_resource type="PackedScene" uid="uid://b4mgs5g7ahuj7" path="res://assets/scenes/worlds/debug/modeltest/DebugMapModelConversionTest.gltf" id="2_k1j6f"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="4_4dx60"]
 [ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="4_4qh7k"]
 [ext_resource type="PackedScene" uid="uid://cmyxa8pfmhpcy" path="res://assets/components/inputComponent/inputComponent.tscn" id="5_bkru1"]
+[ext_resource type="PackedScene" uid="uid://wtqya32cwdbk" path="res://assets/entities/weapons/Beretta/Beretta.tscn" id="8_bpgik"]
+[ext_resource type="PackedScene" uid="uid://bn07wnk5k005c" path="res://assets/entities/weapons/HoneyBadger/honeybadger.tscn" id="9_om7fk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5juin"]
 resource_name = "Material_2"
@@ -1325,6 +1327,10 @@ rateOfTime = 0.0
 [node name="CSGBox" parent="Geometry/DebugMapModelConversionTest" index="0"]
 mesh = SubResource("ArrayMesh_mfeik")
 
+[node name="StaticBody3D" parent="Geometry/DebugMapModelConversionTest/CSGBox" index="0"]
+collision_layer = 11
+collision_mask = 11
+
 [node name="spotLight3d" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4542, 66.3871, 22.5584)
 shadow_enabled = true
@@ -1676,7 +1682,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 19.3199)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 19.3199)
 
 [node name="pawnEntity" parent="Pawns/Players" index="0" node_paths=PackedStringArray("inputComponent") instance=ExtResource("4_4dx60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93921, 75.0654, 18.1874)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93921, 59.6837, 18.1874)
 inputComponent = NodePath("Components/inputComponent")
 
 [node name="Skeleton3D" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton" index="0"]
@@ -1791,6 +1797,13 @@ transform = Transform3D(0.431775, -0.0226912, -0.90168, 0.186794, -0.975748, 0.1
 
 [node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="11"]
 transform = Transform3D(0.156647, 0.18882, 0.969435, -0.0779182, -0.976102, 0.202711, 0.984566, -0.107266, -0.138188, 4.08095, 75.0161, 18.338)
+
+[node name="Beretta" parent="Props" index="0" instance=ExtResource("8_bpgik")]
+transform = Transform3D(-3.09086e-08, 0.990268, -0.139173, -0.866025, 0.0695865, 0.495134, 0.5, 0.120527, 0.857597, -3.96339, 58.7011, 23.2684)
+
+[node name="Honeybadger" parent="Props" index="1" groups=["Interactable"] instance=ExtResource("9_om7fk")]
+transform = Transform3D(-0.0455951, 0.998896, -0.0113017, 0.504059, 0.0327727, 0.863047, 0.862465, 0.033654, -0.504997, -21.0553, 59.0885, -4.81284)
+canBeUsed = true
 
 [editable path="Geometry/DebugMapModelConversionTest"]
 [editable path="Pawns/Players/pawnEntity"]

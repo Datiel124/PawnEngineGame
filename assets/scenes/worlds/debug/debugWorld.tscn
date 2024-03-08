@@ -2682,7 +2682,6 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1000.0
-gravity_scale = 0.0
 
 [node name="wallMountedMedkit2" parent="Props" index="1" instance=ExtResource("42_t76hv")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.25404, 59.9793, 13.3398)
@@ -2693,13 +2692,10 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1000.0
-gravity_scale = 0.0
 
 [node name="wallMountedMedkit3" parent="Props" index="2" instance=ExtResource("42_t76hv")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -10.8864, 59.9793, 14.9696)
-collision_mask = 1
 mass = 1000.0
-gravity_scale = 0.0
 
 [node name="wallMountedMedkit4" parent="Props" index="3" instance=ExtResource("42_t76hv")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, -19.3387, 59.9793, 5.84051)
@@ -2710,7 +2706,6 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 1000.0
-gravity_scale = 0.0
 
 [node name="marker3d" type="Marker3D" parent="Misc/WaypointNodes" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.39298, 59.4435, 30.0013)

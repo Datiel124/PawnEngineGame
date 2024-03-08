@@ -62,6 +62,7 @@ signal shot_fired
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+		objectUsed.connect(equipToPawn)
 		animationTree.tree_root = animationTree.tree_root.duplicate(true)
 		weaponState = (animationTree.get("parameters/weaponState/playback") as AnimationNodeStateMachinePlayback)
 		if get_parent().name == "Weapons":
@@ -73,6 +74,10 @@ func _ready():
 func _physics_process(delta):
 	if !weaponOwner == null:
 		if isEquipped:
+			if is_in_group("Interactable"):
+				remove_from_group("Interactable")
+			canBeUsed = false
+			collisionEnabled = false
 			set("gravity_scale", 0)
 			#Weapon Orientation
 			weaponMesh.position = lerp(weaponMesh.position, weaponPositionOffset, 24 * delta)
@@ -274,4 +279,12 @@ func resetToDefault():
 	isFiring = false
 	isAiming = false
 	isEquipped = false
+	collisionEnabled = false
 
+func equipToPawn(pawn:BasePawn):
+	collisionEnabled = false
+	collisionObject.disabled = true
+	pawn.moveItemToWeapons(self)
+	if pawn.attachedCam:
+		globalGameManager.notifyFade("%s Added to inventory." %objectName)
+		pawn.equipSound.play()

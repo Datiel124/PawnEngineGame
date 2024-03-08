@@ -8,7 +8,6 @@ signal objectUsed(user)
 var beenUsed = false
 @export_subgroup("Object")
 @export_enum("Equippable","Interactive") var interactType = 0
-@export var canBePickedUp : bool = true
 @export var canBeUsed : bool = false
 
 # Called when the node enters the scene tree for the first time.

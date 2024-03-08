@@ -800,3 +800,7 @@ func getInteractionObject():
 func getClothes():
 	for clothes in clothingHolder.get_children():
 		return clothes
+
+func moveItemToWeapons(item:Weapon):
+	item.reparent(itemHolder)
+	checkItems()

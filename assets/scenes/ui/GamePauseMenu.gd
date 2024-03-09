@@ -19,21 +19,22 @@ func _process(delta):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("gEscape"):
-		if visible:
-			Dialogic.end_timeline()
-			soundPlayer.play()
-			globalGameManager.set_meta(&"stored_mouse_mode", Input.mouse_mode)
-			globalGameManager.hideMouse()
-			hide()
-			get_tree().paused = false
+		if Dialogic.current_timeline == null:
+			if visible:
+				soundPlayer.play()
+				globalGameManager.set_meta(&"stored_mouse_mode", Input.mouse_mode)
+				globalGameManager.hideMouse()
+				hide()
+				get_tree().paused = false
+			else:
+				Dialogic.end_timeline()
+				secondSound.play()
+				Input.mouse_mode = globalGameManager.get_meta(&"stored_mouse_mode", Input.MOUSE_MODE_CAPTURED)
+				globalGameManager.showMouse()
+				show()
+				get_tree().paused = true
 		else:
 			Dialogic.end_timeline()
-			secondSound.play()
-			Input.mouse_mode = globalGameManager.get_meta(&"stored_mouse_mode", Input.MOUSE_MODE_CAPTURED)
-			globalGameManager.showMouse()
-			show()
-			get_tree().paused = true
-
 
 func _on_resume_button_pressed():
 	get_tree().paused = false

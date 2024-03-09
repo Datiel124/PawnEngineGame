@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_ridwo"]
 [ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="4_vfto7"]
 [ext_resource type="PackedScene" uid="uid://cn674foxwedqu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.tscn" id="5_e1qj7"]
+[ext_resource type="PackedScene" uid="uid://d3vlxgd638bp4" path="res://assets/resources/dialogic/Styles/CenteredChoices/custom_vn_choice_layer.tscn" id="6_8gbl2"]
 [ext_resource type="PackedScene" uid="uid://dsbwnp5hegnu3" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.tscn" id="6_542yl"]
-[ext_resource type="PackedScene" uid="uid://dhk6j6eb6e3q" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.tscn" id="7_0mei0"]
 [ext_resource type="PackedScene" uid="uid://cvgf4c6gg0tsy" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.tscn" id="8_ww0vx"]
 [ext_resource type="PackedScene" uid="uid://lx24i8fl6uo" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_History/history_layer.tscn" id="9_8ys5k"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="10_kgrot"]
@@ -38,8 +38,9 @@ overrides = {}
 
 [sub_resource type="Resource" id="Resource_kwuka"]
 script = ExtResource("2_ridwo")
-scene = ExtResource("7_0mei0")
+scene = ExtResource("6_8gbl2")
 overrides = {
+"boxes_stylebox_normal": "\"choice_panel_normal.tres\"",
 "sounds_focus": "\"res://assets/sounds/ui/uipopup.wav\"",
 "sounds_hover": "\"res://assets/sounds/ui/uiappear.wav\"",
 "sounds_pressed": "\"res://assets/sounds/ui/uiclick.wav\""
@@ -62,4 +63,4 @@ base_overrides = {
 "global_bg_color": "Color(0.0941176, 0.0235294, 0.0235294, 0.901961)"
 }
 layers = Array[ExtResource("2_ridwo")]([SubResource("Resource_t2tt8"), SubResource("Resource_6fieg"), SubResource("Resource_ssv64"), SubResource("Resource_vhy4t"), SubResource("Resource_kwuka"), SubResource("Resource_o7sbc"), SubResource("Resource_1uixs")])
-metadata/_latest_layer = 6
+metadata/_latest_layer = 4

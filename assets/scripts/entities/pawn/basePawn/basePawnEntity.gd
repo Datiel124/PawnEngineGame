@@ -295,6 +295,8 @@ func _physics_process(delta):
 #endregion
 
 #region Mesh Rotation
+			pawnMesh.rotation.x = clamp(lerp_angle(pawnMesh.rotation.x, (Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).z * 0.01, delta * 256), -PI/6, PI/6)
+			pawnMesh.rotation.z = clamp(lerpf(pawnMesh.rotation.z, -(Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).x * 0.030, 256 * delta), -PI/6, PI/6)
 			if !meshLookAt:
 				if isMoving:
 					if !is_on_wall():

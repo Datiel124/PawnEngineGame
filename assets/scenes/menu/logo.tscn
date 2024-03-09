@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://2x813wo0u6ii"]
+[gd_scene load_steps=12 format=3 uid="uid://2x813wo0u6ii"]
 
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="1_jxbia"]
 [ext_resource type="AudioStream" uid="uid://by5epqyt6w7ls" path="res://assets/sounds/ui/smcknecksound.wav" id="2_uy7xn"]
 [ext_resource type="Script" path="res://assets/scripts/AnimationControl/AnimatedControl.gd" id="3_3s61u"]
 [ext_resource type="AudioStream" uid="uid://c4rm2sw8drwg2" path="res://assets/sounds/ui/uiswift.wav" id="3_bikbu"]
+[ext_resource type="Texture2D" uid="uid://r25q6c4rfqlf" path="res://assets/textures/misc/Made With Godot Banner.png" id="5_profm"]
 
 [sub_resource type="GDScript" id="GDScript_h3xca"]
 script/source = "extends Control
@@ -11,11 +12,15 @@ script/source = "extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$textureRect.modulate = Color.TRANSPARENT
 	await get_tree().process_frame
 	$AnimationPlayer.play(\"logostart\")
 	await $AnimationPlayer.animation_finished
 	await Fade.fade_out(0.2, Color(0,0,0,1),\"GradientVertical\",false,true).finished
 	get_tree().change_scene_to_file(\"res://assets/scenes/menu/menu.tscn\")
+
+func _process(delta):
+	$textureRect.modulate = lerp($textureRect.modulate,Color.WHITE,0.8*delta)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(event):
@@ -270,3 +275,17 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_jxbia")
 expand_mode = 4
+
+[node name="textureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -198.0
+offset_top = 9.0
+offset_right = -5.0
+offset_bottom = 86.0
+grow_horizontal = 0
+texture = ExtResource("5_profm")
+expand_mode = 1

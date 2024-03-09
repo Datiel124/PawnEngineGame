@@ -2755,7 +2755,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
 script = SubResource("GDScript_mso3o")
-objectName = "the \"Hell\" button."
+objectName = "button?"
 interactType = 1
 canBeUsed = true
 

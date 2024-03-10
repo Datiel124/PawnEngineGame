@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4dpjminsf4mx"]
 
 [ext_resource type="Script" path="res://assets/scripts/worldRelated/worldScript/worldScript.gd" id="1_vjirs"]
-[ext_resource type="PackedScene" path="res://GodotSky/GodotSky.tscn" id="2_v0sdl"]
+[ext_resource type="PackedScene" uid="uid://1gfropwtqfbn" path="res://GodotSky/GodotSky.tscn" id="2_v0sdl"]
 [ext_resource type="PackedScene" uid="uid://dodu8jdt3nw06" path="res://assets/scenes/ui/GamePauseMenu.tscn" id="3_2mura"]
 
 [node name="worldBase" type="Node"]

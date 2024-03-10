@@ -1,14 +1,25 @@
-[gd_scene load_steps=97 format=3 uid="uid://cgunekse1vc0y"]
+[gd_scene load_steps=103 format=3 uid="uid://cgunekse1vc0y"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_67ne2"]
 [ext_resource type="PackedScene" uid="uid://b4mgs5g7ahuj7" path="res://assets/scenes/worlds/debug/modeltest/DebugMapModelConversionTest.gltf" id="2_k1j6f"]
+[ext_resource type="Texture2D" uid="uid://bitslqdnaw55e" path="res://assets/textures/Developer_Textures/Light/texture_02.png" id="3_c2yjm"]
 [ext_resource type="LightmapGIData" uid="uid://dqhqutvgsg7b1" path="res://assets/scenes/worlds/debug/modeltest/DebugWorldTest.lmbake" id="3_hrucs"]
 [ext_resource type="AudioStream" uid="uid://dlc3pd7oubk0m" path="res://assets/sounds/ambient/statichum.wav" id="3_hwa6i"]
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="4_4dx60"]
 [ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="4_4qh7k"]
 [ext_resource type="PackedScene" uid="uid://cmyxa8pfmhpcy" path="res://assets/components/inputComponent/inputComponent.tscn" id="5_bkru1"]
+[ext_resource type="Texture2D" uid="uid://2pqfdu3qio0p" path="res://assets/textures/Developer_Textures/Orange/texture_07.png" id="6_q0ys4"]
+[ext_resource type="Texture2D" uid="uid://bhn41jxbxjaag" path="res://assets/textures/Developer_Textures/Light/texture_03.png" id="7_su3cn"]
 [ext_resource type="PackedScene" uid="uid://wtqya32cwdbk" path="res://assets/entities/weapons/Beretta/Beretta.tscn" id="8_bpgik"]
 [ext_resource type="PackedScene" uid="uid://bn07wnk5k005c" path="res://assets/entities/weapons/HoneyBadger/honeybadger.tscn" id="9_om7fk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxcv4"]
+albedo_texture = ExtResource("3_c2yjm")
+metallic = 0.08
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5juin"]
 resource_name = "Material_2"
@@ -1101,6 +1112,21 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bjjvn")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvtlt"]
+albedo_texture = ExtResource("6_q0ys4")
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjtf2"]
+albedo_color = Color(0.266667, 1, 1, 1)
+albedo_texture = ExtResource("7_su3cn")
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ss3j1"]
 animation = &"PawnAnim/Run4"
 
@@ -1325,6 +1351,7 @@ rateOfTime = 0.0
 [node name="DebugMapModelConversionTest" parent="Geometry" index="0" instance=ExtResource("2_k1j6f")]
 
 [node name="CSGBox" parent="Geometry/DebugMapModelConversionTest" index="0"]
+material_override = SubResource("StandardMaterial3D_pxcv4")
 mesh = SubResource("ArrayMesh_mfeik")
 
 [node name="StaticBody3D" parent="Geometry/DebugMapModelConversionTest/CSGBox" index="0"]
@@ -1428,20 +1455,41 @@ spot_range = 7.67879
 spot_angle = 63.2813
 
 [node name="spotLight3d16" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="16"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.10647, 60.7365, 18.2946)
+light_color = Color(1, 1, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d18" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -14.4305, 63.7365, 11.4764)
+light_color = Color(0, 0, 0.709804, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d19" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -11.8725, 63.7365, 11.4764)
+light_color = Color(0.466667, 0.819608, 0, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d20" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -8.59148, 63.7365, 11.4764)
+light_color = Color(0.976471, 0.556863, 0.156863, 1)
+shadow_enabled = true
+spot_range = 7.67879
+spot_angle = 63.2813
+
+[node name="spotLight3d17" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="20"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d17" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="17"]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
-light_color = Color(1, 1, 0.709804, 1)
-shadow_enabled = true
-spot_range = 7.67879
-spot_angle = 63.2813
-
-[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="18"]
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.12689, 61.902, 24.7375)
 stream = ExtResource("3_hwa6i")
 volume_db = -25.0
@@ -1450,14 +1498,34 @@ max_distance = 12.82
 bus = &"Ambience"
 attenuation_filter_db = 0.0
 
-[node name="audioStreamPlayer3d2" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="19"]
+[node name="audioStreamPlayer3d3" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3173, 62.6672, 10.5423)
+stream = ExtResource("3_hwa6i")
+volume_db = -20.605
+autoplay = true
+max_distance = 12.82
+bus = &"Ambience"
+attenuation_filter_db = 0.0
+
+[node name="audioStreamPlayer3d2" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6365, 61.902, -0.889332)
 stream = ExtResource("4_4qh7k")
-volume_db = -15.0
+volume_db = -19.604
 autoplay = true
 max_distance = 15.32
 bus = &"Ambience"
 attenuation_filter_db = 0.0
+
+[node name="csgBox3d" type="CSGBox3D" parent="Geometry/DebugMapModelConversionTest" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 59.0855, 11.1819)
+use_collision = true
+material = SubResource("StandardMaterial3D_fvtlt")
+
+[node name="csgBox3d2" type="CSGBox3D" parent="Geometry/DebugMapModelConversionTest" index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7671, 59.0975, 0.62041)
+use_collision = true
+size = Vector3(1.3573, 1, 1.55176)
+material = SubResource("StandardMaterial3D_wjtf2")
 
 [node name="lightmapGi" type="LightmapGI" parent="Geometry" index="1"]
 quality = 3
@@ -1763,7 +1831,7 @@ bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
 tree_root = SubResource("AnimationNodeBlendTree_ncfh7")
 
 [node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
-transform = Transform3D(-0.995796, 0.0145952, 0.0903086, 0.0115047, 0.999324, -0.0346518, -0.090754, -0.0334677, -0.995301, 3.91197, 59.9009, 18.2899)
+transform = Transform3D(-0.995796, 0.0145952, 0.0903086, 0.0115047, 0.999324, -0.0346518, -0.090754, -0.0334677, -0.995301, 3.91197, 59.901, 18.2899)
 
 [node name="LeftThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
 transform = Transform3D(-0.989158, -0.146494, 0.010214, 0.145472, -0.98696, -0.0684915, 0.020117, -0.0662612, 0.997595, 3.86031, 59.5611, 18.2695)
@@ -1775,7 +1843,7 @@ transform = Transform3D(0.976532, -0.211648, -0.0394183, -0.135861, -0.747803, 0
 transform = Transform3D(-0.995728, -0.0762128, 0.0518269, 0.089066, -0.940365, 0.328199, 0.0237258, 0.331427, 0.943177, 3.80104, 59.1618, 18.2427)
 
 [node name="RightThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
-transform = Transform3D(-0.963354, 0.217582, -0.156856, -0.153513, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96004, 59.5603, 18.2836)
+transform = Transform3D(-0.963354, 0.217582, -0.156856, -0.153513, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96004, 59.5604, 18.2836)
 
 [node name="RightFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="5"]
 transform = Transform3D(0.93136, 0.318864, 0.17573, 0.0594615, -0.609378, 0.790613, 0.359199, -0.725913, -0.586523, 4.08753, 58.7847, 18.1658)
@@ -1787,7 +1855,7 @@ transform = Transform3D(-0.973179, 0.097998, -0.208055, -0.0989949, -0.995045, -
 transform = Transform3D(-0.993767, 0.0341264, 0.10602, 0.0228221, 0.994078, -0.106065, -0.109014, -0.102986, -0.988671, 3.90494, 59.6961, 18.3111)
 
 [node name="Hips" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="8"]
-transform = Transform3D(-0.99017, -0.0277992, 0.137007, 0.00743444, 0.968168, 0.250175, -0.1396, 0.248737, -0.958454, 3.90882, 59.5607, 18.2764)
+transform = Transform3D(-0.99017, -0.0277992, 0.137007, 0.00743444, 0.968168, 0.250175, -0.1396, 0.248737, -0.958454, 3.90882, 59.5608, 18.2764)
 
 [node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="9"]
 transform = Transform3D(-0.995471, 0.026008, 0.0913147, 0.0170977, 0.995124, -0.097041, -0.093394, -0.0950414, -0.991072, 3.91582, 60.1647, 18.2811)
@@ -1799,10 +1867,10 @@ transform = Transform3D(0.431775, -0.0226912, -0.90168, 0.186794, -0.975748, 0.1
 transform = Transform3D(0.156647, 0.18882, 0.969435, -0.0779182, -0.976102, 0.202711, 0.984566, -0.107266, -0.138188, 4.08095, 59.6344, 18.338)
 
 [node name="Beretta" parent="Props" index="0" instance=ExtResource("8_bpgik")]
-transform = Transform3D(0.21074, -0.847213, 0.487667, -0.866025, 0.0695865, 0.495134, -0.453419, -0.526676, -0.719043, -23.1313, 58.945, 0.261761)
+transform = Transform3D(0.21074, -0.847213, 0.487667, -0.866025, 0.0695865, 0.495134, -0.453419, -0.526676, -0.719043, -22.8882, 60.0306, 0.643936)
 
 [node name="Honeybadger" parent="Props" index="1" instance=ExtResource("9_om7fk")]
-transform = Transform3D(0.862465, 0.033654, -0.504997, 0.504059, 0.0327727, 0.863047, 0.045595, -0.998896, 0.0113017, -4.04125, 59.0885, 14.9717)
+transform = Transform3D(0.404866, -0.355453, -0.842459, 0.907823, 0.0461538, 0.416805, -0.109272, -0.933554, 0.341374, -12.973, 60.0605, 11.0706)
 
 [editable path="Geometry/DebugMapModelConversionTest"]
 [editable path="Pawns/Players/pawnEntity"]

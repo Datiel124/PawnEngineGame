@@ -4,7 +4,7 @@ signal interactionFound
 @export_category("Hud")
 @export var cam : Camera3D
 @onready var interactHud = $Interact
-@onready var interactText = $Interact/richTextLabel
+@onready var interactText = $Interact/panel/richTextLabel
 @onready var camVert = $"../camPivot/horizonal/vertholder/vertical"
 @onready var camHoriz = $"../camPivot/horizonal"
 @onready var camCast : RayCast3D = $"../camPivot/horizonal/vertholder/vertical/springArm3d/Camera/RayCast3D"

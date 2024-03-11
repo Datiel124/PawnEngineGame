@@ -57,6 +57,7 @@ script = ExtResource("1_t8p33")
 [node name="decal" type="Decal" parent="."]
 size = Vector3(0.132018, 0.15534, 0.117771)
 texture_albedo = ExtResource("1_gqobj")
+distance_fade_enabled = true
 
 [node name="impactParticle" type="GPUParticles3D" parent="decal"]
 emitting = false

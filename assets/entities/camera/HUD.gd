@@ -3,6 +3,7 @@ signal interactionunFound
 signal interactionFound
 @export_category("Hud")
 @export var cam : Camera3D
+@export var interactionOffset : Vector2 = Vector2.ZERO
 @onready var interactHud = $Interact
 @onready var interactText = $Interact/panel/richTextLabel
 @onready var camVert = $"../camPivot/horizonal/vertholder/vertical"
@@ -42,11 +43,12 @@ func _process(delta):
 	# If in Dialogue
 	if interactVisible:
 		interactHud.modulate = lerp(interactHud.modulate, Color.WHITE, 8*delta)
-		interactHud.position.y = lerpf(interactHud.position.y, crosshair.position.y , 8*delta)
-		interactHud.position.x = lerpf(interactHud.position.x, crosshair.position.x + 15, 8*delta)
+		interactHud.position.y = lerpf(interactHud.position.y, crosshair.position.y + interactionOffset.y, 8*delta)
+		interactHud.position.x = lerpf(interactHud.position.x, crosshair.position.x + interactionOffset.x, 8*delta)
 	else:
 		interactHud.modulate = lerp(interactHud.modulate, Color.TRANSPARENT, 24*delta)
 		interactHud.position = lerp(interactHud.position, crosshair.position, 16*delta)
+		pass
 
 	if Dialogic.current_timeline != null:
 		hudEnabled = true

@@ -66,7 +66,7 @@ func _ready():
 	self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,10)
 	self.lifetime = randf_range(5,45)
 func _process(delta):
-	if Engine.get_frames_per_second() < 60:
+	if Engine.get_frames_per_second() < 50:
 		queue_free()
 
 	if remove:

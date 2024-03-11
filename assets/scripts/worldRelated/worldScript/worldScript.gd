@@ -21,7 +21,10 @@ signal worldLoaded
 ##Describe the world..
 @export var worldDescription = ""
 ## What type of world is this scene? If its a general area the player can explore to find things like items or quests, it'd be an area. If its a zone where the player can save the game or restock on items it'd be a safehouse. If its a sector full of enemies, arena.
-@export_enum("Area", "Shop", "Safehouse", "Arena") var worldType = 0
+@export_enum("Area", "Shop", "Safehouse", "Arena") var worldType = 0:
+	set(value):
+		worldType = value
+		checkWorldType()
 
 @export_category("Soundscape")
 @export var playOnStart = false
@@ -106,3 +109,6 @@ func getSpawnPoints(offset:Vector3 = Vector3(0,0,0), pickRandom:bool = true, spa
 #				if spawns.randomizePawnColor:
 #					pawn.character_pawn.randomizePawnColor()
 #	return
+
+func checkWorldType():
+	pass

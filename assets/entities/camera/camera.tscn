@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=32 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://btlv87lcgekb7" path="res://assets/textures/ui/healthbar.png" id="8_6fqy3"]
 [ext_resource type="AudioStream" uid="uid://d3eqn61hfgwuf" path="res://assets/sounds/playerhurt/playerhurtambience.wav" id="9_jgajw"]
 [ext_resource type="Texture2D" uid="uid://btse3nqgw3085" path="res://assets/textures/ui/ammoBar.png" id="10_w541l"]
+[ext_resource type="AudioStream" uid="uid://doah0b50uqi2n" path="res://assets/sounds/ui/uiSoft.wav" id="12_uquvw"]
 [ext_resource type="AudioStream" uid="uid://08mwbmwvrolu" path="res://assets/sounds/ui/uiAppear2.wav" id="12_vxs2k"]
 [ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="13_1q303"]
 [ext_resource type="AudioStream" uid="uid://cvjrwmws0pggm" path="res://assets/sounds/gore/fleshimpact1.wav" id="14_eq71r"]
@@ -115,9 +116,8 @@ gradient = SubResource("Gradient_jat1a")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjbx3"]
 texture = SubResource("GradientTexture1D_l0xuj")
 
-[sub_resource type="Animation" id="Animation_tl6cg"]
-resource_name = "rollover"
-length = 0.5
+[sub_resource type="Animation" id="Animation_jcse6"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,10 +125,10 @@ tracks/0/path = NodePath("panel:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.153893, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(5, 25), Vector2(205, 25)]
+"values": [Vector2(205, 25)]
 }
 
 [sub_resource type="Animation" id="Animation_1hh6o"]
@@ -147,8 +147,9 @@ tracks/0/keys = {
 "values": [Vector2(205, 25), Vector2(5, 25)]
 }
 
-[sub_resource type="Animation" id="Animation_jcse6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tl6cg"]
+resource_name = "rollover"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -156,10 +157,10 @@ tracks/0/path = NodePath("panel:size")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.153893, 1),
 "update": 0,
-"values": [Vector2(205, 25)]
+"values": [Vector2(5, 25), Vector2(205, 25)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uw0ow"]
@@ -240,6 +241,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("4_r48cc")
 cam = NodePath("../camPivot/horizonal/vertholder/vertical/springArm3d/Camera")
+interactionOffset = Vector2(-15, -45)
 crosshair = NodePath("Crosshair")
 
 [node name="WIP" type="Label" parent="HUD"]
@@ -427,10 +429,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 19.0
-offset_top = 57.0
-offset_right = 224.0
-offset_bottom = 82.0
+offset_left = 39.0
+offset_top = 77.0
+offset_right = 244.0
+offset_bottom = 102.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pjbx3")
 
@@ -459,9 +461,9 @@ libraries = {
 speed_scale = 1.733
 
 [node name="audioStreamPlayer" type="AudioStreamPlayer" parent="HUD/Interact"]
-stream = ExtResource("12_vxs2k")
+stream = ExtResource("12_uquvw")
 volume_db = -25.0
-pitch_scale = 0.4
+pitch_scale = 2.0
 bus = &"UI"
 
 [node name="textboxAppearSound" type="AudioStreamPlayer" parent="HUD"]

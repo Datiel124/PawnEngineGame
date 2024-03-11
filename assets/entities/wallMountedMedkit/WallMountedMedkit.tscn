@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ccjm54ftqg7qc" path="res://assets/entities/interactiveObject/interactiveObject.tscn" id="1_jsdx8"]
 [ext_resource type="Script" path="res://assets/entities/wallMountedMedkit/WallMountedMedkit.gd" id="2_gj1ma"]
 [ext_resource type="Shader" path="res://assets/scripts/shaders/itemGlow/itemGlow.gdshader" id="3_6meri"]
-[ext_resource type="AudioStream" uid="uid://dbxyo1p3kd36u" path="res://assets/sounds/ui/uievaluate.wav" id="3_fs4re"]
+[ext_resource type="AudioStream" uid="uid://bnxu7gvanylpi" path="res://assets/sounds/ui/uiFail.wav" id="4_pdaac"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r5i0o"]
 render_priority = 1
@@ -40,6 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00213623, -0.0015564, 0.00
 shape = SubResource("BoxShape3D_2kjb3")
 
 [node name="useSound" parent="." index="2"]
-stream = ExtResource("3_fs4re")
-volume_db = -2.0
+stream = ExtResource("4_pdaac")
+volume_db = -5.0
+pitch_scale = 2.5
 bus = &"Sounds"

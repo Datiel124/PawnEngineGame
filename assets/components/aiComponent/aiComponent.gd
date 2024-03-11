@@ -103,7 +103,7 @@ func _process(delta):
 		Pawn Detection Amount - %s\n
 		Has Target - %s\n
 		Has Detected - %s\n
-		"%[pawnOwner.name,aiType,aiTree.blackboard.get_var("pawnDetection"),aiTree.blackboard.get_var("hasTarget"),aiTree.blackboard.get_var("hasDetectedPawn")]
+		"%[pawnName,aiType,aiTree.blackboard.get_var("pawnDetection"),aiTree.blackboard.get_var("hasTarget"),aiTree.blackboard.get_var("hasDetectedPawn")]
 		pawnDebugLabel.position.x = pawnOwner.head.position.x
 		pawnDebugLabel.position.y = pawnOwner.head.position.y * 200
 		pawnDebugLabel.visible = true

@@ -82,6 +82,7 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.05
 			if hardImpactEffectEnabled:
 				if impactEffectHard == null:
+					await get_tree().process_frame
 					var particle = globalParticles.createParticle("BloodSpurt",self.position)
 					particle.rotation = self.rotation
 					particle.amount = randi_range(25,75)
@@ -94,6 +95,7 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.25
 			if mediumImpactEffectEnabled:
 				if impactEffectMedium == null:
+					await get_tree().process_frame
 					var particle = globalParticles.createParticle("BloodSpurt",self.position)
 					particle.rotation = self.rotation
 					particle.amount = randi_range(25,40)
@@ -106,6 +108,7 @@ func _integrate_forces(state:PhysicsDirectBodyState3D):
 			audioCooldown = 0.25
 			if lightImpactEffectEnabled:
 				if impactEffectLight == null:
+					await get_tree().process_frame
 					var particle = globalParticles.createParticle("BloodSpurt",self.position)
 					particle.rotation = self.rotation
 			return

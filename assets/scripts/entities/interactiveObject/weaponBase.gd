@@ -282,12 +282,13 @@ func resetToDefault():
 	collisionEnabled = false
 
 func equipToPawn(pawn:BasePawn):
-	collisionEnabled = false
-	collisionObject.disabled = true
-	pawn.moveItemToWeapons(self)
-	if objectUsed.is_connected(equipToPawn):
-		objectUsed.disconnect(equipToPawn)
-	if pawn.attachedCam:
-		globalGameManager.notifyFade("%s Added to inventory." %objectName)
-		pawn.equipSound.play()
-		pawn.attachedCam.fireRecoil(0,0.7,0.4)
+	if !pawn.itemInventory.has(self):
+		collisionEnabled = false
+		collisionObject.disabled = true
+		pawn.moveItemToWeapons(self)
+		if objectUsed.is_connected(equipToPawn):
+			objectUsed.disconnect(equipToPawn)
+		if pawn.attachedCam:
+			globalGameManager.notifyFade("%s Added to inventory." %objectName)
+			pawn.equipSound.play()
+			pawn.attachedCam.fireRecoil(0,0.7,0.4)

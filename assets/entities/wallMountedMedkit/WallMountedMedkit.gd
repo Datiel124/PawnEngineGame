@@ -19,8 +19,8 @@ func healPawn(pawn:BasePawn):
 			if pawn.healthComponent.health < 100:
 				pawn.healthComponent.health = 100
 				if pawn.attachedCam:
-					pawn.attachedCam.fireVignette(0.9,Color.WHITE_SMOKE)
-					pawn.attachedCam.fireRecoil(0,0,1.5)
+					pawn.attachedCam.fireVignette(0.9,Color.DARK_OLIVE_GREEN)
+					pawn.attachedCam.fireRecoil(0,randf_range(0.15,0.8),0)
 					globalGameManager.notifyFade("You've been healed.",2,1.5)
 					globalGameManager.playSound(globalGameManager.getGlobalSound("healSound"))
 					useSound.play()

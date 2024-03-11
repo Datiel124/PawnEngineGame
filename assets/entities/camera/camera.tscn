@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c1r6apfs6eb8j"]
+[gd_scene load_steps=31 format=3 uid="uid://c1r6apfs6eb8j"]
 
 [ext_resource type="Script" path="res://assets/scripts/camera/Camera.gd" id="1_r7vh5"]
 [ext_resource type="PackedScene" uid="uid://cvynv7sgqowum" path="res://assets/components/velocityComponent/velocityComponent.tscn" id="2_rb4ck"]
@@ -104,6 +104,70 @@ shader = SubResource("Shader_kenmw")
 shader_parameter/color = Color(0.666667, 0, 0, 1)
 shader_parameter/multiplier = 0.25
 shader_parameter/softness = 0.9
+
+[sub_resource type="Gradient" id="Gradient_jat1a"]
+offsets = PackedFloat32Array(0, 0.994737, 1)
+colors = PackedColorArray(0.505882, 0, 0.0470588, 0.784314, 0.439216, 0.0784314, 0, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l0xuj"]
+gradient = SubResource("Gradient_jat1a")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pjbx3"]
+texture = SubResource("GradientTexture1D_l0xuj")
+
+[sub_resource type="Animation" id="Animation_tl6cg"]
+resource_name = "rollover"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.153893, 1),
+"update": 0,
+"values": [Vector2(5, 25), Vector2(205, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_1hh6o"]
+resource_name = "rolldown"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.495688),
+"transitions": PackedFloat32Array(0.196146, 1),
+"update": 0,
+"values": [Vector2(205, 25), Vector2(5, 25)]
+}
+
+[sub_resource type="Animation" id="Animation_jcse6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(205, 25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw0ow"]
+_data = {
+"RESET": SubResource("Animation_jcse6"),
+"rolldown": SubResource("Animation_1hh6o"),
+"rollover": SubResource("Animation_tl6cg")
+}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bpylg"]
 streams_count = 3
@@ -363,25 +427,43 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -41.0
-offset_top = 18.0
-offset_right = 164.0
-offset_bottom = 43.0
+offset_left = -1.0
+offset_top = 37.0
+offset_right = 204.0
+offset_bottom = 62.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_pjbx3")
 
 [node name="richTextLabel" type="RichTextLabel" parent="HUD/Interact"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.525
 anchor_right = -1.525
-offset_left = 48.0
-offset_top = 39.0
-offset_right = 213.0
-offset_bottom = 79.0
+offset_left = 83.0
+offset_top = 58.0
+offset_right = 292.0
+offset_bottom = 82.0
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.513726)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/normal_font = ExtResource("13_1q303")
 bbcode_enabled = true
 text = "Use \"Item\""
+
+[node name="interactAnimPlayer" type="AnimationPlayer" parent="HUD/Interact"]
+libraries = {
+"": SubResource("AnimationLibrary_uw0ow")
+}
+speed_scale = 1.733
+
+[node name="audioStreamPlayer" type="AudioStreamPlayer" parent="HUD/Interact"]
+stream = ExtResource("12_vxs2k")
+volume_db = -25.0
+pitch_scale = 0.4
+bus = &"UI"
 
 [node name="textboxAppearSound" type="AudioStreamPlayer" parent="HUD"]
 stream = ExtResource("12_vxs2k")
@@ -396,3 +478,8 @@ bus = &"Sounds"
 [connection signal="mouseButtonHeld" from="inputComponent" to="." method="_on_input_component_mouse_button_held"]
 [connection signal="mouseButtonPressed" from="inputComponent" to="." method="_on_input_component_mouse_button_pressed"]
 [connection signal="onMouseMotion" from="inputComponent" to="." method="_on_input_component_on_mouse_motion"]
+[connection signal="interactionFound" from="HUD" to="HUD/Interact/interactAnimPlayer" method="play"]
+[connection signal="interactionFound" from="HUD" to="HUD/Interact/audioStreamPlayer" method="play"]
+[connection signal="interactionFound" from="HUD" to="HUD/Interact/interactAnimPlayer" method="set_current_animation" binds= ["rollover"]]
+[connection signal="interactionunFound" from="HUD" to="HUD/Interact/interactAnimPlayer" method="play"]
+[connection signal="interactionunFound" from="HUD" to="HUD/Interact/interactAnimPlayer" method="set_current_animation" binds= ["rolldown"]]

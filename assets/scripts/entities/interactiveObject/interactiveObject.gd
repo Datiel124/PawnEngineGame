@@ -5,6 +5,8 @@ signal objectUsed(user)
 @onready var useSound3D = $useSound3D
 @export_category("Interactive Object")
 @export var objectName : String
+@export var customInteractText = ""
+@export var useCustomInteractText : bool = false
 var beenUsed = false
 @export_subgroup("Object")
 @export_enum("Equippable","Interactive") var interactType = 0

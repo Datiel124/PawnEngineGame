@@ -295,8 +295,12 @@ func _physics_process(delta):
 #endregion
 
 #region Mesh Rotation
-			pawnMesh.rotation.x = clamp(lerp_angle(pawnMesh.rotation.x, (Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).z * 0.01, delta * 256), -PI/6, PI/6)
-			pawnMesh.rotation.z = clamp(lerpf(pawnMesh.rotation.z, -(Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).x * 0.030, 256 * delta), -PI/6, PI/6)
+			if !is_on_wall():
+				pawnMesh.rotation.x = clamp(lerp_angle(pawnMesh.rotation.x, (Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).z * 0.01, delta * 256), -PI/6, PI/6)
+				pawnMesh.rotation.z = clamp(lerpf(pawnMesh.rotation.z, -(Vector3(velocity.x, 0.0, velocity.z) * pawnMesh.global_transform.basis).x * 0.030, 256 * delta), -PI/6, PI/6)
+			else:
+				pawnMesh.rotation.x = lerpf(pawnMesh.rotation.x, 0, 12*delta)
+				pawnMesh.rotation.z = lerpf(pawnMesh.rotation.z, 0, 12*delta)
 			if !meshLookAt:
 				if isMoving:
 					if !is_on_wall():
@@ -806,5 +810,10 @@ func getClothes():
 		return clothes
 
 func moveItemToWeapons(item:Weapon):
-	item.reparent(itemHolder)
-	checkItems()
+	if !itemInventory.has(item):
+		item.reparent(itemHolder)
+		item.position = Vector3.ZERO
+		item.rotation = Vector3.ZERO
+		checkItems()
+	else:
+		globalGameManager.notifyFade("You already have %s." %item.objectName, 2 , 1.5)

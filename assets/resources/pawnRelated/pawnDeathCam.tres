@@ -4,9 +4,13 @@
 
 [resource]
 script = ExtResource("1_5egi1")
+useZoomFOV = true
+zoomSpringAmount = 2.0
 cameraOffset = Vector3(0, 0, 2.5)
 camLerpSpeed = 30.0
 itemEquipOffset = Vector3(0, 0, 0)
 itemEquipLerpSpeed = 5.0
 zoomAmount = 25.0
+zoomInSpeed = 16.0
+zoomOutSpeed = 16.0
 zoomSpeed = 16.0

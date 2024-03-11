@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://cgunekse1vc0y"]
+[gd_scene load_steps=149 format=3 uid="uid://cgunekse1vc0y"]
 
 [ext_resource type="PackedScene" uid="uid://b4dpjminsf4mx" path="res://assets/scenes/worlds/worldBase/worldBase.tscn" id="1_67ne2"]
 [ext_resource type="PackedScene" uid="uid://b4mgs5g7ahuj7" path="res://assets/scenes/worlds/debug/modeltest/DebugMapModelConversionTest.gltf" id="2_k1j6f"]
@@ -8,10 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://bg8aarggcxwa8" path="res://assets/entities/pawnEntity/pawnEntity.tscn" id="4_4dx60"]
 [ext_resource type="AudioStream" uid="uid://2l3hukuuinhw" path="res://assets/sounds/ambient/wind.wav" id="4_4qh7k"]
 [ext_resource type="PackedScene" uid="uid://cmyxa8pfmhpcy" path="res://assets/components/inputComponent/inputComponent.tscn" id="5_bkru1"]
-[ext_resource type="Texture2D" uid="uid://2pqfdu3qio0p" path="res://assets/textures/Developer_Textures/Orange/texture_07.png" id="6_q0ys4"]
+[ext_resource type="Texture2D" uid="uid://drefil5dpbouh" path="res://assets/textures/Developer_Textures/Green/texture_01.png" id="6_bxtxi"]
 [ext_resource type="Texture2D" uid="uid://bhn41jxbxjaag" path="res://assets/textures/Developer_Textures/Light/texture_03.png" id="7_su3cn"]
 [ext_resource type="PackedScene" uid="uid://wtqya32cwdbk" path="res://assets/entities/weapons/Beretta/Beretta.tscn" id="8_bpgik"]
+[ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/interactiveObject.gd" id="8_qktt3"]
 [ext_resource type="PackedScene" uid="uid://bn07wnk5k005c" path="res://assets/entities/weapons/HoneyBadger/honeybadger.tscn" id="9_om7fk"]
+[ext_resource type="PackedScene" uid="uid://b53hvcf0hvvkw" path="res://assets/components/aiComponent/aiComponent.tscn" id="11_gyro2"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_lblvd"]
+vertices = PackedVector3Array(-22.7235, 58.9985, 5.39301, -22.7235, 58.9985, 2.14301, -23.9735, 58.9985, 1.89301, -31.2235, 58.9985, 5.39301, -23.9735, 58.9985, -0.606991, -22.7235, 58.9985, -0.856991, -22.7235, 58.9985, -4.35699, -31.2235, 58.9985, -4.35699, -23.9735, 58.9985, -0.606991, -31.2235, 58.9985, -4.35699, -31.2235, 58.9985, 5.39301, -23.9735, 58.9985, 1.89301, -13.4735, 58.9985, 7.39301, -14.2235, 58.9985, 7.64301, -13.9735, 58.9985, 8.14301, -12.2235, 58.9985, 8.14301, -22.7235, 58.9985, -4.35699, -22.7235, 58.9985, -0.856991, -21.4735, 58.9985, -0.606991, -13.4735, 58.9985, 7.39301, -12.2235, 58.9985, 8.14301, -11.4735, 58.9985, 7.39301, -11.4735, 58.9985, 5.64301, -13.7235, 58.9985, 5.39301, -13.7235, 58.9985, 5.39301, -11.4735, 58.9985, 5.64301, -9.7235, 58.9985, 5.39301, -9.7235, 58.9985, -4.35699, -22.7235, 58.9985, -4.35699, -21.4735, 58.9985, -0.606991, -21.4735, 58.9985, -0.606991, -21.4735, 58.9985, 1.89301, -13.7235, 58.9985, 5.39301, -21.4735, 58.9985, 1.89301, -22.7235, 58.9985, 2.14301, -22.7235, 58.9985, 5.39301, -13.7235, 58.9985, 5.39301, -22.9735, 59.9985, 0.143009, -22.9735, 59.9985, 1.14301, -22.4735, 59.9985, 1.14301, -22.4735, 59.9985, 0.143009, -2.4735, 58.9985, 7.39301, -3.7235, 58.9985, 7.64301, -3.7235, 58.9985, 11.143, 0.776501, 58.9985, 11.143, 1.0265, 58.9985, 10.143, 1.0265, 58.9985, 10.143, 3.2765, 58.9985, 10.393, 3.5265, 58.9985, 5.39301, -2.4735, 58.9985, 5.39301, -2.4735, 58.9985, 7.39301, 7.2765, 58.9985, 10.893, 8.2765, 58.9985, 10.893, 8.2765, 58.9985, 7.64301, 7.0265, 58.9985, 7.39301, 3.2765, 58.9985, 10.393, 3.2765, 58.9985, 11.643, 7.0265, 58.9985, 11.893, 7.2765, 58.9985, 10.893, 7.0265, 58.9985, 7.39301, 3.5265, 58.9985, 5.39301, 7.0265, 58.9985, 7.39301, 7.0265, 58.9985, 5.39301, 3.5265, 58.9985, 5.39301, -14.7235, 58.9985, 8.39301, -13.9735, 58.9985, 8.14301, -14.2235, 58.9985, 7.64301, -16.4735, 58.9985, 7.64301, -6.4735, 58.9985, 12.393, -4.9735, 58.9985, 12.143, -4.9735, 58.9985, 11.643, -6.4735, 58.9985, 11.393, -11.9735, 58.9985, 13.893, -6.4735, 58.9985, 14.393, -6.4735, 58.9985, 12.393, -11.9735, 58.9985, 13.893, -14.4735, 58.9985, 14.143, -16.4735, 58.9985, 14.393, -6.4735, 58.9985, 14.393, -6.4735, 58.9985, 7.64301, -11.4735, 58.9985, 7.39301, -12.2235, 58.9985, 8.14301, -11.9735, 58.9985, 13.893, -6.4735, 58.9985, 11.393, -14.7235, 58.9985, 8.39301, -16.4735, 58.9985, 7.64301, -16.4735, 58.9985, 14.393, -14.4735, 58.9985, 14.143, -11.9735, 58.9985, 13.893, -6.4735, 58.9985, 12.393, -6.4735, 58.9985, 11.393, -13.7235, 59.9985, 9.14301, -13.7235, 59.9985, 13.143, -12.9735, 59.9985, 13.143, -12.9735, 59.9985, 9.14301, -3.9735, 58.9985, 11.643, -4.9735, 58.9985, 11.643, -4.9735, 58.9985, 12.143, -3.7235, 58.9985, 12.393, 8.2765, 58.9985, 13.643, 7.0265, 58.9985, 13.393, 3.0265, 58.9985, 12.643, -3.7235, 58.9985, 11.143, -3.9735, 58.9985, 11.643, -3.7235, 58.9985, 12.393, -2.7235, 58.9985, 21.393, -2.7235, 58.9985, 22.393, -1.2235, 58.9985, 22.393, -0.973499, 58.9985, 21.143, 0.776501, 58.9985, 11.143, -3.7235, 58.9985, 11.143, -3.7235, 58.9985, 12.393, -2.7235, 58.9985, 15.893, 1.0265, 58.9985, 12.643, 1.0265, 58.9985, 21.143, 1.2765, 58.9985, 22.393, 2.7765, 58.9985, 22.393, 3.0265, 58.9985, 21.143, -2.7235, 58.9985, 18.143, -0.973499, 58.9985, 21.143, 1.0265, 58.9985, 21.143, -2.7235, 58.9985, 15.893, 5.2765, 58.9985, 22.393, 7.0265, 58.9985, 22.143, 7.0265, 58.9985, 21.143, 5.0265, 58.9985, 21.143, 1.0265, 58.9985, 21.143, 3.0265, 58.9985, 21.143, 8.2765, 58.9985, 20.893, 8.2765, 58.9985, 13.643, 3.0265, 58.9985, 12.643, -2.7235, 58.9985, 15.893, -3.7235, 58.9985, 21.143, -2.7235, 58.9985, 21.393, -0.973499, 58.9985, 21.143, -2.7235, 58.9985, 18.143, -3.7235, 58.9985, 18.393, 3.0265, 58.9985, 12.643, 1.0265, 58.9985, 12.643, -2.7235, 58.9985, 15.893, 5.0265, 58.9985, 21.143, 7.0265, 58.9985, 21.143, 8.2765, 58.9985, 20.893, 3.0265, 58.9985, 21.143, 5.0265, 58.9985, 21.143, 8.2765, 58.9985, 20.893, -3.7235, 58.9985, 12.393, -3.7235, 58.9985, 15.643, -2.7235, 58.9985, 15.893, 7.0265, 58.9985, 11.893, 3.2765, 58.9985, 11.643, 3.0265, 58.9985, 12.643, 7.0265, 58.9985, 13.393, -5.4735, 66.7485, 11.393, -5.4735, 66.7485, 12.393, -4.7235, 66.7485, 12.393, -4.7235, 66.7485, 11.393, -3.9735, 58.9985, 26.143, -3.9735, 58.9985, 23.643, -5.2235, 58.9985, 23.393, -5.2235, 58.9985, 26.393, -11.4735, 58.9985, 30.143, -10.4735, 58.9985, 30.143, -5.2235, 58.9985, 26.393, -5.2235, 58.9985, 23.393, -10.4735, 58.9985, 18.393, -11.4735, 58.9985, 18.393, -5.2235, 58.9985, 17.643, -10.2235, 58.9985, 17.643, -10.4735, 58.9985, 18.393, -5.2235, 58.9985, 23.393, -10.4735, 58.9985, 30.143, -10.2235, 58.9985, 31.393, -5.2235, 58.9985, 31.393, -5.2235, 58.9985, 26.393, 7.0265, 58.9985, 23.393, 7.0265, 58.9985, 22.143, 5.2765, 58.9985, 22.393, 5.0265, 58.9985, 23.643, 1.0265, 58.9985, 23.643, 1.0265, 58.9985, 26.143, 3.0265, 58.9985, 26.143, 3.0265, 58.9985, 23.643, 2.7765, 58.9985, 22.393, 1.2765, 58.9985, 22.393, -2.9735, 58.9985, 23.643, -3.9735, 58.9985, 23.643, -3.9735, 58.9985, 26.143, -2.9735, 58.9985, 26.143, 3.0265, 58.9985, 26.143, 5.0265, 58.9985, 26.143, 5.0265, 58.9985, 23.643, 3.0265, 58.9985, 23.643, -0.973499, 58.9985, 23.643, -1.2235, 58.9985, 22.393, -2.7235, 58.9985, 22.393, -2.9735, 58.9985, 23.643, -2.9735, 58.9985, 26.143, -0.973499, 58.9985, 26.143, 1.0265, 58.9985, 23.643, -0.973499, 58.9985, 23.643, -0.973499, 58.9985, 26.143, 1.0265, 58.9985, 26.143, -2.9735, 58.9985, 26.143, -2.7235, 58.9985, 27.393, -1.2235, 58.9985, 27.393, -0.973499, 58.9985, 26.143, 8.2765, 58.9985, 23.643, 7.0265, 58.9985, 23.393, 5.0265, 58.9985, 23.643, 5.0265, 58.9985, 26.143, 5.2765, 58.9985, 27.393, 8.2765, 58.9985, 27.393, 1.0265, 58.9985, 26.143, 1.2765, 58.9985, 27.393, 2.7765, 58.9985, 27.393, 3.0265, 58.9985, 26.143, -1.2235, 58.9985, 27.393, -2.7235, 58.9985, 27.393, -2.7235, 58.9985, 28.643, -0.973499, 58.9985, 28.643, 8.2765, 58.9985, 27.393, 5.2765, 58.9985, 27.393, 5.0265, 58.9985, 28.643, 7.0265, 58.9985, 31.143, 8.2765, 58.9985, 30.893, 3.0265, 58.9985, 28.643, 2.7765, 58.9985, 27.393, 1.2765, 58.9985, 27.393, 1.0265, 58.9985, 28.643, 7.0265, 58.9985, 31.143, 5.0265, 58.9985, 28.643, 3.0265, 58.9985, 28.643, 7.0265, 58.9985, 33.393, -2.7235, 58.9985, 28.643, -3.7235, 58.9985, 28.893, -3.7235, 58.9985, 30.893, -2.7235, 58.9985, 31.143, -0.973499, 58.9985, 28.643, 3.0265, 58.9985, 28.643, 1.0265, 58.9985, 28.643, -2.7235, 58.9985, 33.393, -3.4735, 58.9985, 36.143, 8.2765, 58.9985, 36.143, 7.0265, 58.9985, 33.393, -2.7235, 58.9985, 33.393, -3.4735, 58.9985, 33.643, -3.4735, 58.9985, 36.143, 8.2765, 58.9985, 36.143, 8.2765, 58.9985, 33.643, 7.0265, 58.9985, 33.393, 1.0265, 58.9985, 28.643, -0.973499, 58.9985, 28.643, -2.7235, 58.9985, 31.143, -2.7235, 58.9985, 33.393)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(11, 10, 8), PackedInt32Array(8, 10, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(18, 17, 16), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(22, 19, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 24, 29), PackedInt32Array(27, 29, 28), PackedInt32Array(32, 31, 30), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 36), PackedInt32Array(40, 39, 37), PackedInt32Array(37, 39, 38), PackedInt32Array(42, 41, 43), PackedInt32Array(43, 41, 45), PackedInt32Array(43, 45, 44), PackedInt32Array(50, 49, 46), PackedInt32Array(46, 49, 47), PackedInt32Array(47, 49, 48), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(57, 56, 58), PackedInt32Array(58, 56, 55), PackedInt32Array(58, 55, 59), PackedInt32Array(59, 55, 60), PackedInt32Array(63, 62, 61), PackedInt32Array(65, 64, 66), PackedInt32Array(66, 64, 67), PackedInt32Array(69, 68, 70), PackedInt32Array(70, 68, 71), PackedInt32Array(74, 73, 72), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(80, 79, 81), PackedInt32Array(81, 79, 83), PackedInt32Array(81, 83, 82), PackedInt32Array(87, 86, 84), PackedInt32Array(84, 86, 85), PackedInt32Array(90, 89, 88), PackedInt32Array(94, 93, 91), PackedInt32Array(91, 93, 92), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(101, 100, 99), PackedInt32Array(104, 103, 102), PackedInt32Array(106, 105, 107), PackedInt32Array(107, 105, 108), PackedInt32Array(111, 110, 112), PackedInt32Array(112, 110, 113), PackedInt32Array(113, 110, 109), PackedInt32Array(115, 114, 116), PackedInt32Array(116, 114, 117), PackedInt32Array(119, 118, 120), PackedInt32Array(120, 118, 121), PackedInt32Array(123, 122, 124), PackedInt32Array(124, 122, 125), PackedInt32Array(127, 126, 128), PackedInt32Array(128, 126, 129), PackedInt32Array(129, 126, 130), PackedInt32Array(130, 126, 131), PackedInt32Array(133, 132, 134), PackedInt32Array(134, 132, 135), PackedInt32Array(135, 132, 136), PackedInt32Array(139, 138, 137), PackedInt32Array(142, 141, 140), PackedInt32Array(145, 144, 143), PackedInt32Array(148, 147, 146), PackedInt32Array(150, 149, 151), PackedInt32Array(151, 149, 152), PackedInt32Array(156, 155, 153), PackedInt32Array(153, 155, 154), PackedInt32Array(157, 160, 158), PackedInt32Array(158, 160, 159), PackedInt32Array(162, 161, 163), PackedInt32Array(163, 161, 164), PackedInt32Array(164, 161, 165), PackedInt32Array(165, 161, 166), PackedInt32Array(168, 167, 169), PackedInt32Array(169, 167, 170), PackedInt32Array(172, 171, 173), PackedInt32Array(173, 171, 174), PackedInt32Array(176, 175, 177), PackedInt32Array(177, 175, 178), PackedInt32Array(184, 183, 179), PackedInt32Array(179, 183, 182), PackedInt32Array(179, 182, 181), PackedInt32Array(179, 181, 180), PackedInt32Array(188, 187, 185), PackedInt32Array(185, 187, 186), PackedInt32Array(192, 191, 189), PackedInt32Array(189, 191, 190), PackedInt32Array(194, 193, 195), PackedInt32Array(195, 193, 196), PackedInt32Array(196, 193, 198), PackedInt32Array(196, 198, 197), PackedInt32Array(202, 201, 199), PackedInt32Array(199, 201, 200), PackedInt32Array(204, 203, 205), PackedInt32Array(205, 203, 206), PackedInt32Array(208, 207, 209), PackedInt32Array(209, 207, 210), PackedInt32Array(210, 207, 211), PackedInt32Array(211, 207, 212), PackedInt32Array(214, 213, 215), PackedInt32Array(215, 213, 216), PackedInt32Array(218, 217, 219), PackedInt32Array(219, 217, 220), PackedInt32Array(222, 221, 223), PackedInt32Array(223, 221, 224), PackedInt32Array(224, 221, 225), PackedInt32Array(227, 226, 228), PackedInt32Array(228, 226, 229), PackedInt32Array(231, 230, 232), PackedInt32Array(232, 230, 233), PackedInt32Array(235, 234, 236), PackedInt32Array(236, 234, 237), PackedInt32Array(237, 234, 238), PackedInt32Array(240, 239, 241), PackedInt32Array(241, 239, 242), PackedInt32Array(242, 239, 244), PackedInt32Array(242, 244, 243), PackedInt32Array(247, 246, 245), PackedInt32Array(250, 249, 248), PackedInt32Array(252, 251, 253), PackedInt32Array(253, 251, 254)]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxcv4"]
 albedo_texture = ExtResource("3_c2yjm")
@@ -1113,7 +1119,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bjjvn")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvtlt"]
-albedo_texture = ExtResource("6_q0ys4")
+albedo_texture = ExtResource("6_bxtxi")
 metallic_specular = 1.0
 roughness = 0.0
 uv1_triplanar = true
@@ -1126,6 +1132,24 @@ metallic_specular = 1.0
 roughness = 0.0
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ay4jg"]
+albedo_texture = ExtResource("3_c2yjm")
+metallic = 0.08
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbh8s"]
+albedo_texture = ExtResource("6_bxtxi")
+metallic_specular = 1.0
+roughness = 0.0
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0bmoa"]
+size = Vector3(0.282227, 1.03784, 0.274933)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ss3j1"]
 animation = &"PawnAnim/Run4"
@@ -1342,154 +1366,372 @@ nodes/weaponState/node = SubResource("AnimationNodeBlendTree_veimu")
 nodes/weaponState/position = Vector2(-120, -40)
 node_connections = [&"aimSprintScale", 0, &"aimSprintStrafe", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeType", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"output", 0, &"weaponBlend", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"strafeType", 0, &"strafeSpace", &"strafeType", 1, &"aimSprintScale", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d11q2"]
+animation = &"PawnAnim/Run4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fgfye"]
+animation = &"PawnAnim/Jump"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6c8mw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5725y"]
+animation = &"PawnAnim/Run4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0uupm"]
+animation = &"PawnAnim/WalkBackwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t8rlb"]
+animation = &"PawnAnim/WalkBackwardsLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hp7y3"]
+animation = &"PawnAnim/WalkBackwardsR"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_po0ht"]
+animation = &"PawnAnim/RunUpRightNew"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qux2g"]
+animation = &"PawnAnim/RunUpLeftNew"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nmij"]
+animation = &"PawnAnim/WalkLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v4kej"]
+animation = &"PawnAnim/WalkRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tbvvn"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_b5ba2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5725y")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_0uupm")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_t8rlb")
+blend_point_2/pos = Vector2(-1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_hp7y3")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_po0ht")
+blend_point_4/pos = Vector2(-1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_qux2g")
+blend_point_5/pos = Vector2(1, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_0nmij")
+blend_point_6/pos = Vector2(-1, 0)
+blend_point_7/node = SubResource("AnimationNodeAnimation_v4kej")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_tbvvn")
+blend_point_8/pos = Vector2(0, 0)
+
+[sub_resource type="Curve" id="Curve_p8388"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_dt76d"]
+sync = true
+xfade_time = 0.2
+xfade_curve = SubResource("Curve_p8388")
+input_0/name = "notAiming"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "aiming"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flkpv"]
+animation = &"PawnAnim/Fall"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6vg4h"]
+sync = true
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2do4t"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s2v0u"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q57g1"]
+animation = &"PawnAnim/runCartoonish"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_of51n"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_2do4t")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_s2v0u")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_q57g1")
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_x58ix"]
+sync = true
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_klbir"]
+filter_enabled = true
+filters = ["MaleSkeleton/Skeleton3D:Head", "MaleSkeleton/Skeleton3D:L_Foot", "MaleSkeleton/Skeleton3D:L_Forearm", "MaleSkeleton/Skeleton3D:L_Hand", "MaleSkeleton/Skeleton3D:L_LowerLeg", "MaleSkeleton/Skeleton3D:L_Shoulder", "MaleSkeleton/Skeleton3D:L_Toe", "MaleSkeleton/Skeleton3D:L_UpperArm", "MaleSkeleton/Skeleton3D:L_UpperLeg", "MaleSkeleton/Skeleton3D:R_Foot", "MaleSkeleton/Skeleton3D:R_Forearm", "MaleSkeleton/Skeleton3D:R_Hand", "MaleSkeleton/Skeleton3D:R_LowerLeg", "MaleSkeleton/Skeleton3D:R_Shoulder", "MaleSkeleton/Skeleton3D:R_Toe", "MaleSkeleton/Skeleton3D:R_UpperArm", "MaleSkeleton/Skeleton3D:R_UpperLeg", "MaleSkeleton/Skeleton3D:Spine_0", "MaleSkeleton/Skeleton3D:Spine_1", "MaleSkeleton/Skeleton3D:Spine_2"]
+sync = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_3n17a"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74p54"]
+animation = &"PawnAnim/Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1ikok"]
+animation = &"PawnAnim/FinalWalkForward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6k8ug"]
+animation = &"PawnAnim/NewerWalkUpleft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e3k56"]
+animation = &"PawnAnim/NewerWalkUpRight"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d3qoj"]
+animation = &"PawnAnim/WalkBackwardsLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54dlx"]
+animation = &"PawnAnim/WalkBackwardsR"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vvxn0"]
+animation = &"PawnAnim/WalkBackwards"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1l86n"]
+animation = &"PawnAnim/WalkLeft"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5qfga"]
+animation = &"PawnAnim/WalkRight"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_2n37i"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_74p54")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_1ikok")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_6k8ug")
+blend_point_2/pos = Vector2(1, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_e3k56")
+blend_point_3/pos = Vector2(-1, 1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_d3qoj")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_54dlx")
+blend_point_5/pos = Vector2(1, -1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_vvxn0")
+blend_point_6/pos = Vector2(0, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_1l86n")
+blend_point_7/pos = Vector2(1, 0)
+blend_point_8/node = SubResource("AnimationNodeAnimation_5qfga")
+blend_point_8/pos = Vector2(-1, 0)
+max_space = Vector2(1.02, 1)
+
+[sub_resource type="Curve" id="Curve_ffbdm"]
+_data = [Vector2(0.00857142, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.986229), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_y3cmn"]
+sync = true
+xfade_time = 0.35
+xfade_curve = SubResource("Curve_ffbdm")
+input_0/name = "walking"
+input_0/auto_advance = false
+input_0/reset = true
+input_1/name = "running"
+input_1/auto_advance = false
+input_1/reset = true
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0lac3"]
+filter_enabled = true
+filters = ["MaleSkeleton/Skeleton3D:Head", "MaleSkeleton/Skeleton3D:Neck", "MaleSkeleton/Skeleton3D:R_Forearm", "MaleSkeleton/Skeleton3D:R_Hand", "MaleSkeleton/Skeleton3D:R_Index0", "MaleSkeleton/Skeleton3D:R_Index1", "MaleSkeleton/Skeleton3D:R_Index2", "MaleSkeleton/Skeleton3D:R_Middle0", "MaleSkeleton/Skeleton3D:R_Middle1", "MaleSkeleton/Skeleton3D:R_Middle2", "MaleSkeleton/Skeleton3D:R_Pinkie0", "MaleSkeleton/Skeleton3D:R_Pinkie1", "MaleSkeleton/Skeleton3D:R_Pinkie2", "MaleSkeleton/Skeleton3D:R_Ring0", "MaleSkeleton/Skeleton3D:R_Ring1", "MaleSkeleton/Skeleton3D:R_Ring2", "MaleSkeleton/Skeleton3D:R_Shoulder", "MaleSkeleton/Skeleton3D:R_Thumb0", "MaleSkeleton/Skeleton3D:R_Thumb1", "MaleSkeleton/Skeleton3D:R_Thumb2", "MaleSkeleton/Skeleton3D:R_UpperArm"]
+sync = true
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_1d0po"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ku2o8"]
+graph_offset = Vector2(-314, 54)
+nodes/BlendSpace1D/node = SubResource("AnimationNodeBlendSpace1D_1d0po")
+nodes/BlendSpace1D/position = Vector2(60, 160)
+node_connections = [&"output", 0, &"BlendSpace1D"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_df7e4"]
+resource_local_to_scene = true
+resource_name = "PawnAnimTree"
+nodes/Animation/node = SubResource("AnimationNodeAnimation_d11q2")
+nodes/Animation/position = Vector2(-1340, -200)
+nodes/Jump/node = SubResource("AnimationNodeAnimation_fgfye")
+nodes/Jump/position = Vector2(-880, -140)
+nodes/aimSprintScale/node = SubResource("AnimationNodeTimeScale_6c8mw")
+nodes/aimSprintScale/position = Vector2(-660, 140)
+nodes/aimSprintStrafe/node = SubResource("AnimationNodeBlendSpace2D_b5ba2")
+nodes/aimSprintStrafe/position = Vector2(-900, 180)
+nodes/aimTransition/node = SubResource("AnimationNodeTransition_dt76d")
+nodes/aimTransition/position = Vector2(-120, -240)
+nodes/fallAnim/node = SubResource("AnimationNodeAnimation_flkpv")
+nodes/fallAnim/position = Vector2(-640, -160)
+nodes/fallBlend/node = SubResource("AnimationNodeBlend2_6vg4h")
+nodes/fallBlend/position = Vector2(-380, -400)
+nodes/idleSpace/node = SubResource("AnimationNodeBlendSpace1D_of51n")
+nodes/idleSpace/position = Vector2(-1340, -340)
+nodes/jumpBlend/node = SubResource("AnimationNodeBlend2_x58ix")
+nodes/jumpBlend/position = Vector2(-600, -340)
+nodes/output/position = Vector2(880, -280)
+nodes/runBlend/node = SubResource("AnimationNodeBlend2_klbir")
+nodes/runBlend/position = Vector2(-780, -340)
+nodes/runSpeed/node = SubResource("AnimationNodeTimeScale_3n17a")
+nodes/runSpeed/position = Vector2(-1040, -240)
+nodes/strafeSpace/node = SubResource("AnimationNodeBlendSpace2D_2n37i")
+nodes/strafeSpace/position = Vector2(-900, 0)
+nodes/strafeType/node = SubResource("AnimationNodeTransition_y3cmn")
+nodes/strafeType/position = Vector2(-460, 0)
+nodes/weaponBlend/node = SubResource("AnimationNodeBlend2_0lac3")
+nodes/weaponBlend/position = Vector2(320, -220)
+nodes/weaponState/node = SubResource("AnimationNodeBlendTree_ku2o8")
+nodes/weaponState/position = Vector2(-120, -40)
+node_connections = [&"aimSprintScale", 0, &"aimSprintStrafe", &"aimTransition", 0, &"fallBlend", &"aimTransition", 1, &"strafeType", &"fallBlend", 0, &"jumpBlend", &"fallBlend", 1, &"fallAnim", &"jumpBlend", 0, &"runBlend", &"jumpBlend", 1, &"Jump", &"output", 0, &"weaponBlend", &"runBlend", 0, &"idleSpace", &"runBlend", 1, &"runSpeed", &"runSpeed", 0, &"Animation", &"strafeType", 0, &"strafeSpace", &"strafeType", 1, &"aimSprintScale", &"weaponBlend", 0, &"aimTransition", &"weaponBlend", 1, &"weaponState"]
+
 [node name="DebugWorldTest" instance=ExtResource("1_67ne2")]
 
 [node name="GodotSky" parent="Environment" index="0"]
 timeOfDay = 2400.0
 rateOfTime = 0.0
 
-[node name="DebugMapModelConversionTest" parent="Geometry" index="0" instance=ExtResource("2_k1j6f")]
+[node name="navigationRegion3d" type="NavigationRegion3D" parent="Geometry" index="0"]
+navigation_mesh = SubResource("NavigationMesh_lblvd")
 
-[node name="CSGBox" parent="Geometry/DebugMapModelConversionTest" index="0"]
+[node name="DebugMapModelConversionTest" parent="Geometry/navigationRegion3d" index="0" instance=ExtResource("2_k1j6f")]
+
+[node name="CSGBox" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="0"]
 material_override = SubResource("StandardMaterial3D_pxcv4")
 mesh = SubResource("ArrayMesh_mfeik")
 
-[node name="StaticBody3D" parent="Geometry/DebugMapModelConversionTest/CSGBox" index="0"]
+[node name="StaticBody3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/CSGBox" index="0"]
 collision_layer = 11
 collision_mask = 11
 
-[node name="spotLight3d" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="1"]
+[node name="spotLight3d" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4542, 66.3871, 22.5584)
 shadow_enabled = true
 spot_range = 9.1351
 spot_angle = 47.7459
 
-[node name="spotLight3d2" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="2"]
+[node name="spotLight3d2" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="2"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 22.5584)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d3" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="3"]
+[node name="spotLight3d3" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="3"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 31.2852)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d4" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="4"]
+[node name="spotLight3d4" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -1.30021, 66.3871, 11.5591)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d5" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="5"]
+[node name="spotLight3d5" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="5"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.06065, 66.3871, 21.4294)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d6" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="6"]
+[node name="spotLight3d6" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="6"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 9.10215)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d7" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="7"]
+[node name="spotLight3d7" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="7"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -14.0727, 65.0282, 0.197153)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d8" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="8"]
+[node name="spotLight3d8" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="8"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -20.5761, 65.0282, 0.197153)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d9" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="9"]
+[node name="spotLight3d9" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="9"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -25.7189, 65.0282, 0.197153)
 shadow_enabled = true
 spot_range = 17.7456
 spot_angle = 60.6231
 
-[node name="spotLight3d10" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="10"]
+[node name="spotLight3d10" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="10"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d11" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="11"]
+[node name="spotLight3d11" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="11"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d12" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="12"]
+[node name="spotLight3d12" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="12"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d13" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="13"]
+[node name="spotLight3d13" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="13"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d14" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="14"]
+[node name="spotLight3d14" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="14"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d15" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="15"]
+[node name="spotLight3d15" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="15"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d16" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="16"]
+[node name="spotLight3d16" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="16"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -8.10647, 60.7365, 18.2946)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d18" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="17"]
+[node name="spotLight3d18" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -14.4305, 63.7365, 11.4764)
 light_color = Color(0, 0, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d19" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="18"]
+[node name="spotLight3d19" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -11.8725, 63.7365, 11.4764)
 light_color = Color(0.466667, 0.819608, 0, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d20" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="19"]
+[node name="spotLight3d20" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, -8.59148, 63.7365, 11.4764)
 light_color = Color(0.976471, 0.556863, 0.156863, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="spotLight3d17" type="SpotLight3D" parent="Geometry/DebugMapModelConversionTest" index="20"]
+[node name="spotLight3d17" type="SpotLight3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="20"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -10.4081, 59.8131, 23.3738)
 light_color = Color(1, 1, 0.709804, 1)
 shadow_enabled = true
 spot_range = 7.67879
 spot_angle = 63.2813
 
-[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="21"]
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.12689, 61.902, 24.7375)
 stream = ExtResource("3_hwa6i")
 volume_db = -25.0
@@ -1498,7 +1740,7 @@ max_distance = 12.82
 bus = &"Ambience"
 attenuation_filter_db = 0.0
 
-[node name="audioStreamPlayer3d3" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="22"]
+[node name="audioStreamPlayer3d3" type="AudioStreamPlayer3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3173, 62.6672, 10.5423)
 stream = ExtResource("3_hwa6i")
 volume_db = -20.605
@@ -1507,7 +1749,7 @@ max_distance = 12.82
 bus = &"Ambience"
 attenuation_filter_db = 0.0
 
-[node name="audioStreamPlayer3d2" type="AudioStreamPlayer3D" parent="Geometry/DebugMapModelConversionTest" index="23"]
+[node name="audioStreamPlayer3d2" type="AudioStreamPlayer3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6365, 61.902, -0.889332)
 stream = ExtResource("4_4qh7k")
 volume_db = -19.604
@@ -1516,18 +1758,50 @@ max_distance = 15.32
 bus = &"Ambience"
 attenuation_filter_db = 0.0
 
-[node name="csgBox3d" type="CSGBox3D" parent="Geometry/DebugMapModelConversionTest" index="24"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 59.0855, 11.1819)
+[node name="csgBox3d" type="CSGBox3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3076, 59.0855, 11.1125)
 use_collision = true
+size = Vector3(1.61523, 1, 4.56177)
 material = SubResource("StandardMaterial3D_fvtlt")
 
-[node name="csgBox3d2" type="CSGBox3D" parent="Geometry/DebugMapModelConversionTest" index="25"]
+[node name="csgBox3d2" type="CSGBox3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7671, 59.0975, 0.62041)
 use_collision = true
 size = Vector3(1.3573, 1, 1.55176)
 material = SubResource("StandardMaterial3D_wjtf2")
 
-[node name="lightmapGi" type="LightmapGI" parent="Geometry" index="1"]
+[node name="node3d" type="Node3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest" index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3835, 59.0943, 11.1037)
+
+[node name="csgBox3d3" type="CSGBox3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/node3d" index="0"]
+size = Vector3(0.276611, 1, 0.272949)
+material = SubResource("StandardMaterial3D_ay4jg")
+
+[node name="node3d" type="Node3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/node3d" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00561428, 0.477589, -0.00369263)
+
+[node name="interactiveObject" type="RigidBody3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/node3d/node3d" index="0" groups=["Interactable"]]
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("8_qktt3")
+customInteractText = "Enable Survival Mode?"
+useCustomInteractText = true
+canBeUsed = true
+
+[node name="csgBox3d4" type="CSGBox3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/node3d/node3d/interactiveObject" index="0"]
+size = Vector3(0.186462, 0.158081, 0.20636)
+material = SubResource("StandardMaterial3D_tbh8s")
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="Geometry/navigationRegion3d/DebugMapModelConversionTest/node3d/node3d/interactiveObject" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00732422, -0.432007, 0.00230408)
+shape = SubResource("BoxShape3D_0bmoa")
+
+[node name="lightmapGi" type="LightmapGI" parent="Geometry/navigationRegion3d" index="1"]
 quality = 3
 bounces = 6
 directional = true
@@ -1539,214 +1813,214 @@ environment_custom_energy = 0.0
 generate_probes_subdiv = 3
 light_data = ExtResource("3_hrucs")
 
-[node name="lightmapProbe" type="LightmapProbe" parent="Geometry/lightmapGi" index="0"]
+[node name="lightmapProbe" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.935231, 59.6784, 6.35545)
 
-[node name="lightmapProbe2" type="LightmapProbe" parent="Geometry/lightmapGi" index="1"]
+[node name="lightmapProbe2" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.935231, 64.2729, 6.35545)
 
-[node name="lightmapProbe3" type="LightmapProbe" parent="Geometry/lightmapGi" index="2"]
+[node name="lightmapProbe3" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 59.6784, 6.35545)
 
-[node name="lightmapProbe4" type="LightmapProbe" parent="Geometry/lightmapGi" index="3"]
+[node name="lightmapProbe4" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 64.2729, 6.35545)
 
-[node name="lightmapProbe5" type="LightmapProbe" parent="Geometry/lightmapGi" index="4"]
+[node name="lightmapProbe5" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 59.6784, 34.678)
 
-[node name="lightmapProbe6" type="LightmapProbe" parent="Geometry/lightmapGi" index="5"]
+[node name="lightmapProbe6" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.06477, 64.2729, 34.678)
 
-[node name="lightmapProbe7" type="LightmapProbe" parent="Geometry/lightmapGi" index="6"]
+[node name="lightmapProbe7" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47236, 59.6784, 34.8722)
 
-[node name="lightmapProbe8" type="LightmapProbe" parent="Geometry/lightmapGi" index="7"]
+[node name="lightmapProbe8" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.47236, 64.2729, 34.8722)
 
-[node name="lightmapProbe9" type="LightmapProbe" parent="Geometry/lightmapGi" index="8"]
+[node name="lightmapProbe9" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 59.6784, 29.8722)
 
-[node name="lightmapProbe10" type="LightmapProbe" parent="Geometry/lightmapGi" index="9"]
+[node name="lightmapProbe10" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 64.2729, 29.8722)
 
-[node name="lightmapProbe11" type="LightmapProbe" parent="Geometry/lightmapGi" index="10"]
+[node name="lightmapProbe11" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 59.6784, 18.8722)
 
-[node name="lightmapProbe12" type="LightmapProbe" parent="Geometry/lightmapGi" index="11"]
+[node name="lightmapProbe12" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47236, 64.2729, 18.8722)
 
-[node name="lightmapProbe13" type="LightmapProbe" parent="Geometry/lightmapGi" index="12"]
+[node name="lightmapProbe13" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47236, 59.6784, 24.8722)
 
-[node name="lightmapProbe14" type="LightmapProbe" parent="Geometry/lightmapGi" index="13"]
+[node name="lightmapProbe14" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47236, 64.2729, 24.8722)
 
-[node name="lightmapProbe15" type="LightmapProbe" parent="Geometry/lightmapGi" index="14"]
+[node name="lightmapProbe15" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52764, 59.6784, 24.8722)
 
-[node name="lightmapProbe16" type="LightmapProbe" parent="Geometry/lightmapGi" index="15"]
+[node name="lightmapProbe16" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52764, 64.2729, 24.8722)
 
-[node name="lightmapProbe17" type="LightmapProbe" parent="Geometry/lightmapGi" index="16"]
+[node name="lightmapProbe17" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.472364, 59.6784, 14.8722)
 
-[node name="lightmapProbe18" type="LightmapProbe" parent="Geometry/lightmapGi" index="17"]
+[node name="lightmapProbe18" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="17"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.472364, 64.2729, 14.8722)
 
-[node name="lightmapProbe19" type="LightmapProbe" parent="Geometry/lightmapGi" index="18"]
+[node name="lightmapProbe19" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="18"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74383, 59.6784, 15.5327)
 
-[node name="lightmapProbe20" type="LightmapProbe" parent="Geometry/lightmapGi" index="19"]
+[node name="lightmapProbe20" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.74383, 64.2729, 15.5327)
 
-[node name="lightmapProbe21" type="LightmapProbe" parent="Geometry/lightmapGi" index="20"]
+[node name="lightmapProbe21" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25617, 59.6784, 13.5327)
 
-[node name="lightmapProbe22" type="LightmapProbe" parent="Geometry/lightmapGi" index="21"]
+[node name="lightmapProbe22" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="21"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25617, 64.2729, 13.5327)
 
-[node name="lightmapProbe23" type="LightmapProbe" parent="Geometry/lightmapGi" index="22"]
+[node name="lightmapProbe23" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21732, 59.6784, 9.18137)
 
-[node name="lightmapProbe24" type="LightmapProbe" parent="Geometry/lightmapGi" index="23"]
+[node name="lightmapProbe24" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.21732, 64.2729, 9.18137)
 
-[node name="lightmapProbe25" type="LightmapProbe" parent="Geometry/lightmapGi" index="24"]
+[node name="lightmapProbe25" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 59.6784, 9.18137)
 
-[node name="lightmapProbe26" type="LightmapProbe" parent="Geometry/lightmapGi" index="25"]
+[node name="lightmapProbe26" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 64.2729, 9.18137)
 
-[node name="lightmapProbe27" type="LightmapProbe" parent="Geometry/lightmapGi" index="26"]
+[node name="lightmapProbe27" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 59.6784, 13.1814)
 
-[node name="lightmapProbe28" type="LightmapProbe" parent="Geometry/lightmapGi" index="27"]
+[node name="lightmapProbe28" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2173, 64.2729, 13.1814)
 
-[node name="lightmapProbe29" type="LightmapProbe" parent="Geometry/lightmapGi" index="28"]
+[node name="lightmapProbe29" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="28"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 59.6784, 3.18137)
 
-[node name="lightmapProbe30" type="LightmapProbe" parent="Geometry/lightmapGi" index="29"]
+[node name="lightmapProbe30" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="29"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 64.2729, 3.18137)
 
-[node name="lightmapProbe31" type="LightmapProbe" parent="Geometry/lightmapGi" index="30"]
+[node name="lightmapProbe31" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 59.6784, -2.81863)
 
-[node name="lightmapProbe32" type="LightmapProbe" parent="Geometry/lightmapGi" index="31"]
+[node name="lightmapProbe32" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2173, 64.2729, -2.81863)
 
-[node name="lightmapProbe33" type="LightmapProbe" parent="Geometry/lightmapGi" index="32"]
+[node name="lightmapProbe33" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="32"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 59.6784, -2.81863)
 
-[node name="lightmapProbe34" type="LightmapProbe" parent="Geometry/lightmapGi" index="33"]
+[node name="lightmapProbe34" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="33"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 64.2729, -2.81863)
 
-[node name="lightmapProbe35" type="LightmapProbe" parent="Geometry/lightmapGi" index="34"]
+[node name="lightmapProbe35" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="34"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 59.6784, 3.18137)
 
-[node name="lightmapProbe36" type="LightmapProbe" parent="Geometry/lightmapGi" index="35"]
+[node name="lightmapProbe36" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="35"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2173, 64.2729, 3.18137)
 
-[node name="lightmapProbe37" type="LightmapProbe" parent="Geometry/lightmapGi" index="36"]
+[node name="lightmapProbe37" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="36"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 59.6784, 3.18137)
 
-[node name="lightmapProbe38" type="LightmapProbe" parent="Geometry/lightmapGi" index="37"]
+[node name="lightmapProbe38" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="37"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 64.2729, 3.18137)
 
-[node name="lightmapProbe39" type="LightmapProbe" parent="Geometry/lightmapGi" index="38"]
+[node name="lightmapProbe39" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="38"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 59.6784, -2.81863)
 
-[node name="lightmapProbe40" type="LightmapProbe" parent="Geometry/lightmapGi" index="39"]
+[node name="lightmapProbe40" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="39"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.2173, 64.2729, -2.81863)
 
-[node name="lightmapProbe41" type="LightmapProbe" parent="Geometry/lightmapGi" index="40"]
+[node name="lightmapProbe41" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="40"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2173, 59.6784, -2.81863)
 
-[node name="lightmapProbe42" type="LightmapProbe" parent="Geometry/lightmapGi" index="41"]
+[node name="lightmapProbe42" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="41"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2173, 64.2729, -2.81863)
 
-[node name="lightmapProbe43" type="LightmapProbe" parent="Geometry/lightmapGi" index="42"]
+[node name="lightmapProbe43" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="42"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.295, 59.6784, 3.31985)
 
-[node name="lightmapProbe44" type="LightmapProbe" parent="Geometry/lightmapGi" index="43"]
+[node name="lightmapProbe44" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="43"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.295, 64.2729, 3.31985)
 
-[node name="lightmapProbe45" type="LightmapProbe" parent="Geometry/lightmapGi" index="44"]
+[node name="lightmapProbe45" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="44"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 59.6784, 3.31985)
 
-[node name="lightmapProbe46" type="LightmapProbe" parent="Geometry/lightmapGi" index="45"]
+[node name="lightmapProbe46" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="45"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 64.2729, 3.31985)
 
-[node name="lightmapProbe47" type="LightmapProbe" parent="Geometry/lightmapGi" index="46"]
+[node name="lightmapProbe47" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="46"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 59.6784, -2.68015)
 
-[node name="lightmapProbe48" type="LightmapProbe" parent="Geometry/lightmapGi" index="47"]
+[node name="lightmapProbe48" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="47"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.295, 64.2729, -2.68015)
 
-[node name="lightmapProbe49" type="LightmapProbe" parent="Geometry/lightmapGi" index="48"]
+[node name="lightmapProbe49" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="48"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 59.6784, 11.3199)
 
-[node name="lightmapProbe50" type="LightmapProbe" parent="Geometry/lightmapGi" index="49"]
+[node name="lightmapProbe50" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="49"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 64.2729, 11.3199)
 
-[node name="lightmapProbe51" type="LightmapProbe" parent="Geometry/lightmapGi" index="50"]
+[node name="lightmapProbe51" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="50"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70498, 59.6784, 11.3199)
 
-[node name="lightmapProbe52" type="LightmapProbe" parent="Geometry/lightmapGi" index="51"]
+[node name="lightmapProbe52" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="51"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.70498, 64.2729, 11.3199)
 
-[node name="lightmapProbe53" type="LightmapProbe" parent="Geometry/lightmapGi" index="52"]
+[node name="lightmapProbe53" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="52"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 59.6784, 8.31985)
 
-[node name="lightmapProbe54" type="LightmapProbe" parent="Geometry/lightmapGi" index="53"]
+[node name="lightmapProbe54" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="53"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 64.2729, 8.31985)
 
-[node name="lightmapProbe55" type="LightmapProbe" parent="Geometry/lightmapGi" index="54"]
+[node name="lightmapProbe55" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="54"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70498, 59.6784, 18.3199)
 
-[node name="lightmapProbe56" type="LightmapProbe" parent="Geometry/lightmapGi" index="55"]
+[node name="lightmapProbe56" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="55"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70498, 64.2729, 18.3199)
 
-[node name="lightmapProbe57" type="LightmapProbe" parent="Geometry/lightmapGi" index="56"]
+[node name="lightmapProbe57" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="56"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 26.3199)
 
-[node name="lightmapProbe58" type="LightmapProbe" parent="Geometry/lightmapGi" index="57"]
+[node name="lightmapProbe58" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="57"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 26.3199)
 
-[node name="lightmapProbe59" type="LightmapProbe" parent="Geometry/lightmapGi" index="58"]
+[node name="lightmapProbe59" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="58"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 59.6784, 19.3199)
 
-[node name="lightmapProbe60" type="LightmapProbe" parent="Geometry/lightmapGi" index="59"]
+[node name="lightmapProbe60" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="59"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29502, 64.2729, 19.3199)
 
-[node name="lightmapProbe61" type="LightmapProbe" parent="Geometry/lightmapGi" index="60"]
+[node name="lightmapProbe61" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="60"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29502, 59.6784, 21.3199)
 
-[node name="lightmapProbe62" type="LightmapProbe" parent="Geometry/lightmapGi" index="61"]
+[node name="lightmapProbe62" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="61"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.29502, 64.2729, 21.3199)
 
-[node name="lightmapProbe63" type="LightmapProbe" parent="Geometry/lightmapGi" index="62"]
+[node name="lightmapProbe63" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="62"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 59.6784, 30.3199)
 
-[node name="lightmapProbe64" type="LightmapProbe" parent="Geometry/lightmapGi" index="63"]
+[node name="lightmapProbe64" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="63"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 64.2729, 30.3199)
 
-[node name="lightmapProbe65" type="LightmapProbe" parent="Geometry/lightmapGi" index="64"]
+[node name="lightmapProbe65" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="64"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 59.6784, 32.3199)
 
-[node name="lightmapProbe66" type="LightmapProbe" parent="Geometry/lightmapGi" index="65"]
+[node name="lightmapProbe66" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="65"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.70498, 64.2729, 32.3199)
 
-[node name="lightmapProbe67" type="LightmapProbe" parent="Geometry/lightmapGi" index="66"]
+[node name="lightmapProbe67" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="66"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 59.6784, 24.3199)
 
-[node name="lightmapProbe68" type="LightmapProbe" parent="Geometry/lightmapGi" index="67"]
+[node name="lightmapProbe68" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="67"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29502, 64.2729, 24.3199)
 
-[node name="lightmapProbe69" type="LightmapProbe" parent="Geometry/lightmapGi" index="68"]
+[node name="lightmapProbe69" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="68"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 59.6784, 19.3199)
 
-[node name="lightmapProbe70" type="LightmapProbe" parent="Geometry/lightmapGi" index="69"]
+[node name="lightmapProbe70" type="LightmapProbe" parent="Geometry/navigationRegion3d/lightmapGi" index="69"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.70498, 64.2729, 19.3199)
 
 [node name="pawnEntity" parent="Pawns/Players" index="0" node_paths=PackedStringArray("inputComponent") instance=ExtResource("4_4dx60")]
@@ -1754,76 +2028,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93921, 59.6837, 18.1874)
 inputComponent = NodePath("Components/inputComponent")
 
 [node name="Skeleton3D" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton" index="0"]
-bones/0/position = Vector3(0.0303878, 0.87706, -0.0889621)
-bones/0/rotation = Quaternion(-0.126046, -0.0698829, -0.00514498, 0.989547)
-bones/1/rotation = Quaternion(0.178821, 0.0147938, 0.0088007, 0.983731)
-bones/2/rotation = Quaternion(-0.0356494, 0.00876475, -0.00629227, 0.999306)
-bones/3/rotation = Quaternion(0.560432, 0.335299, 0.564222, -0.505118)
-bones/4/rotation = Quaternion(-0.457116, 0.305503, -0.341646, 0.762227)
-bones/5/rotation = Quaternion(0.0735096, 0.0130691, -0.0841575, 0.993651)
-bones/6/rotation = Quaternion(-0.0189167, -0.247564, -0.00809043, 0.968653)
-bones/7/position = Vector3(0.0661816, 0.0680553, -0.00886162)
-bones/7/rotation = Quaternion(-0.0937621, -0.708541, 0.142522, 0.684738)
-bones/8/rotation = Quaternion(0.0232312, 0.0592699, -0.00339844, 0.997966)
-bones/9/rotation = Quaternion(0.0611467, 0.369236, 0.00296311, 0.927317)
-bones/10/position = Vector3(0.0300397, 0.13663, 0.0188187)
-bones/10/rotation = Quaternion(-0.00100391, -0.714084, 0.0114813, 0.699965)
-bones/11/rotation = Quaternion(-0.155419, 0.81857, 0.11741, 0.540373)
-bones/11/scale = Vector3(0.999989, 1.00001, 1)
-bones/12/rotation = Quaternion(0.00740728, -0.465132, -0.0290839, 0.884732)
-bones/13/rotation = Quaternion(-0.0186076, -0.713171, 0.10419, 0.692954)
-bones/14/rotation = Quaternion(-0.0970497, 0.929771, -0.13679, -0.327712)
-bones/15/rotation = Quaternion(0.0743461, -0.253101, -0.0923558, 0.960147)
-bones/16/rotation = Quaternion(0.0372315, -0.710114, 0.0752804, 0.69906)
-bones/17/rotation = Quaternion(-0.282331, 0.949491, -0.136483, -0.0113265)
-bones/18/rotation = Quaternion(0.0221029, 0.0836344, -0.0305865, 0.995782)
-bones/19/rotation = Quaternion(0.0222753, -0.715493, 0.0758634, 0.694131)
-bones/20/rotation = Quaternion(-0.168808, 0.907778, -0.0188168, 0.383522)
-bones/21/rotation = Quaternion(0.0377941, 0.048796, -0.0715359, 0.995527)
-bones/22/position = Vector3(-0.00273529, 0.263898, 1.48658e-05)
-bones/22/rotation = Quaternion(0.563249, -0.319394, -0.552101, -0.525283)
-bones/23/rotation = Quaternion(-0.513458, -0.310426, 0.252868, 0.758983)
-bones/24/rotation = Quaternion(0.125461, -0.0129101, 0.143651, 0.981559)
-bones/24/scale = Vector3(1.00001, 0.99998, 1.00001)
-bones/25/rotation = Quaternion(0.034174, 0.215084, -0.0457028, 0.974927)
-bones/25/scale = Vector3(1.00001, 0.999998, 1)
-bones/26/rotation = Quaternion(-0.0731264, 0.712784, -0.124435, 0.686372)
-bones/27/rotation = Quaternion(0.0232313, -0.0592721, 0.00339999, 0.997966)
-bones/28/rotation = Quaternion(0.0611459, -0.369235, -0.0029648, 0.927318)
-bones/29/rotation = Quaternion(0.0200968, 0.714479, 0.00662603, 0.699337)
-bones/30/rotation = Quaternion(-0.155419, -0.818569, -0.11741, 0.540374)
-bones/30/scale = Vector3(0.99999, 1.00001, 1)
-bones/31/rotation = Quaternion(0.00740824, 0.465131, 0.0290841, 0.884733)
-bones/31/scale = Vector3(0.999988, 0.999989, 1.00001)
-bones/32/rotation = Quaternion(0.0022567, 0.716174, -0.0860468, 0.692594)
-bones/32/scale = Vector3(0.999981, 1.00002, 0.999977)
-bones/33/rotation = Quaternion(0.097049, 0.929772, -0.136789, 0.327712)
-bones/34/rotation = Quaternion(0.074346, 0.253101, 0.092356, 0.960147)
-bones/34/scale = Vector3(1.00001, 0.999999, 1.00001)
-bones/35/rotation = Quaternion(0.0582507, 0.712186, -0.0572761, 0.697221)
-bones/35/scale = Vector3(0.999977, 1.00001, 1)
-bones/36/rotation = Quaternion(0.28233, 0.949492, -0.136482, 0.0113276)
-bones/37/rotation = Quaternion(0.0221024, -0.0836325, 0.0305875, 0.995782)
-bones/38/rotation = Quaternion(0.0431758, 0.717612, -0.05769, 0.692705)
-bones/38/scale = Vector3(0.999974, 1.00002, 0.999989)
-bones/39/rotation = Quaternion(0.168809, 0.907775, -0.0188109, -0.383529)
-bones/40/rotation = Quaternion(0.0377987, -0.0488047, 0.071536, 0.995526)
-bones/41/rotation = Quaternion(0.0312496, -0.00114219, 0.00287834, 0.999507)
-bones/42/rotation = Quaternion(0.0101936, 0.71014, 0.0515586, 0.702096)
-bones/43/rotation = Quaternion(0.989646, 0.0809168, -0.0677767, -0.0972637)
-bones/43/scale = Vector3(1.00001, 0.999975, 1)
-bones/44/rotation = Quaternion(0.201276, 0.00205635, 0.0283774, 0.979121)
-bones/45/rotation = Quaternion(0.0366956, 0.866606, -0.493175, 0.0665303)
-bones/45/scale = Vector3(0.999998, 0.999974, 0.99999)
-bones/46/rotation = Quaternion(0.42714, -0.0145162, -0.0222624, 0.903795)
-bones/46/scale = Vector3(0.999997, 1.00002, 1.00001)
-bones/47/rotation = Quaternion(0.994728, -0.089512, 0.0160597, 0.0473868)
-bones/47/scale = Vector3(1.00001, 0.999974, 1)
-bones/48/rotation = Quaternion(0.172446, -0.00206984, -0.0283061, 0.98461)
-bones/49/rotation = Quaternion(-0.0171915, 0.898372, -0.431686, -0.0792391)
-bones/49/scale = Vector3(1.00001, 1.00001, 0.999992)
-bones/50/rotation = Quaternion(0.30223, 0.0110163, 0.000401621, 0.953171)
-bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
+bones/0/position = Vector3(0.0289211, 0.876736, -0.0873914)
+bones/0/rotation = Quaternion(-0.137287, -0.102607, -0.0727319, 0.982514)
+bones/1/rotation = Quaternion(0.182583, 0.0307481, -0.028752, 0.982289)
+bones/2/rotation = Quaternion(-0.0140448, 0.0141371, 0.0394229, 0.999024)
+bones/3/rotation = Quaternion(0.603099, 0.300957, 0.517195, -0.527452)
+bones/4/rotation = Quaternion(-0.104095, 0.687056, -0.279688, 0.66249)
+bones/5/rotation = Quaternion(0.482808, 0.00882827, -0.552986, 0.678988)
+bones/6/rotation = Quaternion(-0.023227, -0.316595, -0.10909, 0.941981)
+bones/12/rotation = Quaternion(-0.0363304, -0.463237, -0.0519653, 0.883963)
+bones/22/rotation = Quaternion(0.533037, -0.384245, -0.591012, -0.467902)
+bones/23/rotation = Quaternion(-0.522022, -0.474479, -0.160804, 0.690294)
+bones/23/scale = Vector3(0.999994, 0.999994, 0.999995)
+bones/24/rotation = Quaternion(0.382901, -0.0106077, 0.438618, 0.812951)
+bones/25/rotation = Quaternion(0.0709136, 0.337885, 0.0224969, 0.938242)
+bones/26/rotation = Quaternion(-0.0780646, 0.695365, -0.118586, 0.704493)
+bones/29/rotation = Quaternion(-0.00733367, 0.707079, 0.00751702, 0.707056)
+bones/30/rotation = Quaternion(-0.16915, -0.817183, -0.114236, 0.539027)
+bones/31/rotation = Quaternion(-0.033957, 0.465963, 0.0521175, 0.882615)
+bones/31/scale = Vector3(0.999988, 0.999996, 1.00001)
+bones/32/rotation = Quaternion(-0.0124259, 0.720397, -0.0970077, 0.686632)
+bones/32/scale = Vector3(0.999982, 1.00003, 0.999985)
+bones/33/rotation = Quaternion(0.112589, 0.928218, -0.1371, 0.327015)
+bones/34/rotation = Quaternion(0.0882074, 0.244319, 0.1272, 0.95726)
+bones/34/scale = Vector3(1.00001, 0.999996, 1.00001)
+bones/35/rotation = Quaternion(0.0417294, 0.716463, -0.0768196, 0.692126)
+bones/35/scale = Vector3(0.999979, 1.00002, 1.00001)
+bones/36/rotation = Quaternion(0.291589, 0.948134, -0.126174, 0.00994087)
+bones/37/rotation = Quaternion(0.020929, -0.0933773, 0.0675863, 0.993114)
+bones/38/rotation = Quaternion(0.0237423, 0.71392, -0.0609536, 0.697165)
+bones/38/scale = Vector3(0.999976, 1.00003, 0.999997)
+bones/39/rotation = Quaternion(0.183032, 0.905174, -0.0222354, -0.382969)
+bones/40/rotation = Quaternion(0.0366827, -0.0468921, 0.111404, 0.99199)
+bones/41/rotation = Quaternion(0.017912, 0.0170653, -0.000242584, 0.999694)
+bones/42/rotation = Quaternion(0.0354662, 0.750236, 0.0203573, 0.659904)
+bones/43/rotation = Quaternion(0.943947, 0.192553, -0.112324, 0.243455)
+bones/43/scale = Vector3(1.00001, 0.999992, 0.999987)
+bones/44/rotation = Quaternion(0.795713, 0.00120181, 0.0227144, 0.605246)
+bones/45/rotation = Quaternion(-0.165253, 0.898564, -0.402407, 0.0578113)
+bones/45/scale = Vector3(1.00001, 0.999989, 0.999979)
+bones/46/rotation = Quaternion(0.261733, -0.0258, -0.0354696, 0.964143)
+bones/47/rotation = Quaternion(0.997163, -0.0691104, 0.00142465, -0.0298048)
+bones/47/scale = Vector3(1.00001, 0.999976, 0.999999)
+bones/48/rotation = Quaternion(0.0126062, -0.00211547, -0.0274528, 0.999541)
+bones/49/rotation = Quaternion(0.0218326, 0.99845, -0.0247066, -0.044849)
+bones/50/rotation = Quaternion(0.617852, 0.00570727, -0.00977326, 0.786213)
 
 [node name="inputComponent" parent="Pawns/Players/pawnEntity/Components" index="2" instance=ExtResource("5_bkru1")]
 
@@ -1831,40 +2080,134 @@ bones/50/scale = Vector3(0.999992, 1.00001, 0.99999)
 tree_root = SubResource("AnimationNodeBlendTree_ncfh7")
 
 [node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
-transform = Transform3D(-0.995796, 0.0145952, 0.0903086, 0.0115047, 0.999324, -0.0346518, -0.090754, -0.0334677, -0.995301, 3.91197, 59.901, 18.2899)
+transform = Transform3D(-0.984564, -0.0876961, 0.1514, -0.0976756, 0.993413, -0.0597583, -0.145163, -0.0736243, -0.986655, 3.85337, 59.8956, 18.287)
 
 [node name="LeftThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
-transform = Transform3D(-0.989158, -0.146494, 0.010214, 0.145472, -0.98696, -0.0684915, 0.020117, -0.0662612, 0.997595, 3.86031, 59.5611, 18.2695)
+transform = Transform3D(-0.980508, -0.191216, 0.0450561, 0.103513, -0.697776, -0.708776, 0.166977, -0.690303, 0.703968, 3.86285, 59.5548, 18.2639)
 
 [node name="LeftFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="2"]
-transform = Transform3D(0.976532, -0.211648, -0.0394183, -0.135861, -0.747803, 0.64979, -0.167018, -0.629204, -0.759055, 3.77035, 58.7831, 18.3762)
+transform = Transform3D(0.886105, 0.220235, -0.407773, 0.141799, -0.966488, -0.213859, -0.441235, 0.13168, -0.887643, 3.83366, 59.0716, 18.3304)
 
 [node name="LeftKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="3"]
-transform = Transform3D(-0.995728, -0.0762128, 0.0518269, 0.089066, -0.940365, 0.328199, 0.0237258, 0.331427, 0.943177, 3.80104, 59.1618, 18.2427)
+transform = Transform3D(-0.983539, 0.119607, 0.1353, 0.0582944, -0.498833, 0.864715, 0.170924, 0.858385, 0.483661, 3.78549, 59.2725, 17.9847)
 
 [node name="RightThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
-transform = Transform3D(-0.963354, 0.217582, -0.156856, -0.153513, -0.926751, -0.342804, -0.219963, -0.306155, 0.926215, 3.96004, 59.5604, 18.2836)
+transform = Transform3D(-0.935742, 0.291699, -0.198208, -0.24527, -0.942089, -0.228605, -0.253421, -0.165298, 0.953123, 3.96038, 59.5664, 18.2863)
 
 [node name="RightFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="5"]
-transform = Transform3D(0.93136, 0.318864, 0.17573, 0.0594615, -0.609378, 0.790613, 0.359199, -0.725913, -0.586523, 4.08753, 58.7847, 18.1658)
+transform = Transform3D(0.939302, 0.205283, 0.274873, 0.131003, -0.955102, 0.265664, 0.317081, -0.213531, -0.924033, 4.17296, 58.7988, 18.1571)
 
 [node name="RightKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="6"]
-transform = Transform3D(-0.973179, 0.097998, -0.208055, -0.0989949, -0.995045, -0.00568739, -0.207589, 0.0150768, 0.978087, 4.04806, 59.1854, 18.1597)
+transform = Transform3D(-0.951035, 0.234844, -0.200855, -0.193952, -0.959605, -0.20369, -0.240582, -0.15476, 0.958202, 4.07839, 59.1852, 18.2194)
 
 [node name="Stomach" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="7"]
-transform = Transform3D(-0.993767, 0.0341264, 0.10602, 0.0228221, 0.994078, -0.106065, -0.109014, -0.102986, -0.988671, 3.90494, 59.6961, 18.3111)
+transform = Transform3D(-0.970059, -0.160133, 0.182542, -0.177598, 0.980525, -0.0836128, -0.165602, -0.113529, -0.979616, 3.88637, 59.6935, 18.3104)
 
 [node name="Hips" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="8"]
-transform = Transform3D(-0.99017, -0.0277992, 0.137007, 0.00743444, 0.968168, 0.250175, -0.1396, 0.248737, -0.958454, 3.90882, 59.5608, 18.2764)
+transform = Transform3D(-0.968354, -0.171093, 0.181655, -0.114746, 0.951721, 0.284697, -0.221594, 0.254846, -0.941245, 3.91029, 59.5604, 18.2748)
 
 [node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="9"]
-transform = Transform3D(-0.995471, 0.026008, 0.0913147, 0.0170977, 0.995124, -0.097041, -0.093394, -0.0950414, -0.991072, 3.91582, 60.1647, 18.2811)
+transform = Transform3D(-0.989169, -0.0832984, 0.120771, -0.0954537, 0.990529, -0.0986025, -0.111414, -0.109063, -0.987761, 3.83023, 60.1577, 18.2676)
 
 [node name="leftHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="10"]
-transform = Transform3D(0.431775, -0.0226912, -0.90168, 0.186794, -0.975748, 0.113996, -0.882402, -0.217643, -0.417058, 3.73619, 59.6326, 18.2354)
+transform = Transform3D(0.419489, 0.853255, -0.309781, 0.89707, -0.337473, 0.285203, 0.138795, -0.397543, -0.906994, 3.73473, 59.7898, 18.1803)
 
 [node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="11"]
-transform = Transform3D(0.156647, 0.18882, 0.969435, -0.0779182, -0.976102, 0.202711, 0.984566, -0.107266, -0.138188, 4.08095, 59.6344, 18.338)
+transform = Transform3D(0.110865, 0.46486, 0.878406, -0.253393, -0.841413, 0.477266, 0.960961, -0.275484, 0.0245081, 4.10162, 59.7832, 18.466)
+
+[node name="pawnEntity" parent="Pawns" index="1" node_paths=PackedStringArray("inputComponent") instance=ExtResource("4_4dx60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89523, 59.787, 12.2603)
+inputComponent = NodePath("Components/aiComponent")
+
+[node name="Skeleton3D" parent="Pawns/pawnEntity/Mesh/MaleSkeleton" index="0"]
+bones/0/position = Vector3(0.0289211, 0.876736, -0.0873914)
+bones/0/rotation = Quaternion(-0.137287, -0.102607, -0.0727319, 0.982514)
+bones/1/rotation = Quaternion(0.182583, 0.0307481, -0.028752, 0.982289)
+bones/2/rotation = Quaternion(-0.0140448, 0.0141371, 0.0394229, 0.999024)
+bones/3/rotation = Quaternion(0.603099, 0.300957, 0.517195, -0.527452)
+bones/4/rotation = Quaternion(-0.104095, 0.687056, -0.279688, 0.66249)
+bones/5/rotation = Quaternion(0.482808, 0.00882827, -0.552986, 0.678988)
+bones/6/rotation = Quaternion(-0.023227, -0.316595, -0.10909, 0.941981)
+bones/12/rotation = Quaternion(-0.0363304, -0.463237, -0.0519653, 0.883963)
+bones/22/rotation = Quaternion(0.533037, -0.384245, -0.591012, -0.467902)
+bones/23/rotation = Quaternion(-0.522022, -0.474479, -0.160804, 0.690294)
+bones/23/scale = Vector3(0.999994, 0.999994, 0.999995)
+bones/24/rotation = Quaternion(0.382901, -0.0106077, 0.438618, 0.812951)
+bones/25/rotation = Quaternion(0.0709136, 0.337885, 0.0224969, 0.938242)
+bones/26/rotation = Quaternion(-0.0780646, 0.695365, -0.118586, 0.704493)
+bones/29/rotation = Quaternion(-0.00733367, 0.707079, 0.00751702, 0.707056)
+bones/30/rotation = Quaternion(-0.16915, -0.817183, -0.114236, 0.539027)
+bones/31/rotation = Quaternion(-0.033957, 0.465963, 0.0521175, 0.882615)
+bones/31/scale = Vector3(0.999988, 0.999996, 1.00001)
+bones/32/rotation = Quaternion(-0.0124259, 0.720397, -0.0970077, 0.686632)
+bones/32/scale = Vector3(0.999982, 1.00003, 0.999985)
+bones/33/rotation = Quaternion(0.112589, 0.928218, -0.1371, 0.327015)
+bones/34/rotation = Quaternion(0.0882074, 0.244319, 0.1272, 0.95726)
+bones/34/scale = Vector3(1.00001, 0.999996, 1.00001)
+bones/35/rotation = Quaternion(0.0417294, 0.716463, -0.0768196, 0.692126)
+bones/35/scale = Vector3(0.999979, 1.00002, 1.00001)
+bones/36/rotation = Quaternion(0.291589, 0.948134, -0.126174, 0.00994087)
+bones/37/rotation = Quaternion(0.020929, -0.0933773, 0.0675863, 0.993114)
+bones/38/rotation = Quaternion(0.0237423, 0.71392, -0.0609536, 0.697165)
+bones/38/scale = Vector3(0.999976, 1.00003, 0.999997)
+bones/39/rotation = Quaternion(0.183032, 0.905174, -0.0222354, -0.382969)
+bones/40/rotation = Quaternion(0.0366827, -0.0468921, 0.111404, 0.99199)
+bones/41/rotation = Quaternion(0.017912, 0.0170653, -0.000242584, 0.999694)
+bones/42/rotation = Quaternion(0.0354662, 0.750236, 0.0203573, 0.659904)
+bones/43/rotation = Quaternion(0.943947, 0.192553, -0.112324, 0.243455)
+bones/43/scale = Vector3(1.00001, 0.999992, 0.999987)
+bones/44/rotation = Quaternion(0.795713, 0.00120181, 0.0227144, 0.605246)
+bones/45/rotation = Quaternion(-0.165253, 0.898564, -0.402407, 0.0578113)
+bones/45/scale = Vector3(1.00001, 0.999989, 0.999979)
+bones/46/rotation = Quaternion(0.261733, -0.0258, -0.0354696, 0.964143)
+bones/47/rotation = Quaternion(0.997163, -0.0691104, 0.00142465, -0.0298048)
+bones/47/scale = Vector3(1.00001, 0.999976, 0.999999)
+bones/48/rotation = Quaternion(0.0126062, -0.00211547, -0.0274528, 0.999541)
+bones/49/rotation = Quaternion(0.0218326, 0.99845, -0.0247066, -0.044849)
+bones/50/rotation = Quaternion(0.617852, 0.00570727, -0.00977326, 0.786213)
+
+[node name="aiComponent" parent="Pawns/pawnEntity/Components" index="2" instance=ExtResource("11_gyro2")]
+pawnName = "Booger Man"
+aiType = 1
+
+[node name="AnimationTree" parent="Pawns/pawnEntity" index="3"]
+tree_root = SubResource("AnimationNodeBlendTree_df7e4")
+
+[node name="UpperChest" parent="Pawns/pawnEntity/BoneAttatchments" index="0"]
+transform = Transform3D(-0.984564, -0.0876961, 0.1514, -0.0976756, 0.993413, -0.0597583, -0.145163, -0.0736243, -0.986655, -8.98107, 59.9989, 12.3599)
+
+[node name="LeftThigh" parent="Pawns/pawnEntity/BoneAttatchments" index="1"]
+transform = Transform3D(-0.980508, -0.191216, 0.0450561, 0.103513, -0.697776, -0.708776, 0.166977, -0.690303, 0.703968, -8.97159, 59.6581, 12.3368)
+
+[node name="LeftFoot" parent="Pawns/pawnEntity/BoneAttatchments" index="2"]
+transform = Transform3D(0.886105, 0.220235, -0.407773, 0.141799, -0.966488, -0.213859, -0.441235, 0.13168, -0.887643, -9.00078, 59.1749, 12.4033)
+
+[node name="LeftKnee" parent="Pawns/pawnEntity/BoneAttatchments" index="3"]
+transform = Transform3D(-0.983539, 0.119607, 0.1353, 0.0582944, -0.498833, 0.864715, 0.170924, 0.858385, 0.483661, -9.04895, 59.3758, 12.0576)
+
+[node name="RightThigh" parent="Pawns/pawnEntity/BoneAttatchments" index="4"]
+transform = Transform3D(-0.935742, 0.291699, -0.198208, -0.24527, -0.942089, -0.228605, -0.253421, -0.165298, 0.953123, -8.87406, 59.6697, 12.3592)
+
+[node name="RightFoot" parent="Pawns/pawnEntity/BoneAttatchments" index="5"]
+transform = Transform3D(0.939302, 0.205283, 0.274873, 0.131003, -0.955102, 0.265664, 0.317081, -0.213531, -0.924033, -8.66148, 58.9021, 12.23)
+
+[node name="RightKnee" parent="Pawns/pawnEntity/BoneAttatchments" index="6"]
+transform = Transform3D(-0.951035, 0.234844, -0.200855, -0.193952, -0.959605, -0.20369, -0.240582, -0.15476, 0.958202, -8.75605, 59.2885, 12.2923)
+
+[node name="Stomach" parent="Pawns/pawnEntity/BoneAttatchments" index="7"]
+transform = Transform3D(-0.970059, -0.160133, 0.182542, -0.177598, 0.980525, -0.0836128, -0.165602, -0.113529, -0.979616, -8.94807, 59.7968, 12.3833)
+
+[node name="Hips" parent="Pawns/pawnEntity/BoneAttatchments" index="8"]
+transform = Transform3D(-0.968354, -0.171093, 0.181655, -0.114746, 0.951721, 0.284697, -0.221594, 0.254846, -0.941245, -8.92415, 59.6637, 12.3477)
+
+[node name="Neck" parent="Pawns/pawnEntity/BoneAttatchments" index="9"]
+transform = Transform3D(-0.989169, -0.0832984, 0.120771, -0.0954537, 0.990529, -0.0986025, -0.111414, -0.109063, -0.987761, -9.00421, 60.261, 12.3405)
+
+[node name="leftHand" parent="Pawns/pawnEntity/BoneAttatchments" index="10"]
+transform = Transform3D(0.419489, 0.853255, -0.309781, 0.89707, -0.337473, 0.285203, 0.138795, -0.397543, -0.906994, -9.09971, 59.8931, 12.2532)
+
+[node name="rightHand" parent="Pawns/pawnEntity/BoneAttatchments" index="11"]
+transform = Transform3D(0.110865, 0.46486, 0.878406, -0.253393, -0.841413, 0.477266, 0.960961, -0.275484, 0.0245081, -8.73282, 59.8865, 12.5389)
 
 [node name="Beretta" parent="Props" index="0" instance=ExtResource("8_bpgik")]
 transform = Transform3D(0.21074, -0.847213, 0.487667, -0.866025, 0.0695865, 0.495134, -0.453419, -0.526676, -0.719043, -22.8882, 60.0306, 0.643936)
@@ -1872,5 +2215,51 @@ transform = Transform3D(0.21074, -0.847213, 0.487667, -0.866025, 0.0695865, 0.49
 [node name="Honeybadger" parent="Props" index="1" instance=ExtResource("9_om7fk")]
 transform = Transform3D(0.404866, -0.355453, -0.842459, 0.907823, 0.0461538, 0.416805, -0.109272, -0.933554, 0.341374, -12.973, 60.0605, 11.0706)
 
-[editable path="Geometry/DebugMapModelConversionTest"]
+[node name="marker3d" type="Marker3D" parent="Misc/WaypointNodes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66343, 59.9879, 6.87973)
+
+[node name="marker3d5" type="Marker3D" parent="Misc/WaypointNodes" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.26142, 59.9879, 10.9505)
+
+[node name="marker3d7" type="Marker3D" parent="Misc/WaypointNodes" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5297, 59.9879, 6.6703)
+
+[node name="marker3d8" type="Marker3D" parent="Misc/WaypointNodes" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.386, 59.9879, 3.91735)
+
+[node name="marker3d9" type="Marker3D" parent="Misc/WaypointNodes" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0022, 59.9879, 4.1309)
+
+[node name="marker3d10" type="Marker3D" parent="Misc/WaypointNodes" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.6715, 59.9879, -1.54864)
+
+[node name="marker3d11" type="Marker3D" parent="Misc/WaypointNodes" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4699, 59.9879, 0.0648766)
+
+[node name="marker3d12" type="Marker3D" parent="Misc/WaypointNodes" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.329, 59.9879, 0.725843)
+
+[node name="marker3d6" type="Marker3D" parent="Misc/WaypointNodes" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.306, 59.9879, 10.9505)
+
+[node name="marker3d2" type="Marker3D" parent="Misc/WaypointNodes" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66343, 59.9879, 32.2906)
+
+[node name="marker3d3" type="Marker3D" parent="Misc/WaypointNodes" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54873, 59.9879, 23.0972)
+
+[node name="marker3d4" type="Marker3D" parent="Misc/WaypointNodes" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.47147, 59.9879, 30.2082)
+
+[node name="marker3d13" type="Marker3D" parent="Misc/WaypointNodes" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6674, 59.9879, 25.1278)
+
+[node name="marker3d14" type="Marker3D" parent="Misc/WaypointNodes" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94947, 59.9879, 19.853)
+
+[node name="marker3d15" type="Marker3D" parent="Misc/WaypointNodes" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8156, 59.9879, 13.6108)
+
+[editable path="Geometry/navigationRegion3d/DebugMapModelConversionTest"]
 [editable path="Pawns/Players/pawnEntity"]
+[editable path="Pawns/pawnEntity"]

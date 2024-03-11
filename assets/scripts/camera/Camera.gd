@@ -109,17 +109,24 @@ func _physics_process(delta):
 					elif  obj is InteractiveObject:
 						if !obj.beenUsed:
 							if obj.canBeUsed:
-								if obj.interactType == 1:
-									hud.setInteractionText("Use %s" %obj.objectName)
-								elif obj.interactType == 0:
-										hud.setInteractionText("Pick up '%s'" %obj.objectName)
+								if !obj.useCustomInteractText:
+									if obj.interactType == 1:
+										hud.setInteractionText("Use %s" %obj.objectName)
+									elif obj.interactType == 0:
+											hud.setInteractionText("Pick up '%s'" %obj.objectName)
+								else:
+									hud.setInteractionText(obj.customInteractText)
 						else:
-							hud.interactVisible = false
-					hud.interactVisible = true
+							if hud.interactVisible:
+								hud.interactVisible = false
+					if !hud.interactVisible:
+						hud.interactVisible = true
 				else:
-					hud.interactVisible = false
+					if hud.interactVisible:
+						hud.interactVisible = false
 	else:
-		hud.interactVisible = false
+		if hud.interactVisible:
+			hud.interactVisible = false
 
 	#Weapon Hud
 	if !followNode == null:

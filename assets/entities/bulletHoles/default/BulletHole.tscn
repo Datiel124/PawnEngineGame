@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dend7ate7mq6e"]
+[gd_scene load_steps=15 format=3 uid="uid://dend7ate7mq6e"]
 
 [ext_resource type="Texture2D" uid="uid://djj56gtf5cx7r" path="res://assets/textures/bullet/holes/default/bullet_hole.png" id="1_gqobj"]
 [ext_resource type="Script" path="res://assets/entities/bulletHoles/default/BulletHole.gd" id="1_t8p33"]
 [ext_resource type="Texture2D" uid="uid://b33gsxumo4h7h" path="res://addons/kenney_particle_pack/smoke_01.png" id="3_ebypw"]
+[ext_resource type="Texture2D" uid="uid://cvqjbydqmpij2" path="res://addons/kenney_particle_pack/dirt_01.png" id="3_l2508"]
 
 [sub_resource type="Curve" id="Curve_7enyd"]
 _data = [Vector2(0, 1), 0.0, -1.10285, 0, 0, Vector2(0.679612, 0), 0.0263227, 0.0, 0, 0]
@@ -13,7 +14,7 @@ curve = SubResource("Curve_7enyd")
 
 [sub_resource type="Curve" id="Curve_kfiie"]
 max_value = 2.0
-_data = [Vector2(0, 0.263736), 0.0, 0.0, 0, 0, Vector2(0.519418, 1.51648), 1.9116, 0.0, 0, 0]
+_data = [Vector2(0, 0.131868), 0.0, 2.33233, 0, 0, Vector2(1, 0.0219779), -2.55396, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_iasca"]
@@ -23,8 +24,6 @@ curve = SubResource("Curve_kfiie")
 particle_flag_align_y = true
 angle_min = -36.9
 angle_max = 24.6
-inherit_velocity_ratio = 0.504
-direction = Vector3(0, 0, -1)
 spread = 10.0
 initial_velocity_max = 2.5
 gravity = Vector3(0, 0, 0)
@@ -51,15 +50,43 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_0p3bf")
 size = Vector2(0.3, 0.3)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5s8r6"]
+particle_flag_align_y = true
+angle_min = -36.9
+angle_max = 24.6
+spread = 10.0
+initial_velocity_min = 1.6
+initial_velocity_max = 4.5
+linear_accel_min = -19.05
+attractor_interaction_enabled = false
+scale_min = 0.8
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_iasca")
+alpha_curve = SubResource("CurveTexture_he7j2")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8l6r7"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+albedo_texture = ExtResource("3_l2508")
+metallic_specular = 0.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_w03tr"]
+material = SubResource("StandardMaterial3D_8l6r7")
+size = Vector2(0.3, 0.3)
+
 [node name="bulletHole" type="Node3D"]
 script = ExtResource("1_t8p33")
 
-[node name="decal" type="Decal" parent="."]
-size = Vector3(0.132018, 0.15534, 0.117771)
-texture_albedo = ExtResource("1_gqobj")
-distance_fade_enabled = true
-
-[node name="impactParticle" type="GPUParticles3D" parent="decal"]
+[node name="impactParticle" type="GPUParticles3D" parent="."]
 emitting = false
 amount = 6
 one_shot = true
@@ -69,6 +96,22 @@ explosiveness = 0.35
 fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_uahh3")
 draw_pass_1 = SubResource("QuadMesh_qpd1d")
+
+[node name="dirtParticles" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 11
+one_shot = true
+preprocess = 0.15
+speed_scale = 1.8
+explosiveness = 0.49
+fixed_fps = 144
+process_material = SubResource("ParticleProcessMaterial_5s8r6")
+draw_pass_1 = SubResource("QuadMesh_w03tr")
+
+[node name="decal" type="Decal" parent="."]
+size = Vector3(0.132018, 0.15534, 0.117771)
+texture_albedo = ExtResource("1_gqobj")
+distance_fade_enabled = true
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 15.0

@@ -9,7 +9,11 @@ var vertVeclocity = Vector3.ZERO
 var killEffect = false
 var castLerp : Vector3 = Vector3.ZERO
 @export_subgroup("Camera")
-@export var cameraData : CameraData
+@export var cameraData : CameraData:
+	set(value):
+		cameraData = value
+		if cameraData != null:
+			hud.hudEnabled = cameraData.isHudEnabled
 @export var followingEntity : Node3D
 @export var followNode : Node3D:
 	set(value):
@@ -161,7 +165,7 @@ func _physics_process(delta):
 	if isZoomed:
 		if UserConfig.game_aim_screentilt or UserConfig.game_camera_screentilt_always:
 			camCurrRot.z += -castLerp.y
-		if cameraData.useZoomFOV:
+		if cameraData.useZoomFOV or cameraData == null:
 			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
 			currentFOV = aimFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
@@ -170,14 +174,14 @@ func _physics_process(delta):
 			currentFOV = globalGameManager.defaultFOV
 			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.zoomSpringAmount, cameraData.zoomInSpeed*delta)
 	else:
-		if cameraData.useZoomFOV:
-			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
-			currentFOV = globalGameManager.defaultFOV
-			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
-		else:
-			camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
-			currentFOV = globalGameManager.defaultFOV
-			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.zoomOutSpeed*delta)
+			if cameraData.useZoomFOV or cameraData == null:
+				camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
+				currentFOV = globalGameManager.defaultFOV
+				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
+			else:
+				camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
+				currentFOV = globalGameManager.defaultFOV
+				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.zoomOutSpeed*delta)
 
 	##Set the camera rotation
 	camRot = vertical.global_transform.basis.get_euler().y
@@ -205,9 +209,10 @@ func _physics_process(delta):
 	#Low HP
 	if lowHP:
 		vignette.show()
-		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 0.8,2*delta))
-		if !hpAudio.playing:
-			hpAudio.play()
+		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 0.8,8*delta))
+		if UserConfig.game_lowHP_ambience:
+			if !hpAudio.playing:
+				hpAudio.play()
 	else:
 		vignette.get_material().set_shader_parameter("softness",lerpf(vignette.get_material().get_shader_parameter("softness"), 10.0,4*delta))
 		hpAudio.stop()

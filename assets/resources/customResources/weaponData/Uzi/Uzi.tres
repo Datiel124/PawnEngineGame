@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://cqugqj8fwtc5j"]
+
+[ext_resource type="Texture2D" uid="uid://rnjqykyxts43" path="res://assets/textures/crosshair/crosshair037.png" id="1_4q1x7"]
+[ext_resource type="Script" path="res://assets/resources/customResources/weaponData/weaponData.gd" id="2_xq0ah"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("2_xq0ah")
+weaponDamage = 5.0
+weaponFireRate = 0.06
+weaponImpulse = 14.0
+weaponShots = 1
+useCustomCrosshairSize = true
+crosshairSizeOverride = Vector2(0.5, 0.5)
+forcedCrosshair = ExtResource("1_4q1x7")
+weaponRecoil = Vector3(3, 7, 5)
+weaponRecoilStrength = 4.0
+weaponSpread = 0.08
+weaponRecoilStrengthAim = 4.0
+weaponSpreadAim = 0.05
+leftHandParent = false
+rightHandParent = true
+useWeaponSprintAnim = false
+useLeftHandIdle = false
+useRightHandIdle = true
+useLeftHandAiming = false
+useRightHandAiming = true
+useLeftHandFreeAiming = false
+useRightHandFreeAiming = true
+weaponPositionOffset = Vector3(0, -0.09, 0.05)
+weaponRotationOffset = Vector3(1.555, 0, 0)

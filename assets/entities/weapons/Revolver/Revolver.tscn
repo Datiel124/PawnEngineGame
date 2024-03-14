@@ -1,0 +1,356 @@
+[gd_scene load_steps=46 format=3 uid="uid://boh343kalvj5i"]
+
+[ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_supac"]
+[ext_resource type="Resource" uid="uid://f30cnkk8nnpb" path="res://assets/entities/weapons/Revolver/RevolverData.tres" id="2_pkn4b"]
+[ext_resource type="AudioStream" uid="uid://dtjbrtbx2hdkv" path="res://assets/sounds/weapons/revolver/revolvershot.wav" id="3_gxaag"]
+[ext_resource type="ArrayMesh" uid="uid://d3hat4g5tlh2f" path="res://assets/entities/weapons/Revolver/Revolver.res" id="3_wr1pw"]
+[ext_resource type="AnimationLibrary" uid="uid://lmpviksxdik2" path="res://assets/entities/weapons/Revolver/RevolverAnims.res" id="4_8kxch"]
+[ext_resource type="Texture2D" uid="uid://bdtjibjnn8euc" path="res://assets/models/effects/shoot_flare_2.png" id="4_csn4j"]
+[ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="5_6r42b"]
+[ext_resource type="Script" path="res://assets/components/duplicatorComponent/duplicatorComponent.gd" id="6_r8ocj"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_17jky"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("3_gxaag")
+stream_0/weight = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tj4wp"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(2, 1.10196, 0.603922, 1)
+albedo_texture = ExtResource("4_csn4j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3d1g3"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nfp0i"]
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"format": 34359742465,
+"index_count": 48,
+"index_data": PackedByteArray(0, 0, 1, 0, 16, 0, 1, 0, 2, 0, 16, 0, 2, 0, 3, 0, 16, 0, 3, 0, 4, 0, 16, 0, 4, 0, 5, 0, 16, 0, 5, 0, 6, 0, 16, 0, 6, 0, 7, 0, 16, 0, 7, 0, 8, 0, 16, 0, 8, 0, 9, 0, 16, 0, 9, 0, 10, 0, 16, 0, 10, 0, 11, 0, 16, 0, 11, 0, 12, 0, 16, 0, 12, 0, 13, 0, 16, 0, 13, 0, 14, 0, 16, 0, 14, 0, 15, 0, 16, 0, 15, 0, 0, 0, 16, 0),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 17,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 191, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 191, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 190, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 62, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 63, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 63, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 63, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 190, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 191, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 128)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qsyy0"]
+resource_name = "effect_cone-e3a7c86e2b85c71aec694e8bac3049d5_Cone"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray(112, 181, 209, 56, 176, 22, 205, 62, 129, 17, 156, 61, 136, 8, 94, 62, 136, 8, 94, 62, 128, 17, 156, 61, 176, 22, 205, 62, 0, 192, 209, 56, 169, 116, 25, 63, 0, 192, 209, 56, 222, 125, 72, 63, 128, 17, 156, 61, 209, 125, 108, 63, 140, 8, 94, 62, 113, 249, 127, 63, 176, 22, 205, 62, 114, 249, 127, 63, 169, 116, 25, 63, 207, 125, 108, 63, 224, 125, 72, 63, 222, 125, 72, 63, 209, 125, 108, 63, 169, 116, 25, 63, 115, 249, 127, 63, 176, 22, 205, 62, 115, 249, 127, 63, 131, 8, 94, 62, 209, 125, 108, 63, 124, 17, 156, 61, 222, 125, 72, 63, 92, 172, 209, 56, 168, 116, 25, 63, 255, 255, 255, 62, 1, 0, 0, 63),
+"format": 34359742487,
+"index_count": 48,
+"index_data": PackedByteArray(0, 0, 1, 0, 16, 0, 1, 0, 2, 0, 16, 0, 2, 0, 3, 0, 16, 0, 3, 0, 4, 0, 16, 0, 4, 0, 5, 0, 16, 0, 5, 0, 6, 0, 16, 0, 6, 0, 7, 0, 16, 0, 7, 0, 8, 0, 16, 0, 8, 0, 9, 0, 16, 0, 9, 0, 10, 0, 16, 0, 10, 0, 11, 0, 16, 0, 11, 0, 12, 0, 16, 0, 12, 0, 13, 0, 16, 0, 13, 0, 14, 0, 16, 0, 14, 0, 15, 0, 16, 0, 15, 0, 0, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_3d1g3"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 17,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 191, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 191, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 190, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 62, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 63, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 63, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 63, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 190, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 191, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 128, 84, 213, 255, 255, 246, 135, 1, 232, 146, 220, 225, 228, 3, 137, 98, 229, 144, 222, 182, 208, 254, 139, 117, 222, 146, 220, 138, 190, 175, 145, 167, 206, 84, 213, 170, 170, 240, 142, 14, 177, 116, 193, 108, 163, 30, 138, 37, 161, 72, 175, 109, 161, 155, 136, 129, 154, 29, 155, 108, 163, 243, 135, 251, 151, 255, 127, 170, 170, 246, 135, 252, 151, 225, 100, 108, 163, 3, 137, 155, 154, 182, 80, 109, 161, 254, 139, 136, 161, 138, 62, 108, 163, 175, 145, 87, 177, 170, 42, 170, 170, 240, 142, 239, 206, 108, 35, 138, 190, 30, 138, 216, 222, 110, 33, 182, 208, 155, 136, 124, 229, 108, 35, 225, 228, 243, 135, 2, 232, 255, 127, 255, 255, 59, 149, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nfp0i")
+
+[sub_resource type="GDScript" id="GDScript_d82uj"]
+resource_name = "flare_rotation_randomizer"
+script/source = "extends MeshInstance3D
+@export var randomRotX : bool = false
+@export var randomRotY : bool = false
+@export var randomRotZ : bool = false
+
+func flare() -> void:
+	visible = true
+	if randomRotX:
+		rotation.x = randf_range(-PI, PI)
+	if randomRotY:
+		rotation.y = randf_range(-PI, PI)
+	if randomRotZ:
+		rotation.z = randf_range(-PI, PI)
+	transparency = 0.0
+	await get_tree().process_frame
+	await get_tree().process_frame
+	transparency = 0.5
+	await get_tree().process_frame
+	await get_tree().process_frame
+	visible = false
+
+"
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3v4mj"]
+resource_name = "effect_cone-e3a7c86e2b85c71aec694e8bac3049d5_Cone"
+_surfaces = [{
+"aabb": AABB(-1, -1, -1, 2, 2, 2),
+"attribute_data": PackedByteArray(112, 181, 209, 56, 176, 22, 205, 62, 129, 17, 156, 61, 136, 8, 94, 62, 136, 8, 94, 62, 128, 17, 156, 61, 176, 22, 205, 62, 0, 192, 209, 56, 169, 116, 25, 63, 0, 192, 209, 56, 222, 125, 72, 63, 128, 17, 156, 61, 209, 125, 108, 63, 140, 8, 94, 62, 113, 249, 127, 63, 176, 22, 205, 62, 114, 249, 127, 63, 169, 116, 25, 63, 207, 125, 108, 63, 224, 125, 72, 63, 222, 125, 72, 63, 209, 125, 108, 63, 169, 116, 25, 63, 115, 249, 127, 63, 176, 22, 205, 62, 115, 249, 127, 63, 131, 8, 94, 62, 209, 125, 108, 63, 124, 17, 156, 61, 222, 125, 72, 63, 92, 172, 209, 56, 168, 116, 25, 63, 255, 255, 255, 62, 1, 0, 0, 63),
+"format": 34359742487,
+"index_count": 48,
+"index_data": PackedByteArray(0, 0, 1, 0, 16, 0, 1, 0, 2, 0, 16, 0, 2, 0, 3, 0, 16, 0, 3, 0, 4, 0, 16, 0, 4, 0, 5, 0, 16, 0, 5, 0, 6, 0, 16, 0, 6, 0, 7, 0, 16, 0, 7, 0, 8, 0, 16, 0, 8, 0, 9, 0, 16, 0, 9, 0, 10, 0, 16, 0, 10, 0, 11, 0, 16, 0, 11, 0, 12, 0, 16, 0, 12, 0, 13, 0, 16, 0, 13, 0, 14, 0, 16, 0, 14, 0, 15, 0, 16, 0, 15, 0, 0, 0, 16, 0),
+"material": SubResource("StandardMaterial3D_3d1g3"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 17,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 191, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 191, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 190, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 63, 0, 0, 128, 191, 22, 239, 195, 62, 243, 4, 53, 63, 0, 0, 128, 191, 243, 4, 53, 63, 22, 239, 195, 62, 0, 0, 128, 191, 94, 131, 108, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 63, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 63, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 62, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 0, 128, 94, 131, 108, 191, 0, 0, 128, 191, 22, 239, 195, 190, 243, 4, 53, 191, 0, 0, 128, 191, 243, 4, 53, 191, 22, 239, 195, 190, 0, 0, 128, 191, 94, 131, 108, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 128, 84, 213, 255, 255, 246, 135, 1, 232, 146, 220, 225, 228, 3, 137, 98, 229, 144, 222, 182, 208, 254, 139, 117, 222, 146, 220, 138, 190, 175, 145, 167, 206, 84, 213, 170, 170, 240, 142, 14, 177, 116, 193, 108, 163, 30, 138, 37, 161, 72, 175, 109, 161, 155, 136, 129, 154, 29, 155, 108, 163, 243, 135, 251, 151, 255, 127, 170, 170, 246, 135, 252, 151, 225, 100, 108, 163, 3, 137, 155, 154, 182, 80, 109, 161, 254, 139, 136, 161, 138, 62, 108, 163, 175, 145, 87, 177, 170, 42, 170, 170, 240, 142, 239, 206, 108, 35, 138, 190, 30, 138, 216, 222, 110, 33, 182, 208, 155, 136, 124, 229, 108, 35, 225, 228, 243, 135, 2, 232, 255, 127, 255, 255, 59, 149, 255, 191)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_nfp0i")
+
+[sub_resource type="Gradient" id="Gradient_buc1p"]
+offsets = PackedFloat32Array(0, 0.0365854, 1)
+colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2dja8"]
+gradient = SubResource("Gradient_buc1p")
+
+[sub_resource type="Curve" id="Curve_nafn7"]
+_data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_j0p7u"]
+curve = SubResource("Curve_nafn7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2pv0k"]
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(-1, 0, 0)
+spread = 19.28
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = -50.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 5, 0)
+damping_min = 8.824
+damping_max = 41.596
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_j0p7u")
+color = Color(1.2, 1.2, 1.2, 1)
+color_ramp = SubResource("GradientTexture1D_2dja8")
+hue_variation_min = -0.02
+hue_variation_max = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y85su"]
+transparency = 1
+diffuse_mode = 2
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_6r42b")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_avg6y"]
+material = SubResource("StandardMaterial3D_y85su")
+
+[sub_resource type="GDScript" id="GDScript_41d3r"]
+script/source = "static func execute(node : Node) -> void:
+	(node as GPUParticles3D).restart()
+"
+
+[sub_resource type="Animation" id="Animation_k64ul"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4v8w6"]
+resource_name = "light_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.277392, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu2pg"]
+_data = {
+"RESET": SubResource("Animation_k64ul"),
+"light_flash": SubResource("Animation_4v8w6")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7xt5"]
+size = Vector3(0.575928, 0.257515, 0.0437012)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ybwpt"]
+animation = &"weaponAnims/aim"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j08dw"]
+animation = &"weaponAnims/fire"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u51jk"]
+animation = &"weaponAnims/idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fvckn"]
+animation = &"WeaponAnims/sprint"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_syl42"]
+animation = &"WeaponAnims/unequip"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5ul8h"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gga4p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7mtao"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sftbu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2yi56"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mh4se"]
+xfade_time = 0.05
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7n2o2"]
+xfade_time = 0.03
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_va47p"]
+xfade_time = 0.02
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="Curve" id="Curve_udpny"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.992064, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_umbs7"]
+xfade_time = 0.08
+xfade_curve = SubResource("Curve_udpny")
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q1np0"]
+states/End/position = Vector2(1041, 100)
+states/aim/node = SubResource("AnimationNodeAnimation_ybwpt")
+states/aim/position = Vector2(619, 191)
+states/fire/node = SubResource("AnimationNodeAnimation_j08dw")
+states/fire/position = Vector2(619, 302)
+states/idle/node = SubResource("AnimationNodeAnimation_u51jk")
+states/idle/position = Vector2(619, 100)
+states/sprint/node = SubResource("AnimationNodeAnimation_fvckn")
+states/sprint/position = Vector2(619, -13)
+states/unequip/node = SubResource("AnimationNodeAnimation_syl42")
+states/unequip/position = Vector2(843, 100)
+transitions = ["sprint", "idle", SubResource("AnimationNodeStateMachineTransition_5ul8h"), "idle", "sprint", SubResource("AnimationNodeStateMachineTransition_gga4p"), "idle", "unequip", SubResource("AnimationNodeStateMachineTransition_7mtao"), "unequip", "End", SubResource("AnimationNodeStateMachineTransition_sftbu"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_2yi56"), "idle", "aim", SubResource("AnimationNodeStateMachineTransition_mh4se"), "aim", "fire", SubResource("AnimationNodeStateMachineTransition_7n2o2"), "fire", "aim", SubResource("AnimationNodeStateMachineTransition_va47p"), "aim", "idle", SubResource("AnimationNodeStateMachineTransition_umbs7")]
+graph_offset = Vector2(37, -29)
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_uy32p"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_21g6j"]
+resource_local_to_scene = true
+resource_name = "revolverAnims"
+graph_offset = Vector2(-432, 44)
+nodes/output/position = Vector2(380, 140)
+nodes/weaponState/node = SubResource("AnimationNodeStateMachine_q1np0")
+nodes/weaponState/position = Vector2(-180, 120)
+nodes/weaponStateSpeed/node = SubResource("AnimationNodeTimeScale_uy32p")
+nodes/weaponStateSpeed/position = Vector2(80, 100)
+node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]
+
+[node name="Revolver" node_paths=PackedStringArray("weaponMesh", "muzzlePoint") instance=ExtResource("1_supac")]
+weaponMesh = NodePath("Mesh")
+weaponResource = ExtResource("2_pkn4b")
+muzzlePoint = NodePath("Mesh/marker3d")
+objectName = "Revolver"
+
+[node name="weaponShot" type="AudioStreamPlayer3D" parent="." index="0"]
+stream = SubResource("AudioStreamRandomizer_17jky")
+bus = &"Sounds"
+
+[node name="Mesh" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-3.93403e-09, -0.09, 0, 0.09, -3.93403e-09, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = ExtResource("3_wr1pw")
+
+[node name="marker3d" type="Marker3D" parent="Mesh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330292, 3.12877, 0)
+
+[node name="ShootFlare2" type="MeshInstance3D" parent="Mesh/marker3d" index="0"]
+transform = Transform3D(-2.911, -3.33096e-07, 0, 4.39549e-07, -2.206, 0, 0, 0, 2.911, 8.9407e-08, 2.06114, -1.87715e-07)
+visible = false
+material_override = SubResource("StandardMaterial3D_tj4wp")
+mesh = SubResource("ArrayMesh_qsyy0")
+skeleton = NodePath("../../../FX")
+script = SubResource("GDScript_d82uj")
+randomRotY = true
+
+[node name="ShootFlare3" type="MeshInstance3D" parent="Mesh/marker3d" index="1"]
+transform = Transform3D(-1.37263, -1.26296e-06, 0, 2.07262e-07, -8.36421, 0, 0, 0, 1.15606, 2.98023e-07, 7.81492, -1.87715e-07)
+visible = false
+material_override = SubResource("StandardMaterial3D_tj4wp")
+mesh = SubResource("ArrayMesh_3v4mj")
+skeleton = NodePath("../../../FX")
+script = SubResource("GDScript_d82uj")
+randomRotY = true
+
+[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/marker3d" index="2"]
+transform = Transform3D(-0.999999, 7.10543e-15, 8.74228e-08, -1.72263e-14, 0.999999, 1.42109e-14, -8.74227e-08, -7.10543e-15, -0.999999, -0.0167461, -0.505852, -6.28436e-08)
+emitting = false
+amount = 4
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_2pv0k")
+draw_pass_1 = SubResource("QuadMesh_avg6y")
+
+[node name="duplicatorComponent" type="Node" parent="Mesh/marker3d/ShootSmoke" index="0"]
+script = ExtResource("6_r8ocj")
+useWorldMiscAsParent = true
+dup_lifetime = 2.0
+advanced_behavior_script = SubResource("GDScript_41d3r")
+use_pooling = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/marker3d" index="3"]
+transform = Transform3D(11.1111, 5.68434e-14, 4.52903e-14, -5.68434e-14, 11.1111, 1.03612e-06, 6.77626e-21, 0, 6.66667, 0.0945444, -0.0966022, -1.76339e-08)
+light_color = Color(1, 0.768627, 0.215686, 1)
+light_energy = 0.0
+omni_range = 4.20246
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/marker3d/OmniLight3D" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_xu2pg")
+}
+autoplay = "RESET"
+
+[node name="collisionObject" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024292, -0.0424004, -0.0020752)
+shape = SubResource("BoxShape3D_d7xt5")
+
+[node name="AnimationTree" parent="." index="3"]
+libraries = {
+"weaponAnims": ExtResource("4_8kxch")
+}
+tree_root = SubResource("AnimationNodeBlendTree_21g6j")
+parameters/weaponStateSpeed/scale = 1.0
+
+[node name="AnimationPlayer" parent="." index="4"]
+libraries = {
+"weaponAnims": ExtResource("4_8kxch")
+}
+
+[connection signal="shot_fired" from="." to="weaponShot" method="play"]
+[connection signal="shot_fired" from="." to="Mesh/marker3d/ShootFlare2" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/marker3d/ShootSmoke/duplicatorComponent" method="duplicate_node"]
+[connection signal="shot_fired" from="." to="Mesh/marker3d/ShootFlare3" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/marker3d/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]

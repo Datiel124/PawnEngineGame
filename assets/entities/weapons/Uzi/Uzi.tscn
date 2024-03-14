@@ -1,9 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://dsxt078giobel"]
+[gd_scene load_steps=43 format=3 uid="uid://dsxt078giobel"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_k0gi6"]
 [ext_resource type="AudioStream" uid="uid://c4nv2utpail5c" path="res://assets/sounds/weapons/uzi/uziFire.wav" id="2_2gcbv"]
+[ext_resource type="Resource" uid="uid://cqugqj8fwtc5j" path="res://assets/resources/customResources/weaponData/Uzi/Uzi.tres" id="2_5xwbk"]
 [ext_resource type="ArrayMesh" uid="uid://brx711lyumg08" path="res://assets/models/weapons/uzi/uzimodel.res" id="2_56o6k"]
-[ext_resource type="Texture2D" uid="uid://bymv7nt6e8ghx" path="res://assets/textures/crosshair/crosshair179.png" id="2_wo0j2"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_8m6vm"]
 [ext_resource type="Texture2D" uid="uid://deg4xoxwmqn8w" path="res://assets/textures/smoke/smoke1.png" id="4_bbw6c"]
 [ext_resource type="PackedScene" uid="uid://bumha05iiv1i2" path="res://assets/components/duplicatorComponent/duplicatorComponent.scn" id="5_kvnjb"]
@@ -11,10 +11,43 @@
 [ext_resource type="Animation" uid="uid://cn104bd4royk3" path="res://assets/animations/pawn/UziIdle.res" id="8_a17bg"]
 [ext_resource type="Animation" uid="uid://bc2d5fksn26jf" path="res://assets/animations/pawn/UziAimCorrect.res" id="8_figtn"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhvhp"]
-streams_count = 1
-stream_0/stream = ExtResource("2_2gcbv")
-stream_0/weight = 1.0
+[sub_resource type="Animation" id="Animation_k64ul"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_4v8w6"]
+resource_name = "light_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.277392, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu2pg"]
+_data = {
+"RESET": SubResource("Animation_k64ul"),
+"light_flash": SubResource("Animation_4v8w6")
+}
 
 [sub_resource type="Gradient" id="Gradient_c5o4n"]
 offsets = PackedFloat32Array(0, 0.0365854, 1)
@@ -70,43 +103,14 @@ script/source = "static func execute(node : Node) -> void:
 	
 "
 
-[sub_resource type="Animation" id="Animation_k64ul"]
-resource_name = "RESET"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rhvhp"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("2_2gcbv")
+stream_0/weight = 1.0
 
-[sub_resource type="Animation" id="Animation_4v8w6"]
-resource_name = "light_flash"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.277392, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xu2pg"]
-_data = {
-"RESET": SubResource("Animation_k64ul"),
-"light_flash": SubResource("Animation_4v8w6")
-}
+[sub_resource type="BoxShape3D" id="BoxShape3D_slnw1"]
+size = Vector3(0.0761719, 0.321045, 0.728455)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oep0y"]
 _data = {
@@ -191,50 +195,45 @@ nodes/weaponStateSpeed/node = SubResource("AnimationNodeTimeScale_uy32p")
 nodes/weaponStateSpeed/position = Vector2(80, 100)
 node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]
 
-[node name="Uzi" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_k0gi6")]
-muzzlePoint = NodePath("Mesh/Uzi/Marker3D")
-weaponDamage = 4.0
-weaponFireRate = 0.065
-weaponImpulse = 25.0
-forcedCrosshair = ExtResource("2_wo0j2")
-weaponRecoil = Vector3(4.24, 6.88, 2.37)
-weaponRecoilStrength = 10.0
-weaponSpread = 0.035
-weaponRecoilStrengthAim = 2.0
-weaponSpreadAim = 0.022
-useLeftHandIdle = false
-useLeftHandAiming = false
-useLeftHandFreeAiming = false
-weaponPositionOffset = Vector3(-0.005, -0.1, 0.06)
-weaponRotationOffset = Vector3(1.64, 0, 0)
+[node name="Uzi" node_paths=PackedStringArray("weaponMesh", "muzzlePoint") instance=ExtResource("1_k0gi6")]
+weaponMesh = NodePath("Mesh")
+weaponResource = ExtResource("2_5xwbk")
+muzzlePoint = NodePath("Mesh/Marker3D")
+objectName = "Uzi"
 
-[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="." index="0"]
-stream = SubResource("AudioStreamRandomizer_rhvhp")
-volume_db = -16.0
-max_polyphony = 8
-bus = &"Sounds"
-attenuation_filter_db = 0.0
-
-[node name="Uzi" type="Node3D" parent="Mesh" index="0"]
-
-[node name="UziModel" type="MeshInstance3D" parent="Mesh/Uzi" index="0"]
+[node name="Mesh" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 0, 0, 0)
 mesh = ExtResource("2_56o6k")
 skeleton = NodePath("../..")
 
-[node name="Marker3D" type="Marker3D" parent="Mesh/Uzi" index="1"]
-transform = Transform3D(-0.0155852, 0, -0.999879, 0, 1, 0, 0.999879, 0, -0.0155852, 0, 0.0361853, 0.262619)
+[node name="Marker3D" type="Marker3D" parent="Mesh" index="0"]
+transform = Transform3D(-0.0135523, 0, -0.86946, 0, 0.869565, 0, 0.86946, 0, -0.0135523, 0, 0.0314655, 0.228364)
 
-[node name="ShootFlare" parent="Mesh/Uzi/Marker3D" index="0" instance=ExtResource("3_8m6vm")]
-transform = Transform3D(-2.25452e-08, -0.391342, -3.55271e-15, 0.515775, -1.71061e-08, 0, -2.11758e-22, 0, 0.515775, 0.369775, -0.00206521, 3.23268e-08)
+[node name="ShootFlare" parent="Mesh/Marker3D" index="0" instance=ExtResource("3_8m6vm")]
+transform = Transform3D(-2.25452e-08, -0.391342, 0, 0.515775, -1.71061e-08, -4.07093e-17, 1.94289e-16, 0, 0.515774, 0.388109, 0, 0.010605)
 visible = false
+randomRotX = true
 
-[node name="ShootFlare2" parent="Mesh/Uzi/Marker3D" index="1" instance=ExtResource("3_8m6vm")]
-transform = Transform3D(-6.49417e-09, -0.787911, -8.88178e-16, 0.148569, -3.44405e-08, 0, 0, -7.10543e-15, 0.148569, 0.714841, -0.00206521, 6.24935e-08)
+[node name="ShootFlare2" parent="Mesh/Marker3D" index="1" instance=ExtResource("3_8m6vm")]
+transform = Transform3D(-6.49416e-09, -0.78791, -9.31323e-10, 0.148569, -3.44407e-08, 0, 0, 0, 0.148569, 0.778395, 0, 0.00452158)
 visible = false
+randomRotX = true
 
-[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/Uzi/Marker3D" index="2"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00457357, -0.0126326, -3.99858e-10)
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Marker3D" index="2"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.0178121, 0, 0.0163768)
+light_color = Color(1, 0.768627, 0.215686, 1)
+light_energy = 0.0
+omni_range = 4.20246
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Marker3D/OmniLight3D" index="0"]
+root_node = NodePath("../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_xu2pg")
+}
+autoplay = "RESET"
+
+[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/Marker3D" index="3"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.778395, 0, 0.00452158)
 emitting = false
 amount = 4
 lifetime = 2.0
@@ -243,22 +242,22 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_w8rew")
 draw_pass_1 = SubResource("QuadMesh_5sgpu")
 
-[node name="duplicatorComponent" parent="Mesh/Uzi/Marker3D/ShootSmoke" index="0" instance=ExtResource("5_kvnjb")]
+[node name="duplicatorComponent" parent="Mesh/Marker3D/ShootSmoke" index="0" instance=ExtResource("5_kvnjb")]
+useWorldMiscAsParent = true
 dup_lifetime = 2.0
 advanced_behavior_script = SubResource("GDScript_3j7dd")
 use_pooling = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Uzi/Marker3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0239981, 0, 2.09798e-09)
-light_color = Color(1, 0.768627, 0.215686, 1)
-light_energy = 0.0
-omni_range = 4.20246
+[node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = SubResource("AudioStreamRandomizer_rhvhp")
+volume_db = -16.0
+max_polyphony = 8
+bus = &"Sounds"
+attenuation_filter_db = 0.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Uzi/Marker3D/OmniLight3D" index="0"]
-libraries = {
-"": SubResource("AnimationLibrary_xu2pg")
-}
-autoplay = "RESET"
+[node name="collisionObject" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00292969, -0.0516357, -0.0752869)
+shape = SubResource("BoxShape3D_slnw1")
 
 [node name="AnimationTree" parent="." index="3"]
 libraries = {
@@ -272,8 +271,8 @@ libraries = {
 "weaponAnims": SubResource("AnimationLibrary_oep0y")
 }
 
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootFlare" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootFlare2" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node"]
 [connection signal="shot_fired" from="." to="audioStreamPlayer3d" method="play"]
-[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootFlare" method="flare"]
-[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootFlare2" method="flare"]
-[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node"]
-[connection signal="shot_fired" from="." to="Mesh/Uzi/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]

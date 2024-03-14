@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_5egi1")
+isHudEnabled = false
 useZoomFOV = true
 zoomSpringAmount = 2.0
 cameraOffset = Vector3(0, 0, 2.5)

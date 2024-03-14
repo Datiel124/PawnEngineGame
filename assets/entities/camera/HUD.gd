@@ -13,12 +13,7 @@ signal interactionFound
 @onready var healthBG = $hpBG
 @onready var healthTexture = $healthTexture
 var slidingCrosshairPos : Vector2 = Vector2.ZERO
-@export var hudEnabled = true:
-	set(value):
-		if value == true:
-			self.hide()
-		else:
-			self.show()
+@export var hudEnabled = true
 
 @onready var healthBar = $hpBar
 @onready var fpsControl = $FPSCounter
@@ -34,7 +29,10 @@ var interactVisible = false:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	hudEnabled = true
+	enableHud()
+	globalGameManager.getEventSignal("playerDied").connect(disableHud)
+	Dialogic.timeline_started.connect(disableHud)
+	Dialogic.timeline_ended.connect(enableHud)
 	Dialogic.timeline_started.connect(globalGameManager.showMouse)
 	Dialogic.timeline_ended.connect(globalGameManager.hideMouse)
 
@@ -50,10 +48,6 @@ func _process(delta):
 		interactHud.position = lerp(interactHud.position, crosshair.position, 16*delta)
 		pass
 
-	if Dialogic.current_timeline != null:
-		hudEnabled = true
-	else:
-		hudEnabled = false
 	#Crosshair Follow
 	if UserConfig.game_crosshair_dynamic_position:
 		var pos
@@ -70,10 +64,12 @@ func _process(delta):
 		crosshair.positionOverride = lerp(crosshair.positionOverride, slidingCrosshairPos, get_owner().recoilReturnSpeed*delta)
 
 	if hudEnabled:
+		modulate = lerp(modulate,Color.WHITE,12*delta)
 		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.WHITE,12*delta)
 		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.WHITE,12*delta)
 		healthTexture.self_modulate = lerp(healthTexture.self_modulate,Color.WHITE,12*delta)
 	else:
+		modulate = lerp(modulate,Color.TRANSPARENT,12*delta)
 		crosshair.tintCrosshair(Color.TRANSPARENT)
 		healthBar.self_modulate = lerp(healthBar.self_modulate,Color.TRANSPARENT,12*delta)
 		healthBG.self_modulate = lerp(healthBG.self_modulate,Color.TRANSPARENT,12*delta)
@@ -91,3 +87,9 @@ func getCrosshair():
 
 func setInteractionText(text : String):
 	interactText.text = text
+
+func disableHud():
+	hudEnabled = false
+
+func enableHud():
+	hudEnabled = true

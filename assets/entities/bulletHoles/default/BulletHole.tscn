@@ -24,6 +24,7 @@ curve = SubResource("Curve_kfiie")
 particle_flag_align_y = true
 angle_min = -36.9
 angle_max = 24.6
+direction = Vector3(0, 0, -1)
 spread = 10.0
 initial_velocity_max = 2.5
 gravity = Vector3(0, 0, 0)
@@ -86,7 +87,9 @@ size = Vector2(0.3, 0.3)
 [node name="bulletHole" type="Node3D"]
 script = ExtResource("1_t8p33")
 
-[node name="impactParticle" type="GPUParticles3D" parent="."]
+[node name="particles" type="Node3D" parent="."]
+
+[node name="impactParticle" type="GPUParticles3D" parent="particles"]
 emitting = false
 amount = 6
 one_shot = true
@@ -97,7 +100,7 @@ fixed_fps = 144
 process_material = SubResource("ParticleProcessMaterial_uahh3")
 draw_pass_1 = SubResource("QuadMesh_qpd1d")
 
-[node name="dirtParticles" type="GPUParticles3D" parent="."]
+[node name="dirtParticles" type="GPUParticles3D" parent="particles"]
 emitting = false
 amount = 11
 one_shot = true

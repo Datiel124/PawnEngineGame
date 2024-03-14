@@ -1,6 +1,7 @@
 extends Node
 
 #game configs
+var game_lowHP_ambience = false
 var game_show_fps = false
 var game_camera_screentilt_always = false
 var game_aim_screentilt = true
@@ -8,7 +9,7 @@ var game_crosshair_tilt = true
 var game_crosshair_dynamic_position = true
 
 #audio configs
-var audio_MasterVolume : float = 0.8
+var audio_MasterVolume : float = -15.0
 var audio_GameVolume : float = 1.0
 var audio_MusicVolume : float = 0.6
 var audio_ambience_volume : float = 0.6

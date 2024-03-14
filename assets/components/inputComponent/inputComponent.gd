@@ -29,6 +29,7 @@ func _process(_delta):
 			if Input.is_action_pressed("gRightClick"):
 				if !controllingPawn == null:
 					if !controllingPawn.isPawnDead:
+						if controllingPawn.attachedCam != null:
 							controllingPawn.turnAmount = -controllingPawn.attachedCam.vertical.rotation.x
 							controllingPawn.freeAim = false
 							controllingPawn.freeAimTimer.stop()

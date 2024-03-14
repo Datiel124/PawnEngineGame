@@ -14,6 +14,8 @@ class_name duplicatorComponent
 ##Choose a node specified under in a Singleton ( {"/root/Singleton/":"parameter"} ). Overrides parent_nodepath and parent.
 @export var parent_singleton : Dictionary = {}
 @export_subgroup("Duplication parameters")
+## Place it in the worldMisc instead of Specified Parent
+@export var useWorldMiscAsParent = false
 ##Copy global transforms from original to duplicate after creating
 @export var copy_global_transforms : bool = true
 ##Offset the duplicate's position by this amount
@@ -65,7 +67,10 @@ func duplicate_node() -> void:
 		var singleton = parent_singleton.keys()[0]
 		dup_parent = get_node(singleton).get(parent_singleton[singleton])
 	#Add the duplicate and set values.
-	dup_parent.add_child(node_dup)
+	if !useWorldMiscAsParent:
+		dup_parent.add_child(node_dup)
+	else:
+		globalGameManager.world.worldMisc.add_child(node_dup)
 	apply_sets(node_dup)
 	#Apply parameters
 	if copy_global_transforms:

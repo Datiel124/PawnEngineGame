@@ -244,7 +244,16 @@ func _physics_process(delta):
 				if currentItem:
 					##Camera set
 					if attachedCam:
-						attachedCam.hud.getCrosshair().setCrosshair(currentItem.forcedCrosshair)
+						if currentItem.weaponResource.useCustomCrosshairSize:
+							attachedCam.hud.getCrosshair().crosshairSize = currentItem.weaponResource.crosshairSizeOverride
+						else:
+							attachedCam.hud.getCrosshair().crosshairSize = attachedCam.hud.getCrosshair().defaultCrosshairSize
+
+						if currentItem.weaponResource.forcedCrosshair != null:
+							attachedCam.hud.getCrosshair().setCrosshair(currentItem.weaponResource.forcedCrosshair)
+						else:
+							attachedCam.hud.getCrosshair().setCrosshair(attachedCam.hud.getCrosshair().defaultCrosshair)
+
 						attachedCam.itemEquipOffsetToggle = true
 						Dialogic.VAR.set('playerHasWeaponEquipped',true)
 
@@ -258,26 +267,26 @@ func _physics_process(delta):
 					#await setupWeaponAnimations()
 
 					#Set filters
-					if currentItem.useLeftHand:
+					if currentItem.weaponResource.useLeftHand:
 						setLeftHandFilter(true)
 					else:
 						setLeftHandFilter(false)
 
-					if currentItem.useRightHand:
+					if currentItem.weaponResource.useRightHand:
 						setRightHandFilter(true)
 					else:
 						setRightHandFilter(false)
 
 					#Set Parent Hands
-					if currentItem.leftHandParent:
+					if currentItem.weaponResource.leftHandParent:
 						itemHolder.reparent(leftHandBone)
 						itemHolder.position = Vector3.ZERO
 
-					if currentItem.rightHandParent:
+					if currentItem.weaponResource.rightHandParent:
 						itemHolder.reparent(rightHandBone)
 						itemHolder.position = Vector3.ZERO
 
-					if !currentItem.useWeaponSprintAnim:
+					if !currentItem.weaponResource.useWeaponSprintAnim:
 						if isMoving and isRunning and is_on_floor() and !meshLookAt:
 							animationTree.set("parameters/weaponBlend/blend_amount", lerpf(animationTree.get("parameters/weaponBlend/blend_amount"), 0, 4*delta))
 						else:
@@ -427,7 +436,13 @@ func checkComponents():
 		return OK
 
 func die():
-	createRagdoll(lastHitPart)
+	if !attachedCam == null:
+		globalGameManager.getEventSignal("playerDied").emit()
+		attachedCam.lowHP = false
+		attachedCam.hud.hudEnabled = false
+		attachedCam.resetCamCast()
+		Dialogic.end_timeline()
+	var ragdoll = await createRagdoll(lastHitPart)
 	await get_tree().process_frame
 	removeComponents()
 	unequipWeapon()
@@ -440,10 +455,6 @@ func die():
 	isPawnDead = true
 	$remover.start()
 	footstepSounds.queue_free()
-	if !attachedCam == null:
-		attachedCam.lowHP = false
-		attachedCam.resetCamCast()
-		Dialogic.end_timeline()
 
 func _on_health_component_health_depleted():
 	await get_tree().process_frame
@@ -486,6 +497,8 @@ func createRagdoll(impulse_bone : int = 0):
 			await get_tree().process_frame
 			await cam.unposessObject()
 			await cam.posessObject(ragdoll, ragdoll.rootCameraNode)
+			ragdoll.removeTime = 99999999
+			ragdoll.removeTimer.stop()
 			for bones in ragdoll.ragdollSkeleton.get_child_count():
 				if ragdoll.ragdollSkeleton.get_child(bones) is RagdollBone:
 					cam.camSpring.add_excluded_object(ragdoll.ragdollSkeleton.get_child(bones).get_rid())
@@ -497,7 +510,7 @@ func createRagdoll(impulse_bone : int = 0):
 				ragdoll.activeRagdollEnabled = false
 			forceAnimation = true
 			animationToForce = "PawnAnim/WritheRightKneeBack"
-
+		return ragdoll
 
 
 func checkItems():

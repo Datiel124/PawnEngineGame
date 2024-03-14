@@ -2,6 +2,7 @@ extends Resource
 class_name CameraData
 
 @export_category("Camera")
+@export var isHudEnabled = true
 @export var useZoomFOV = true
 @export var zoomSpringAmount = 2.0
 @export var cameraOffset = Vector3.ZERO

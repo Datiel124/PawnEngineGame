@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b2ai53knvexou"]
+
+[ext_resource type="Script" path="res://assets/resources/customResources/weaponData/weaponData.gd" id="1_3lyem"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_3lyem")
+weaponDamage = 7.0
+weaponFireRate = 0.09
+weaponImpulse = 11.0
+weaponShots = 1
+useCustomCrosshairSize = false
+crosshairSizeOverride = Vector2(0.8, 0.8)
+weaponRecoil = Vector3(5, 7, 3)
+weaponRecoilStrength = 7.0
+weaponSpread = 0.05
+weaponRecoilStrengthAim = 4.0
+weaponSpreadAim = 0.04
+leftHandParent = false
+rightHandParent = true
+useWeaponSprintAnim = false
+useLeftHandIdle = true
+useRightHandIdle = true
+useLeftHandAiming = true
+useRightHandAiming = true
+useLeftHandFreeAiming = true
+useRightHandFreeAiming = true
+weaponPositionOffset = Vector3(-0.015, -0.335, 0.12)
+weaponRotationOffset = Vector3(-0.015, 0, -0.05)

@@ -28,7 +28,8 @@ resource_name = "crosshair"
 script/source = "extends TextureRect
 const  defaultCrosshair = preload(\"res://assets/textures/crosshair/crosshair001.png\")
 var positionOverride = get_viewport_rect().size/2 - pivot_offset
-const crosshairSize : Vector2 = Vector2(0.8,0.8)
+const defaultCrosshairSize : Vector2 = Vector2(0.8,0.8)
+var crosshairSize : Vector2 = Vector2(0.8,0.8)
 var crosshairSizeSpeed = 0.07
 const defaultTint : Color = Color.WHITE
 var tiltSpeed = 15.0
@@ -241,7 +242,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 script = ExtResource("4_r48cc")
 cam = NodePath("../camPivot/horizonal/vertholder/vertical/springArm3d/Camera")
-interactionOffset = Vector2(-15, -45)
+interactionOffset = Vector2(65.58, 0)
 crosshair = NodePath("Crosshair")
 
 [node name="WIP" type="Label" parent="HUD"]
@@ -305,7 +306,8 @@ metadata/_edit_use_anchors_ = true
 
 [node name="lowHP" type="AudioStreamPlayer" parent="HUD/vignette"]
 stream = ExtResource("9_jgajw")
-volume_db = -15.0
+volume_db = -30.23
+pitch_scale = 1.75
 bus = &"Sounds"
 
 [node name="killVignette" type="ColorRect" parent="HUD"]
@@ -423,16 +425,11 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="panel" type="Panel" parent="HUD/Interact"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 39.0
-offset_top = 77.0
-offset_right = 244.0
-offset_bottom = 102.0
+layout_mode = 0
+offset_left = -5.0
+offset_top = 43.0
+offset_right = 200.0
+offset_bottom = 68.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pjbx3")
 
@@ -462,7 +459,7 @@ speed_scale = 1.733
 
 [node name="audioStreamPlayer" type="AudioStreamPlayer" parent="HUD/Interact"]
 stream = ExtResource("12_uquvw")
-volume_db = -25.0
+volume_db = -15.0
 pitch_scale = 2.0
 bus = &"UI"
 

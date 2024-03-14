@@ -18,7 +18,6 @@ dry = 0.24
 wet = 0.04
 
 [resource]
-bus/0/volume_db = -0.0949459
 bus/1/name = &"UI"
 bus/1/solo = false
 bus/1/mute = false
@@ -34,7 +33,7 @@ bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectDelay_idpdn")
 bus/2/effect/0/enabled = false
 bus/2/effect/1/effect = SubResource("AudioEffectReverb_pyhvs")
-bus/2/effect/1/enabled = true
+bus/2/effect/1/enabled = false
 bus/3/name = &"Music"
 bus/3/solo = false
 bus/3/mute = false

@@ -17,10 +17,14 @@ const setting_remap : Dictionary = {
 	'graphics_Ssil' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssilToggle:button_pressed',
 	'graphics_Ssr' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssrToggle:button_pressed',
 	'game_camera_screentilt_always' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/alwaysCamRoll:button_pressed',
-	'game_show_fps' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/showFPSButton:button_pressed'
+	'game_show_fps' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/showFPSButton:button_pressed',
+	'game_lowHP_ambience' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/lowHPAmbience:button_pressed',
+	\"audio_MasterVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/masterVolSlider:value',
+	\"audio_MusicVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/musicSlider:value'
 }
 
 func _ready() -> void:
+	applyAudio()
 	UserConfig.configs_updated.connect(getSettingsFromConfig)
 
 func _process(delta):
@@ -53,7 +57,7 @@ func applySettings():
 	for s in setting_remap.keys():
 		UserConfig.set(s, getRemappedValue(s))
 	UserConfig.saveConfigs()
-
+	applyAudio()
 
 func getSettingsFromConfig():
 	for s in setting_remap.keys():
@@ -85,6 +89,10 @@ func _on_options_panel_tab_clicked(tab):
 
 func _on_visibility_changed():
 	getSettingsFromConfig()
+
+func applyAudio():
+	AudioServer.set_bus_volume_db(0,UserConfig.audio_MasterVolume)
+	AudioServer.set_bus_volume_db(3,UserConfig.audio_MusicVolume)
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfs43"]
@@ -104,7 +112,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_v2vor"]
 events = [SubResource("InputEventKey_60klc")]
 
-[sub_resource type="Image" id="Image_puim6"]
+[sub_resource type="Image" id="Image_3kf7p"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -114,7 +122,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_lrq7s"]
-image = SubResource("Image_puim6")
+image = SubResource("Image_3kf7p")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1t3p6"]
 random_pitch = 1.2
@@ -185,6 +193,10 @@ text = "Show FPS"
 layout_mode = 2
 text = "Always Camera \"Roll\""
 
+[node name="lowHPAmbience" type="CheckButton" parent="panelHolder/panel/optionsPanel/Game/vBoxContainer"]
+layout_mode = 2
+text = "Low HP Ambience"
+
 [node name="Video" type="Control" parent="panelHolder/panel/optionsPanel"]
 visible = false
 layout_mode = 2
@@ -250,6 +262,8 @@ text = "50"
 
 [node name="masterVolSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
 layout_mode = 2
+min_value = -50.0
+max_value = 3.0
 
 [node name="MusicLabel" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
 layout_mode = 2
@@ -269,6 +283,7 @@ text = "50"
 
 [node name="musicSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
 layout_mode = 2
+max_value = 5.0
 
 [node name="Controls" type="Control" parent="panelHolder/panel/optionsPanel"]
 visible = false

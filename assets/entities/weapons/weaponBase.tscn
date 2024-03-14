@@ -30,8 +30,6 @@ script = ExtResource("1_37cvt")
 collisionEnabled = false
 canBeUsed = true
 
-[node name="Mesh" type="Node3D" parent="."]
-
 [node name="collisionObject" type="CollisionShape3D" parent="."]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]

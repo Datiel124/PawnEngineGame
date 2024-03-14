@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://f30cnkk8nnpb"]
+
+[ext_resource type="Script" path="res://assets/resources/customResources/weaponData/weaponData.gd" id="1_1ufyd"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_1ufyd")
+headDismember = true
+weaponDamage = 65.0
+weaponFireRate = 0.8
+weaponImpulse = 85.0
+weaponShots = 1
+useCustomCrosshairSize = false
+crosshairSizeOverride = Vector2(0.8, 0.8)
+weaponRecoil = Vector3(45, 45, 9)
+weaponRecoilStrength = 6.0
+weaponSpread = 0.9
+weaponRecoilStrengthAim = 7.0
+weaponSpreadAim = 0.25
+leftHandParent = false
+rightHandParent = true
+useWeaponSprintAnim = false
+useLeftHandIdle = false
+useRightHandIdle = true
+useLeftHandAiming = false
+useRightHandAiming = true
+useLeftHandFreeAiming = false
+useRightHandFreeAiming = true
+weaponPositionOffset = Vector3(-0.005, -0.285, 0.075)
+weaponRotationOffset = Vector3(3.125, -1.58, 0.125)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://wtqya32cwdbk"]
 
 [ext_resource type="PackedScene" uid="uid://cpd5r8bmx2885" path="res://assets/entities/weapons/weaponBase.tscn" id="1_xjnb0"]
-[ext_resource type="Texture2D" uid="uid://b65pakuckbcq6" path="res://assets/textures/crosshair/crosshair102.png" id="2_cqrt7"]
+[ext_resource type="Resource" uid="uid://wy0gfijhuuwl" path="res://assets/resources/customResources/weaponData/Beretta/Beretta.tres" id="2_hgmhe"]
 [ext_resource type="AudioStream" uid="uid://cix7ik2at3jmq" path="res://assets/sounds/weapons/baretta/berettafire1.wav" id="2_silaf"]
 [ext_resource type="PackedScene" uid="uid://bq8bs21h3itgd" path="res://assets/models/effects/shoot_flare.tscn" id="3_n7a4b"]
 [ext_resource type="AudioStream" uid="uid://dadd3eqi4bvcm" path="res://assets/sounds/weapons/baretta/berettafire2.wav" id="3_pino1"]
@@ -363,14 +363,14 @@ shadow_mesh = SubResource("ArrayMesh_2tx41")
 offsets = PackedFloat32Array(0, 0.0365854, 1)
 colors = PackedColorArray(8.02745, 0.541176, 0, 1, 0.196078, 0.196078, 0.196078, 0.0705882, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2dja8"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fos11"]
 gradient = SubResource("Gradient_nm2at")
 
 [sub_resource type="Curve" id="Curve_do0mi"]
 _data = [Vector2(0, 1), 0.0, 0.397784, 0, 0, Vector2(0.0194986, 0.305263), -18.8947, 2.26737, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_j0p7u"]
+[sub_resource type="CurveTexture" id="CurveTexture_vv2cx"]
 curve = SubResource("Curve_do0mi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_148bh"]
@@ -386,13 +386,13 @@ gravity = Vector3(0, 5, 0)
 damping_min = 8.824
 damping_max = 41.596
 scale_min = 0.5
-scale_curve = SubResource("CurveTexture_j0p7u")
+scale_curve = SubResource("CurveTexture_vv2cx")
 color = Color(1.2, 1.2, 1.2, 1)
-color_ramp = SubResource("GradientTexture1D_2dja8")
+color_ramp = SubResource("GradientTexture1D_fos11")
 hue_variation_min = -0.02
 hue_variation_max = 0.08
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y85su"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmrf4"]
 transparency = 1
 diffuse_mode = 2
 specular_mode = 2
@@ -405,7 +405,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_lygr7"]
-material = SubResource("StandardMaterial3D_y85su")
+material = SubResource("StandardMaterial3D_dmrf4")
 
 [sub_resource type="GDScript" id="GDScript_yp8uy"]
 script/source = "static func execute(node : Node) -> void:
@@ -453,21 +453,10 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_pqwnp"]
 size = Vector3(0.286377, 0.192932, 0.0449829)
 
-[node name="Beretta" node_paths=PackedStringArray("muzzlePoint") instance=ExtResource("1_xjnb0")]
-muzzlePoint = NodePath("Mesh/Beretta/Marker3D")
-weaponDamage = 6.0
-weaponFireRate = 0.2
-weaponImpulse = 15.0
-forcedCrosshair = ExtResource("2_cqrt7")
-weaponRecoil = Vector3(4.375, 3, 8.22)
-weaponRecoilStrength = 13.0
-weaponSpread = 0.07
-weaponRecoilStrengthAim = 6.0
-weaponSpreadAim = 0.015
-useLeftHandIdle = false
-useLeftHandFreeAiming = false
-weaponPositionOffset = Vector3(-0.005, -0.155, 0.075)
-weaponRotationOffset = Vector3(-3.04, 1.735, 1.595)
+[node name="Beretta" node_paths=PackedStringArray("weaponMesh", "muzzlePoint") instance=ExtResource("1_xjnb0")]
+weaponMesh = NodePath("Mesh")
+weaponResource = ExtResource("2_hgmhe")
+muzzlePoint = NodePath("Mesh/Marker3D")
 objectName = "Beretta"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="0"]
@@ -477,30 +466,27 @@ max_polyphony = 5
 bus = &"Sounds"
 attenuation_filter_db = 0.0
 
-[node name="Mesh" parent="." index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-
-[node name="Beretta" type="Node3D" parent="Mesh" index="0"]
-
-[node name="RootNode" type="Node3D" parent="Mesh/Beretta" index="0"]
-
-[node name="Magazine" type="MeshInstance3D" parent="Mesh/Beretta/RootNode" index="0"]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -0.00545822, -0.0046823, 0.000359387)
+[node name="Mesh" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-100, 8.74228e-06, 1.04216e-12, 0, -1.19209e-05, 100, 8.74228e-06, 100, 1.19209e-05, 0.00545822, -0.0046823, -0.000359387)
 mesh = SubResource("ArrayMesh_yewft")
 skeleton = NodePath("")
 
-[node name="Marker3D" type="Marker3D" parent="Mesh/Beretta" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.182451, 0.029511, 1.59504e-08)
+[node name="Marker3D" type="Marker3D" parent="Mesh" index="0"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.00187909, 3.59367e-06, 0.000341933)
 
-[node name="ShootFlare" parent="Mesh/Beretta/Marker3D" index="0" instance=ExtResource("3_n7a4b")]
+[node name="ShootFlare" parent="Mesh/Marker3D" index="0" instance=ExtResource("3_n7a4b")]
 transform = Transform3D(-2.25452e-08, -0.391342, -3.55271e-15, 0.515775, -1.71061e-08, 0, -2.11758e-22, 0, 0.515775, 0.369775, -0.00206521, 3.23268e-08)
 visible = false
+skeleton = NodePath("../../../FX")
+randomRotX = true
 
-[node name="ShootFlare2" parent="Mesh/Beretta/Marker3D" index="1" instance=ExtResource("3_n7a4b")]
+[node name="ShootFlare2" parent="Mesh/Marker3D" index="1" instance=ExtResource("3_n7a4b")]
 transform = Transform3D(-6.49417e-09, -0.787911, -8.88178e-16, 0.148569, -3.44405e-08, 0, 0, -7.10543e-15, 0.148569, 0.714841, -0.00206521, 6.24935e-08)
 visible = false
+skeleton = NodePath("../../../FX")
+randomRotX = true
 
-[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/Beretta/Marker3D" index="2"]
+[node name="ShootSmoke" type="GPUParticles3D" parent="Mesh/Marker3D" index="2"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00457357, -0.0126326, -3.99858e-10)
 emitting = false
 amount = 4
@@ -510,19 +496,20 @@ explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_148bh")
 draw_pass_1 = SubResource("QuadMesh_lygr7")
 
-[node name="duplicatorComponent" parent="Mesh/Beretta/Marker3D/ShootSmoke" index="0" node_paths=PackedStringArray("parent") instance=ExtResource("5_b560w")]
-parent = NodePath("../../../../../FX")
+[node name="duplicatorComponent" parent="Mesh/Marker3D/ShootSmoke" index="0" node_paths=PackedStringArray("parent") instance=ExtResource("5_b560w")]
+parent = NodePath("../../../../FX")
+useWorldMiscAsParent = true
 dup_lifetime = 2.0
 advanced_behavior_script = SubResource("GDScript_yp8uy")
 use_pooling = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Beretta/Marker3D" index="3"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/Marker3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0239981, 0, 2.09798e-09)
 light_color = Color(1, 0.768627, 0.215686, 1)
 light_energy = 0.0
 omni_range = 4.20246
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Beretta/Marker3D/OmniLight3D" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/Marker3D/OmniLight3D" index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_xu2pg")
 }
@@ -545,7 +532,7 @@ libraries = {
 }
 
 [connection signal="shot_fired" from="." to="AudioStreamPlayer3D" method="play"]
-[connection signal="shot_fired" from="." to="Mesh/Beretta/Marker3D/ShootFlare" method="flare"]
-[connection signal="shot_fired" from="." to="Mesh/Beretta/Marker3D/ShootFlare2" method="flare"]
-[connection signal="shot_fired" from="." to="Mesh/Beretta/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node" flags=3]
-[connection signal="shot_fired" from="." to="Mesh/Beretta/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootFlare" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootFlare2" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/ShootSmoke/duplicatorComponent" method="duplicate_node" flags=3]
+[connection signal="shot_fired" from="." to="Mesh/Marker3D/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]

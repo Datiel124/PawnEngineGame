@@ -2,6 +2,7 @@ extends Node3D
 class_name PawnRagdoll
 
 ##Pawn Parts
+@onready var removeTimer = $remove_timer
 @onready var head = $Mesh/Male/MaleSkeleton/Skeleton3D/MaleHead
 @onready var upperChest = $Mesh/Male/MaleSkeleton/Skeleton3D/Male_UpperBody
 @onready var shoulders = $Mesh/Male/MaleSkeleton/Skeleton3D/Male_Shoulders
@@ -36,6 +37,7 @@ var targetSkeleton : Skeleton3D
 @export var canTwitch = true
 @export var healthComponent : HealthComponent
 @export var startOnInstance = true
+@export var removeTime = 10.0
 @export_subgroup("Camera Behavior")
 ##Root Follow Node
 @export var rootCameraNode : Node3D
@@ -53,7 +55,8 @@ signal cameraAttached
 		return attachedCam
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$remove_timer.start()
+	removeTimer.wait_time = removeTime
+	removeTimer.start()
 	for bones in ragdollSkeleton.get_children().filter(func(x): return x is PhysicalBone3D):
 		physicsBones.append(bones)
 	for pb in physicsBones:

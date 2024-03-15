@@ -270,6 +270,7 @@ nodes/weaponStateSpeed/position = Vector2(80, 100)
 node_connections = [&"output", 0, &"weaponStateSpeed", &"weaponStateSpeed", 0, &"weaponState"]
 
 [node name="Revolver" node_paths=PackedStringArray("weaponMesh", "muzzlePoint") instance=ExtResource("1_supac")]
+collision_mask = 43
 weaponMesh = NodePath("Mesh")
 weaponResource = ExtResource("2_pkn4b")
 muzzlePoint = NodePath("Mesh/marker3d")
@@ -278,6 +279,7 @@ objectName = "Revolver"
 [node name="weaponShot" type="AudioStreamPlayer3D" parent="." index="0"]
 stream = SubResource("AudioStreamRandomizer_17jky")
 bus = &"Sounds"
+attenuation_filter_db = 0.0
 
 [node name="Mesh" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(-3.93403e-09, -0.09, 0, 0.09, -3.93403e-09, 0, 0, 0, 0.15, 0, 0, 0)
@@ -351,6 +353,6 @@ libraries = {
 
 [connection signal="shot_fired" from="." to="weaponShot" method="play"]
 [connection signal="shot_fired" from="." to="Mesh/marker3d/ShootFlare2" method="flare"]
-[connection signal="shot_fired" from="." to="Mesh/marker3d/ShootSmoke/duplicatorComponent" method="duplicate_node"]
 [connection signal="shot_fired" from="." to="Mesh/marker3d/ShootFlare3" method="flare"]
+[connection signal="shot_fired" from="." to="Mesh/marker3d/ShootSmoke/duplicatorComponent" method="duplicate_node"]
 [connection signal="shot_fired" from="." to="Mesh/marker3d/OmniLight3D/AnimationPlayer" method="play" binds= ["light_flash"]]

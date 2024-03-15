@@ -445,7 +445,7 @@ func die():
 	var ragdoll = await createRagdoll(lastHitPart)
 	await get_tree().process_frame
 	removeComponents()
-	unequipWeapon()
+	dropWeapon()
 	if currentItem:
 		currentItem.weaponOwner = null
 	currentItemIndex = 0
@@ -716,7 +716,17 @@ func _on_footsteps_finished():
 	footstepSounds.stop()
 
 func dropWeapon():
-	unequipWeapon()
+	if !isPawnDead:
+		animationTree.set("parameters/weaponBlend/blend_amount", 0)
+	if currentItem:
+		currentItem.resetToDefault()
+		currentItem.collisionEnabled = true
+		currentItem.weaponAnimSet = false
+		currentItem.isEquipped = false
+		currentItem.show()
+		currentItem.setInteractable()
+		currentItem = null
+		return true
 
 func setFirstperson():
 	isFirstperson = true

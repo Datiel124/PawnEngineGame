@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://assets/resources/customResources/weaponData/weaponData.gd" id="1_1ufyd"]
 
 [resource]
-resource_local_to_scene = true
 script = ExtResource("1_1ufyd")
 headDismember = true
 weaponDamage = 65.0

@@ -44,10 +44,9 @@ func _physics_process(delta):
 					remove_from_group("Interactable")
 				canBeUsed = false
 				collisionEnabled = false
-				set("gravity_scale", 0)
 				#Weapon Orientation
-				weaponMesh.position = lerp(weaponMesh.position, weaponResource.weaponPositionOffset, 24 * delta)
-				weaponMesh.rotation = lerp(weaponMesh.rotation, weaponResource.weaponRotationOffset, 24 * delta)
+				weaponMesh.position = weaponResource.weaponPositionOffset
+				weaponMesh.rotation = weaponResource.weaponRotationOffset
 
 				if weaponOwner.attachedCam:
 					weaponOwner.attachedCam.camRecoil = weaponResource.weaponRecoil
@@ -248,6 +247,9 @@ func getRayColPoint(raycaster : RayCast3D = null):
 		return hitPoint
 
 func resetToDefault():
+	if weaponMesh:
+		weaponMesh.position = position
+		weaponMesh.rotation = rotation
 	weaponAnimSet = false
 	weaponOwner = null
 	isFiring = false
@@ -266,3 +268,11 @@ func equipToPawn(pawn:BasePawn):
 			globalGameManager.notifyFade("%s Added to inventory." %objectName)
 			pawn.equipSound.play()
 			pawn.attachedCam.fireRecoil(0,0.7,0.4)
+
+func setInteractable():
+		reparent(globalGameManager.world.worldProps)
+		set("gravity_scale", 1)
+		add_to_group("Interactable")
+		interactType = 0
+		canBeUsed = true
+		freeze = false

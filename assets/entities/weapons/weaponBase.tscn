@@ -26,6 +26,9 @@ _data = {
 }
 
 [node name="weaponBase" type="RigidBody3D" groups=["Interactable"]]
+collision_layer = 32
+collision_mask = 41
+mass = 0.3
 script = ExtResource("1_37cvt")
 collisionEnabled = false
 canBeUsed = true

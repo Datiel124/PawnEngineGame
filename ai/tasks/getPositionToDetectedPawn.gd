@@ -9,10 +9,11 @@ func _generate_name():
 
 func _tick(delta : float):
 	if !blackboard.get_var("navAgent") == null:
-		moveToMarker = blackboard.get_var("moveToObject")
-		moveToMarker.global_position = getNavPoint()
-		setTargetLocation()
-		return SUCCESS
+		if moveToMarker != null:
+			moveToMarker = blackboard.get_var("moveToObject")
+			moveToMarker.global_position = getNavPoint()
+			setTargetLocation()
+			return SUCCESS
 
 func setTargetLocation():
 		if blackboard.get_var("navAgent") != null:

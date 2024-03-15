@@ -712,6 +712,7 @@ _data = {
 }
 
 [node name="Honeybadger" node_paths=PackedStringArray("weaponMesh", "muzzlePoint") instance=ExtResource("1_821xr")]
+collision_mask = 0
 weaponMesh = NodePath("Cube_005")
 weaponResource = ExtResource("2_ytmxg")
 muzzlePoint = NodePath("Cube_005/Marker3D")

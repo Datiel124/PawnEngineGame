@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://wncyofb1f8i7"]
+[gd_scene load_steps=19 format=3 uid="uid://wncyofb1f8i7"]
 
 [ext_resource type="Theme" uid="uid://cmd714lbb53ja" path="res://assets/resources/themes/ui_theme.tres" id="1_j35o7"]
+[ext_resource type="PackedScene" uid="uid://d3jnnvf434h3o" path="res://moretest.tscn" id="2_pjfev"]
 [ext_resource type="FontFile" uid="uid://b3s7umd01feyu" path="res://assets/fonts/Carthage Pro Regular.ttf" id="2_rm30o"]
 [ext_resource type="AudioStream" uid="uid://doah0b50uqi2n" path="res://assets/sounds/ui/uiSoft.wav" id="2_w3nni"]
 
@@ -85,6 +86,12 @@ func checkChangesExist() -> bool:
 
 func _on_options_panel_tab_clicked(tab):
 	$uiclick.play()
+	var tab_idx : int = $panelHolder/panel/optionsPanel.current_tab
+	const colors = [Color(0.25098, 0.45098, 1, 1), Color.RED, Color.GREEN, Color.WHITE]
+	var positions = [Vector3.BACK * 10, Vector3.RIGHT * 10, Vector3.FORWARD * 10, Vector3.LEFT * 10]
+	$panelHolder/panel/textureRect/panel/subViewport/Node3D.fog_color = colors[tab_idx]
+	$panelHolder/panel/textureRect/panel/subViewport/Node3D.camera_tgt_pos = positions[tab_idx]
+
 
 
 func _on_visibility_changed():
@@ -94,6 +101,20 @@ func applyAudio():
 	AudioServer.set_bus_volume_db(0,UserConfig.audio_MasterVolume)
 	AudioServer.set_bus_volume_db(3,UserConfig.audio_MusicVolume)
 "
+
+[sub_resource type="Gradient" id="Gradient_txbf0"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.266393, 0.631148, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0460969, 0.0460969, 0.0460969, 0.953903, 0.211143, 0.211143, 0.211143, 0.788857, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fiegc"]
+gradient = SubResource("Gradient_txbf0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="World3D" id="World3D_mqy3m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sfs43"]
 
@@ -112,7 +133,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_v2vor"]
 events = [SubResource("InputEventKey_60klc")]
 
-[sub_resource type="Image" id="Image_3kf7p"]
+[sub_resource type="Image" id="Image_3ursy"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -122,7 +143,7 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_lrq7s"]
-image = SubResource("Image_3kf7p")
+image = SubResource("Image_3ursy")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1t3p6"]
 random_pitch = 1.2
@@ -159,6 +180,36 @@ theme = ExtResource("1_j35o7")
 
 [node name="panel" type="Panel" parent="panelHolder"]
 layout_mode = 2
+
+[node name="textureRect" type="TextureRect" parent="panelHolder/panel"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_fiegc")
+
+[node name="panel" type="SubViewportContainer" parent="panelHolder/panel/textureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="subViewport" type="SubViewport" parent="panelHolder/panel/textureRect/panel"]
+own_world_3d = true
+world_3d = SubResource("World3D_mqy3m")
+handle_input_locally = false
+size = Vector2i(960, 480)
+render_target_update_mode = 4
+
+[node name="Node3D" parent="panelHolder/panel/textureRect/panel/subViewport" instance=ExtResource("2_pjfev")]
 
 [node name="optionsPanel" type="TabContainer" parent="panelHolder/panel"]
 layout_mode = 1

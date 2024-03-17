@@ -448,6 +448,8 @@ func die():
 		Dialogic.end_timeline()
 	var ragdoll = await createRagdoll(lastHitPart)
 	await get_tree().process_frame
+	pawnDied.emit(ragdoll)
+	killedPawn.emit()
 	removeComponents()
 	dropWeapon()
 	if currentItem:
@@ -491,7 +493,6 @@ func createRagdoll(impulse_bone : int = 0):
 					ragdoll.startRagdoll()
 					child.apply_impulse(hitImpulse, hitVector)
 
-
 		emit_signal("pawnDied",ragdoll)
 		await moveClothesToRagdoll(ragdoll)
 		ragdoll.checkClothingHider()
@@ -514,6 +515,7 @@ func createRagdoll(impulse_bone : int = 0):
 				ragdoll.activeRagdollEnabled = false
 			forceAnimation = true
 			animationToForce = "PawnAnim/WritheRightKneeBack"
+
 		return ragdoll
 
 

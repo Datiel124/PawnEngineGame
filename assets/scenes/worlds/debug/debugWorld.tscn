@@ -362,6 +362,7 @@ useLeftHandFreeAiming = false
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(0, -0.09, 0.05)
 weaponRotationOffset = Vector3(1.555, 0, 0)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="Resource" id="Resource_vtoy2"]
 resource_local_to_scene = true
@@ -390,6 +391,7 @@ useLeftHandFreeAiming = true
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(-0.015, -0.335, 0.12)
 weaponRotationOffset = Vector3(-0.015, 0, -0.05)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="Resource" id="Resource_rgmoi"]
 resource_local_to_scene = true
@@ -417,6 +419,7 @@ useLeftHandFreeAiming = false
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(0, -0.15, 0.075)
 weaponRotationOffset = Vector3(0, 0, -1.65)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_45vl1"]
 resource_name = "MALE"
@@ -676,6 +679,7 @@ useLeftHandFreeAiming = false
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(0, -0.09, 0.05)
 weaponRotationOffset = Vector3(1.555, 0, 0)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="Resource" id="Resource_behhy"]
 resource_local_to_scene = true
@@ -703,6 +707,7 @@ useLeftHandFreeAiming = false
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(0, -0.15, 0.075)
 weaponRotationOffset = Vector3(0, 0, -1.65)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m4x2a"]
 animation = &"PawnAnim/Run3"
@@ -863,6 +868,7 @@ useLeftHandFreeAiming = true
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(-0.015, -0.335, 0.12)
 weaponRotationOffset = Vector3(-0.015, 0, -0.05)
+bulletColor = Color(255, 255, 0, 255)
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_q5pkm"]
 var/pawnType/name = "pawnType"

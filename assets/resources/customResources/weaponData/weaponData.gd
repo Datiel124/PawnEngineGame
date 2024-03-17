@@ -45,3 +45,5 @@ var useRightHand = true
 @export_subgroup("Weapon Orientation")
 @export var weaponPositionOffset = Vector3.ZERO
 @export var weaponRotationOffset = Vector3.ZERO
+@export_subgroup("Misc")
+@export var bulletColor : Color = Color(255,255,0,255)

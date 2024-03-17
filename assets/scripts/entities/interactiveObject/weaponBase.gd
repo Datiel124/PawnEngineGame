@@ -159,6 +159,7 @@ func fire():
 
 func createMuzzle():
 	var bulletTrail = defaultBulletTrail.instantiate()
+	bulletTrail.material_override.emission = weaponResource.bulletColor
 	#var btInstance = bulletTrail.instantiate()
 	if !muzzlePoint == null:
 		if checkShooter():
@@ -284,3 +285,4 @@ func setInteractable():
 		interactType = 0
 		canBeUsed = true
 		freeze = false
+

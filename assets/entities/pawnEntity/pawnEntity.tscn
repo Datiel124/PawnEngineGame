@@ -1394,7 +1394,7 @@ playback_default_blend_time = 0.5
 [node name="BoneAttatchments" type="Node" parent="."]
 
 [node name="UpperChest" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.993154, 0.11419, 0.0241799, 0.105733, 0.967884, -0.228038, -0.0494439, -0.223923, -0.973342, 0.0195198, 1.20636, 0.142563)
+transform = Transform3D(0.993154, -0.11419, -0.0241805, 0.105734, 0.967884, -0.228038, 0.0494445, 0.223923, 0.973342, -0.0195198, 1.20636, -0.142563)
 bone_name = "Spine_2"
 bone_idx = 2
 use_external_skeleton = true
@@ -1412,7 +1412,7 @@ transform = Transform3D(1, 0.000917837, -0.000180729, -0.000919151, 0.999976, -0
 shape = SubResource("BoxShape3D_w6p0i")
 
 [node name="LeftThigh" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.864243, -0.359008, -0.352396, 0.499628, -0.530722, -0.684608, 0.0587597, -0.767717, 0.638061, -0.0769112, 0.882284, 0.0787217)
+transform = Transform3D(0.864245, 0.359008, 0.352396, 0.499629, -0.530722, -0.684608, -0.0587597, 0.767717, -0.638061, 0.0769112, 0.882285, -0.0787217)
 bone_name = "L_UpperLeg"
 bone_idx = 43
 use_external_skeleton = true
@@ -1430,7 +1430,7 @@ transform = Transform3D(1, -0.0001721, -0.000722682, 0.000163683, 0.999931, -0.0
 shape = SubResource("BoxShape3D_muxfy")
 
 [node name="LeftFoot" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.966865, 0.0281388, -0.253666, -0.000211364, -0.993801, -0.11103, -0.255246, 0.107431, -0.960839, -0.368826, 0.359265, -0.0182925)
+transform = Transform3D(-0.966863, -0.0281409, 0.253667, -0.000212684, -0.993801, -0.111032, 0.255245, -0.107432, 0.960838, 0.368826, 0.359266, 0.0182924)
 bone_name = "L_Foot"
 bone_idx = 45
 use_external_skeleton = true
@@ -1448,7 +1448,7 @@ transform = Transform3D(0.996118, -0.0495916, -0.0727553, -0.0264164, 0.619915, 
 shape = SubResource("BoxShape3D_4f318")
 
 [node name="LeftKnee" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.888774, -0.364202, 0.278208, 0.455827, -0.765558, 0.454001, 0.0476413, 0.530348, 0.846416, -0.222155, 0.66757, -0.231874)
+transform = Transform3D(0.888777, 0.364202, -0.278208, 0.455829, -0.765558, 0.454001, -0.0476413, -0.530348, -0.846415, 0.222155, 0.66757, 0.231874)
 bone_name = "L_LowerLeg"
 bone_idx = 44
 use_external_skeleton = true
@@ -1466,7 +1466,7 @@ transform = Transform3D(0.99998, 0.00553635, -0.00307082, -0.00557011, 0.999923,
 shape = SubResource("BoxShape3D_wvs88")
 
 [node name="RightThigh" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.909237, 0.396241, -0.127532, -0.273026, -0.79894, -0.535841, -0.314221, -0.452391, 0.834615, 0.0206906, 0.865031, 0.0965932)
+transform = Transform3D(0.909234, -0.396241, 0.127533, -0.273024, -0.79894, -0.535841, 0.314221, 0.452391, -0.834615, -0.0206906, 0.865031, -0.0965932)
 bone_name = "R_UpperLeg"
 bone_idx = 47
 use_external_skeleton = true
@@ -1484,7 +1484,7 @@ transform = Transform3D(1, -0.0001721, -0.000722682, 0.000163683, 0.999931, -0.0
 shape = SubResource("BoxShape3D_li7f8")
 
 [node name="RightFoot" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.904845, 0.0175365, 0.425351, -0.0276709, -0.994605, 0.0998769, 0.424822, -0.102143, -0.899474, 0.172394, 0.223925, 0.160666)
+transform = Transform3D(-0.904839, -0.0175374, -0.425351, -0.0276724, -0.994609, 0.0998777, -0.42482, 0.102144, 0.899474, -0.172394, 0.223925, -0.160666)
 bone_name = "R_Foot"
 bone_idx = 49
 use_external_skeleton = true
@@ -1502,7 +1502,7 @@ transform = Transform3D(0.998476, 0.0490302, 0.0254299, -0.023974, 0.799504, -0.
 shape = SubResource("BoxShape3D_86emg")
 
 [node name="RightKnee" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.922555, -0.0213644, -0.385218, -0.22091, -0.789332, 0.572821, -0.316308, 0.613572, 0.723496, 0.180998, 0.541803, -0.0864307)
+transform = Transform3D(0.922552, 0.0213651, 0.385218, -0.220908, -0.789332, 0.572821, 0.316307, -0.613572, -0.723496, -0.180998, 0.541804, 0.0864305)
 bone_name = "R_LowerLeg"
 bone_idx = 48
 use_external_skeleton = true
@@ -1520,7 +1520,7 @@ transform = Transform3D(0.99998, 0.00553635, -0.00307082, -0.00557011, 0.999923,
 shape = SubResource("BoxShape3D_betfr")
 
 [node name="Stomach" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.978486, 0.171696, 0.114296, 0.172923, 0.984915, 0.000818014, -0.112433, 0.020565, -0.993427, -0.0158656, 1.00338, 0.138325)
+transform = Transform3D(0.978487, -0.171696, -0.114296, 0.172923, 0.984915, 0.000817835, 0.112434, -0.0205649, 0.993426, 0.0158656, 1.00338, -0.138325)
 bone_name = "Spine_1"
 bone_idx = 1
 use_external_skeleton = true
@@ -1539,7 +1539,7 @@ transform = Transform3D(0.999999, 0.00165, 0.000776134, -0.00164237, 0.999954, -
 shape = SubResource("BoxShape3D_q4n8k")
 
 [node name="Hips" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.969094, 0.0970498, 0.226755, 0.171314, 0.926243, 0.335734, -0.177447, 0.364208, -0.914252, -0.0294322, 0.8739, 0.0874124)
+transform = Transform3D(0.969094, -0.0970496, -0.226756, 0.171314, 0.926243, 0.335735, 0.177448, -0.364209, 0.914252, 0.0294322, 0.8739, -0.0874124)
 bone_name = "Spine_0"
 bone_idx = 0
 use_external_skeleton = true
@@ -1557,7 +1557,7 @@ transform = Transform3D(0.99987, -0.0159997, 0.00229539, 0.0160897, 0.971644, -0
 shape = SubResource("BoxShape3D_mt6l4")
 
 [node name="Neck" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(-0.993328, 0.112172, 0.0263906, 0.108876, 0.988591, -0.103991, -0.0377552, -0.100425, -0.994218, 0.0496545, 1.46179, 0.0834701)
+transform = Transform3D(0.993328, -0.112172, -0.0263912, 0.108876, 0.988591, -0.103991, 0.0377559, 0.100425, 0.994218, -0.0496545, 1.46179, -0.0834701)
 bone_name = "Neck"
 bone_idx = 41
 use_external_skeleton = true
@@ -1576,7 +1576,7 @@ transform = Transform3D(0.996059, -0.00524351, -0.0885375, 0.00235683, 0.999463,
 shape = SubResource("SphereShape3D_srvle")
 
 [node name="leftHand" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.65413, 0.0877193, -0.751262, 0.408371, -0.876986, 0.253168, -0.636647, -0.472394, -0.609484, -0.232199, 1.03999, 0.1039)
+transform = Transform3D(-0.654131, -0.0877189, 0.751262, 0.408371, -0.876977, 0.253168, 0.636645, 0.472391, 0.609482, 0.232199, 1.04, -0.1039)
 bone_name = "L_Hand"
 bone_idx = 6
 use_external_skeleton = true
@@ -1592,7 +1592,7 @@ transform = Transform3D(0.999645, -0.0179707, 0.0196984, 0.0176868, 0.999739, 0.
 shape = SubResource("BoxShape3D_v17pk")
 
 [node name="rightHand" type="BoneAttachment3D" parent="BoneAttatchments"]
-transform = Transform3D(0.656295, -0.453657, 0.60286, -0.747302, -0.280757, 0.602243, -0.103939, -0.84576, -0.523283, 0.193484, 1.09055, -0.042484)
+transform = Transform3D(-0.656294, 0.453654, -0.60286, -0.747297, -0.280757, 0.602241, 0.103938, 0.845757, 0.523281, -0.193485, 1.09055, 0.0424832)
 bone_name = "R_Hand"
 bone_idx = 25
 use_external_skeleton = true

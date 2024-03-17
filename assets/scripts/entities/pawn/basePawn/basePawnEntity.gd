@@ -135,6 +135,7 @@ var oldPos : float = 0.0
 @export var isJumping = false
 @export_subgroup("Inventory")
 var lastItem
+var itemNames : Array
 @export var itemInventory : Array
 var currentItem = null
 @export var currentItemIndex = 0:
@@ -525,6 +526,8 @@ func checkItems():
 		items.rotation = Vector3.ZERO
 		if !itemInventory.has(items):
 			itemInventory.append(items)
+		if !itemNames.has(items.objectName):
+			itemNames.append(items.objectName)
 
 func checkClothes():
 	for clothes in clothingHolder.get_children():
@@ -687,11 +690,8 @@ func unequipWeapon():
 		currentItem = null
 		return true
 
-
-
 func _on_free_aim_timer_timeout():
 	freeAim = false
-
 
 func _on_remover_timeout():
 	queue_free()
@@ -756,8 +756,8 @@ func fixRot():
 func playAnimation(animation:String):
 	if !forceAnimation:
 		forceAnimation = true
-
 	animationPlayer.play(animation)
+
 func do_stairs() -> void:
 	#Does staircase stuff
 	#TODO : Integrate this guys Staircase Stuff
@@ -835,10 +835,8 @@ func getClothes():
 		return clothes
 
 func moveItemToWeapons(item:Weapon):
-	if !itemInventory.has(item):
-		item.reparent(itemHolder)
-		item.position = Vector3.ZERO
-		item.rotation = Vector3.ZERO
-		checkItems()
-	else:
-		globalGameManager.notifyFade("You already have %s." %item.objectName, 2 , 1.5)
+	item.reparent(itemHolder)
+	item.position = Vector3.ZERO
+	item.rotation = Vector3.ZERO
+	checkItems()
+

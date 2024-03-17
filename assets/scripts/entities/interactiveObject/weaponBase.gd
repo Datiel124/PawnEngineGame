@@ -26,6 +26,7 @@ signal shot_fired
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+		#resetWeaponMesh()
 		objectUsed.connect(equipToPawn)
 		animationTree.tree_root = animationTree.tree_root.duplicate(true)
 		weaponState = (animationTree.get("parameters/weaponState/playback") as AnimationNodeStateMachinePlayback)
@@ -246,11 +247,14 @@ func getRayColPoint(raycaster : RayCast3D = null):
 	if raycast.is_colliding():
 		return hitPoint
 
-func resetToDefault():
+func resetWeaponMesh():
 	if weaponMesh:
 		weaponMesh.position = position
 		weaponMesh.rotation = rotation
 		collisionObject.rotation = weaponMesh.rotation
+
+func resetToDefault():
+	resetWeaponMesh()
 	weaponAnimSet = false
 	weaponOwner = null
 	isFiring = false
@@ -259,17 +263,20 @@ func resetToDefault():
 	collisionEnabled = false
 
 func equipToPawn(pawn:BasePawn):
-	if !pawn.itemInventory.has(self):
-		collisionEnabled = false
-		collisionObject.disabled = true
-		pawn.moveItemToWeapons(self)
-		if objectUsed.is_connected(equipToPawn):
-			objectUsed.disconnect(equipToPawn)
-		if pawn.attachedCam:
-			globalGameManager.notifyFade("%s Added to inventory." %objectName)
-			pawn.equipSound.play()
-			pawn.attachedCam.fireRecoil(0,0.7,0.4)
-
+	if pawn:
+		if !pawn.itemNames.has(objectName):
+			collisionEnabled = false
+			collisionObject.disabled = true
+			pawn.moveItemToWeapons(self)
+			if objectUsed.is_connected(equipToPawn):
+				objectUsed.disconnect(equipToPawn)
+			if pawn.attachedCam:
+				globalGameManager.notifyFade("%s Added to inventory." %objectName)
+				pawn.equipSound.play()
+				pawn.attachedCam.fireRecoil(0,0.7,0.4)
+		else:
+			if pawn.attachedCam:
+				globalGameManager.notifyFade("You already have a %s" %objectName)
 func setInteractable():
 		reparent(globalGameManager.world.worldProps)
 		set("gravity_scale", 1)

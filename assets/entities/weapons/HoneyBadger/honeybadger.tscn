@@ -701,7 +701,7 @@ stream_0/stream = ExtResource("2_r5eso")
 stream_0/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojrgr"]
-size = Vector3(0.0790253, 1.23285, 0.359252)
+size = Vector3(0.0790253, 0.35167, 1.01437)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kytnd"]
 _data = {
@@ -714,7 +714,15 @@ _data = {
 weaponMesh = NodePath("Cube_005")
 weaponResource = ExtResource("2_ytmxg")
 muzzlePoint = NodePath("Cube_005/Marker3D")
+isEquipped = false
+isFiring = false
+isAiming = false
+isBusy = false
+isWeaponBlocked = false
 objectName = "Honeybadger"
+customInteractText = ""
+useCustomInteractText = false
+interactType = 0
 
 [node name="Cube_005" type="MeshInstance3D" parent="." index="0"]
 transform = Transform3D(400, 0, 0, 0, -1.74846e-05, 400, 0, -400, -1.74846e-05, 0, 0, 0)

@@ -4,7 +4,7 @@
 resource_name = "aw"
 script/source = "extends Node3D
 
-
+var spikeAmount = 50
 @onready var pivot : Node3D = $node3d
 @onready var cam : Camera3D = $node3d/camera3d
 var camera_tgt_pos : Vector3 = Vector3.ZERO
@@ -14,8 +14,8 @@ var fog_color : Color = Color(0.25098, 0.45098, 1, 1)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var meshes = $meshInstance3d
-	for x in 50:
-		for y in 50:
+	for x in spikeAmount:
+		for y in spikeAmount:
 			var new_mesh = meshes.duplicate()
 			add_child(new_mesh)
 			var y_start = randf_range(-40, -20)
@@ -75,7 +75,6 @@ fog_height_density = 0.003
 script = SubResource("GDScript_ptkvl")
 
 [node name="meshInstance3d" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CylinderMesh_2wmva")
 script = SubResource("GDScript_g5cnf")
 

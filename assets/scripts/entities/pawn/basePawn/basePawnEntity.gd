@@ -56,6 +56,7 @@ signal hitboxAssigned(hitbox)
 @onready var itemHolder = $BoneAttatchments/rightHand/Weapons
 @onready var animationPlayer = $AnimationPlayer
 ##Internal Variables
+var step_climb_count : int = 0
 var direction = Vector3.ZERO
 var meshRotation : float = 0.0
 ##Component Setup
@@ -394,6 +395,7 @@ func _physics_process(delta):
 						animationTree.set("parameters/runBlend/blend_amount", lerpf(animationTree.get("parameters/runBlend/blend_amount"), 0.0, delta * velocityComponent.getAcceleration()))
 						animationTree.set("parameters/idleSpace/blend_position", lerp(animationTree.get("parameters/idleSpace/blend_position"), 0.0, delta * velocityComponent.getAcceleration()))
 			#Move the pawn accordingly
+			do_stairs()
 			move_and_slide()
 
 
@@ -760,18 +762,17 @@ func playAnimation(animation:String):
 
 func do_stairs() -> void:
 	#Does staircase stuff
-	#TODO : Integrate this guys Staircase Stuff
-	if !floorcheck.is_colliding() or Vector3(velocity.x, 0, velocity.z).length() <= 1.0 or direction.length() <= 0.1:
+	if !is_on_floor() or Vector3(velocity.x, 0, velocity.z).length() <= 0.1 or direction.length() <= 0.1:
 		return
 	#Check multiple directions
-	var flat_vel = Vector3(velocity.x, 0.0, velocity.z).normalized()
+	var flat_vel = direction.normalized()
 	var check_directions : Array[Vector3] = [
 		flat_vel,
 		flat_vel.rotated(Vector3.UP, PI/3),
 		flat_vel.rotated(Vector3.UP, -PI/3),
 		]
-	for direction in check_directions:
-		var step_ray_dir := direction * step_check_distance
+	for _direction in check_directions:
+		var step_ray_dir := _direction * step_check_distance
 		if step_ray_dir.dot(Vector3(velocity.x, 0, velocity.z).normalized()) < 0.5:
 			continue
 		var direct_state = get_world_3d().direct_space_state
@@ -782,21 +783,21 @@ func do_stairs() -> void:
 		#First check : Is a flat wall found?
 		var first_collision = direct_state.intersect_ray(obs_ray_info)
 		if !first_collision.is_empty():
-			if not first_collision["collider"] is StaticBody3D:
+			if not first_collision["collider"] is StaticBody3D and not first_collision["collider"] is CSGShape3D:
 				continue
 			#TODO : Instead of using a while loop, figure out a better way
 			#to get the wall above a slope.
+		if first_collision["normal"].angle_to(Vector3.UP) < 1.39626:
+			var remain_length = step_check_distance - first_collision["position"].distance_to(obs_ray_info.from)
+			obs_ray_info.from = first_collision["position"]
+			obs_ray_info.to = obs_ray_info.from + (remain_length * step_ray_dir.slide(first_collision["normal"]))
+			obs_ray_info.to.y += 0.05
+			first_collision = direct_state.intersect_ray(obs_ray_info)
+			if first_collision.is_empty():
+				return
 			if first_collision["normal"].angle_to(Vector3.UP) < 1.39626:
-				var remain_length = step_check_distance - first_collision["position"].distance_to(obs_ray_info.from)
-				obs_ray_info.from = first_collision["position"]
-				obs_ray_info.to = obs_ray_info.from + (remain_length * step_ray_dir.slide(first_collision["normal"]))
-				obs_ray_info.to.y += 0.05
-				first_collision = direct_state.intersect_ray(obs_ray_info)
-				if first_collision.is_empty():
-					return
-				if first_collision["normal"].angle_to(Vector3.UP) < 1.39626:
-					return
-#			print("Ready to climb up step.")
+				return
+			print("Ready to climb up step.")
 			#From that first collision point, we now check if 'min_stair_depth' is met
 			#at the the 'max_step_height'
 			var depth_check : PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.new()
@@ -815,12 +816,14 @@ func do_stairs() -> void:
 			top_check.to = top_check.from - Vector3(0, step_height_max, 0)
 			var stair_top_collision = direct_state.intersect_ray(top_check)
 			if !stair_top_collision.is_empty():
-					#move player up above step
-					position.y += stair_top_collision.position.y - global_position.y
-					#move player forward onto step
-					position += (step_ray_dir * 0.1)
-					return
-#			print("Couldn't climb up the step.")
+				#move player up above step
+				var pre_position = global_position
+				position.y += stair_top_collision.position.y - global_position.y
+				#move player forward onto step
+				position += (step_ray_dir * (step_check_distance * 0.5))
+				interpolate_visual_position(pre_position - global_position)
+				return
+			print("Couldn't climb up the step.")
 
 func getInteractionObject():
 	if interactRaycast.is_colliding():
@@ -840,3 +843,16 @@ func moveItemToWeapons(item:Weapon):
 	item.rotation = Vector3.ZERO
 	checkItems()
 
+func interpolate_visual_position(offset : Vector3) -> void:
+	var new_step = step_climb_count + 1
+	step_climb_count = new_step
+	var camera_destination : Vector3 = Vector3.UP * 1.466
+	while !offset.is_equal_approx(Vector3.ZERO) and step_climb_count == new_step:
+		offset = offset.move_toward(Vector3.ZERO, get_process_delta_time() * 4)
+		if attachedCam:
+			attachedCam.camPivot.position = camera_destination + offset
+		pawnMesh.position = offset
+		await get_tree().process_frame
+	if attachedCam:
+		attachedCam.camPivot.position = camera_destination
+	pawnMesh.position  = Vector3.ZERO

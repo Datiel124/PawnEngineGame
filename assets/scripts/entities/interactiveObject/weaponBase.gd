@@ -273,7 +273,7 @@ func equipToPawn(pawn:BasePawn):
 			if pawn.attachedCam:
 				globalGameManager.notifyFade("%s Added to inventory." %objectName)
 				pawn.equipSound.play()
-				pawn.attachedCam.fireRecoil(0,0.7,0.4)
+				pawn.attachedCam.fireRecoil(0,3.7,5.4,true)
 		else:
 			if pawn.attachedCam:
 				globalGameManager.notifyFade("You already have a %s" %objectName)

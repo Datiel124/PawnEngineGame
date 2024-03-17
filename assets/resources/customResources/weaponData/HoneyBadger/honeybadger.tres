@@ -7,7 +7,7 @@
 resource_local_to_scene = true
 script = ExtResource("1_3lyem")
 headDismember = false
-weaponDamage = 7.0
+weaponDamage = 9.0
 weaponFireRate = 0.09
 weaponImpulse = 15.0
 weaponShots = 1

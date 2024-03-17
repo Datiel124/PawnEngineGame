@@ -317,14 +317,17 @@ func getAttachedOwner():
 	else:
 		return false
 
-func fireRecoil(setRecoilX:float = 0.0,setRecoilY:float = 0.0,setRecoilZ:float = 0.0,):
+func fireRecoil(setRecoilX:float = 0.0,setRecoilY:float = 0.0,setRecoilZ:float = 0.0,useSetRecoil:bool = false):
 	if setRecoilX:
 		camRecoil.x += setRecoilX
 	if setRecoilY:
 		camRecoil.y += setRecoilY
 	if setRecoilZ:
 		camRecoil.z += setRecoilZ
-	camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
+	if !useSetRecoil:
+		camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
+	else:
+		camTargetRot = Vector3(setRecoilX, randf_range(-setRecoilY,setRecoilY), randf_range(-setRecoilZ,setRecoilZ) )
 
 func applyWeaponSpread(spread):
 	camCast.rotation += Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)

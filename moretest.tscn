@@ -59,6 +59,16 @@ func _process(delta: float) -> void:
 	floating += delta * 0.2
 	global_position.y = y_start - ((sin(offset + floating) + 1.0) * 5)
 	pass
+
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	set_process(false)
+	pass # Replace with function body.
+
+
+func _on_visible_on_screen_notifier_3d_screen_entered() -> void:
+	set_process(true)
+	pass # Replace with function body.
 "
 
 [sub_resource type="Environment" id="Environment_nqu2j"]
@@ -72,11 +82,16 @@ fog_sky_affect = 0.0
 fog_height_density = 0.003
 
 [node name="Node3D" type="Node3D"]
+process_thread_group = 2
+process_thread_group_order = 1
+process_thread_messages = 0
 script = SubResource("GDScript_ptkvl")
 
 [node name="meshInstance3d" type="MeshInstance3D" parent="."]
 mesh = SubResource("CylinderMesh_2wmva")
 script = SubResource("GDScript_g5cnf")
+
+[node name="visibleOnScreenNotifier3d" type="VisibleOnScreenNotifier3D" parent="meshInstance3d"]
 
 [node name="node3d" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.616953, 0.787, 0, -0.787, 0.616953, 0, 0, 0)
@@ -85,3 +100,6 @@ transform = Transform3D(1, 0, 0, 0, 0.616953, 0.787, 0, -0.787, 0.616953, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 0.910525, 0.413454, 0, -0.413454, 0.910525, 0, 0, 13.2481)
 environment = SubResource("Environment_nqu2j")
 fov = 30.0
+
+[connection signal="screen_entered" from="meshInstance3d/visibleOnScreenNotifier3d" to="meshInstance3d" method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="meshInstance3d/visibleOnScreenNotifier3d" to="meshInstance3d" method="_on_visible_on_screen_notifier_3d_screen_exited"]

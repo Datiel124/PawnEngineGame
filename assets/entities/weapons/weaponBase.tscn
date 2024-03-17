@@ -1,6 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpd5r8bmx2885"]
+[gd_scene load_steps=10 format=3 uid="uid://cpd5r8bmx2885"]
 
 [ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/weaponBase.gd" id="1_37cvt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_psxhm"]
+bounce = 0.35
 
 [sub_resource type="Animation" id="Animation_ef23n"]
 
@@ -27,8 +30,9 @@ _data = {
 
 [node name="weaponBase" type="RigidBody3D" groups=["Interactable"]]
 collision_layer = 32
-collision_mask = 41
+collision_mask = 43
 mass = 0.3
+physics_material_override = SubResource("PhysicsMaterial_psxhm")
 script = ExtResource("1_37cvt")
 collisionEnabled = false
 canBeUsed = true

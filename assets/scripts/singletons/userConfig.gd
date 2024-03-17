@@ -7,13 +7,14 @@ var game_camera_screentilt_always = false
 var game_aim_screentilt = true
 var game_crosshair_tilt = true
 var game_crosshair_dynamic_position = true
+var game_simple_crosshairs = false
 
 #audio configs
 var audio_MasterVolume : float = -15.0
 var audio_GameVolume : float = 1.0
 var audio_MusicVolume : float = 0.6
 var audio_ambience_volume : float = 0.6
-var audio_menu_volume : float = 0.6
+var audio_UiVolume : float = 0.6
 var audio_custom_music_enabled : bool = false
 
 #graphics settings
@@ -84,10 +85,10 @@ func saveConfigs() -> void:
 
 func applyConfigs() -> void:
 	AudioServer.set_bus_volume_db(0, audio_MasterVolume)
+	AudioServer.set_bus_volume_db(1, audio_UiVolume)
 	AudioServer.set_bus_volume_db(2, audio_GameVolume)
 	AudioServer.set_bus_volume_db(3, audio_MusicVolume)
 	AudioServer.set_bus_volume_db(4, audio_ambience_volume)
-	AudioServer.set_bus_volume_db(1, audio_menu_volume)
 	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if graphics_fullscreen else Window.MODE_WINDOWED
 	configs_updated.emit()
 

@@ -250,6 +250,7 @@ func resetToDefault():
 	if weaponMesh:
 		weaponMesh.position = position
 		weaponMesh.rotation = rotation
+		collisionObject.rotation = weaponMesh.rotation
 	weaponAnimSet = false
 	weaponOwner = null
 	isFiring = false

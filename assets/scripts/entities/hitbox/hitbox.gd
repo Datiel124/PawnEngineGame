@@ -25,6 +25,12 @@ func _process(_delta):
 		queue_free()
 
 func hit(dmg, dealer=null, hitImpulse:Vector3 = Vector3.ZERO, hitPoint:Vector3 = Vector3.ZERO):
+	if hitImpulse:
+		var splatterState = get_world_3d().direct_space_state
+		var splatterParams = PhysicsRayQueryParameters3D.new()
+		splatterParams.from = hitPoint
+		splatterParams.to = self.position
+		splatterState.intersect_ray(splatterParams)
 	emit_signal("damaged",dmg,hitImpulse,hitPoint)
 	healthComponent.damage(dmg * hitboxDamageMult, dealer)
 	healthComponent.componentOwner.lastHitPart = boneId

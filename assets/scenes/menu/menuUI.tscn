@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1x2t2na1bc2b"]
+[gd_scene load_steps=8 format=3 uid="uid://b1x2t2na1bc2b"]
 
 [ext_resource type="PackedScene" uid="uid://wncyofb1f8i7" path="res://assets/scenes/ui/options/optionsMenu.tscn" id="4_fyhf6"]
 [ext_resource type="Texture2D" uid="uid://dc3fkfugwvtla" path="res://assets/textures/misc/company-logo (1).png" id="5_bto6s"]
-[ext_resource type="PackedScene" uid="uid://c4y7jykfqahit" path="res://test.tscn" id="5_h1fp7"]
 [ext_resource type="PackedScene" uid="uid://ba0s8u6mtjxns" path="res://assets/scenes/menu/menuButton.tscn" id="5_nxhqu"]
 [ext_resource type="Texture2D" uid="uid://crli285hmp5iv" path="res://assets/textures/misc/one-stick-army.png" id="6_gqa0f"]
 
@@ -159,9 +158,6 @@ text = "Quit
 
 [node name="Options" parent="." instance=ExtResource("4_fyhf6")]
 visible = false
-layout_mode = 1
-
-[node name="colorRect" parent="." instance=ExtResource("5_h1fp7")]
 layout_mode = 1
 
 [connection signal="pressed" from="buttonHolder/playButton" to="." method="_on_play_button_pressed"]

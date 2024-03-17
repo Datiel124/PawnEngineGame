@@ -5,6 +5,7 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_h8ja1")
+headDismember = false
 weaponDamage = 6.0
 weaponFireRate = 0.2
 weaponImpulse = 16.0

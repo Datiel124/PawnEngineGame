@@ -89,7 +89,8 @@ func _unhandled_input(event):
 					if controllingPawn:
 						if !controllingPawn.healthComponent == null:
 							if !controllingPawn.healthComponent.isDead:
-								controllingPawn.currentItemIndex = controllingPawn.currentItemIndex+1
+								if !controllingPawn.currentItemIndex == controllingPawn.itemInventory.size()-1:
+									controllingPawn.currentItemIndex = controllingPawn.currentItemIndex+1
 
 				if event.is_action_pressed("gMwheelDown"):
 					emit_signal("actionPressed", str(event.button_index))

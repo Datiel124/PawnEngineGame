@@ -19,9 +19,13 @@ const setting_remap : Dictionary = {
 	'graphics_Ssr' = ^'panelHolder/panel/optionsPanel/Video/vBoxContainer/ssrToggle:button_pressed',
 	'game_camera_screentilt_always' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/alwaysCamRoll:button_pressed',
 	'game_show_fps' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/showFPSButton:button_pressed',
+	'game_simple_crosshairs' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/simpleCrosshairs:button_pressed',
 	'game_lowHP_ambience' = ^'panelHolder/panel/optionsPanel/Game/vBoxContainer/lowHPAmbience:button_pressed',
 	\"audio_MasterVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/masterVolSlider:value',
-	\"audio_MusicVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/musicSlider:value'
+	\"audio_MusicVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/musicSlider:value',
+	\"audio_UiVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/uiSlider:value',
+	\"audio_GameVolume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/soundsSlider:value',
+	\"audio_ambience_volume\" = ^'panelHolder/panel/optionsPanel/Audio/vBoxContainer/AmbienceSlider:value'
 }
 
 func _ready() -> void:
@@ -99,6 +103,8 @@ func _on_visibility_changed():
 
 func applyAudio():
 	AudioServer.set_bus_volume_db(0,UserConfig.audio_MasterVolume)
+	AudioServer.set_bus_volume_db(1,UserConfig.audio_UiVolume)
+	AudioServer.set_bus_volume_db(2,UserConfig.audio_GameVolume)
 	AudioServer.set_bus_volume_db(3,UserConfig.audio_MusicVolume)
 "
 
@@ -133,7 +139,11 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_v2vor"]
 events = [SubResource("InputEventKey_60klc")]
 
+<<<<<<< Updated upstream
 [sub_resource type="Image" id="Image_yngga"]
+=======
+[sub_resource type="Image" id="Image_2pacb"]
+>>>>>>> Stashed changes
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 96, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 97, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 191, 255, 255, 255, 191, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 97, 255, 255, 255, 96, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -143,7 +153,11 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_lrq7s"]
+<<<<<<< Updated upstream
 image = SubResource("Image_yngga")
+=======
+image = SubResource("Image_2pacb")
+>>>>>>> Stashed changes
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1t3p6"]
 random_pitch = 1.2
@@ -222,8 +236,10 @@ offset_bottom = -63.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_j35o7")
+current_tab = 2
 
 [node name="Game" type="Control" parent="panelHolder/panel/optionsPanel"]
+visible = false
 layout_mode = 2
 
 [node name="vBoxContainer" type="VBoxContainer" parent="panelHolder/panel/optionsPanel/Game"]
@@ -247,6 +263,11 @@ text = "Always Camera \"Roll\""
 [node name="lowHPAmbience" type="CheckButton" parent="panelHolder/panel/optionsPanel/Game/vBoxContainer"]
 layout_mode = 2
 text = "Low HP Ambience"
+
+[node name="simpleCrosshairs" type="CheckButton" parent="panelHolder/panel/optionsPanel/Game/vBoxContainer"]
+layout_mode = 2
+text = "Simple Crosshairs
+"
 
 [node name="Video" type="Control" parent="panelHolder/panel/optionsPanel"]
 visible = false
@@ -281,7 +302,6 @@ layout_mode = 2
 text = "Screen-Space Indirect Lighting"
 
 [node name="Audio" type="Control" parent="panelHolder/panel/optionsPanel"]
-visible = false
 layout_mode = 2
 
 [node name="vBoxContainer" type="VBoxContainer" parent="panelHolder/panel/optionsPanel/Audio"]
@@ -334,7 +354,74 @@ text = "50"
 
 [node name="musicSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
 layout_mode = 2
-max_value = 5.0
+min_value = -50.0
+max_value = 3.0
+
+[node name="Sounds" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 36
+text = "Sounds
+"
+
+[node name="SoundsAmount" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer/Sounds"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 26.0
+offset_right = 942.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 21
+text = "50"
+
+[node name="soundsSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+min_value = -50.0
+max_value = 3.0
+
+[node name="Ui" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 36
+text = "UI
+"
+
+[node name="UIAmount" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer/Ui"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 26.0
+offset_right = 942.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 21
+text = "50"
+
+[node name="uiSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+min_value = -50.0
+max_value = 3.0
+
+[node name="Ambience" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 36
+text = "Ambience
+"
+
+[node name="AmbienceAmount" type="Label" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer/Ambience"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 26.0
+offset_right = 942.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_rm30o")
+theme_override_font_sizes/font_size = 21
+text = "50"
+
+[node name="AmbienceSlider" type="HSlider" parent="panelHolder/panel/optionsPanel/Audio/vBoxContainer"]
+layout_mode = 2
+min_value = -50.0
+max_value = 3.0
 
 [node name="Controls" type="Control" parent="panelHolder/panel/optionsPanel"]
 visible = false

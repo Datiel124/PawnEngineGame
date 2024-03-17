@@ -341,7 +341,7 @@ func emitKilleffect():
 	$killSound.play()
 	killEffect = true
 	fireRecoil(0,0,randf_range(0.5,0.8))
-	#fireVignette(0.9,Color.DIM_GRAY)
+	fireVignette(0.9,Color.LIGHT_CORAL)
 	hud.getCrosshair().tintCrosshair(Color.RED)
 	hud.getCrosshair().addSize(1.5)
 

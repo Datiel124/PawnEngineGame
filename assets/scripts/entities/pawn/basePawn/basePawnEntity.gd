@@ -248,11 +248,12 @@ func _physics_process(delta):
 							attachedCam.hud.getCrosshair().crosshairSize = currentItem.weaponResource.crosshairSizeOverride
 						else:
 							attachedCam.hud.getCrosshair().crosshairSize = attachedCam.hud.getCrosshair().defaultCrosshairSize
+						if !UserConfig.game_simple_crosshairs:
+							if currentItem.weaponResource.forcedCrosshair != null:
+								attachedCam.hud.getCrosshair().setCrosshair(currentItem.weaponResource.forcedCrosshair)
+							else:
+								attachedCam.hud.getCrosshair().setCrosshair(attachedCam.hud.getCrosshair().defaultCrosshair)
 
-						if currentItem.weaponResource.forcedCrosshair != null:
-							attachedCam.hud.getCrosshair().setCrosshair(currentItem.weaponResource.forcedCrosshair)
-						else:
-							attachedCam.hud.getCrosshair().setCrosshair(attachedCam.hud.getCrosshair().defaultCrosshair)
 
 						attachedCam.itemEquipOffsetToggle = true
 						Dialogic.VAR.set('playerHasWeaponEquipped',true)
@@ -725,6 +726,7 @@ func dropWeapon():
 		currentItem.isEquipped = false
 		currentItem.show()
 		currentItem.setInteractable()
+		currentItem.apply_impulse(velocity)
 		currentItem = null
 		return true
 

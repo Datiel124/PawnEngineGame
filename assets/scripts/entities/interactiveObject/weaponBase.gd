@@ -136,21 +136,23 @@ func fire():
 					bullet.position.x += randf_range(-0.09,0.09)
 					bullet.position.y += randf_range(-0.05,0.05)
 				if checkShooter():
-					if weaponOwner.attachedCam.camCast.is_colliding():
-						raycastHit()
-						var hit = globalParticles.detectMaterial(getHitObject())
-						if hit != null:
-							var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
-							if !pt == null:
-								pt.look_at(getRayColPoint() + getRayNormal())
+					if weaponOwner.attachedCam.camCast != null:
+						if weaponOwner.attachedCam.camCast.is_colliding():
+							raycastHit()
+							var hit = globalParticles.detectMaterial(getHitObject())
+							if hit != null:
+								var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject()), getRayColPoint())
+								if !pt == null:
+									pt.look_at(getRayColPoint() + getRayNormal())
 				else:
-					if weaponCast.is_colliding():
-						raycastHit(weaponCast)
-						var hit = globalParticles.detectMaterial(getHitObject(weaponCast))
-						if hit != null:
-							var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
-							if !pt == null:
-								pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
+					if weaponCast != null:
+						if weaponCast.is_colliding():
+							raycastHit(weaponCast)
+							var hit = globalParticles.detectMaterial(getHitObject(weaponCast))
+							if hit != null:
+								var pt = globalParticles.createParticle(globalParticles.detectMaterial(getHitObject(weaponCast)), getRayColPoint(weaponCast))
+								if !pt == null:
+									pt.look_at(getRayColPoint(weaponCast) + getRayNormal(weaponCast))
 
 
 			await get_tree().create_timer(weaponResource.weaponFireRate).timeout

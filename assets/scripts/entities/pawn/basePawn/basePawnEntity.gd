@@ -32,6 +32,7 @@ signal hitboxAssigned(hitbox)
 @onready var chestBone = $BoneAttatchments/Stomach
 
 ##Pawn Parts
+@onready var headHitbox = $BoneAttatchments/Neck/Hitbox
 @onready var head = $Mesh/MaleSkeleton/Skeleton3D/MaleHead
 @onready var upperChest = $Mesh/MaleSkeleton/Skeleton3D/Male_UpperBody
 @onready var shoulders = $Mesh/MaleSkeleton/Skeleton3D/Male_Shoulders
@@ -430,6 +431,7 @@ func checkComponents():
 				_cam.posessObject(self, followNode)
 				_cam.camCast.add_exception(self)
 				_cam.interactCast.add_exception(self)
+				headHitbox.hitboxDamageMult = 1.0
 				raycaster = _cam.camCast
 
 

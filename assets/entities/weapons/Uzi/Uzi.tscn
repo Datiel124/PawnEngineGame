@@ -250,7 +250,8 @@ use_pooling = true
 
 [node name="audioStreamPlayer3d" type="AudioStreamPlayer3D" parent="." index="1"]
 stream = SubResource("AudioStreamRandomizer_rhvhp")
-volume_db = -16.0
+attenuation_model = 2
+volume_db = -15.0
 max_polyphony = 8
 bus = &"Sounds"
 attenuation_filter_db = 0.0

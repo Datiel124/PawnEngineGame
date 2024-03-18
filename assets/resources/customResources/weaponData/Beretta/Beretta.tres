@@ -28,3 +28,4 @@ useLeftHandFreeAiming = false
 useRightHandFreeAiming = true
 weaponPositionOffset = Vector3(0, -0.15, 0.075)
 weaponRotationOffset = Vector3(0, 0, -1.65)
+bulletColor = Color(255, 255, 0, 255)

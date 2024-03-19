@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://assets/scripts/entities/interactiveObject/interactiveObject.gd" id="1_10pe7"]
 
 [node name="interactiveObject" type="RigidBody3D" groups=["Interactable"]]
+collision_layer = 32
+collision_mask = 43
 script = ExtResource("1_10pe7")
 
 [node name="useSound" type="AudioStreamPlayer" parent="."]

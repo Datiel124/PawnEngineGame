@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://ciwfrp34s8dta"]
+
+[ext_resource type="PackedScene" uid="uid://ccjm54ftqg7qc" path="res://assets/entities/interactiveObject/interactiveObject.tscn" id="1_21oit"]
+[ext_resource type="Script" path="res://assets/entities/moneyPickup/MoneyPickup.gd" id="2_uwxfj"]
+[ext_resource type="AudioStream" uid="uid://b87nyjqxhfano" path="res://assets/sounds/ui/rareItemFound.wav" id="3_x6nr8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rumjx"]
+size = Vector3(0.22583, 0.243408, 0.0360107)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kv2vu"]
+albedo_color = Color(0.0313726, 0.870588, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7l6b"]
+material = SubResource("StandardMaterial3D_kv2vu")
+size = Vector3(0.19, 0.085, 0.005)
+
+[node name="moneyPickup" instance=ExtResource("1_21oit")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("2_uwxfj")
+cashAmount = 0
+objectName = "Cash"
+useCustomInteractText = true
+interactType = 1
+canBeUsed = true
+
+[node name="useSound" parent="." index="0"]
+stream = ExtResource("3_x6nr8")
+volume_db = -20.0
+pitch_scale = 1.08
+bus = &"UI"
+
+[node name="collisionShape3d" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00476074, 0.0118408, -0.000427246)
+shape = SubResource("BoxShape3D_rumjx")
+
+[node name="meshes" type="Node3D" parent="." index="3"]
+
+[node name="meshInstance3d" type="MeshInstance3D" parent="meshes" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0151352, 0, 0)
+mesh = SubResource("BoxMesh_g7l6b")
+skeleton = NodePath("../..")
+
+[node name="meshInstance3d2" type="MeshInstance3D" parent="meshes" index="1"]
+transform = Transform3D(0.932046, -0.36234, 0, 0.36234, 0.932046, 0, 0, 0, 1, 0, 0.0425677, 0.00589153)
+mesh = SubResource("BoxMesh_g7l6b")
+skeleton = NodePath("../..")
+
+[node name="meshInstance3d3" type="MeshInstance3D" parent="meshes" index="2"]
+transform = Transform3D(0.975362, 0.220612, 0, -0.220612, 0.975362, 0, 0, 0, 1, 0.0144032, -0.035946, -0.00667854)
+mesh = SubResource("BoxMesh_g7l6b")
+skeleton = NodePath("../..")

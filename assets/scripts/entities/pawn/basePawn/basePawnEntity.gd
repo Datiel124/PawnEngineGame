@@ -136,6 +136,7 @@ var oldPos : float = 0.0
 @export var canJump = true
 @export var isJumping = false
 @export_subgroup("Inventory")
+var pawnCash = 0
 var lastItem
 var itemNames : Array
 @export var itemInventory : Array

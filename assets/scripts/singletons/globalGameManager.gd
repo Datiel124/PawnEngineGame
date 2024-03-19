@@ -58,6 +58,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("dRestartScene"):
 		if get_tree().paused == false:
 			restartScene()
+			MusicManager.change_song_to(null,0.5)
 
 	if debugEnabled:
 		if Input.is_action_pressed("dFreecam"):
@@ -100,6 +101,7 @@ func takeScreenshot() -> String:
 	return savedfilepath
 
 func restartScene():
+	MusicManager.change_song_to(null,0.35)
 	await Fade.fade_out(0.3, Color(0,0,0,1),"GradientVertical",false,true).finished
 	get_tree().reload_current_scene()
 

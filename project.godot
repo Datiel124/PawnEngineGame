@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="Delta Bullet"
-config/version="0.2"
+config/version="0.6"
 run/main_scene="res://assets/scenes/menu/logo.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/image="res://assets/textures/misc/bootlogo.png"
 boot_splash/fullsize=false
-config/icon="res://assets/textures/misc/bootlogo.png"
+config/icon="res://assets/textures/misc/gameIcon.png"
 
 [autoload]
 

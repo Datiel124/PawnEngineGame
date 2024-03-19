@@ -431,28 +431,28 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.4187
 inputComponent = NodePath("Components/inputComponent")
 
 [node name="Skeleton3D" parent="Pawns/Players/pawnEntity/Mesh/MaleSkeleton" index="0"]
-bones/0/position = Vector3(0.0328877, 0.871745, -0.0876608)
-bones/0/rotation = Quaternion(-0.20894, -0.140452, 0.0427775, 0.966844)
-bones/1/rotation = Quaternion(0.260466, 0.0122039, -0.00207727, 0.965404)
-bones/2/rotation = Quaternion(0.0450026, 0.0107918, -0.0110674, 0.998867)
-bones/3/rotation = Quaternion(0.526966, 0.435913, 0.58887, -0.430718)
-bones/4/rotation = Quaternion(-0.477809, 0.545672, -0.157083, 0.670273)
-bones/5/rotation = Quaternion(0.488578, 0.00870085, -0.559592, 0.669382)
-bones/6/rotation = Quaternion(-0.00918485, -0.0140562, -0.0239178, 0.999573)
-bones/22/rotation = Quaternion(0.598111, -0.321818, -0.503188, -0.53432)
-bones/23/rotation = Quaternion(-0.567606, -0.3174, 0.195208, 0.734149)
-bones/24/rotation = Quaternion(0.295795, -0.0116798, 0.338894, 0.89304)
-bones/25/rotation = Quaternion(0.0528379, 0.229665, 0.132773, 0.962722)
-bones/41/rotation = Quaternion(-0.0435841, 0.0259886, -0.0177174, 0.998555)
-bones/42/rotation = Quaternion(-0.00710511, 0.757763, 0.077893, 0.647825)
-bones/43/rotation = Quaternion(0.983798, -0.0955704, -0.10814, 0.106368)
-bones/44/rotation = Quaternion(0.432199, 0.00186481, 0.0280082, 0.901341)
-bones/45/rotation = Quaternion(-0.0295242, 0.945778, -0.294836, 0.133056)
-bones/46/rotation = Quaternion(0.353276, -0.0197107, -0.0283939, 0.934881)
-bones/47/rotation = Quaternion(0.997171, 0.0375989, 0.0633798, 0.0148453)
-bones/48/rotation = Quaternion(0.618032, -0.00160215, -0.0262842, 0.785712)
-bones/49/rotation = Quaternion(-0.00324197, 0.894189, -0.400495, 0.200049)
-bones/50/rotation = Quaternion(0.238311, 0.0118397, 0.00225415, 0.971114)
+bones/0/position = Vector3(0.0327745, 0.871157, -0.0876227)
+bones/0/rotation = Quaternion(-0.208404, -0.136446, 0.0390525, 0.967691)
+bones/1/rotation = Quaternion(0.258443, 0.00960024, 0.00397445, 0.965971)
+bones/2/rotation = Quaternion(0.0463151, 0.0105678, -0.0125431, 0.998792)
+bones/3/rotation = Quaternion(0.530842, 0.433084, 0.579024, -0.442013)
+bones/4/rotation = Quaternion(-0.480174, 0.534108, -0.184933, 0.670791)
+bones/5/rotation = Quaternion(0.477495, 0.00894286, -0.546905, 0.687614)
+bones/6/rotation = Quaternion(0.00389757, -0.0357758, -0.0454712, 0.998317)
+bones/22/rotation = Quaternion(0.594166, -0.32869, -0.502591, -0.5351)
+bones/23/rotation = Quaternion(-0.570952, -0.329184, 0.193368, 0.726815)
+bones/24/rotation = Quaternion(0.303682, -0.0115982, 0.347925, 0.886899)
+bones/25/rotation = Quaternion(0.0411302, 0.218457, 0.109938, 0.968761)
+bones/41/rotation = Quaternion(-0.0429756, 0.0253746, -0.0184654, 0.998583)
+bones/42/rotation = Quaternion(-0.00769278, 0.756842, 0.0774612, 0.648945)
+bones/43/rotation = Quaternion(0.986614, -0.100458, -0.106733, 0.071482)
+bones/44/rotation = Quaternion(0.356133, 0.00194231, 0.028314, 0.934004)
+bones/45/rotation = Quaternion(0.00873098, 0.938304, -0.329565, 0.104382)
+bones/46/rotation = Quaternion(0.385052, -0.0175027, -0.0258001, 0.922368)
+bones/47/rotation = Quaternion(0.995822, 0.00227264, 0.0856845, 0.0315053)
+bones/48/rotation = Quaternion(0.658846, -0.00152576, -0.0256734, 0.751838)
+bones/49/rotation = Quaternion(0.0376029, 0.879493, -0.39779, 0.258537)
+bones/50/rotation = Quaternion(0.254375, 0.0116351, 0.00178277, 0.967034)
 
 [node name="inputComponent" parent="Pawns/Players/pawnEntity/Components" index="2" instance=ExtResource("4_uveoy")]
 
@@ -460,46 +460,46 @@ bones/50/rotation = Quaternion(0.238311, 0.0118397, 0.00225415, 0.971114)
 tree_root = SubResource("AnimationNodeBlendTree_anhqm")
 
 [node name="UpperChest" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="0"]
-transform = Transform3D(0.97139, -0.152902, -0.181662, 0.115569, 0.972781, -0.2008, 0.207423, 0.174063, 0.962631, 4.41603, 2.65617, 5.40487)
+transform = Transform3D(0.97195, -0.152707, -0.178808, 0.116163, 0.972974, -0.199521, 0.204446, 0.173156, 0.963431, 4.41616, 2.65572, 5.40435)
 
 [node name="LeftThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="1"]
-transform = Transform3D(0.977801, -0.201438, 0.0576213, -0.131771, -0.805022, -0.578391, 0.1629, 0.557947, -0.813717, 4.4985, 2.33317, 5.45853)
+transform = Transform3D(0.977488, -0.203005, 0.0574322, -0.144592, -0.842817, -0.518372, 0.153641, 0.498388, -0.853219, 4.49852, 2.33215, 5.45827)
 
 [node name="LeftFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="2"]
-transform = Transform3D(-0.965275, -0.208692, 0.15705, 0.244705, -0.932832, 0.264378, 0.0913375, 0.293618, 0.951504, 4.36515, 1.62601, 5.5661)
+transform = Transform3D(-0.976641, -0.16958, 0.131861, 0.210568, -0.877261, 0.431295, 0.0425441, 0.448988, 0.892481, 4.35062, 1.60249, 5.57757)
 
 [node name="LeftKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="3"]
-transform = Transform3D(0.966952, -0.12876, 0.219976, -0.185562, -0.947264, 0.261184, 0.174746, -0.293401, -0.939866, 4.417, 2.00749, 5.68426)
+transform = Transform3D(0.965831, -0.163319, 0.201151, -0.198673, -0.965137, 0.170282, 0.166329, -0.204453, -0.964627, 4.41639, 1.99117, 5.65991)
 
 [node name="RightThigh" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="4"]
-transform = Transform3D(0.908375, 0.0839483, 0.409622, 0.25886, -0.882233, -0.393229, 0.328379, 0.463237, -0.823135, 4.40213, 2.31893, 5.43297)
+transform = Transform3D(0.897618, 0.000134116, 0.440755, 0.206496, -0.883579, -0.420262, 0.389396, 0.468252, -0.79315, 4.40187, 2.31881, 5.43332)
 
 [node name="RightFoot" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="5"]
-transform = Transform3D(-0.889211, 0.457425, 0.00704297, -0.455772, -0.887112, 0.0726916, 0.0395019, 0.0614255, 0.997306, 4.61863, 1.72891, 5.3474)
+transform = Transform3D(-0.839958, 0.542138, 0.0232058, -0.541124, -0.840039, 0.0387339, 0.0404957, 0.019974, 0.998957, 4.59102, 1.75025, 5.33664)
 
 [node name="RightKnee" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="6"]
-transform = Transform3D(0.891192, 0.453278, -0.0166226, 0.308469, -0.578808, 0.754848, 0.332539, -0.677859, -0.655662, 4.43609, 1.96201, 5.62039)
+transform = Transform3D(0.882513, 0.469551, 0.0255503, 0.255359, -0.524156, 0.812415, 0.394869, -0.71046, -0.582488, 4.40192, 1.96134, 5.62276)
 
 [node name="Stomach" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="7"]
-transform = Transform3D(0.963661, -0.156402, -0.216502, 0.133837, 0.984251, -0.115322, 0.231136, 0.0821559, 0.969427, 4.44826, 2.45333, 5.38794)
+transform = Transform3D(0.963885, -0.158814, -0.213734, 0.137451, 0.984199, -0.111447, 0.228063, 0.0780449, 0.970494, 4.44889, 2.45289, 5.38826)
 
 [node name="Hips" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="8"]
-transform = Transform3D(0.956877, -0.0240265, -0.289464, 0.141409, 0.909025, 0.392007, 0.253711, -0.416039, 0.873231, 4.45162, 2.32625, 5.4461)
+transform = Transform3D(0.959705, -0.0187095, -0.280352, 0.132452, 0.910081, 0.392683, 0.247795, -0.413997, 0.875897, 4.4515, 2.32567, 5.44614)
 
 [node name="Neck" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="9"]
-transform = Transform3D(0.984373, -0.104075, -0.141978, 0.0888279, 0.989965, -0.109812, 0.151983, 0.0954855, 0.98375, 4.37567, 2.91289, 5.45081)
+transform = Transform3D(0.984778, -0.1028, -0.140083, 0.0877248, 0.990059, -0.109858, 0.149985, 0.0958983, 0.984016, 4.37586, 2.91249, 5.45005)
 
 [node name="leftHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="10"]
-transform = Transform3D(-0.773013, -0.579498, 0.258086, 0.599705, -0.534903, 0.595143, -0.206839, 0.614824, 0.761023, 4.49839, 2.5597, 5.54081)
+transform = Transform3D(-0.742659, -0.587803, 0.320813, 0.643218, -0.492877, 0.585922, -0.186289, 0.641489, 0.744134, 4.49672, 2.55474, 5.54545)
 
 [node name="rightHand" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="11"]
-transform = Transform3D(0.069367, -0.240319, -0.968199, -0.681013, -0.720611, 0.130079, -0.728963, 0.650307, -0.213653, 4.26511, 2.42427, 5.3862)
+transform = Transform3D(0.0370229, -0.203751, -0.97831, -0.652323, -0.746555, 0.130803, -0.75702, 0.633306, -0.160557, 4.26687, 2.428, 5.3881)
 
 [node name="leftArm" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="12"]
-transform = Transform3D(-0.840023, 0.489884, 0.233103, -0.542381, -0.767562, -0.341499, 0.0116143, -0.4133, 0.910484, 4.51291, 2.89267, 5.48126)
+transform = Transform3D(-0.854763, 0.459608, 0.241049, -0.516707, -0.797019, -0.312607, 0.0484327, -0.39176, 0.918755, 4.51424, 2.89526, 5.47691)
 
 [node name="leftForearm" parent="Pawns/Players/pawnEntity/BoneAttatchments" index="13"]
-transform = Transform3D(-0.806824, -0.537059, 0.246132, 0.556607, -0.551391, 0.621389, -0.198015, 0.638337, 0.743819, 4.63555, 2.70051, 5.37779)
+transform = Transform3D(-0.813922, -0.519172, 0.260711, 0.552243, -0.552052, 0.624687, -0.1804, 0.652409, 0.736049, 4.62931, 2.69572, 5.37884)
 
 [node name="Temporary" type="Node3D" parent="Props" index="0"]
 

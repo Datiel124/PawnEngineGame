@@ -101,36 +101,8 @@ func _input(_event):
 
 func _physics_process(delta):
 	#Interact Cast HUD
-	if interactCast.is_colliding():
-		if followingEntity != null:
-			if followingEntity is BasePawn:
-				var obj = followingEntity.getInteractionObject()
-				if obj != null:
-					if obj is BasePawn:
-						if obj.inputComponent is AIComponent:
-							if obj.inputComponent.interactType == 0:
-								hud.setInteractionText("Speak to %s" %obj.inputComponent.pawnName)
-					elif  obj is InteractiveObject:
-						if !obj.beenUsed:
-							if obj.canBeUsed:
-								if !obj.useCustomInteractText:
-									if obj.interactType == 1:
-										hud.setInteractionText("Use %s" %obj.objectName)
-									elif obj.interactType == 0:
-											hud.setInteractionText("Pick up '%s'" %obj.objectName)
-								else:
-									hud.setInteractionText(obj.customInteractText)
-						else:
-							if hud.interactVisible:
-								hud.interactVisible = false
-					if !hud.interactVisible:
-						hud.interactVisible = true
-				else:
-					if hud.interactVisible:
-						hud.interactVisible = false
-	else:
-		if hud.interactVisible:
-			hud.interactVisible = false
+	if !isFreecam:
+		interactCheck()
 
 	#Weapon Hud
 	if !followNode == null:
@@ -165,16 +137,22 @@ func _physics_process(delta):
 	if isZoomed:
 		if UserConfig.game_aim_screentilt or UserConfig.game_camera_screentilt_always:
 			camCurrRot.z += -castLerp.y
-		if cameraData.useZoomFOV or cameraData == null:
-			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
-			currentFOV = aimFOV
-			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
+		if !cameraData == null:
+			if cameraData.useZoomFOV:
+				camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
+				currentFOV = aimFOV
+				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
+			else:
+				camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
+				currentFOV = globalGameManager.defaultFOV
+				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.zoomSpringAmount, cameraData.zoomInSpeed*delta)
 		else:
-			camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
+			camera.fov = lerpf(camera.fov, currentFOV, 8.5 * delta)
 			currentFOV = globalGameManager.defaultFOV
-			camSpring.spring_length = lerp(camSpring.spring_length, cameraData.zoomSpringAmount, cameraData.zoomInSpeed*delta)
+			camSpring.spring_length = lerp(camSpring.spring_length, 0.5, 25.0*delta)
 	else:
-			if cameraData.useZoomFOV or cameraData == null:
+		if !cameraData == null:
+			if cameraData.useZoomFOV:
 				camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
 				currentFOV = globalGameManager.defaultFOV
 				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.camLerpSpeed*delta)
@@ -182,7 +160,10 @@ func _physics_process(delta):
 				camera.fov = lerpf(camera.fov, currentFOV, cameraData.zoomSpeed * delta)
 				currentFOV = globalGameManager.defaultFOV
 				camSpring.spring_length = lerp(camSpring.spring_length, cameraData.cameraOffset.z, cameraData.zoomOutSpeed*delta)
-
+		else:
+			camera.fov = lerpf(camera.fov, currentFOV, zoomSpeed * delta)
+			currentFOV = globalGameManager.defaultFOV
+			camSpring.spring_length = lerp(camSpring.spring_length, 1.65, 50*delta)
 	##Set the camera rotation
 	camRot = vertical.global_transform.basis.get_euler().y
 
@@ -298,6 +279,9 @@ func posessObject(object, posessPart:Node3D = object):
 func unposessObject(freecam:bool = false):
 	if freecam:
 		isFreecam = true
+		hud.disableHud()
+		if followingEntity != null:
+			position = followingEntity.position
 		if "inputComponent" in followingEntity:
 			if followingEntity.inputComponent is InputComponent:
 				followingEntity.inputComponent.movementEnabled = false
@@ -354,3 +338,35 @@ func fireVignette(intensity:float = 0.9,color:Color = Color.DARK_RED):
 
 func playTextAppearSound():
 	$HUD/textboxAppearSound.play()
+
+func interactCheck():
+	if interactCast.is_colliding():
+				if followingEntity != null:
+					if followingEntity is BasePawn:
+						var obj = followingEntity.getInteractionObject()
+						if obj != null:
+							if obj is BasePawn:
+								if obj.inputComponent is AIComponent:
+									if obj.inputComponent.interactType == 0:
+										hud.setInteractionText("Speak to %s" %obj.inputComponent.pawnName)
+							elif  obj is InteractiveObject:
+								if !obj.beenUsed:
+									if obj.canBeUsed:
+										if !obj.useCustomInteractText:
+											if obj.interactType == 1:
+												hud.setInteractionText("Use %s" %obj.objectName)
+											elif obj.interactType == 0:
+													hud.setInteractionText("Pick up '%s'" %obj.objectName)
+										else:
+											hud.setInteractionText(obj.customInteractText)
+								else:
+									if hud.interactVisible:
+										hud.interactVisible = false
+							if !hud.interactVisible:
+								hud.interactVisible = true
+						else:
+							if hud.interactVisible:
+								hud.interactVisible = false
+	else:
+		if hud.interactVisible:
+			hud.interactVisible = false

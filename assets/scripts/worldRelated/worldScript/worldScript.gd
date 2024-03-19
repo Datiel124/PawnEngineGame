@@ -16,6 +16,8 @@ signal worldLoaded
 @onready var playerPawns = $Pawns/Players
 ##Set the name for this specific scene
 @export_category("World Identity")
+## Is time of day enabled in this world?
+@export var enableTimeCycle = false
 ##What is this worlds name?
 @export var worldName = ""
 ##Describe the world..
@@ -40,6 +42,10 @@ func _enter_tree():
 
 func _ready():
 	emit_signal("worldLoaded")
+	if enableTimeCycle:
+		worldSky.simulateTime = true
+	else:
+		worldSky.simulateTime = false
 	##Soundscape
 	if playOnStart:
 		if !soundScape == null:

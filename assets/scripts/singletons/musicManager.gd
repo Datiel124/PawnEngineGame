@@ -37,7 +37,7 @@ func change_song_to(song : AudioStream, fade_duration : float = 0.0, at_position
 	current_player = new_player
 	new_player.bus = &"Music"
 	new_player.stream = song
-	new_player.volume_db = -80
+	#new_player.volume_db = -80
 	new_player.play(at_position)
 	fade_player_in(new_player, fade_duration)
 
@@ -62,3 +62,12 @@ func fade_player_in(player : AudioStreamPlayer, duration : float) -> void:
 		player.volume_db = linear_to_db(clamp(vol, 0, 1))
 		await get_tree().process_frame
 	player.volume_db = 0
+
+func pauseMusic():
+	if current_player != null:
+		if isPlayerPlaying():
+			current_player.stream_paused = true
+
+func resumeMusic():
+	if current_player != null:
+		current_player.stream_paused = false

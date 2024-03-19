@@ -12,17 +12,12 @@ script/source = "extends Node
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Fade.fade_in(0.8, Color(0,0,0,1),\"GradientVertical\",false,true)
+	MusicManager.change_song_to(menuMusic.stream,0.5)
 	var menu = globalGameManager.menuScenes[randi_range(0,globalGameManager.menuScenes.size()-1)].instantiate()
 	add_child(menu)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
-
-func _on_menu_music_finished():
-	menuMusic.play()
 "
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jmo12"]
@@ -38,7 +33,4 @@ script = SubResource("GDScript_42td0")
 [node name="menuMusic" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_jmo12")
 volume_db = -5.0
-autoplay = true
 bus = &"Music"
-
-[connection signal="finished" from="menuMusic" to="." method="_on_menu_music_finished"]

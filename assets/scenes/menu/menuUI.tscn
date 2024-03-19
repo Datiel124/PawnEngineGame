@@ -22,6 +22,7 @@ func _process(delta):
 		buttonHolder.modulate = lerp(buttonHolder.modulate,Color(1, 1, 1, 1),12*delta)
 
 func _on_play_button_pressed():
+	MusicManager.change_song_to(null,0.5)
 	await Fade.fade_out(0.3, Color(0,0,0,1),\"GradientVertical\",false,true).finished
 	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/areas/playerHome/playerHome.tscn\")
 

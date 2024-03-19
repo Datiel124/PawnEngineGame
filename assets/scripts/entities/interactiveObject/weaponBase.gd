@@ -165,19 +165,21 @@ func createMuzzle():
 	#var btInstance = bulletTrail.instantiate()
 	if !muzzlePoint == null:
 		if checkShooter():
-			if weaponOwner.attachedCam.camCast.is_colliding():
-				bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint())
-			else:
-				bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
-			globalGameManager.world.worldMisc.add_child(bulletTrail)
-			return bulletTrail
+			if weaponOwner.attachedCam.camCast != null:
+				if weaponOwner.attachedCam.camCast.is_colliding():
+					bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint())
+				else:
+					bulletTrail.initTrail(muzzlePoint.global_position, weaponOwner.attachedCam.camCastEnd.global_position)
+				globalGameManager.world.worldMisc.add_child(bulletTrail)
+				return bulletTrail
 		else:
-			if weaponCast.is_colliding():
-				bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint(weaponCast))
-			else:
-				bulletTrail.initTrail(muzzlePoint.global_position, weaponCastEnd.global_position)
-			globalGameManager.world.worldMisc.add_child(bulletTrail)
-			return bulletTrail
+			if weaponCast != null:
+				if weaponCast.is_colliding():
+					bulletTrail.initTrail(muzzlePoint.global_position, getRayColPoint(weaponCast))
+				else:
+					bulletTrail.initTrail(muzzlePoint.global_position, weaponCastEnd.global_position)
+				globalGameManager.world.worldMisc.add_child(bulletTrail)
+				return bulletTrail
 	else:
 		print_rich("[color=red]This weapon doesn't have a muzzle point! Add one now fucker.[/color]")
 

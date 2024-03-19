@@ -21,12 +21,14 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("gEscape"):
 		if Dialogic.current_timeline == null:
 			if visible:
+				MusicManager.resumeMusic()
 				soundPlayer.play()
 				globalGameManager.set_meta(&"stored_mouse_mode", Input.mouse_mode)
 				globalGameManager.hideMouse()
 				hide()
 				get_tree().paused = false
 			else:
+				MusicManager.pauseMusic()
 				Dialogic.end_timeline()
 				secondSound.play()
 				Input.mouse_mode = globalGameManager.get_meta(&"stored_mouse_mode", Input.MOUSE_MODE_CAPTURED)

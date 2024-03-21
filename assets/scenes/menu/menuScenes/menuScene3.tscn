@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=3 uid="uid://6ee1o0ffv8jr"]
+
+[ext_resource type="CompressedTexture3D" uid="uid://sr0kr5d88j54" path="res://assets/textures/misc/neutral-lut.png" id="2_abjs3"]
+[ext_resource type="PackedScene" uid="uid://dq84qs80t1u0d" path="res://assets/scenes/worlds/areas/playerHome/distantBuildings.glb" id="16_6nah1"]
+
+[sub_resource type="GDScript" id="GDScript_bcvoe"]
+resource_name = "menuscene3"
+script/source = "extends Node3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	$animationPlayer.play(\"new_animation\")
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rdppo"]
+sky_top_color = Color(0.509804, 0.439216, 0.286275, 1)
+sky_horizon_color = Color(0.894118, 0.568627, 0.294118, 1)
+sky_energy_multiplier = 0.55
+
+[sub_resource type="Sky" id="Sky_4k04w"]
+sky_material = SubResource("ProceduralSkyMaterial_rdppo")
+
+[sub_resource type="Environment" id="Environment_2lsrc"]
+background_mode = 2
+background_energy_multiplier = 10.9
+sky = SubResource("Sky_4k04w")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.05
+ambient_light_energy = 14.3
+tonemap_white = 1.85
+ssao_enabled = true
+ssao_radius = 19.4
+ssao_intensity = 1.4
+ssao_detail = 2.05
+ssao_horizon = 1.0
+ssil_intensity = 0.73
+ssil_sharpness = 0.0
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_cascades = 3
+sdfgi_min_cell_size = 0.15625
+sdfgi_cascade0_distance = 10.0
+sdfgi_max_distance = 80.0
+sdfgi_y_scale = 2
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.65
+fog_enabled = true
+fog_light_energy = 0.0
+fog_density = 0.002
+fog_sky_affect = 0.765
+fog_height = 121.7
+fog_height_density = 0.049
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.008
+volumetric_fog_gi_inject = 4.91
+volumetric_fog_ambient_inject = 0.6
+volumetric_fog_temporal_reprojection_enabled = false
+adjustment_enabled = true
+adjustment_contrast = 1.11
+adjustment_saturation = 1.2
+adjustment_color_correction = ExtResource("2_abjs3")
+
+[sub_resource type="Animation" id="Animation_wjrec"]
+resource_name = "new_animation"
+length = 900.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera3d:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 899.9),
+"transitions": PackedFloat32Array(0.189465, 1),
+"update": 0,
+"values": [Vector3(23.9789, 314.961, 98.5593), Vector3(-114.982, 314.961, 116.299)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera3d:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 899.9),
+"transitions": PackedFloat32Array(0.233258, 1),
+"update": 0,
+"values": [Vector3(-0.523599, -0.523599, -2.52368e-08), Vector3(-0.523599, -0.37851, -1.03356e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_76wgt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("camera3d:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(23.9789, 314.961, 98.5593)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camera3d:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.523599, -0.523599, -2.52368e-08)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dsfnc"]
+_data = {
+"RESET": SubResource("Animation_76wgt"),
+"new_animation": SubResource("Animation_wjrec")
+}
+
+[node name="menu" type="Node3D"]
+script = SubResource("GDScript_bcvoe")
+
+[node name="senvo" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2lsrc")
+
+[node name="distantBuildings" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 135.456, 0)
+
+[node name="distantBuildings2" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -731.172, 135.456, 308.325)
+
+[node name="distantBuildings5" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(0.391309, 0, 0.920259, 0, 1, 0, -0.920259, 0, 0.391309, -418.442, 135.456, -788.432)
+
+[node name="distantBuildings3" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(0.721809, 0, -0.692093, 0, 1, 0, 0.692093, 0, 0.721809, 880.93, 135.456, 149.758)
+
+[node name="distantBuildings6" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(0.946266, 0, -0.323389, 0, 1, 0, 0.323389, 0, 0.946266, 1361.04, 135.456, -343.563)
+
+[node name="distantBuildings7" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(0.977075, 0, 0.212894, 0, 1, 0, -0.212894, 0, 0.977075, 22.0229, 135.456, 784.028)
+
+[node name="distantBuildings4" parent="." instance=ExtResource("16_6nah1")]
+transform = Transform3D(0.721809, 0, -0.692093, 0, 1, 0, 0.692093, 0, 0.721809, 334.753, 135.456, -709.149)
+
+[node name="camera3d" type="Camera3D" parent="."]
+transform = Transform3D(0.866025, 0.25, -0.433013, -2.18557e-08, 0.866025, 0.5, 0.5, -0.433013, 0.75, 23.9789, 314.961, 98.5593)
+fov = 90.0
+
+[node name="animationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dsfnc")
+}

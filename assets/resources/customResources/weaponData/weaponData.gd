@@ -21,6 +21,8 @@ var defaultBulletTrail = load("res://assets/entities/bulletTrail/bulletTrail.tsc
 @export var crosshairSizeOverride : Vector2 = Vector2(0.8,0.8)
 @export var forcedCrosshair : Texture2D
 @export_subgroup("Recoil")
+@export var useFOV = false
+@export var fovShotAmount = 1.5
 @export var weaponRecoil : Vector3 = Vector3(5 ,1 , 0.25)
 @export var weaponRecoilStrength : float = 8.0
 @export var weaponSpread = 0.25

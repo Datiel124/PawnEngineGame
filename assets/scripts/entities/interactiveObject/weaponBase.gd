@@ -126,6 +126,8 @@ func fire():
 			if weaponRemoteState:
 				weaponRemoteState.start("fire")
 			if weaponOwner.attachedCam:
+				if weaponResource.useFOV:
+					weaponOwner.attachedCam.camera.fov += weaponResource.fovShotAmount
 				weaponOwner.attachedCam.fireRecoil()
 
 			isFiring = true

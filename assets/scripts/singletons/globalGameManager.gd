@@ -1,6 +1,6 @@
 extends Node
 ## Global Game Manager Start
-var menuScenes = [preload("res://assets/scenes/menu/menuScenes/menuscene1.tscn"),preload("res://assets/scenes/menu/menuScenes/menuScene2.tscn")]
+var menuScenes = [preload("res://assets/scenes/menu/menuScenes/menuscene1.tscn"),preload("res://assets/scenes/menu/menuScenes/menuScene2.tscn"),preload("res://assets/scenes/menu/menuScenes/menuScene3.tscn")]
 
 #Global Sound Player
 var soundPlayer = AudioStreamPlayer.new()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://d2pec0trbvhku"]
+[gd_scene load_steps=101 format=3 uid="uid://d2pec0trbvhku"]
 
 [ext_resource type="PackedScene" uid="uid://dsxt078giobel" path="res://assets/entities/weapons/Uzi/Uzi.tscn" id="1_8bhe7"]
 [ext_resource type="Texture2D" uid="uid://rnjqykyxts43" path="res://assets/textures/crosshair/crosshair037.png" id="2_5kkg3"]
@@ -9,8 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://sr64p1aykopo" path="res://assets/textures/crosshair/crosshair004.png" id="7_bwqp8"]
 [ext_resource type="PackedScene" uid="uid://0t8p4vndxvja" path="res://assets/models/pawn/Shopguy/shopguy.gltf" id="8_xq8mt"]
 [ext_resource type="Material" uid="uid://cmkj35g6w356q" path="res://assets/materials/pawnMaterial/MALE.tres" id="9_w40gy"]
-[ext_resource type="Animation" uid="uid://bexxhdcac4mnd" path="res://ShopGuy_Idle.res" id="10_dbje7"]
+[ext_resource type="Animation" path="res://ShopGuy_Idle.res" id="10_dbje7"]
 [ext_resource type="Environment" uid="uid://wwq6f40kybqq" path="res://GodotSky/WorldEnvironment/default_environment.tres" id="11_ngohw"]
+[ext_resource type="PackedScene" uid="uid://qlrpb47edm7y" path="res://assets/models/props/radio.gltf" id="12_3qioh"]
 
 [sub_resource type="GDScript" id="GDScript_j4g3k"]
 script/source = "extends Node3D
@@ -48,6 +49,23 @@ func _on_button_pressed() -> void:
 	get_tree().change_scene_to_file(\"res://assets/scenes/worlds/areas/playerHome/playerHome.tscn\")
 "
 
+[sub_resource type="Gradient" id="Gradient_b1ly5"]
+offsets = PackedFloat32Array(0.888889, 1)
+colors = PackedColorArray(0.20871, 0.20871, 0.20871, 1, 0.303233, 0.303233, 0.303233, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7o6wj"]
+gradient = SubResource("Gradient_b1ly5")
+fill = 1
+fill_from = Vector2(0.2, 0.8)
+fill_to = Vector2(0.2, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_neh1q"]
+albedo_texture = SubResource("GradientTexture2D_7o6wj")
+uv1_scale = Vector3(21.465, 56.11, 26.16)
+uv1_offset = Vector3(1.65, 0, -1.43)
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7cys"]
 albedo_color = Color(0.831373, 0.615686, 0.466667, 1)
 
@@ -65,6 +83,8 @@ weaponShots = 1
 useCustomCrosshairSize = true
 crosshairSizeOverride = Vector2(0.5, 0.5)
 forcedCrosshair = ExtResource("2_5kkg3")
+useFOV = false
+fovShotAmount = 1.5
 weaponRecoil = Vector3(3, 7, 5)
 weaponRecoilStrength = 4.0
 weaponSpread = 0.08
@@ -97,6 +117,8 @@ weaponImpulse = 16.0
 weaponShots = 1
 useCustomCrosshairSize = false
 crosshairSizeOverride = Vector2(0.8, 0.8)
+useFOV = false
+fovShotAmount = 1.5
 weaponRecoil = Vector3(5, 4, 0.25)
 weaponRecoilStrength = 8.0
 weaponSpread = 0.12
@@ -126,6 +148,8 @@ weaponShots = 1
 useCustomCrosshairSize = false
 crosshairSizeOverride = Vector2(0.8, 0.8)
 forcedCrosshair = ExtResource("7_bwqp8")
+useFOV = false
+fovShotAmount = 1.5
 weaponRecoil = Vector3(5, 7, 3)
 weaponRecoilStrength = 7.0
 weaponSpread = 0.05
@@ -48679,6 +48703,16 @@ font_size = 32
 outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_74ffa"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h6vej"]
+gradient = SubResource("Gradient_74ffa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6w7g"]
+albedo_texture = SubResource("GradientTexture2D_h6vej")
+metallic = 1.0
+roughness = 0.59
+
 [node name="ShopBg" type="Node3D"]
 script = SubResource("GDScript_j4g3k")
 
@@ -48692,6 +48726,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28206, 0)
 [node name="csgBox3d" type="CSGBox3D" parent="Sign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344377, 0.445679, -0.0830231)
 size = Vector3(2.51636, 1.51782, 0.124542)
+material = SubResource("StandardMaterial3D_neh1q")
 
 [node name="csgBox3d2" type="CSGBox3D" parent="Sign"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.344377, 0.445679, -0.139303)
@@ -49505,6 +49540,20 @@ or other store"
 [node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("11_ngohw")
 
+[node name="radio" parent="." instance=ExtResource("12_3qioh")]
+transform = Transform3D(-0.0905121, 0, -0.283595, 0, 0.297688, 0, 0.283595, 0, -0.0905121, 3.10559, 1.48255, 1.58883)
+
+[node name="Radio" parent="radio" index="0"]
+material_override = SubResource("StandardMaterial3D_b6w7g")
+
+[node name="RadioAntennae" parent="radio/Radio" index="0"]
+transform = Transform3D(1, 2.04891e-08, 2.98023e-08, 0, 0.997924, -0.0644104, -2.98023e-08, 0.0644104, 0.997923, -0.0740445, 0.949959, -0.733811)
+material_override = SubResource("StandardMaterial3D_b6w7g")
+
+[node name="RadioHandle" parent="radio/Radio" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.761665, 0)
+material_override = SubResource("StandardMaterial3D_b6w7g")
+
 [connection signal="mouse_entered" from="Sign/Uzi/uziarea3d" to="." method="_on_uziarea_3d_mouse_entered"]
 [connection signal="mouse_entered" from="Sign/Beretta/berettaarea3d" to="." method="_on_berettaarea_3d_mouse_entered"]
 [connection signal="mouse_entered" from="Sign/Revolver/revolverarea3d" to="." method="_on_revolverarea_3d_mouse_entered"]
@@ -49512,3 +49561,4 @@ environment = ExtResource("11_ngohw")
 [connection signal="pressed" from="control/colorRect/button" to="." method="_on_button_pressed"]
 
 [editable path="shopguy"]
+[editable path="radio"]

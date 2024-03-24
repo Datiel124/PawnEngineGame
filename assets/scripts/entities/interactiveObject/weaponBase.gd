@@ -113,15 +113,15 @@ func fire():
 	if !weaponOwner.preventWeaponFire:
 		if !isFiring:
 			if isAiming:
-				if weaponOwner.attachedCam:
+				if weaponOwner.attachedCam != null:
 						weaponOwner.attachedCam.camRecoilStrength = weaponResource.weaponRecoilStrengthAim
 						weaponOwner.attachedCam.applyWeaponSpread(weaponResource.weaponSpreadAim)
 			else:
-				if weaponOwner.attachedCam:
+				if weaponOwner.attachedCam != null:
 					weaponOwner.attachedCam.camRecoilStrength = weaponResource.weaponRecoilStrength
 					weaponOwner.attachedCam.applyWeaponSpread(weaponResource.weaponSpread)
-			if weaponCast:
-				weaponCast.rotation -= Vector3(randf_range(-weaponResource.weaponSpread, weaponResource.weaponSpread),randf_range(-weaponResource.weaponSpread, weaponResource.weaponSpread),0) * randf_range(1.6,2.5)
+			if weaponCast != null:
+				weaponCast.rotation -= Vector3(randf_range(0.0, -weaponResource.weaponSpread),randf_range(-weaponResource.weaponSpread, weaponResource.weaponSpread),0) * randf_range(1.6,2.5)
 			shot_fired.emit()
 			if weaponRemoteState:
 				weaponRemoteState.start("fire")

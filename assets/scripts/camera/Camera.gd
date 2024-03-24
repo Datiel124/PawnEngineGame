@@ -309,12 +309,12 @@ func fireRecoil(setRecoilX:float = 0.0,setRecoilY:float = 0.0,setRecoilZ:float =
 	if setRecoilZ:
 		camRecoil.z += setRecoilZ
 	if !useSetRecoil:
-		camTargetRot = Vector3(camRecoil.x, randf_range(-camRecoil.y,camRecoil.y), randf_range(-camRecoil.z,camRecoil.z) )
+		camTargetRot = Vector3(camRecoil.x, randf_range(0.0,camRecoil.y), randf_range(0.0,camRecoil.z) )
 	else:
 		camTargetRot = Vector3(setRecoilX, randf_range(-setRecoilY,setRecoilY), randf_range(-setRecoilZ,setRecoilZ) )
 
 func applyWeaponSpread(spread):
-	camCast.rotation += Vector3(randf_range(-spread, spread),randf_range(-spread, spread),0)
+	camCast.rotation += Vector3(randf_range(0.0, spread),randf_range(-spread, spread),0)
 	hud.getCrosshair().addSize(0.85)
 	if UserConfig.game_crosshair_tilt:
 		hud.getCrosshair().addTilt(randf_range(-spread*7,spread*7))

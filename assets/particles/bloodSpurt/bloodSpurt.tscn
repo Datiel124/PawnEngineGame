@@ -1,53 +1,56 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpp4s1vikjdv8"]
+[gd_scene load_steps=24 format=3 uid="uid://bpp4s1vikjdv8"]
 
-[ext_resource type="Texture2D" uid="uid://cj0kfcr0vsi8l" path="res://assets/textures/blood/blood_spurt/bspurt1.png" id="1_dubao"]
-[ext_resource type="Texture2D" uid="uid://b3uptjpd0sssv" path="res://addons/kenney_particle_pack/smoke_04.png" id="2_bc5ix"]
+[ext_resource type="Texture2D" uid="uid://bimk8xiwemuh7" path="res://assets/textures/blood/realBloodSheets/Blood_1-2.png" id="1_6l5g6"]
+[ext_resource type="Texture2D" uid="uid://dvovreh6l13lj" path="res://assets/textures/blood/realBloodSheets/Blood_1-2_n.png" id="2_dec78"]
 [ext_resource type="Texture2D" uid="uid://7r7fibraa87x" path="res://assets/textures/blood/blood_gush/frameblood0003.png" id="2_ik2ae"]
+[ext_resource type="Texture2D" uid="uid://djho1o4a46mla" path="res://assets/textures/blood/ParticleCloudWhite.png" id="3_nfhuv"]
 [ext_resource type="Texture2D" uid="uid://bm32frk77ofg3" path="res://assets/textures/blood/blood_gush/bloodNormal.png" id="3_sm58p"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55b2n"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mh1kq"]
+transparency = 1
 cull_mode = 2
-diffuse_mode = 3
-albedo_texture = ExtResource("1_dubao")
+albedo_color = Color(0.462745, 0.0941176, 0.0745098, 1)
+albedo_texture = ExtResource("1_6l5g6")
+albedo_texture_msdf = true
+metallic = 0.75
+metallic_specular = 0.0
+roughness = 0.0
+normal_enabled = true
+normal_texture = ExtResource("2_dec78")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 4
+particles_anim_loop = false
 
-[sub_resource type="Curve" id="Curve_wu3t1"]
-min_value = -360.0
-max_value = 360.0
-_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_e4ray"]
+_data = [Vector2(0, 0), 0.0, 1.8595, 0, 0, Vector2(0.980582, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ittk1"]
-curve = SubResource("Curve_wu3t1")
-
-[sub_resource type="Curve" id="Curve_pwqoj"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_gkwyl"]
-curve = SubResource("Curve_pwqoj")
+[sub_resource type="CurveTexture" id="CurveTexture_addkl"]
+curve = SubResource("Curve_e4ray")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ow2gb"]
-lifetime_randomness = 0.47
+lifetime_randomness = 0.45
 particle_flag_align_y = true
-angle_curve = SubResource("CurveTexture_ittk1")
+particle_flag_rotate_y = true
+angle_max = 360.0
 direction = Vector3(0, 0, -1)
-spread = 9.91
-initial_velocity_min = 3.0
-initial_velocity_max = 6.0
-gravity = Vector3(0, -15, 0)
-scale_min = 0.2
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_gkwyl")
+initial_velocity_min = 1.1
+initial_velocity_max = 4.0
+angular_velocity_max = 1.1
+gravity = Vector3(0, -5.78, 0)
+scale_min = 0.15
+scale_max = 2.2
+scale_curve = SubResource("CurveTexture_addkl")
+anim_speed_min = 2.2
+anim_speed_max = 2.5
 collision_mode = 2
 collision_use_scale = true
 sub_emitter_mode = 3
 sub_emitter_amount_at_collision = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_5noax"]
-size = Vector2(0.03, 1)
 
 [sub_resource type="GDScript" id="GDScript_fb3dx"]
 script/source = "extends GPUParticles3D
@@ -55,16 +58,16 @@ var remove = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
-	randomize()
-	amount = randi_range(15,35)
+	pass
+	#randomize()
+	#amount = randi_range(15,35)
 	$bloodLand.amount = amount
 	$bloodSmoke.emitting = true
-	self.process_material.spread = randf_range(5,20)
-	self.process_material.flatness = randf_range(0,5)
-	self.process_material.initial_velocity_min = randf_range(3,8)
-	self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,10)
-	self.lifetime = randf_range(5,45)
+	#self.process_material.spread = randf_range(5,20)
+	#self.process_material.flatness = randf_range(0,5)
+	#self.process_material.initial_velocity_min = randf_range(3,8)
+	#self.process_material.initial_velocity_max = randf_range(self.process_material.initial_velocity_min,10)
+	#self.lifetime = randf_range(5,45)
 func _process(delta):
 	if Engine.get_frames_per_second() < 50:
 		queue_free()
@@ -102,7 +105,6 @@ curve = SubResource("Curve_2tsyi")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ns81"]
 particle_flag_align_y = true
-angle_min = -36.9
 angle_max = 24.6
 inherit_velocity_ratio = 0.504
 direction = Vector3(0, 0, -1)
@@ -120,7 +122,8 @@ alpha_curve = SubResource("CurveTexture_inqm3")
 transparency = 1
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.552941, 0, 0, 0.737255)
-albedo_texture = ExtResource("2_bc5ix")
+albedo_texture = ExtResource("3_nfhuv")
+metallic = 1.0
 metallic_specular = 0.0
 billboard_mode = 3
 billboard_keep_scale = true
@@ -175,11 +178,10 @@ collision_use_scale = true
 size = Vector2(0.55, 0.55)
 
 [node name="bloodSpurt" type="GPUParticles3D"]
-material_override = SubResource("StandardMaterial3D_55b2n")
+material_override = SubResource("StandardMaterial3D_mh1kq")
 emitting = false
-amount = 25
+amount = 5
 sub_emitter = NodePath("bloodLand")
-lifetime = 0.21
 one_shot = true
 explosiveness = 1.0
 randomness = 0.57
